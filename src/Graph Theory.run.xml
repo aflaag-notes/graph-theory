@@ -44,11 +44,11 @@
   <internal package="biblatex" priority="9" active="0">
     <generic>latex</generic>
     <provides type="dynamic">
-      <file>"Advanced Algorithms".aux</file>
-      <file>Advanced_Algorithms-blx.bib</file>
+      <file>"Graph Theory".aux</file>
+      <file>Graph_Theory-blx.bib</file>
     </provides>
     <requires type="dynamic">
-      <file>"Advanced Algorithms".bbl</file>
+      <file>"Graph Theory".bbl</file>
     </requires>
     <requires type="static">
       <file>blx-dm.def</file>
@@ -67,20 +67,20 @@
     <cmdline>
       <binary>bibtex</binary>
       <option>-min-crossrefs 2</option>
-      <infile>"Advanced Algorithms"</infile>
+      <infile>"Graph Theory"</infile>
     </cmdline>
     <input>
-      <file>"Advanced Algorithms".aux</file>
+      <file>"Graph Theory".aux</file>
     </input>
     <output>
-      <file>"Advanced Algorithms".bbl</file>
+      <file>"Graph Theory".bbl</file>
     </output>
     <provides type="dynamic">
-      <file>"Advanced Algorithms".bbl</file>
+      <file>"Graph Theory".bbl</file>
     </provides>
     <requires type="dynamic">
-      <file>"Advanced Algorithms".aux</file>
-      <file>Advanced_Algorithms-blx.bib</file>
+      <file>"Graph Theory".aux</file>
+      <file>Graph_Theory-blx.bib</file>
     </requires>
     <requires type="editable">
       <file>./references.bib</file>
