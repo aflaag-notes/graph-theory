@@ -292,7 +292,7 @@
         The \tbf{length} of a walk is the number of edges between $x_0$ and $x_k$, i.e. $\abs{\{e_1, \ldots , e_k \}}$, namely $k$ in this case. If $x_0 = x_k$ we say that the walk is \tbf{closed}.
     \end{frameddefn}
 
-    If there is a path -- or a walk --- between two vertices $x, y \in V$, we say that the path --- or the walk --- \tbf{links} $x$ and $y$, and we write this as $x \to y$. For instance, given the previous graph labeled as follows
+    If there is a path -- or a walk --- between two vertices $x, y \in V$, we say that the path --- or the walk --- \tbf{links} $x$ and $y$, and we write this as $x \to y$. Any vertex that is different from $x$ and $y$ is called \tit{internal node}. For instance, given the previous graph labeled as follows
 
     \begin{figure}[H]
         \centering
@@ -329,9 +329,9 @@
 
     For instance, the previous example of \tit{walk} is not a valid \tit{path}, because the vertex 1 is repeated.
 
-    \begin{framedprop}{}
+    \begin{framedthm}[label={paths and walks}]{Paths and walks}
         Given a graph $G = (V, E)$ and two vertices $x, y \in V$, in $G$ there is a path $x \to y$ if and only if there is a walk $x \to y$.
-    \end{framedprop}
+    \end{framedthm}
 
     \begin{proof}
         By definition, every path is a walk, thus the direct implication is trivially true. To prove the converse implication, consider two vertices $x$ and $y$ for which there is at least one walk $x \to y$ in $G$. Now, out of all the possible walks $x \to y$ in $G$, consider the \tit{shortest} one, i.e. the one with the least amount of edges, and let it be the following sequence $$x \ e_1 \ x_1 \ \ldots \ x_{k - 1} \ e_k \ y $$ By way of contradiction, assume that this walk is not a path. Therefore, there must be either one vertex or one edge repeated, but since edge repetition always implies vertex repetition, we just need to take this case into account. Assume that there are two indices $i, j \in [k - 1]$ such that $i \neq j$ and $x_i = x_j$; however this implies that $$x \ e_1 \ \ldots \ x_{i - 1} \ e_i \ x_i \ e_{j + 1} \ x_{j + 1} \ \ldots \ x_{k - 1} \ e_k \ y$$ is still a walk $x \to y$ of strictly shorter length, but we chose the original sequence to be the \tit{shortest} possible walk $x \to y$ $\lightning$.
@@ -419,7 +419,9 @@
     \end{framedprop}
 
     \begin{proof}
-        placeholder \todo{non ho voglia ora}
+        Consider a graph $G = (V, E)$ that has a cycle $C$, and any two vertices $x, y \in V$; in particular, since $G$ is connected, there must exist a path $x \to y$ in $G$, and let this path be $$P = x \ e_1 \ x_1 \ \ldots \ x_{k - 1} \ e_k \ y$$ Consider an edge $e \in C$; if $P$ does not traverse $e$, trivially $G - \{e\}$ will still contain $P$.
+
+        Now let $$C = z_1 \ f_2 \ z_2 \ \ldots \ z_{l- 1} \ f_l \ z_l \ f_{l + 1} \ z_1$$ and w.l.o.g. assume that $e = f_2 = z_1 z_2 = x_i x_{i + 1} = e_{i + 1}$ for some $i \in [k - 1]$. Thus we can construct the following walk $$x \ e_1 \ x_1 \ \ldots \ x_i \ f_{l + 1} \ z_l \ \ldots \ f_3 \ z_2 \ e_{i + 2} \ x_{i + 2} \ \ldots \ x_{k - 1} \ e_k \ y$$ from $x$ to $y$, and by \cref{paths and walks} we have that there is a path from $x \to y$, which proves that $G - \{e\}$ is still connected.
     \end{proof}
 
     \begin{frameddefn}{Tree}
@@ -448,7 +450,7 @@
         \caption{A tree with tree leaves.}
     \end{figure}
 
-    A \tbf{forest} is an disconnected graph, in which each component is a \tit{tree}, as in the following example
+    A \tbf{forest} is an disconnected graph in which each component is a \tit{tree}, as in the following example
 
     \begin{figure}[H]
         \centering
@@ -533,7 +535,25 @@
         By way of contradiction, assume $T$ is a tree with at least 2 vertices that does not contain any leaves; then $\delta \ge 2$ in $T$, which implies that $T$ contains a cycle of length at least $\delta + 1$ by \cref{min deg 2}.
     \end{proof}
 
-    placeholder \todo{da finire}
+    \begin{framedprop}{}
+        Given a tree $T$, and a leaf $v$ of $T$, it holds that $T - \{v\}$ is still a tree.
+    \end{framedprop}
+
+    \begin{proof}
+        Since $T$ is acyclic by definition, $T - \{v\}$ is still acyclic, we just need to prove that $T - \{v\}$ is still connected. By way of contradiction, assume that in $T - \{v\}$ there exist two vertices $x$ and $y$ such that there is no path between them. However, since $T$ is connected, there is a path $P$ of the form $x \to y$ in $T$.
+
+        Note that, if by removing $v$ from $T$ we disconnect $x$ and $y$, it must be that $v$ lies in $P$. Moreover, since $v$ is in $T$ but not in $T - \{v\}$, while both $x$ and $y$ are also in $T - \{v\}$, it must be that $v$ is an \tit{internal} node of $P$, i.e. $v \neq x, y$, which implies that $\deg(v) \ge 2$ by definition of path, contradicting the hypothesis for which $v$ was a leaf $\lightning$.
+    \end{proof}
+
+    \section{Exercises}
+
+    \begin{framedprob}{}
+        Let $G = (V, E)$ be a graph of $n$ vertices, where $n \ge 2$. Show that there must exists two vertices $x, y \in V$ such that $\deg(x) = \deg(y)$.
+    \end{framedprob}
+
+    \solution{
+        By definition, the range of the possible degrees for any node of $G$ is $[0, n - 1]$. By way of contradiction, assume that for any two vertices $x, y \in V$ it holds that $\deg(x) \neq \deg(y)$; hence, since the graph has $n$ nodes, it must be that each node is assigned a different degree, and that we use all the possible degrees in $[0, n - 1]$. In particular, this implies that there are two vertices $u, v \in V$ such that $\deg(u) = 0$ and $\deg(v) = n - 1$, but this is a contradiction because if the degree of $v$ is $n - 1$, it must be adjacent to all the other nodes of $V$, including $u$, and $\deg(u) = 0$ $\lightning$.
+    }
 
     \printbibliography % UNCOMMENT FOR BIBLIOGRAPHY
 
