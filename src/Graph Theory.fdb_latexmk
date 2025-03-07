@@ -1,6 +1,6 @@
 # Fdb version 4
-["bibtex Graph Theory"] 0 "Graph Theory.aux" "Graph Theory.bbl" "Graph Theory" 1741382380.36462 0
-  "./Graph_Theory-blx.bib" 1741382379.95297 344 e588c9a99e172ae2d6714a5a36257b2b ""
+["bibtex Graph Theory"] 0 "Graph Theory.aux" "Graph Theory.bbl" "Graph Theory" 1741387081.49786 0
+  "./Graph_Theory-blx.bib" 1741387081.08429 344 e588c9a99e172ae2d6714a5a36257b2b ""
   "./references.bib" 0 -1 0 ""
   "/usr/share/texmf-dist/bibtex/bst/biblatex/biblatex.bst" 1736268207 65484 b7949c47a88ed6dca66ebc7a04577312 ""
   "Graph Theory.aux" 0 -1 0 "pdflatex"
@@ -8,7 +8,7 @@
   "Graph Theory.bbl"
   "Graph Theory.blg"
   (rewritten before read)
-["pdflatex"] 1741382375.22857 "Graph Theory.tex" "Graph Theory.pdf" "Graph Theory" 1741382380.36516 0
+["pdflatex"] 1741387076.33962 "Graph Theory.tex" "Graph Theory.pdf" "Graph Theory" 1741387081.49812 0
   "../../packages/Nyx/logo.png" 1710239380.27782 91419 8de48debf770a599a084520c83ce5d80 ""
   "../../packages/Nyx/nyx-frames.sty" 1736630628.60293 4374 f7123ec27baf822b3a4c3ded1b17a699 ""
   "../../packages/Nyx/nyx-intro.sty" 1710239380.27782 3476 d82343305e561945eb7e4f3f9e3a4fe2 ""
@@ -395,12 +395,12 @@
   "/usr/share/texmf-dist/web2c/texmf.cnf" 1736268207 41588 b43d3e860a4f94167ee1e725ff526a72 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1740816342.45287 5318467 8236939515598d005dfbcc2e1a40f206 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1740816305 7164983 71fdeec485ab42d987ff940875defec7 ""
-  "Graph Theory.aux" 1741382379.92197 6627 59a75a6aeb26367ff5fc3e2fd0a3d6f9 "pdflatex"
+  "Graph Theory.aux" 1741387081.05529 6425 899df50497bfa69183afaf518ca2c908 "pdflatex"
   "Graph Theory.bbl" 0 -1 0 "bibtex Graph Theory"
-  "Graph Theory.out" 1741382379.94797 853 29b0a66efc8f9d3730359952d1797ce8 "pdflatex"
-  "Graph Theory.run.xml" 1741382379.95467 2610 974a0befaccc0f6004937418d1f55eb3 "pdflatex"
-  "Graph Theory.tex" 1741382373.19997 40981 94eb4a40a0832bb6f1426481ccb69459 ""
-  "Graph Theory.toc" 1741382379.95467 633 cda3879b66907c9a6ef412647d7d9f36 "pdflatex"
+  "Graph Theory.out" 1741387081.08029 853 29b0a66efc8f9d3730359952d1797ce8 "pdflatex"
+  "Graph Theory.run.xml" 1741387081.08625 2610 974a0befaccc0f6004937418d1f55eb3 "pdflatex"
+  "Graph Theory.tex" 1741387075.67929 43995 f3a5c4b16b27bf1ceaaa450839e1ebbb ""
+  "Graph Theory.toc" 1741387081.08625 633 cb383ccca05a2c9264033d6d61bf6dd2 "pdflatex"
   (generated)
   "Graph Theory.aux"
   "Graph Theory.log"

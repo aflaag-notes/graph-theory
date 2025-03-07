@@ -294,7 +294,7 @@
         Given a graph $G = (V, E)$, and two vertices $x, y \in V$, the \tbf{distance} between $x$ and $y$ in $G$, denoted with $\dist_G(x, y)$, is defined as the length of the \tit{shortest} path between $x$ and $y$ in $G$.
     \end{frameddefn}
 
-    If there is no ambiguity, we will simply write $\dist(x, y)$ instead of $\dist_G(x, y)$. Now, consider the following definition.
+    If there is no ambiguity, we will simply write $\dist(x, y)$ instead of $\dist_G(x, y)$. Finally, given a path $P$ and two vertices $u, v \in V(P)$, we will denote with $u \ P \ v$ the \tit{subpath} of $P$ between $u$ and $v$. Now, consider the following definition.
 
     \begin{frameddefn}{Walk}
         Given a graph $G = (V, E)$, a \tbf{walk} is a \tit{sequence} of vertices and edges $$x_0 \ e_1 \ x_1 \ \ldots \ x_{k - 1} \ e_k \ x_k$$ where $x_0, \ldots, x_k \in V$, $e_1, \ldots, e_k \in E$ and $e_i = x_{i - 1}x_i$.
@@ -347,12 +347,12 @@
         By definition, every path is a walk, thus the direct implication is trivially true. To prove the converse implication, consider two vertices $x$ and $y$ for which there is at least one walk $x \to y$ in $G$. Now, out of all the possible walks $x \to y$ in $G$, consider the \tit{shortest} one, i.e. the one with the least amount of edges, and let it be the following sequence $$x \ e_1 \ x_1 \ \ldots \ x_{k - 1} \ e_k \ y $$ By way of contradiction, assume that this walk is not a path. Therefore, there must be either one vertex or one edge repeated, but since edge repetition always implies vertex repetition, we just need to take this case into account. Assume that there are two indices $i, j \in [k - 1]$ such that $i \neq j$ and $x_i = x_j$; however this implies that $$x \ e_1 \ \ldots \ x_{i - 1} \ e_i \ x_i \ e_{j + 1} \ x_{j + 1} \ \ldots \ x_{k - 1} \ e_k \ y$$ is still a walk $x \to y$ of strictly shorter length, but we chose the original sequence to be the \tit{shortest} possible walk $x \to y$ $\lightning$.
     \end{proof}
 
-    \begin{framedprop}{}
-        Every graph has a path of length at least $\delta$.
+    \begin{framedprop}[label={longest path len}]{}
+        The longest path in any graph has a length of at least $\delta$.
     \end{framedprop}
     
     \begin{proof}
-        Consider a graph $G = (V, E)$, and let $P$ be $G$'s \tit{longest} path, labeled as follows $$x_0 \ e_1 \ x_1 \ \ldots \ x_{k - 1} \ e_k \ x_k$$ and assume that its length is $k$. Since $P$ is the longest path of $G$, $x_k$ cannot have neighbors outside $P$ itself, otherwise $P$ would not have been the longest path of $G$ --- it could have been extended by one of $x_k$'s neighbors. This implies that $$\mathcal N(x_k) \subseteq \{x_0, \ldots, x_{k - 1}\}$$ and since $\delta \le \deg(x_k) := \abs{\mathcal N(x_k)}$ by definition of $\delta$, this implies that $$\delta \le \abs{\{x_0, \ldots, x_{k - 1}\}} = k$$ which implies that this path is at least $\delta$-long, as desired.
+        Consider a graph $G = (V, E)$, and let $P$ be a longest path in $G$, labeled as follows $$x_0 \ e_1 \ x_1 \ \ldots \ x_{k - 1} \ e_k \ x_k$$ and assume that its length is $k$. Since $P$ is a longest path in $G$, $x_k$ cannot have neighbors outside $P$ itself, otherwise $P$ would not have been the longest path of $G$ --- it could have been extended by one of $x_k$'s neighbors. This implies that $$\mathcal N(x_k) \subseteq \{x_0, \ldots, x_{k - 1}\}$$ and since $\delta \le \deg(x_k) := \abs{\mathcal N(x_k)}$ by definition of $\delta$, this implies that $$\delta \le \abs{\{x_0, \ldots, x_{k - 1}\}} = k$$
     \end{proof}
 
     \begin{frameddefn}{Cycle}
@@ -383,11 +383,11 @@
     A graph that does not admit cycle subgraphs --- or \tit{cycles}, for short --- is said to be \tbf{acyclic}.
 
     \begin{framedprop}[label={min deg 2}]{}
-        Every graph such that $\delta \ge 2$ has a cycle of length at least $\delta + 1$.
+        Every graph with $\delta \ge 2$ has a cycle of length at least $\delta + 1$.
     \end{framedprop}
 
     \begin{proof}
-        TODO \todo{qualcosa non torna}
+        Consider the proof of \cref{longest path len}; by applying the same reasoning, we know that $x_k$ cannot have neighbors outside $P$ itself. However, since $\delta \ge 2$, and $x_k \sim x_{k - 1}$, there must be at least one vertex in $x_k$'s neighborhood that lies in $P$. Therefore, let $x_i$ be the first vertex of $P$ --- w.r.t. our labeling of $P$ --- that is adjacent to $x_k$; hence, we have $$\mathcal N (x_k) \subseteq \{x_i, \ldots, x_{k - 1}\} \implies \delta \le \abs{\{x_i, \ldots, x_{k - 1}\}}$$ which implies that $x_i, \ldots, x_{k - 1}, x_k, x_i$ is a cycle of length at least $\delta + 1$.
     \end{proof}
 
     \begin{frameddefn}{Connected graph}
@@ -442,7 +442,7 @@
         \centering
         \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.75cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
 
-            \node[circle, draw] (1) []{};
+            \node[circle, draw] (1) []{$r$};
             \node[circle, draw] (2) [right of = 1]{};
             \node[circle, draw] (3) [below of = 1]{};
             \node[circle, draw] (4) [below of = 2]{};
@@ -457,7 +457,7 @@
 
             ;
         \end{tikzpicture}
-        \caption{A tree with tree leaves.}
+        \caption{A tree with tree leaves, rooted in $r$.}
     \end{figure}
 
     A \tbf{forest} is an disconnected graph in which each component is a \tit{tree}, as in the following example
@@ -483,6 +483,32 @@
         \end{tikzpicture}
         \caption{A forest.}
     \end{figure}
+
+    Given a tree $T$ rooted in some node $r \in V(T)$, and two vertices $x, y \in V(T)$, consider the paths $P_x$ of the form $x \to r$ and $P_y$ of the form $y \to r$, respectively. The first vertex of $P_y$ that is encountered by tracing $P_x$ from $x$ to $r$ is called \tbf{lowest common ancestor} (LCA) of $x$ and $y$.
+
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.75cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
+
+            \node[circle, draw] (1) []{$z$};
+            \node[circle, draw] (2) [right of = 1]{};
+            \node[circle, draw] (3) [below of = 1]{$x$};
+            \node[circle, draw] (4) [below of = 2]{$y$};
+            \node[circle, draw] (5) [left of = 1]{$r$};
+
+            \draw[-] (1) to (2);
+            \draw[-] (1) to (3);
+            \draw[-] (2) to (4);
+            \draw[-] (1) to (5);
+            % \draw[-] (3) to (4);
+            % \draw[-] (3) to (5);
+
+            ;
+        \end{tikzpicture}
+        \caption{For instance, in this tree --- rooted in $r$ --- the LCA of $x$ and $y$ is the vertex $z$.}
+    \end{figure}
+
+    Note that the LCA between any two vertices of a tree is \tit{always defined}, since in the \curlyquotes{worst case} it is the root $r$ itself.
 
     \begin{framedthm}[label={tree alt}]{Alternative definitions of tree}
         Given a graph $T = (V, E)$, the following statements are equivalent:
@@ -631,13 +657,13 @@
         \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.5cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
 
             \node[circle, draw] (1) []{};
-            \node[circle, draw] (2) [below of = 1]{};
-            \node[circle, draw] (3) [below of = 2]{};
-            \node[circle, draw] (4) [below of = 3]{};
-            \node[circle, draw] (5) [right of = 1]{};
-            \node[circle, draw] (6) [right of = 2]{};
-            \node[circle, draw] (7) [right of = 3]{};
-            \node[circle, draw] (8) [right of = 4]{};
+            \node[circle, draw] (2) [right of = 1]{};
+            \node[circle, draw] (3) [right of = 2]{};
+            \node[circle, draw] (4) [right of = 3]{};
+            \node[circle, draw] (5) [below of = 1]{};
+            \node[circle, draw] (6) [below of = 2]{};
+            \node[circle, draw] (7) [below of = 3]{};
+            \node[circle, draw] (8) [below of = 4]{};
 
             \draw[-] (1) to (6);
             \draw[-] (2) to (5);
@@ -772,7 +798,9 @@
     \proofiff{
         We will prove the contrapositive, i.e. if $G$ has an odd-length cycle, then $G$ cannot be bipartitioned. Consider a graph $G$ with an odd-length cycle $C_{2k + 1}$ of vertices $x_1, \ldots, x_{2k + 1}$; by way of contradiction, assume that $G$ is bipartite through a bipartition $(X, V(G)) - X)$ for some $X \subseteq V(G)$. W.l.o.g. assume that $x_1 \in X$; then, since $X$ defines a bipartition of $G$ it must be that $x_2 \notin X$, and $x_3 \in X$ and so on and so forth. In particular, for any odd value of $i$ we will have that $x_i \in X$, but this implies that both $x_1$ and $x_{2k + 1}$ must be inside $X$, which means that the edge $x_1x_{2k + 1}$ violates the bipartition induced by $X$ $\lightning$.
     }{
-        Again, we will prove the contrapositive, i.e. if $G$ is not bipartite it must contain an odd-length cycle. By the previous observation, $G$ is not bipartite if and only if at least one connected component of $G$ is not bipartite, and let this component be $\overline G$. Note that, since $\overline G$ is connected, it must contain a spannning tree $T$ by \cref{spanning tree existence}. TODO \todo{da finire}
+        Again, we will prove the contrapositive, i.e. if $G$ is not bipartite it must contain an odd-length cycle. By the previous observation, $G$ is not bipartite if and only if at least one connected component of $G$ is not bipartite, and let this component be $\overline G$. Note that, since $\overline G$ is connected, it must contain a spannning tree $T$ by \cref{spanning tree existence}. Moreover, as previously described, we can always define a bipartition on a tree, namely $(X, V(T) - X)$ where $$X := \{v \in V(T) \mid \dist_T(r, v) \ \mathrm{even}\}$$ for some root node $r \in V(T)$.
+
+        Now, since $T$ is a spanning tree of $\overline G$, which is now bipartite by hypothesis, there must exist an edge $xy \in V(\overline G)$ such that either $x, y \in X$ or $x, y \in V(T) - X$, i.e. the edge $xy$ must have both endpoints in the same set of $T$'s bipartition. Let $z$ be the LCA between $x$ and $y$ in $T$, and $P_x$ and $P_y$ be the paths of the form $x \to r$ and $y \to r$, respectively. Note that, since $xy$ has both endpoints in the same set, it must be that the lengths of $P_x$ and $P_y$ have the same parity by definition of $X$. Lastly, by statement 2 of \cref{tree alt} we have that $r \ P_x \ z = r \ P_y \ z$, which implies that the lengths of $z \ P_x \ x$ and $z \ P_y \ y$ must have the same parity. This concludes that $$z \ P_x \ x \cup z \ P_y \ y \cup xy$$ is an odd-length cycle of $G$.
     }
 
     \section{Exercises}
