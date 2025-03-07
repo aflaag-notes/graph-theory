@@ -102,7 +102,9 @@
         A \tbf{graph} is a pair $G = (V, E)$, where $V$ is the --- finite --- set of \tbf{vertices} of the graph, and $E$ is the set of \tbf{edges}.
     \end{frameddefn}
 
-    For now, will assume to be working with \tbf{simple} and \tbf{undirected} graphs, i.e. graphs in which the set of edges is defined as follows $$E \subseteq [V]^2 = \{\{x, y\} \mid x, y \in V \land x \neq v\}$$ where the notation $\{x, y\}$ will be used to indicate an edge between two nodes $x, y \in V$, and will be replaced with $xy = yx$ directly --- the \tit{set} notation for edges is used to highlight that edges have no direction. We will indicate with $n$ and $m$ the cardinality of $\abs V$ and $\abs E$, respectively.
+    For now, will assume to be working with \tbf{simple} and \tbf{undirected} graphs, i.e. graphs in which the set of edges is defined as follows $$E \subseteq [V]^2 = \{\{x, y\} \mid x, y \in V \land x \neq v\}$$ where the notation $\{x, y\}$ will be used to indicate an edge between two nodes $x, y \in V$, and will be replaced with $xy = yx$ directly --- the \tit{set} notation for edges is used to highlight that edges have no direction.
+
+    We will indicate with $n$ and $m$ the cardinality of $\abs V$ and $\abs E$, respectively. Moreover, we will indicate with $V(G)$ and $E(G)$ the set of the vertices and edges of $G$ respectively when there is ambiguity.
 
     \begin{figure}[H]
         \centering
@@ -286,6 +288,14 @@
         \caption{A path graph of length 4 that links $x_0$ and $x_4$.}
     \end{figure}
 
+    Through \tit{paths} we can provide the definition of \tbf{distance} between two nodes of a graph.
+
+    \begin{frameddefn}{Distance}
+        Given a graph $G = (V, E)$, and two vertices $x, y \in V$, the \tbf{distance} between $x$ and $y$ in $G$, denoted with $\dist_G(x, y)$, is defined as the length of the \tit{shortest} path between $x$ and $y$ in $G$.
+    \end{frameddefn}
+
+    If there is no ambiguity, we will simply write $\dist(x, y)$ instead of $\dist_G(x, y)$. Now, consider the following definition.
+
     \begin{frameddefn}{Walk}
         Given a graph $G = (V, E)$, a \tbf{walk} is a \tit{sequence} of vertices and edges $$x_0 \ e_1 \ x_1 \ \ldots \ x_{k - 1} \ e_k \ x_k$$ where $x_0, \ldots, x_k \in V$, $e_1, \ldots, e_k \in E$ and $e_i = x_{i - 1}x_i$.
 
@@ -348,7 +358,7 @@
     \begin{frameddefn}{Cycle}
         A \tbf{cycle} is a \tit{graph} with vertex set $x_1, \ldots, x_n$ and edge set $x_1x_2, x_2x_3, \ldots, x_{n- 1}x_n, x_nx_1$.
 
-        The \tbf{length} of a cycle is the number of edges between $x_1$ and $x_n$, namely $n$ in this case.
+        The \tbf{length} of a cycle is the number of edges between $x_1$ and $x_n$, namely $n$ in this case. A cycle of length $n$ is denoted as $C_n$.
     \end{frameddefn}
 
         \begin{figure}[H]
@@ -474,7 +484,7 @@
         \caption{A forest.}
     \end{figure}
 
-    \begin{framedthm}{Alternative definitions of tree}
+    \begin{framedthm}[label={tree alt}]{Alternative definitions of tree}
         Given a graph $T = (V, E)$, the following statements are equivalent:
 
         \begin{enumerate}
@@ -527,23 +537,243 @@
         \end{itemize}
     \end{proof}
 
-    \begin{framedprop}{}
+    \begin{framedlem}[label={leaf existence}]{}
         Every tree with at least 2 vertices has a leaf.
-    \end{framedprop}
+    \end{framedlem}
     
     \begin{proof}
         By way of contradiction, assume $T$ is a tree with at least 2 vertices that does not contain any leaves; then $\delta \ge 2$ in $T$, which implies that $T$ contains a cycle of length at least $\delta + 1$ by \cref{min deg 2}.
     \end{proof}
 
-    \begin{framedprop}{}
+    \begin{framedlem}[label={tree without leaf}]{}
         Given a tree $T$, and a leaf $v$ of $T$, it holds that $T - \{v\}$ is still a tree.
-    \end{framedprop}
+    \end{framedlem}
 
     \begin{proof}
         Since $T$ is acyclic by definition, $T - \{v\}$ is still acyclic, we just need to prove that $T - \{v\}$ is still connected. By way of contradiction, assume that in $T - \{v\}$ there exist two vertices $x$ and $y$ such that there is no path between them. However, since $T$ is connected, there is a path $P$ of the form $x \to y$ in $T$.
 
         Note that, if by removing $v$ from $T$ we disconnect $x$ and $y$, it must be that $v$ lies in $P$. Moreover, since $v$ is in $T$ but not in $T - \{v\}$, while both $x$ and $y$ are also in $T - \{v\}$, it must be that $v$ is an \tit{internal} node of $P$, i.e. $v \neq x, y$, which implies that $\deg(v) \ge 2$ by definition of path, contradicting the hypothesis for which $v$ was a leaf $\lightning$.
     \end{proof}
+
+    \begin{framedprop}[label={m n - 1}]{}
+        If $T$ is a tree, then $m = n - 1$.
+    \end{framedprop}
+
+    \proofind{
+        We will prove the statement by induction on $n$
+    }{
+        When $n = 1$, there are no edges in the tree, and $0 = m = 1 - 1$.
+    }{
+        Assume that for a tree that has $n = k - 1$ nodes the statement holds.
+    }{
+        We will prove the statement for a tree $T$ that has $n = k$ nodes. Note that, since $n = 1$ is the base case, we can assume that $n = k \ge 2$, hence by \cref{leaf existence} $T$ contains at least one leaf. Let this leaf be $v$; then, by \cref{tree without leaf} it holds that $T - \{v\}$ is still a tree, and clearly $T - \{v\}$ has $k - 1$ nodes, which implies that we can apply the inductive hypothesis on $T - \{v\}$, i.e. $$\abs{E(T - \{v\})} = \abs{V(T - \{v\})} - 1 = k - 1 - 1 = k - 2$$ However, note that $v$ is a leaf, concluding that $$m = \abs{E(T)} = \abs{E(T - \{v\})} + 1 = k - 2 + 1 = k - 1 = n - 1$$
+    }
+
+    \begin{frameddefn}{Spanning tree}
+        Given a graph $G = (V, E)$, a \tbf{spanning tree} $T$ of $G$ is a subgraph of $G$ such that
+
+        \begin{itemize}
+            \item $T$ is a tree
+            \item $V(T) = V(G)$, i.e. $T$ \tit{spans} every vertex of $G$
+        \end{itemize}
+    \end{frameddefn}
+
+    For instance, given the graph in \cref{first graph}, a possible spanning tree is the following:
+
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.75cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
+
+            \node[circle, draw] (1) []{};
+            \node[circle, draw] (2) [right of = 1]{};
+            \node[circle, draw] (3) [below of = 1]{};
+            \node[circle, draw] (4) [below of = 2]{};
+            \node[circle, draw] (5) [left of = 1]{};
+
+            % \draw[-] (1) to (2);
+            \draw[-] (1) to (3);
+            \draw[-] (2) to (4);
+            % \draw[-] (1) to (5);
+            \draw[-] (3) to (4);
+            \draw[-] (3) to (5);
+
+            ;
+        \end{tikzpicture}
+        % \caption{A tree with tree leaves.}
+    \end{figure}
+
+    \begin{framedlem}[label={spanning tree existence}]{}
+        Any connected graph has a spanning tree.
+    \end{framedlem}
+
+    \begin{proof}
+        Consider a connected graph $G$, and keep removing edges from $E(G)$ --- and their relative endpoints from $V(G)$ --- one by one, as long as $G$ is still connected. If no other edge can be removed from $G$ without violating connectivity, we will end up with a graph that must be a tree by statement 3 of \cref{tree alt}.
+    \end{proof}
+
+    Thanks to this last proposition, we can actually prove a stronger version of the \cref{m n - 1}, which is the following.
+
+    \begin{framedthm}{}
+        $T$ is a tree if and only if $T$ is connected and $m = n - 1$.
+    \end{framedthm}
+
+    \begin{proof}
+        The direct implication is proved in \cref{m n - 1}, so we just need to prove the converse implication. Consider a connected graph $T$ such that $m = n - 1$; by \cref{spanning tree existence} $T$ must have a spanning tree $T'$, and by \cref{m n - 1} itself it holds that $\abs{E(T')} = \abs{V(T')} - 1$. However, $T'$ is a spanning tree of $T$, therefore $$V(T) = V(T') \implies \abs{V(T)} = \abs{V(T')} \implies \abs{E(T')} = \abs{V(T)} - 1 = \abs{E(T)}$$ which implies $E(T) = E(T')$ because $T'$ is a subgraph of $T$, therefore $T = T'$, concluding that $T$ must be a tree since $T'$ is a tree.
+    \end{proof}
+
+    \subsection{Bipartite graphs}
+
+    \begin{frameddefn}{Bipartite graph}
+        A graph $G = (V, E)$ is said to be \tbf{bipartite} if there exists a set $X \subseteq V$ such that every edge of $G$ has exactly one endpoint in $X$ and one in $V - X$. If such a set $X$ exists, we say that $(X, V - x)$ is a \tbf{bipartition} of $G$.
+    \end{frameddefn}
+
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.5cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
+
+            \node[circle, draw] (1) []{};
+            \node[circle, draw] (2) [below of = 1]{};
+            \node[circle, draw] (3) [below of = 2]{};
+            \node[circle, draw] (4) [below of = 3]{};
+            \node[circle, draw] (5) [right of = 1]{};
+            \node[circle, draw] (6) [right of = 2]{};
+            \node[circle, draw] (7) [right of = 3]{};
+            \node[circle, draw] (8) [right of = 4]{};
+
+            \draw[-] (1) to (6);
+            \draw[-] (2) to (5);
+            \draw[-] (2) to (7);
+            \draw[-] (3) to (5);
+            \draw[-] (3) to (6);
+            \draw[-] (3) to (8);
+            \draw[-] (4) to (6);
+            \draw[-] (4) to (8);
+
+            ;
+        \end{tikzpicture}
+        \caption{An example of a \tit{bipartite graph}. In particular, if we call the \curlyquotes{left} set of nodes $A$ and the \curlyquotes{right} one $B$, then $(A, B)$ is a bipartition of the graph.}
+        % \label{}
+    \end{figure}
+
+    There are various types of graphs that can be bipartitioned. For example, every \tbf{tree} $T$ can be bipartitioned through a bipartition $(X, V(T) - X)$ by considering the following set of vertices $$X := \{v \in V(T) \mid \dist(r, v) \ \mathrm{even}\}$$ where $r$ is $T$'s root.
+
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.25cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
+
+            \node[circle, draw] (1) []{};
+            \node[circle, draw, fill=red] (2) [right of = 1]{};
+            \node[circle, draw, fill=red] (3) [below of = 1]{$r$};
+            \node[circle, draw] (4) [below of = 2]{};
+            \node[circle, draw] (5) [left of = 1]{};
+            \node[circle, draw] (6) [below of = 3]{};
+            \node[circle, draw, fill=red] (7) [right of = 6]{};
+            \node[circle, draw, fill=red] (8) [left of = 6]{};
+            \node[circle, draw] (9) [above of = 8]{};
+
+            % \draw[-] (1) to (2);
+            \draw[-] (1) to (3);
+            \draw[-] (2) to (4);
+            % \draw[-] (1) to (5);
+            \draw[-] (3) to (4);
+            \draw[-] (3) to (5);
+            \draw[-] (3) to (6);
+            \draw[-] (7) to (6);
+            \draw[-] (8) to (6);
+            \draw[-] (8) to (9);
+
+            ;
+        \end{tikzpicture}
+        \caption{The set of red vertices $X$ defines a bipartition $(X, V(T) - X)$ of this tree $T$.}
+    \end{figure}
+
+    However, \tit{not every type} of graph can be bipartitioned. For instance, consider the following type.
+
+    \begin{frameddefn}{Clique}
+        A \tbf{clique} is a \tit{graph} in which each vertex is adjacent to any other vertex of the graph. A clique that has $n$ vertices is denoted as $K_n$.
+    \end{frameddefn}
+
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.5cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
+
+            \node[circle, draw] (1) []{};
+            \node[circle, draw] (2) [right of = 1]{};
+            \node[circle, draw] (3) [below left of = 1]{};
+            \node[circle, draw] (4) [below right of = 2]{};
+            \node[circle, draw] (5) [below right of = 3]{};
+            \node[circle, draw] (6) [below left of = 4]{};
+
+            \draw[-] (1) to (2);
+            \draw[-] (1) to (3);
+            \draw[-] (1) to (4);
+            \draw[-] (1) to (5);
+            \draw[-] (1) to (6);
+            \draw[-] (2) to (3);
+            \draw[-] (2) to (4);
+            \draw[-] (2) to (5);
+            \draw[-] (2) to (6);
+            \draw[-] (3) to (4);
+            \draw[-] (3) to (5);
+            \draw[-] (3) to (6);
+            \draw[-] (4) to (5);
+            \draw[-] (4) to (6);
+            \draw[-] (5) to (6);
+
+            ;
+        \end{tikzpicture}
+        \caption{The clique $K_6$.}
+        % \label{}
+    \end{figure}
+
+    It is easy to see that no clique $K_n$ can be bipartitioned, since there is an edge between any pair of vertices of the graph. However, this is not the only type of graph that cannot be bipartitioned.
+
+    \begin{framedlem}{}
+        If $G$ is a bipartite graph, and $H$ is a subgraph of $G$, then $H$ must be bipartite.
+    \end{framedlem}
+    
+    \begin{proof}
+        Given a bipartite graph $G = (V, E)$, assume that $(X, V - X)$ is a bipartition of $G$, and let $H$ be a subgraph of $G$; then, it is easy to see that $(X \cap V(H), V(H) - X)$ is a bipartition for $H$.
+    \end{proof}
+
+    Note that this lemma implies that $G$ is bipartite if and only if every connected component of $G$ is bipartite: in fact, the direct implication follows from this lemma, and the following figure provides an intuition for the converse implication.
+
+        \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.5cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
+
+            \node[circle, draw, fill=red] (1) []{};
+            \node[circle, draw, fill=blue] (2) [right of = 1]{};
+            \node[circle, draw, fill=blue] (3) [below of = 1]{};
+            \node[circle, draw, fill=red] (4) [right of = 3]{};
+            \node[circle, draw, fill=blue] (5) [right of = 2]{};
+            \node[circle, draw, fill=red] (6) [right of = 5]{};
+            \node[circle, draw, fill=red] (7) [below of = 5]{};
+            \node[circle, draw, fill=red] (8) [right of = 7]{};
+
+            \draw[-] (1) to (2);
+            \draw[-] (1) to (3);
+            \draw[-] (2) to (4);
+            \draw[-] (3) to (4);
+
+            \draw[-] (5) to (6);
+            \draw[-] (5) to (7);
+            \draw[-] (5) to (8);
+
+            ;
+        \end{tikzpicture}
+        \caption{Consider the following disconnected graph $G$ made of these two connected components, $C_1$ and $C_2$ respectively. Say that $C_1$ has a bipartition $(X_1, V(C_1) - X_1)$ where $X_1$ is the red set, and $C_2$ has a bipartition $(X_2, V(C_2) - X_2)$ where $X_2$ is the red set; thus, $(X_1 \cup X_2, V(C_1 \cup C_2) - X_1 - X_2)$ is clearly a bipartition of $G$. This process may be repeated for all the connected components of any disconnected graph.}
+        % \label{}
+    \end{figure}
+
+    \begin{framedthm}{Bipartite graphs}
+        $G$ is bipartite if and only if $G$ has no odd-length cycle.
+    \end{framedthm}
+
+    \proofiff{
+        We will prove the contrapositive, i.e. if $G$ has an odd-length cycle, then $G$ cannot be bipartitioned. Consider a graph $G$ with an odd-length cycle $C_{2k + 1}$ of vertices $x_1, \ldots, x_{2k + 1}$; by way of contradiction, assume that $G$ is bipartite through a bipartition $(X, V(G)) - X)$ for some $X \subseteq V(G)$. W.l.o.g. assume that $x_1 \in X$; then, since $X$ defines a bipartition of $G$ it must be that $x_2 \notin X$, and $x_3 \in X$ and so on and so forth. In particular, for any odd value of $i$ we will have that $x_i \in X$, but this implies that both $x_1$ and $x_{2k + 1}$ must be inside $X$, which means that the edge $x_1x_{2k + 1}$ violates the bipartition induced by $X$ $\lightning$.
+    }{
+        Again, we will prove the contrapositive, i.e. if $G$ is not bipartite it must contain an odd-length cycle. By the previous observation, $G$ is not bipartite if and only if at least one connected component of $G$ is not bipartite, and let this component be $\overline G$. Note that, since $\overline G$ is connected, it must contain a spannning tree $T$ by \cref{spanning tree existence}. TODO \todo{da finire}
+    }
 
     \section{Exercises}
 
