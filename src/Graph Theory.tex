@@ -94,7 +94,45 @@
 
     \chapter{Basics of Graph Theory}
 
-    placeholder \todo{write a small introduction on graph theory}
+    In the 18th century, in the city of \href{https://en.wikipedia.org/wiki/K%C3%B6nigsberg}{Königsberg} (Prussia), a puzzle captured the imagination of the townspeople. Königsberg, nestled along the winding \tit{Pregel River}, was divided into four land masses --- two parts of the mainland and two islands, Kneiphof and Lomse. Connecting these regions were \tbf{seven bridges}, crisscrossing the river back and forth.
+
+    Over time, a curious question arose among the people of Königsberg: was it possible to take a \tit{walk} through the city, crossing each of the seven bridges \tbf{exactly once}, without retracing any steps, and ending the walk in the same place where it started? This is known as the \href{https://en.wikipedia.org/wiki/Seven_Bridges_of_K%C3%B6nigsberg}{Seven Bridges of Königsberg} problem.
+
+        It seemed simple enough, yet no one had managed to do it. The challenge became a favorite pastime, debated in marketplaces and whispered about in taverns. Some claimed it was possible with the right path, while others remained skeptical.
+
+    \centeredimage[The map of Königsberg in Euler's time, showing the actual layout of the seven bridges. \cite{bridges}]{0.5}{../assets/konigsberg.png}
+
+    Word of this peculiar problem reached the brilliant Swiss mathematician, \href{/}{Leonhard Euler}, a man whose mind was always drawn to patterns and logic. Intrigued, Euler set out to solve the riddle --- not by drawing endless maps or walking the streets himself, but by \tbf{abstracting} the problem into something entirely new.
+
+    Euler realized that the specific layout of the city was \tit{irrelevant}. What truly mattered was the way the landmasses were connected by the bridges. He represented each landmass as a \tbf{dot} and each bridge as a \tbf{line} between them. In doing so, he stripped away unnecessary details and created a simple, elegant combinatorial structure that we know refer to as \tbf{graph}.
+
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=3cm,thick,main node/.style={scale=0.6,circle,draw,font=\sffamily\normalsize}]
+            \node[main node] (1) {};
+            \node[main node] (2) [below left of=1, xshift = -50] {};
+            \node[main node] (3) [below right of=2, xshift = 50] {};
+            \node[main node] (4) [right of=2, xshift = 75] {};
+
+            \path[every node/.style={font=\sffamily\small}]
+                (1) edge [out=180, in=90] (2)
+                (1) edge [out=-110, in=30] (2)
+                (2) edge [out=270, in=180] (3)
+                (2) edge [out=-30, in=110] (3)
+                (2) edge (4)
+                (1) edge (4)
+                (3) edge (4)
+                ;
+        \end{tikzpicture}
+        \caption{The graph drawn by Euler which models the \tit{Seven Bridges of Königsberg} problem.}
+        \label{konigsberg}
+    \end{figure}
+
+    Through his analysis, Euler discovered a fundamental rule: for a walk to cross each bridge exactly once and return to the starting point, every landmass had to be connected by an \tbf{even} number of bridges. In Königsberg's case, however, each landmass had an odd number of bridges, making the task impossible.
+
+    Euler's proof, published in 1736, was groundbreaking --- not just because he solved the Königsberg puzzle, but because he laid the foundation for an entirely new branch of mathematics: \href{https://en.wikipedia.org/wiki/Graph_theory}{graph theory}. His ideas would go on to shape the study of networks, from modern transportation systems to social media connections and even the vast web of the internet itself. And so, from a simple question about bridges in a small Prussian city, a whole new field of mathematics was born—one that continues to shape the world centuries later.
+
+    This chapter will discuss the basics of the field of \tbf{graph theory}, and will lay the foundation for later chapters.
 
     \section{Introduction}
 
@@ -367,8 +405,8 @@
 
             \node[circle, draw] (1) []{$x_1$};
             \node[circle, draw] (2) [right of = 1]{$x_2$};
-            \node[circle, draw] (3) [below of = 1]{$x_3$};
-            \node[circle, draw] (4) [below of = 2]{$x_4$};
+            \node[circle, draw] (3) [below of = 1]{$x_4$};
+            \node[circle, draw] (4) [below of = 2]{$x_3$};
 
             \draw[-] (1) to (2);
             \draw[-] (1) to (3);
@@ -646,8 +684,6 @@
         The direct implication is proved in \cref{m n - 1}, so we just need to prove the converse implication. Consider a connected graph $T$ such that $m = n - 1$; by \cref{spanning tree existence} $T$ must have a spanning tree $T'$, and by \cref{m n - 1} itself it holds that $\abs{E(T')} = \abs{V(T')} - 1$. However, $T'$ is a spanning tree of $T$, therefore $$V(T) = V(T') \implies \abs{V(T)} = \abs{V(T')} \implies \abs{E(T')} = \abs{V(T)} - 1 = \abs{E(T)}$$ which implies $E(T) = E(T')$ because $T'$ is a subgraph of $T$, therefore $T = T'$, concluding that $T$ must be a tree since $T'$ is a tree.
     \end{proof}
 
-    \subsection{Bipartite graphs}
-
     \begin{frameddefn}{Bipartite graph}
         A graph $G = (V, E)$ is said to be \tbf{bipartite} if there exists a set $X \subseteq V$ such that every edge of $G$ has exactly one endpoint in $X$ and one in $V - X$. If such a set $X$ exists, we say that $(X, V - x)$ is a \tbf{bipartition} of $G$.
     \end{frameddefn}
@@ -676,11 +712,11 @@
 
             ;
         \end{tikzpicture}
-        \caption{An example of a \tit{bipartite graph}. In particular, if we call the \curlyquotes{left} set of nodes $A$ and the \curlyquotes{right} one $B$, then $(A, B)$ is a bipartition of the graph.}
+        \caption{An example of a \tit{bipartite graph}. In particular, if we call the uppermost set of nodes $A$ and the lowermost one $B$, then $(A, B)$ is a bipartition of the graph.}
         % \label{}
     \end{figure}
 
-    There are various types of graphs that can be bipartitioned. For example, every \tbf{tree} $T$ can be bipartitioned through a bipartition $(X, V(T) - X)$ by considering the following set of vertices $$X := \{v \in V(T) \mid \dist(r, v) \ \mathrm{even}\}$$ where $r$ is $T$'s root.
+    There are various types of graphs that can be bipartitioned. For example, any \tbf{tree} $T$ can be bipartitioned through a bipartition $(X, V(T) - X)$ by considering the following set of vertices $$X := \{v \in V(T) \mid \dist(r, v) \ \mathrm{even}\}$$ where $r$ is $T$'s root.
 
     \begin{figure}[H]
         \centering
@@ -802,6 +838,83 @@
 
         Now, since $T$ is a spanning tree of $\overline G$, which is now bipartite by hypothesis, there must exist an edge $xy \in V(\overline G)$ such that either $x, y \in X$ or $x, y \in V(T) - X$, i.e. the edge $xy$ must have both endpoints in the same set of $T$'s bipartition. Let $z$ be the LCA between $x$ and $y$ in $T$, and $P_x$ and $P_y$ be the paths of the form $x \to r$ and $y \to r$, respectively. Note that, since $xy$ has both endpoints in the same set, it must be that the lengths of $P_x$ and $P_y$ have the same parity by definition of $X$. Lastly, by statement 2 of \cref{tree alt} we have that $r \ P_x \ z = r \ P_y \ z$, which implies that the lengths of $z \ P_x \ x$ and $z \ P_y \ y$ must have the same parity. This concludes that $$z \ P_x \ x \cup z \ P_y \ y \cup xy$$ is an odd-length cycle of $G$.
     }
+
+    At the start of this chapter, we introduced the \tit{Seven Bridges of Königsberg} problem, which led to the emergence of graph theory as a branch of combinatorics. Over time, as the field developed, this problem was formalized into the following definition.
+
+    \begin{frameddefn}{Eulerian tour}
+        An \tbf{Eulerian tour} over a graph $G$ is a closed walk that traverses every edge of $G$ exactly once.
+    \end{frameddefn}
+
+    For instance, consider the following graph
+
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.75cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
+
+            \node[circle, draw] (1) []{2};
+            \node[circle, draw] (2) [right of = 1]{3};
+            \node[circle, draw] (3) [below of = 1]{5};
+            \node[circle, draw] (4) [below of = 2]{4};
+            \node[circle, draw] (5) [left of = 1]{1};
+
+            \draw[-] (3) to (2);
+            \draw[-] (1) to (3);
+            \draw[-] (2) to (4);
+            \draw[-] (1) to (5);
+            \draw[-] (3) to (4);
+            \draw[-] (3) to (5);
+
+            ;
+        \end{tikzpicture}
+        % \caption{A simple graph.}
+        % \label{first graph}
+    \end{figure}
+
+    After some trial an error, it is easy to find an Eulerian tour over this graph, for instance $$1 \ \{1, 2\} \ 2 \ \{2, 5\} \ 5 \ \{5, 3\} \ 3 \ \{3, 4\} \ 4 \ \{4, 5\} \ 5 \ \{5, 1\} \ 1$$ Note that this is a valid Eulerian tour because there is no edge repetition, and vertex repetition is allowed by definition. On the counter side, the graph --- or, more precisely, the \tit{multigraph} --- that the bridges of Königsberg define, which is the following
+
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=3cm,thick,main node/.style={scale=0.6,circle,draw,font=\sffamily\normalsize}]
+            \node[main node] (1) {};
+            \node[main node] (2) [below left of=1, xshift = -50] {};
+            \node[main node] (3) [below right of=2, xshift = 50] {};
+            \node[main node] (4) [right of=2, xshift = 75] {};
+
+            \path[every node/.style={font=\sffamily\small}]
+                (1) edge [out=180, in=90] (2)
+                (1) edge [out=-110, in=30] (2)
+                (2) edge [out=270, in=180] (3)
+                (2) edge [out=-30, in=110] (3)
+                (2) edge (4)
+                (1) edge (4)
+                (3) edge (4)
+                ;
+        \end{tikzpicture}
+        % \caption{The graph drawn by Euler which models the \tit{Seven Bridges of Königsberg} problem.}
+        % \label{konigsberg}
+    \end{figure}
+
+    does not admit any Eulerian tour. But, given a graph, how can we determine with certainty whether it contains an Eulerian tour? The following theorem, proved by Euler himself in his original paper \cite{konigsberg}, answers this question. Note that this theorem holds both for graphs and multigraph.
+
+    \begin{framedthm}{Eulerian tours}
+        A graph $G$ admits an Eulerian tour if and only $G$ is connected and every vertex of $G$ has even degree.
+    \end{framedthm}
+    
+    \proofiff{
+        Consider the contrapositive of the direct implication, and assume that $G$ contains at least one odd-degree vertex $v$. Recall that an Eulerian tour is a closed walk that does not allow edge repetition, which implies that the \tit{starting} point of the walk is actually not relevant. Therefore, we can assume w.l.o.g. that any possible Eulerian tour defined on $G$ starts on $v$ itself, but then to be \tit{closed} it must end on $v$ as well. Moreover, each time any Eulerian tour passes through $v$ it must use 2 distinct edges, however $v$ is an odd-degree vertex, therefore at the end of the Eulerian tour there is no way we can come back to $v$ and close the walk.
+    }{
+        Consider a graph $G$ in which every vertex has even degree, and let $W$ be the \tit{longest} walk of $G$ that does not repeat edges, and let it be labeled as follows $$x_0 \ e_1 \ x_1 \ \ldots \ x_{k - 1} \ e_k \ x_k$$ 
+
+        \claim{
+            $x_0 = x_k$, i.e. $W$ is closed.
+        }{
+            By way of contradiction, assume that $W$ $x_0 \neq x_k$. If this is the case, then $x_k = v$ for some vertex $v$ that is not $x_0$. Note that $W$ is a \tit{walk}, therefore $v$ may be repeated multiple times inside $W$, i.e. $$x_0 \ e_1 \ x_1 \ \ldots \ v \ \ldots \ v \ \ldots \ x_{k - 1} \ e_k \ v$$ If $l$ is the number of times $v$ occurs in $W$ \tit{without counting} $x_k$, then clearly in $W$ there are $2l + 1$ edges incident to $v$, namely $e_k$ and 2 edges each other time $v$ appears in $W$. However, since $2l + 1$ is odd and we assumed that $G$ has no odd-degree vertices, there must exist at least one edge $vu \in E(G)$ such that $u \notin V(W)$. This implies that $$x_0 \ e_1 \ x_1 \ \ldots \ x_{k - 1} \ e_k \ v \ vu \ u$$ is a longer walk than $W$, and it does not repeat any edges because $uv \notin E(W)$, contradictiong the definition of $W$ $\lightning$.
+        }
+
+        This claim proves that $W$ is closed, but we still need to prove that it traverses every edge to claim that it is indeed an Eulerian tour. By way of contradiction, assume that there exists at least one edge $e \notin E(W)$ not used by $W$. Consider an vertex $x_i$ of $W$; by connectivity of $G$, there must exist a path $P$ beween $x_i$ and each of the endpoints of $e$. Let $x_i u$ be the first edge of $P$, for some $u \notin E(W)$. This implies that $$u \ ux_i \ x_i \ e_{i + 1} \ x_{ i+ 1} \ \ \ldots \ x_{k - 1} \ e_k \ x_k \ e_1 \ x_1 \ \ldots \ x_{i - 1} \ e_i \ x_i$$ is a longer walk than $W$ that does not repeat any edge, since $ux_i \notin E(W)$, again contradicting the definition of $W$ $\lightning$.
+    }
+
+    Note that this theorem proves that it is not possible to describe an Eulerian tour over the bridges and landmasses of Königsberg, because every vertex of the multigraph has odd degree.
 
     \section{Exercises}
 
