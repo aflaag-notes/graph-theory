@@ -1,14 +1,14 @@
 # Fdb version 4
-["bibtex Graph Theory"] 1741425296.20732 "Graph Theory.aux" "Graph Theory.bbl" "Graph Theory" 1741425312.16248 0
-  "./Graph_Theory-blx.bib" 1741425311.7246 344 e588c9a99e172ae2d6714a5a36257b2b ""
-  "./references.bib" 1741422211.32439 435 1130ae4efe2035d8da7b63447308b310 ""
+["bibtex Graph Theory"] 1741805882.16931 "Graph Theory.aux" "Graph Theory.bbl" "Graph Theory" 1741805986.9841 0
+  "./Graph_Theory-blx.bib" 1741805986.57931 344 e588c9a99e172ae2d6714a5a36257b2b ""
+  "./references.bib" 1741805468.84231 606 1571e43258d4ebff2ae6f266fee8fac2 ""
   "/usr/share/texmf-dist/bibtex/bst/biblatex/biblatex.bst" 1736268207 65484 b7949c47a88ed6dca66ebc7a04577312 ""
-  "Graph Theory.aux" 1741425311.6916 7051 69f8d71196df3440a232e59c9a21eaa5 "pdflatex"
+  "Graph Theory.aux" 1741805986.54931 9590 6d5ec07751e96fee551cd027d66f7de9 "pdflatex"
   (generated)
   "Graph Theory.bbl"
   "Graph Theory.blg"
   (rewritten before read)
-["pdflatex"] 1741425306.27794 "Graph Theory.tex" "Graph Theory.pdf" "Graph Theory" 1741425312.16306 0
+["pdflatex"] 1741805980.56139 "Graph Theory.tex" "Graph Theory.pdf" "Graph Theory" 1741805986.98462 0
   "../../packages/Nyx/logo.png" 1710239380.27782 91419 8de48debf770a599a084520c83ce5d80 ""
   "../../packages/Nyx/nyx-frames.sty" 1736630628.60293 4374 f7123ec27baf822b3a4c3ded1b17a699 ""
   "../../packages/Nyx/nyx-intro.sty" 1710239380.27782 3476 d82343305e561945eb7e4f3f9e3a4fe2 ""
@@ -29,6 +29,7 @@
   "/usr/share/texmf-dist/fonts/tfm/jknappen/ec/eccc1440.tfm" 1736268207 3072 f2bcba5ec52607af3501d45108193ff5 ""
   "/usr/share/texmf-dist/fonts/tfm/jknappen/ec/eccc1728.tfm" 1736268207 3072 4c9b123826d0d85d40f16e82db0803b7 ""
   "/usr/share/texmf-dist/fonts/tfm/jknappen/ec/eccc2074.tfm" 1736268207 3072 bfe92d95a6efd31b4da8c95291a091a0 ""
+  "/usr/share/texmf-dist/fonts/tfm/jknappen/ec/ecrm0600.tfm" 1736268207 3584 291a5713401683441e0a8c8f4417b17b ""
   "/usr/share/texmf-dist/fonts/tfm/jknappen/ec/ecrm1200.tfm" 1736268207 3584 f80ddd985bd00e29e9a6047ebd9d4781 ""
   "/usr/share/texmf-dist/fonts/tfm/jknappen/ec/ecrm1440.tfm" 1736268207 3584 3169d30142b88a27d4ab0e3468e963a2 ""
   "/usr/share/texmf-dist/fonts/tfm/jknappen/ec/ecrm1728.tfm" 1736268207 3584 3c76ccb63eda935a68ba65ba9da29f1a ""
@@ -90,6 +91,7 @@
   "/usr/share/texmf-dist/fonts/type1/public/cm-super/sfcc1440.pfb" 1736268207 110032 35e0196b03e20c9bc327f34ecd2026f9 ""
   "/usr/share/texmf-dist/fonts/type1/public/cm-super/sfcc1728.pfb" 1736268207 107203 e671936e3a8639d41d1d76852217c874 ""
   "/usr/share/texmf-dist/fonts/type1/public/cm-super/sfcc2074.pfb" 1736268207 108041 d4d5c0c81dd56faa0d597651bf0ab019 ""
+  "/usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb" 1736268207 162624 9dcc92cd3b1dfe2ecc80e6da7f2eb6bd ""
   "/usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb" 1736268207 136101 f533469f523533d38317ab5729d00c8a ""
   "/usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb" 1736268207 131078 d96015a2fa5c350129e933ca070b2484 ""
   "/usr/share/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb" 1736268207 198221 ca5aa71411090ef358a6cc78b7458365 ""
@@ -398,12 +400,12 @@
   "/usr/share/texmf-dist/web2c/texmf.cnf" 1736268207 41588 b43d3e860a4f94167ee1e725ff526a72 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1740816342.45287 5318467 8236939515598d005dfbcc2e1a40f206 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1740816305 7164983 71fdeec485ab42d987ff940875defec7 ""
-  "Graph Theory.aux" 1741425311.6916 7051 69f8d71196df3440a232e59c9a21eaa5 "pdflatex"
-  "Graph Theory.bbl" 1741425296.2686 1728 d3c2890da9cb0253a398ef628b3a4677 "bibtex Graph Theory"
-  "Graph Theory.out" 1741425311.7196 709 9d1124470e5cbb6641d6e2e922ea700e "pdflatex"
-  "Graph Theory.run.xml" 1741425311.72702 2610 974a0befaccc0f6004937418d1f55eb3 "pdflatex"
-  "Graph Theory.tex" 1741425304.7426 53808 e498a6cdd07c9799d9a1251637e65e36 ""
-  "Graph Theory.toc" 1741425311.72702 546 1b630ea9df80a04e3ef1bd9a0d7ec883 "pdflatex"
+  "Graph Theory.aux" 1741805986.54931 9590 6d5ec07751e96fee551cd027d66f7de9 "pdflatex"
+  "Graph Theory.bbl" 1741805882.22731 2280 af2237264c069356b11c7ccef2a8a13b "bibtex Graph Theory"
+  "Graph Theory.out" 1741805986.57431 709 9d1124470e5cbb6641d6e2e922ea700e "pdflatex"
+  "Graph Theory.run.xml" 1741805986.58105 2610 974a0befaccc0f6004937418d1f55eb3 "pdflatex"
+  "Graph Theory.tex" 1741805979.61231 63201 e0dc04d008913d15d2c3178a7da9e2c2 ""
+  "Graph Theory.toc" 1741805986.58105 546 23464b8ce810407ebd5d94712ea04213 "pdflatex"
   (generated)
   "Graph Theory.aux"
   "Graph Theory.log"

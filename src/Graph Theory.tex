@@ -916,6 +916,186 @@
 
     Note that this theorem proves that it is not possible to describe an Eulerian tour over the bridges and landmasses of Königsberg, because every vertex of the multigraph has odd degree.
 
+    Eulerian tours are closed walks that traverse every edge of the graph exactly once. But what if we are interested in traversing each \tit{vertex} exactly once instead?
+
+    \begin{frameddefn}{Hamiltonian cycle}
+        TODO
+    \end{frameddefn}
+
+    TODO \todo{recupera parte HC}
+
+    \begin{frameddefn}{Matching}
+        Given a graph $G = (V, E)$, a \tbf{matching} of $G$ is a set of edges $M \subseteq E$ such that $$\forall e, e' \in M \quad e \cap e' = \varnothing$$
+    \end{frameddefn}
+
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.3cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
+
+            \node[circle, draw] (1) []{};
+            \node[circle, draw] (2) [right of = 1]{};
+            \node[circle, draw] (3) [below of = 1]{};
+            \node[circle, draw] (4) [below of = 2]{};
+            \node[circle, draw] (5) [left of = 1]{};
+            \node[circle, draw] (6) [right of = 2]{};
+
+            \draw[-] (1) [red] to (2);
+            \draw[-] (1) to (3);
+            \draw[-] (2) to (4);
+            \draw[-] (1) to (5);
+            \draw[-] (3) to (4);
+            \draw[-] (3) [red] to (5);
+            \draw[-] (2) to (6);
+
+            ;
+        \end{tikzpicture}
+        \caption{A \tit{matching} of the previous graph.}
+        \label{matching}
+    \end{figure}
+
+    As shown in figure, a matching is nothing more than a set of edges that must not share endpoints with each other — for this reason, in literature it is often referred to as \tbf{independent edge set}. 
+
+    Given a matching $M$ in a graph $G$, we say that a vertex $v \in V(G)$ is \tbf{free} w.r.t. $M$ if there are no edges $e \in M$ such that $e \cap v \neq \varnothing$. An edge $xy \in E(G)$ is said to be \tit{disjoint} from $M$ if both $x$ and $y$ are free w.r.t. $M$.
+
+    In graph theory we are often interested in the matching that has the largest possible cardinality of a graph. For this purpose, we often distinguish the two following concepts, namely \tit{maximal} and \tit{maximum} matching.
+
+    \begin{frameddefn}{Maximal matching}
+        A \tbf{maximal matching} is a matching that cannot be extended any further.
+    \end{frameddefn}
+    
+    For instance, the matching shown in \cref{matching} is actually a \tbf{maximal matching}, because no other edge in $E$ can be added to che current set of edges $M$ of the matching without breaking the matching condition.
+
+    \begin{frameddefn}{Maximum matching}
+        A \tbf{maximum matching} is a matching that has the largest cardinality.
+    \end{frameddefn}
+
+    Clearly, the previous example does not repreent a \tbf{maximum matching}, because the following set of edges
+
+     \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.3cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
+
+            \node[circle, draw] (1) []{};
+            \node[circle, draw] (2) [right of = 1]{};
+            \node[circle, draw] (3) [below of = 1]{};
+            \node[circle, draw] (4) [below of = 2]{};
+            \node[circle, draw] (5) [left of = 1]{};
+            \node[circle, draw] (6) [right of = 2]{};
+
+            \draw[-] (1) to (2);
+            \draw[-] (1) to (3);
+            \draw[-] (2) to (4);
+            \draw[-] (1) [red] to (5);
+            \draw[-] (3) [red] to (4);
+            \draw[-] (3) to (5);
+            \draw[-] (2) [red] to (6);
+
+            ;
+        \end{tikzpicture}
+    \end{figure}
+
+    is still a valid matching for the graph, but has a larger cardinality than the previous set.
+
+    Given a matching $M$ in a graph $G$, what conditions must be met to increase its cardinality? Trivially, if there exists an edge $e$ disjoint from $M$, clearly $M \cup \{e\}$ is a larger matching than $M$ --- implying that $M$ was not \tit{maximal} in $G$. However, this is not the only situation in which the cardinality of $M$ can be extended. In fact, consider the following definitions.
+
+    \begin{frameddefn}{Alternating path}
+        Given a graph $G$, and a matching $M$ in $G$, an \tbf{$M$-alternating path} is a path of $G$ that starts at a free node w.r.t. $M$, and is composed of edges that alternate between $M$ and $E(G) - M$.
+    \end{frameddefn}
+
+    TODO \todo{metti esempio}
+
+    \begin{frameddefn}{Augmenting path}
+        Given a graph $G$, and a matching $M$ in $G$, an \tbf{$M$-augmenting path} is an $M$-alternating path that ends at a free vertex w.r.t. $M$.
+    \end{frameddefn}
+
+    TODO \todo{metti esempio}
+
+    \begin{framedthm}[label={aug paths}]{Augmenting paths}
+        Given a graph $G$, $M$ is a maximum matching of $G$ if and only if there are no $M$-augmenting paths.
+    \end{framedthm}
+
+    \proofiff{
+        TODO \todo{both implications}
+    }{
+    }
+
+    Given a graph $G$, and a matching $M$ of $G$, what is the maximum possible value for $\abs M$? To answer this question, we need to introduce the following combinatorial structure.
+
+    \begin{frameddefn}{Vertex cover}
+        Given a graph $G$, a \tbf{vertex cover} for $G$ is a set of vertices $C \subseteq V(G)$ such that every edge in $G$ is incident to at least one vertex in $C$. Using symbols $$\forall (u, v) \in E(G) \quad u \in C \lor v \in C$$
+    \end{frameddefn}
+
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.3cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
+
+            \node[circle, draw, fill=red] (1) []{};
+            \node[circle, draw, fill=red] (2) [right of = 1]{};
+            \node[circle, draw, fill=red] (3) [below of = 1]{};
+            \node[circle, draw, fill=red] (4) [below of = 2]{};
+            \node[circle, draw, fill=red] (5) [left of = 1]{};
+            \node[circle, draw, ] (6) [right of = 2]{};
+
+            \draw[-] (1) to (2);
+            \draw[-] (1) to (3);
+            \draw[-] (2) to (4);
+            \draw[-] (1) to (5);
+            \draw[-] (3) to (4);
+            \draw[-] (3) to (5);
+            \draw[-] (2) to (6);
+
+            ;
+        \end{tikzpicture}
+        \caption{An example of a vertex cover.}
+    \end{figure}
+    
+    As shown in figure, a vertex cover is simply a set of vertices that must \tit{cover} all the edges of the graph. For vertex covers, we are interested in the \tit{minimum} possible cardinality --- the concepts of \tit{minimal} and \tit{minimum} are defined analogously.
+
+    As introduced before, through vertex covers we can bound the size of any matching of a graph.
+
+    \begin{framedthm}{Matchings bound vertex covers}
+        Given a graph $G$, a matching $M$, and a vertex cover $S$ of $G$, it holds that $\abs M \le \abs S$.
+    \end{framedthm}
+
+    \begin{proof}
+        TODO \todo{rileggi sta roba}
+
+        By definition, any vertex cover $S$ of $G = (V, E)$ is also a vertex cover for $G^B = (V, B)$, for any set of edges $B \subseteq E$, and in particular this is true for $G^M = (V, M)$.
+
+        Now consider $G^m$, and a vertex cover $C$ on it: by construction we have that $\Delta \le 1$, therefore any vertex in $C$ will cover at most 1 edge of $M$. This implies that if $\abs C = k$, then $C$ will cover at most $k$ edges of $G^M$.
+
+        Lastly, since $G^M$ has $\abs M$ edges by definition, any vertex cover defined on $G^M$ has to contain at least $\abs M$. This implies that no vertex cover $S$ of $G$ smaller than $\abs M$ can exist, because $S$ will have to cover at least the edges in $M$.
+    \end{proof}
+
+    \begin{framedcor}{}
+        Given a graph $G$, a maximum matching $M^*$ and a minimum vertex cover $S^*$, it holds that $\abs {M^*} \le \abs {S^*}$.
+    \end{framedcor}
+
+    Moreover, if the graph is bipartite the theorem is actually stronger, as proved by \textcite{konig} in 1931.
+
+    \begin{framedthm}{König's theorem}
+        Given a bipartite graph $G$, a maximum matching $M^*$ and a minimum vertex cover $S^*$, it holds that $\abs {M^*} = \abs {S^*}$.
+    \end{framedthm}
+
+    \begin{proof}
+        Consider a graph $G$, a maximum matching $M^*$ and a minimum vertex cover $S^*$ of $G$; by the previous corollary, it follows that to prove the statement it suffices to show that there exists a vertex cover $S$ such that $\abs S = \abs{M^*}$, because $$\abs{M^*} \le \abs{S^*} \le \abs S = \abs{M^*} \implies \abs{M^*} = \abs{S^*}$$ Hence, we are going to construct the following vertex cover. Let $G$ be bipartitioned through $(A, B)$; then, for each edge $ab \in M^*$ such that $a \in A$ and $b \in B$, we place $b \in S$ if and only if there exists an $M^*$-alternating path that starts in $A$ and ends at $b$, otherwise we place $a \in S$.
+
+        TODO \todo{metti esempio}
+
+        Note that, by definition, it holds that $\abs S = \abs{M^*}$.
+
+        \claim{
+            $S$ is a vertex cover for $G$.
+        }{
+            Consider an edge $ab \in E(G)$ such that $a \in A$ and $b \in B$; we have three cases.
+
+            \begin{itemize}
+                \item By way of contradiction, assume that $ab$ is disjoint from $M^*$; then, either $a$ or $b$ are endpoints of an edge $e$ that is disjoint from $M$ by definition, therefore, $M^* \cup \{e\}$ is still a matching of larger cardinality than $\abs{M^*}$ $\lightning$.
+                \item TODO
+            \end{itemize}
+        }
+    \end{proof}
+
     \section{Exercises}
 
     \begin{framedprob}{}

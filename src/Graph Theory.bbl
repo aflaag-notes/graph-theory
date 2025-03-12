@@ -60,5 +60,26 @@
     \field{journaltitle}{Commentarii academiae scientiarum Petropolitanae}
     \field{year}{1741}
   \endentry
+
+  \entry{konig}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=KD}{%
+         family={Konig},
+         familyi={K\bibinitperiod},
+         given={Den{\'e}s},
+         giveni={D\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Hungarian}%
+    }
+    \strng{namehash}{KD1}
+    \strng{fullhash}{KD1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{K}
+    \field{sortinithash}{K}
+    \field{title}{Gr{\'a}fok {\'e}s m{\'a}trixok. Matematikai {\'e}s Fizikai Lapok, 38: 116--119, 1931}
+  \endentry
 \enddatalist
 \endinput
