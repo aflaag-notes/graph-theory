@@ -268,7 +268,7 @@
 
     then, the induced subgraph in \cref{induced subgraph first graph} would have been referred to as $G[\{1, 3, 5\}]$.
 
-    Intuitively, two vertices $x, y \in V$ are said to be \tbf{adjacent}, if there is an edge $xy \in E$, and we write $x \sim y$. If there is no such edge, we write $x \nsim y$ for non-adjacency. The \tbf{neighborhood} of a vertex $x \in V$ is the set of vertices that are adjacent to $x$, and it will be indicated as follows $$\mathcal N (x) := \{y \in V \mid x \sim y\}$$ The \tbf{degree} of a vertex $x \in V$, denoted with $\deg(x)$, is exactly $\abs{\mathcal N (x)}$. We will use the following notation for the \tbf{minimum} and \tbf{maximum} degree of a graph, respectively
+    Intuitively, two vertices $x, y \in V$ are said to be \tbf{adjacent}, if there is an edge $xy \in E$, and we write $x \sim y$. If there is no such edge, we write $x \nsim y$ for non-adjacency. The \tbf{neighborhood} of a vertex $x \in V$ is the set of vertices that are adjacent to $x$, and it will be indicated as follows $$\mathcal N (x) := \{y \in V \mid x \sim y\}$$ Similarly, the neighborhood of a set of vertices will be defined as follows $$\forall S \subseteq V \quad \mathcal N(S) := \bigcup_{v \in S}{\mathcal N (v)}$$ The \tbf{degree} of a vertex $x \in V$, denoted with $\deg(x)$, is exactly $\abs{\mathcal N (x)}$. We will use the following notation for the \tbf{minimum} and \tbf{maximum} degree of a graph, respectively
 
     \begin{center}
         \begin{tabular}{ccc}
@@ -543,7 +543,7 @@
 
             ;
         \end{tikzpicture}
-        \caption{For instance, in this tree --- rooted in $r$ --- the LCA of $x$ and $y$ is the vertex $z$.}
+        \caption{For instance, in this tree --- rooted in $r$ --- the LCA of $x$ and $y$ is the vertex labeled with $z$.}
     \end{figure}
 
     Note that the LCA between any two vertices of a tree is \tit{always defined}, since in the \curlyquotes{worst case} it is the root $r$ itself.
@@ -1002,21 +1002,95 @@
         Given a graph $G$, and a matching $M$ in $G$, an \tbf{$M$-alternating path} is a path of $G$ that starts at a free node w.r.t. $M$, and is composed of edges that alternate between $M$ and $E(G) - M$.
     \end{frameddefn}
 
-    TODO \todo{metti esempio}
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.5cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
 
+            \node[circle, draw] (1) []{1};
+            \node[circle, draw] (2) [right of = 1]{2};
+            \node[circle, draw] (3) [right of = 2]{3};
+            \node[circle, draw] (4) [right of = 3]{4};
+            \node[circle, draw] (5) [below of = 1]{5};
+            \node[circle, draw] (6) [below of = 2]{6};
+            \node[circle, draw] (7) [below of = 3]{7};
+            \node[circle, draw] (8) [below of = 4]{8};
+
+            \draw[-] (1) [red] to (5);
+            \draw[-] (1) to (6);
+            \draw[-] (2) to (6);
+            \draw[-] (2) to (5);
+            \draw[-] (2) [red] to (7);
+            \draw[-] (3) to (7);
+            \draw[-] (3) [red] to (8);
+            \draw[-] (4) to (7);
+            \draw[-] (4) to (8);
+
+            ;
+        \end{tikzpicture}
+        \caption{For instance, if $M$ is the set of \tit{red} edges --- which forms a matching of the graph --- then $6 \ \{6, 2\} \ 2 \ \{2, 7\} \ 7 \ \{7, 3\} \ 3 \ \{3, 8\} \ 8$ is an $M$-alternating path.}
+        % \label{}
+    \end{figure}
+    
     \begin{frameddefn}{Augmenting path}
         Given a graph $G$, and a matching $M$ in $G$, an \tbf{$M$-augmenting path} is an $M$-alternating path that ends at a free vertex w.r.t. $M$.
     \end{frameddefn}
 
-    TODO \todo{metti esempio}
+    For example, if we consider the path $$6 \ \{6, 2\} \ 2 \ \{2, 7\} \ 7 \ \{7, 3\} \ 3 \ \{3, 8\} \ 8 \ \{8, 4 \} \ 4$$ this is actually an $M$-augmenting path of the previous graph. Augmenting paths are very useful because they can be used to \tit{expand} the cardinality of an initial matching. In fact, in the previous graph we can actually define a \tit{larger} matching by \tbf{swapping} the edges of this augmenting path, as shown below
+
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.5cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
+
+            \node[circle, draw] (1) []{1};
+            \node[circle, draw] (2) [right of = 1]{2};
+            \node[circle, draw] (3) [right of = 2]{3};
+            \node[circle, draw] (4) [right of = 3]{4};
+            \node[circle, draw] (5) [below of = 1]{5};
+            \node[circle, draw] (6) [below of = 2]{6};
+            \node[circle, draw] (7) [below of = 3]{7};
+            \node[circle, draw] (8) [below of = 4]{8};
+
+            \draw[-] (1) [red] to (5);
+            \draw[-] (1) to (6);
+            \draw[-] (2) [red] to (6);
+            \draw[-] (2) to (5);
+            \draw[-] (2) to (7);
+            \draw[-] (3) [red] to (7);
+            \draw[-] (3) to (8);
+            \draw[-] (4) to (7);
+            \draw[-] (4) [red] to (8);
+
+            ;
+        \end{tikzpicture}
+        % \caption{For instance, if $M$ is the set of \tit{red} edges --- which forms a matching of the graph --- then $6 \ \{6, 2\} \ 2 \ \{2, 7\} \ 7 \ \{7, 3\} \ 3 \ \{3, 8\} \ 8$ is an $M$-alternating path.}
+        % \label{}
+    \end{figure}
+
+    This suggests that the presence of augmenting paths in a graph is a \tit{sufficient} condition for a matching \tit{not} to be maximum, but we can actually prove that it is also \tit{necessary}, as stated in the following theorem.
 
     \begin{framedthm}[label={aug paths}]{Augmenting paths}
         Given a graph $G$, $M$ is a maximum matching of $G$ if and only if there are no $M$-augmenting paths.
     \end{framedthm}
 
     \proofiff{
-        TODO \todo{both implications}
+        By contrapositive, consider a graph $G$ and a matching $M$ such that there is an $M$-augmenting path $P$ in $G$. Moreover, by way of contradiction assume that $M$ is maximum; however $M \Delta E(P)$ is a larger matching than $M$ --- here, $\Delta$ is the \href{https://en.wikipedia.org/wiki/Symmetric_difference}{symmetric difference}, therefore the operation $M \Delta E(P)$ has the same effect of \tit{swapping} the edges of $P$ between the ones in $M$ and in $E(P) - M$.
     }{
+        By contrapositive, consider a graph $G$ and a matching $M$ of $G$ that is not maximum, i.e. there exists a matching $M^*$ of $G$ such that $\abs M < \abs{M^*}$. Consider the subgraph of $G$ that has the vertices of $V(G)$ and the edges described by $M \Delta M^*$; the symmetric difference of these two sets will yield the set of edges that are either in $M$ or in $M^*$, but not in $M \cap M^*$, therefore this subgraph is \tit{not} a multigraph. Moreover, since $M$ and $M^*$ are both matchings, we have that
+
+        \begin{enumerate}[label={(\arabic*)}]
+            \item the degrees of the vertices of this subgraph can be either 0, 1 or 2
+            \item in each component of the subgraph the edges \tit{must} alternate between $M$ and $M^*$
+        \end{enumerate}
+
+        By the observation (1), we have that each component of the subgraph can be either
+
+        \begin{itemize}
+            \item a isolated vertex
+            \item a cycle
+            \item a path
+        \end{itemize}
+
+        and by observation (2), we have that all the cycle components must have \tit{even} length, which implies that they have the same number of edges of $M$ and $M^*$. On the other hand, path components may have either even or odd length; in particular, even-length paths must have the same number of edges of $M$ and $M^*$ --- as for cycle components --- while odd-length paths have a different number of edges of $M$ and $M^*$. However, since $\abs M < \abs{M^*}$, there must exist at least one path component of this subgraph such that its edges of $M$ are less than the edges of $M^*$, and this is clearly an $M$-augmenting path.
     }
 
     Given a graph $G$, and a matching $M$ of $G$, what is the maximum possible value for $\abs M$? To answer this question, we need to introduce the following combinatorial structure.
@@ -1032,9 +1106,9 @@
             \node[circle, draw, fill=red] (1) []{};
             \node[circle, draw, fill=red] (2) [right of = 1]{};
             \node[circle, draw, fill=red] (3) [below of = 1]{};
-            \node[circle, draw, fill=red] (4) [below of = 2]{};
-            \node[circle, draw, fill=red] (5) [left of = 1]{};
-            \node[circle, draw, ] (6) [right of = 2]{};
+            \node[circle, draw] (4) [below of = 2]{};
+            \node[circle, draw] (5) [left of = 1]{};
+            \node[circle, draw] (6) [right of = 2]{};
 
             \draw[-] (1) to (2);
             \draw[-] (1) to (3);
@@ -1058,29 +1132,59 @@
     \end{framedthm}
 
     \begin{proof}
-        TODO \todo{rileggi sta roba}
-
         By definition, any vertex cover $S$ of $G = (V, E)$ is also a vertex cover for $G^B = (V, B)$, for any set of edges $B \subseteq E$, and in particular this is true for $G^M = (V, M)$.
 
-        Now consider $G^m$, and a vertex cover $C$ on it: by construction we have that $\Delta \le 1$, therefore any vertex in $C$ will cover at most 1 edge of $M$. This implies that if $\abs C = k$, then $C$ will cover at most $k$ edges of $G^M$.
+        Now consider $G^M$, and a vertex cover $C$ on it: by construction we have that $\Delta \le 1$, therefore any vertex in $C$ will cover at most 1 edge of $M$. This implies that if $\abs C = k$, then $C$ will cover at most $k$ edges of $G^M$.
 
-        Lastly, since $G^M$ has $\abs M$ edges by definition, any vertex cover defined on $G^M$ has to contain at least $\abs M$. This implies that no vertex cover $S$ of $G$ smaller than $\abs M$ can exist, because $S$ will have to cover at least the edges in $M$.
+        Lastly, since $G^M$ has $\abs M$ edges by definition, any vertex cover defined on $G^M$ has to contain at least $\abs M$ vertices. This implies that no vertex cover $S$ of $G$ smaller than $\abs M$ can exist, because $S$ will have to cover at least the edges in $M$.
     \end{proof}
 
     \begin{framedcor}{}
         Given a graph $G$, a maximum matching $M^*$ and a minimum vertex cover $S^*$, it holds that $\abs {M^*} \le \abs {S^*}$.
     \end{framedcor}
 
-    Moreover, if the graph is bipartite the theorem is actually stronger, as proved by \textcite{konig} in 1931.
+    Moreover, if the graph is bipartite this theorem is actually \tit{stronger}, as proved by \textcite{konig} in 1931.
 
-    \begin{framedthm}{König's theorem}
+    \begin{framedthm}[label={konig}]{König's theorem}
         Given a bipartite graph $G$, a maximum matching $M^*$ and a minimum vertex cover $S^*$, it holds that $\abs {M^*} = \abs {S^*}$.
     \end{framedthm}
 
     \begin{proof}
         Consider a graph $G$, a maximum matching $M^*$ and a minimum vertex cover $S^*$ of $G$; by the previous corollary, it follows that to prove the statement it suffices to show that there exists a vertex cover $S$ such that $\abs S = \abs{M^*}$, because $$\abs{M^*} \le \abs{S^*} \le \abs S = \abs{M^*} \implies \abs{M^*} = \abs{S^*}$$ Hence, we are going to construct the following vertex cover. Let $G$ be bipartitioned through $(A, B)$; then, for each edge $ab \in M^*$ such that $a \in A$ and $b \in B$, we place $b \in S$ if and only if there exists an $M^*$-alternating path that starts in $A$ and ends at $b$, otherwise we place $a \in S$.
 
-        TODO \todo{metti esempio}
+        \begin{figure}[H]
+            \centering
+            \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.5cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
+
+                \node[circle, draw] (1) []{1};
+                \node[circle, draw] (2) [right of = 1]{2};
+                \node[circle, draw] (3) [right of = 2]{3};
+                \node[circle, draw, fill=green] (4) [right of = 3]{4};
+                \node[circle, draw, fill=green] (5) [right of = 4]{5};
+                \node[circle, draw] (6) [below of = 1]{6};
+                \node[circle, draw, fill=green] (7) [below of = 2]{7};
+                \node[circle, draw, fill=green] (8) [below of = 3]{8};
+                \node[circle, draw] (9) [below of = 4]{9};
+                \node[circle, draw] (10) [below of = 5]{10};
+
+                \draw[-] (1) to (7);
+                \draw[-] (2) to (8);
+                \draw[-] (3) to (7);
+                \draw[-] (4) to (6);
+                \draw[-] (4) to (7);
+                \draw[-] (4) to (10);
+                \draw[-] (5) to (9);
+
+                \draw[-] (2) [red] to (7);
+                \draw[-] (3) [red] to (7);
+                \draw[-] (4) [red] to (9);
+                \draw[-] (5) [red] to (10);
+
+                ;
+            \end{tikzpicture}
+            \caption{For instance, given this graph bipartitioned into $(A, B)$ where $A$ is the uppermost row of vertices, and the \tit{red} matching, we would construct the \tit{green} vertex cover.}
+            % \label{}
+        \end{figure}
 
         Note that, by definition, it holds that $\abs S = \abs{M^*}$.
 
@@ -1090,10 +1194,74 @@
             Consider an edge $ab \in E(G)$ such that $a \in A$ and $b \in B$; we have three cases.
 
             \begin{itemize}
-                \item By way of contradiction, assume that $ab$ is disjoint from $M^*$; then, either $a$ or $b$ are endpoints of an edge $e$ that is disjoint from $M$ by definition, therefore, $M^* \cup \{e\}$ is still a matching of larger cardinality than $\abs{M^*}$ $\lightning$.
+                \item By way of contradiction, assume that $ab$ is disjoint from $M^*$; then, either $a$ or $b$ are endpoints of an edge $e$ that is disjoint from $M$ by definition, therefore $M^* \cup \{e\}$ is still a matching, but of larger cardinality than $\abs{M^*}$ $\lightning$. Hence, $ab$ is not disjoint from $M^*$, i.e. there exists say $a' \in A$ such that $a'b \in M$, meaning that $$a \ \{a, b\} \ b \ \{b, a'\} \ a'$$ is an $M^*$-alternating path that starts in TODO \todo{there is a hole here}
                 \item TODO
             \end{itemize}
         }
+    \end{proof}
+
+    By definition, a matching is \tit{not} forced to cover all the vertices of a graph. However, if this happens the matching is called \tbf{perfect matching}.
+
+    \begin{frameddefn}{Perfect matching}
+        Given a graph $G$, a \tbf{perfect matching} of $G$ is a matching that covers all the vertices of $G$, i.e. $M$ is a perfect matching if and only if $$\forall v \in V(G) \quad \exists e \in M \quad v \cap e \neq \varnothing$$
+    \end{frameddefn}
+
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.3cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
+
+            \node[circle, draw] (1) []{};
+            \node[circle, draw] (2) [right of = 1]{};
+            \node[circle, draw] (3) [below of = 1]{};
+            \node[circle, draw] (4) [below of = 2]{};
+            \node[circle, draw] (5) [left of = 1]{};
+            \node[circle, draw] (6) [right of = 2]{};
+
+            \draw[-] (1) to (2);
+            \draw[-] (1) to (3);
+            \draw[-] (2) to (4);
+            \draw[-] (1) [red] to (5);
+            \draw[-] (3) [red] to (4);
+            \draw[-] (3) to (5);
+            \draw[-] (2) [red] to (6);
+
+            ;
+        \end{tikzpicture}
+        \caption{An example of a perfect matching.}
+    \end{figure}
+
+    Perfect matchings are an interesting topic of study when related to \tit{bipartite graphs}. We observe that if a bipartite graph $G$, bipartitioned into $(A, B)$, admits a perfect matching $M$, it must be that $\abs A = \abs B$. This is because every matched edge must connect one vertex from $A$ to one vertex from $B$, and by definition $M$ matched \tit{each} vertex exactly once. However, the converse is not true.
+
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.5cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
+
+            \node[circle, draw] (1) []{};
+            \node[circle, draw] (2) [right of = 1]{};
+            \node[circle, draw] (3) [right of = 2]{};
+            \node[circle, draw] (4) [below of = 1]{};
+            \node[circle, draw] (5) [below of = 2]{};
+            \node[circle, draw] (6) [below of = 3]{};
+
+            \draw[-] (1) to (4);
+            \draw[-] (1) to (6);
+            \draw[-] (2) to (5);
+            \draw[-] (3) to (5);
+
+            ;
+        \end{tikzpicture}
+        \caption{For instance, this bipartite graph, bipartitioned into $(A, B)$ such that $A$ is the uppermost row of vertices, even if $\abs A = \abs B$ this graph does not admit a perfect matching.}
+        % \label{}
+    \end{figure}
+
+    In fact, \href{https://en.wikipedia.org/wiki/Hall%27s_marriage_theorem}{Hall's marriage theorem} --- proved by \textcite{hall} in 1935 --- provides a characterization of bipartite graphs which have a perfect matching.
+
+    \begin{framedthm}{Hall's marriage theorem}
+        Given a bipartite graph $G$, bipartitioned into $(A, B)$ such that $\abs A = \abs B$, then $G$ admits a perfect matching if and only if $$\forall S \subseteq A \quad \abs S \le \abs{\mathcal N (S)}$$
+    \end{framedthm}
+
+    \begin{proof}
+        The direct implication is trivially true by definition of matching. We will prove the converse implication by contrapositive. Suppose that the bipartite graph $G$ does not admit any perfect matching. TODO \todo{da finire}
     \end{proof}
 
     \section{Exercises}
