@@ -1377,7 +1377,7 @@
 
         a possible path for $P$ would be $a \to x \to y \to z$. However, the path $a \to y \to z$ is still an $M$-augmenting path that starts at $a$ but has one fewer edge not in $T$ w.r.t. $P$, contradicting the definition of $P$ $\lightning$.
 
-        Note that, in the general case we would consider the path $P' := aTy \cup yP$, however this is not guaranteed to be a path. The complete proof leverages the fact that $G$ is bipartite in order to prove that $P'$ is indeed a path, but it is very technical and outside the scope of these notes.
+        Note that, in the general case we would consider the path $P' := a \ T \ y \cup y \ P$, however this is not guaranteed to be a path. The complete proof leverages the fact that $G$ is bipartite in order to prove that $P'$ is indeed a path, but it is very technical and outside the scope of these notes.
     \end{proof}
 
     Finally, now that we have a procedure which is guaranteed to find an augmenting path in a given bipartite graph, to return a maximum matching it suffices to run the following algorithm.
