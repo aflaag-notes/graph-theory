@@ -298,7 +298,9 @@
         By way of contradiction, suppose that there exists a $k$-regular graph $G = (V, E)$ such that both $k$ and $n$ are odd; however, by the handshaking lemma we would get that $$2 \abs E = \sum_{x \in V} {\deg(x)} = k \cdot n$$ but the product of two odd numbers, namely $k$ and $n$, is still an odd number, while $2 \abs E$ must be even $\lightning$.
     \end{proof}
 
-    \subsection{Important structures}
+    \section{Important structures}
+
+    \subsection{Paths, walks and cycles}
 
     \begin{frameddefn}{Path}
         A \tbf{path} is a \tit{graph} with vertex set $x_0, \ldots, x_n$ and edge set $e_1, \ldots, e_n$ such that $e_i = x_{i - 1}x_i$.
@@ -471,6 +473,8 @@
 
         Now let $$C = z_1 \ f_2 \ z_2 \ \ldots \ z_{l- 1} \ f_l \ z_l \ f_{l + 1} \ z_1$$ and w.l.o.g. assume that $e = f_2 = z_1 z_2 = x_i x_{i + 1} = e_{i + 1}$ for some $i \in [k - 1]$. Thus we can construct the following walk $$x \ e_1 \ x_1 \ \ldots \ x_i \ f_{l + 1} \ z_l \ \ldots \ f_3 \ z_2 \ e_{i + 2} \ x_{i + 2} \ \ldots \ x_{k - 1} \ e_k \ y$$ from $x$ to $y$, and by \cref{paths and walks} we have that there is a path from $x \to y$, which proves that $G - \{e\}$ is still connected.
     \end{proof}
+
+    \subsection{Trees}
 
     \begin{frameddefn}{Tree}
         A \tbf{tree} is a connected acyclic graph. Usually, but not necessarily, there is a fixed vertex called \tbf{root}, and any vertex that has degree 1 in the tree is called \tbf{leaf}.
@@ -684,6 +688,8 @@
         The direct implication is proved in \cref{m n - 1}, so we just need to prove the converse implication. Consider a connected graph $T$ such that $m = n - 1$; by \cref{spanning tree existence} $T$ must have a spanning tree $T'$, and by \cref{m n - 1} itself it holds that $\abs{E(T')} = \abs{V(T')} - 1$. However, $T'$ is a spanning tree of $T$, therefore $$V(T) = V(T') \implies \abs{V(T)} = \abs{V(T')} \implies \abs{E(T')} = \abs{V(T)} - 1 = \abs{E(T)}$$ which implies $E(T) = E(T')$ because $T'$ is a subgraph of $T$, therefore $T = T'$, concluding that $T$ must be a tree since $T'$ is a tree.
     \end{proof}
 
+    \subsection{Bipartite graphs}
+
     \begin{frameddefn}{Bipartite graph}
         A graph $G = (V, E)$ is said to be \tbf{bipartite} if there exists a set $X \subseteq V$ such that every edge of $G$ has exactly one endpoint in $X$ and one in $V - X$. If such a set $X$ exists, we say that $(X, V - x)$ is a \tbf{bipartition} of $G$.
     \end{frameddefn}
@@ -841,6 +847,8 @@
 
     At the start of this chapter, we introduced the \tit{Seven Bridges of Königsberg} problem, which led to the emergence of graph theory as a branch of combinatorics. Over time, as the field developed, this problem was formalized into the following definition.
 
+    \subsection{Eulerian tours and Hamiltonian cycles}
+
     \begin{frameddefn}{Eulerian tour}
         An \tbf{Eulerian tour} over a graph $G$ is a closed walk that traverses every edge of $G$ exactly once.
     \end{frameddefn}
@@ -923,6 +931,8 @@
     \end{frameddefn}
 
     TODO \todo{recupera parte HC}
+
+    \subsection{Matchings}
 
     \begin{frameddefn}{Matching}
         Given a graph $G = (V, E)$, a \tbf{matching} of $G$ is a set of edges $M \subseteq E$ such that $$\forall e, e' \in M \quad e \cap e' = \varnothing$$
@@ -1200,6 +1210,74 @@
         }
     \end{proof}
 
+    Consider a matching $M$ of a graph $G$, and an $M$-augmenting path $P$; the idea of \tit{swapping} the edges of $P$ between $M$ and $E(G) - M$ is very useful when $G$ is \tbf{bipartite}. In fact, we can actually describe a procedure which is able to return a \tit{maximal matching} of a bipartite graph, by swapping the edges of the augmenting paths present in $G$. However, for this algorithm to work, we first need a procedure capable of finding augmenting paths in bipartite graphs, which is defined down below:
+
+    \begin{enumerate}
+        \item Assume that the considered graph $G$ is bipartite through $(A, B)$, and consider a matching $M$ of $G$
+        \item Starting from a node $a \in A$ free w.r.t. $M$, compute a \tit{modified} BFS such that the edges of its tree alternate between $E(G) - M$ and $M$
+        \item If the tree of the BFS contains a free leaf $b \in B$, then the path $v \to b$ is $M$-augmenting
+    \end{enumerate}
+
+    For instance, given the following bipartite graph $G$, and a matching $M$ of $G$ --- outlined in \tit{red}
+
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.3cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
+
+            \node[circle, draw] (1) []{};
+            \node[circle, draw] (2) [right of = 1]{$a$};
+            \node[circle, draw] (3) [right of = 2]{};
+            \node[circle, draw] (4) [below of = 1]{};
+            \node[circle, draw] (5) [right of = 4]{};
+            \node[circle, draw] (6) [right of = 5]{};
+
+            \draw[-] (1) to (4);
+            \draw[-] (1) [red] to (5);
+            \draw[-] (2) to (5);
+            \draw[-] (2) to (6);
+            \draw[-] (3) [red] to (6);
+
+            ;
+        \end{tikzpicture}
+        % \caption{An example of a perfect matching.}
+    \end{figure}
+
+    the \tit{modified} BFS rooted in $a$ would produce the following tree 
+
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.3cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
+
+            \node[circle, draw] (1) []{$a$};
+            \node[circle, draw] (2) [above right of = 1]{};
+            \node[circle, draw] (3) [right of = 2]{$b_1$};
+            \node[circle, draw] (4) [below right of = 1]{};
+            \node[circle, draw] (5) [right of = 4]{};
+            \node[circle, draw] (6) [right of = 5]{$b_2$};
+
+            \draw[-] (1) to (2);
+            \draw[-] (2) [red] to (3);
+            \draw[-] (1) to (4);
+            \draw[-] (4) [red] to (5);
+            \draw[-] (5) to (6);
+
+            ;
+        \end{tikzpicture}
+        % \caption{An example of a perfect matching.}
+    \end{figure}
+
+    and we observe that the path $a \to b_1$ is $M$-alternating, while the path $a \to b_2$ is $M$-augmenting. The next proposition guarantees that if there are $M$-augmenting paths that start in $a$, our \tit{modified} BFS will find at least one of them.
+
+    \begin{framedprop}{}
+        Given a bipartite graph $G$, bipartitioned into $(A, B)$, and a matching $M$ of $G$, if there exists an $M$-augmenting path in $G$ that starts in a vertex $a \in A$ free w.r.t. $M$, then there exists an $M$-augmenting path in the tree $T$ of the \tit{modified} BFS.
+    \end{framedprop}
+
+    \begin{proof}
+        Let $P$ be an $M$-augmenting path that starts in $a$ and minimizes the edges in $E(P) - E(T)$. By way of contradiction, assume that $E(P) - E(T) = \varnothing$, i.e. $P$ is completely contained in $T$. \todo{non ha senso??}
+    \end{proof}
+
+    \subsection{Perfect and stable matchings}
+
     By definition, a matching is \tit{not} forced to cover all the vertices of a graph. However, if this happens the matching is called \tbf{perfect matching}.
 
     \begin{frameddefn}{Perfect matching}
@@ -1264,10 +1342,41 @@
         The direct implication is trivially true by definition of matching. We will prove the converse implication by contrapositive. Suppose that the bipartite graph $G$ does not admit any perfect matching. TODO \todo{da finire}
     \end{proof}
 
+    Matchings in bipartite graphs are particularly useful as they can be applied to model various types of problems across different fields. One well-known example is the \href{https://en.wikipedia.org/wiki/Stable_marriage_problem}{stable matching problem}, which arises in scenarios like job assignments, college admissions, and matchmaking systems. In this problem, the goal is to find a \tit{stable pairing} between two sets of entities --- such as students and universities --- where no two unmatched entities would prefer each other over their current assignments.
+
+    \begin{frameddefn}{Stable matching}
+        Given a graph $G$, bipartitioned through $(A, B)$, and a matching $M$ of $G$, consider a family of functions $\{w_v\}_{v \in V(G)}$ that for each vertex $v \in V(G)$, assign a value to the edges $vu \in E(G)$, for all $u \in \mathcal N (v)$ $$\forall v \in V(G) \quad \func{w_v}{\mathcal N (v)}{\R}$$ We say that $M$ is \tbf{stable} if for each $ab \in E(G)$ it does \underline{not} happen that $$(a \ \mathrm{free} \ \lor (\exists ab' \in M \quad w_a(b) > w_a(b')))$$ $$\land$$ $$(b \ \mathrm{free} \ \lor (\exists a'b \in M \quad w_b(a) > w_b(a')))$$
+    \end{frameddefn}
+
+    For instance, consider the following bipartite graph $G$, and a matching $M$ --- outlined in \tit{red}:
+
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.5cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
+
+            \node[circle, draw] (1) []{$a'$};
+            \node[circle, draw] (2) [right of = 1]{$b$};
+            \node[circle, draw] (3) [below of = 1]{$a$};
+            \node[circle, draw] (4) [below of = 2]{$b'$};
+
+            \draw[-] (1) [red] to (2);
+            \draw[-] (2) to (3);
+            \draw[-] (3) [red] to (4);
+
+            ;
+        \end{tikzpicture}
+        % \caption{For instance, this bipartite graph, bipartitioned into $(A, B)$ such that $A$ is the uppermost row of vertices, even if $\abs A = \abs B$ this graph does not admit a perfect matching.}
+        % \label{}
+    \end{figure}
+
+    If the family of weight functions $\{w_v\}_{v \in V}$ is such that $$w_a(b) > w_b(b') \land w_b(a) > w_b(a')$$ which implies that \underline{both} $a$ and $b$ would prefer to \tit{switch} their current matched vertex --- then $M$ is \tit{not} stable.
+
+    TODO \todo{da finire}
+
     \section{Exercises}
 
     \begin{framedprob}{}
-        Let $G = (V, E)$ be a graph of $n$ vertices, where $n \ge 2$. Show that there must exists two vertices $x, y \in V$ such that $\deg(x) = \deg(y)$.
+        Let $G = (V, E)$ be a graph of $n$ vertices, where $n \ge 2$. Show that there must exist two vertices $x, y \in V$ such that $\deg(x) = \deg(y)$.
     \end{framedprob}
 
     \solution{
