@@ -61,6 +61,38 @@
     \field{year}{1741}
   \endentry
 
+  \entry{gale}{article}{}
+    \name{author}{2}{}{%
+      {{hash=GD}{%
+         family={Gale},
+         familyi={G\bibinitperiod},
+         given={David},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=SLS}{%
+         family={Shapley},
+         familyi={S\bibinitperiod},
+         given={Lloyd\bibnamedelima S},
+         giveni={L\bibinitperiod\bibinitdelim S\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Taylor \& Francis}%
+    }
+    \strng{namehash}{GD+1}
+    \strng{fullhash}{GDSLS1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{G}
+    \field{sortinithash}{G}
+    \field{number}{1}
+    \field{pages}{9\bibrangedash 15}
+    \field{title}{College admissions and the stability of marriage}
+    \field{volume}{69}
+    \field{journaltitle}{The American mathematical monthly}
+    \field{year}{1962}
+  \endentry
+
   \entry{hall}{article}{}
     \name{author}{1}{}{%
       {{hash=HP}{%

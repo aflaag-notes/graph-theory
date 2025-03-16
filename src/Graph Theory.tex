@@ -1210,7 +1210,7 @@
         }
     \end{proof}
 
-    Consider a matching $M$ of a graph $G$, and an $M$-augmenting path $P$; the idea of \tit{swapping} the edges of $P$ between $M$ and $E(G) - M$ is very useful when $G$ is \tbf{bipartite}. In fact, we can actually describe a procedure which is able to return a \tit{maximal matching} of a bipartite graph, by swapping the edges of the augmenting paths present in $G$. However, for this algorithm to work, we first need a procedure capable of finding augmenting paths in bipartite graphs, which is defined down below:
+    Consider a matching $M$ of a graph $G$, and an $M$-augmenting path $P$; the idea of \tit{swapping} the edges of $P$ between $M$ and $E(G) - M$ is very useful when $G$ is \tbf{bipartite}. In fact, we can actually describe a procedure which is able to return a \tit{maximum matching} of a bipartite graph, by swapping the edges of the augmenting paths present in $G$. However, for this algorithm to work, we first need a procedure capable of finding augmenting paths in bipartite graphs, which is defined down below:
 
     \begin{enumerate}
         \item Assume that the considered graph $G$ is bipartite through $(A, B)$, and consider a matching $M$ of $G$
@@ -1273,8 +1273,69 @@
     \end{framedprop}
 
     \begin{proof}
-        Let $P$ be an $M$-augmenting path that starts in $a$ and minimizes the edges in $E(P) - E(T)$. By way of contradiction, assume that $E(P) - E(T) = \varnothing$, i.e. $P$ is completely contained in $T$. \todo{non ha senso??}
+        Let $P$ be an $M$-augmenting path that starts in $a$ and minimizes the edges in $E(P) - E(T)$ and, by way of contradiction, assume that $E(P) - E(T) \neq \varnothing$, i.e. $P$ is not completely contained in $T$. Therefore, let $xy$ be the first edge in $E(P) - E(T)$ encountered while traversing $P$, starting at $a$, and w.l.o.g. assume that $x \in V(P)$.
+
+        \claim{
+            $x \in A$.
+        }{
+            By way of contradiction, assume that $x \in B$.
+
+            \begin{itemize}
+                \item Assume that $x$ is not a leaf of $T$. Since the BFS starts at $a \in A$, and the edges of $T$ alternate between $M$ and $E(G) - M$, if $x \in B$ then the next edge $xy'$ in $T$ is an edge in $M$. Moreover --- by the same reasoning --- since $P$ is $M$-augmenting, it must be that $xy \in M$, meaning that $xy, xy' \in M$ contradicting the definition of matching $\lightning$
+                \item Now, assume that $x$ is a leaf of $T$. By the same reasoning, $xy$ must be in $M$ because $P$ is $M$-augmenting, but $xy \notin E(T)$ would imply that the BFS stopped before adding the edge $xy$ to $T$ $\lightning$.
+            \end{itemize}
+        }
+
+        For instance, given the following setting
+
+        \begin{figure}[H]
+            \centering
+            \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.3cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
+
+                \node[circle, draw] (1) []{$a$};
+                \node[circle, draw] (2) [above right of = 1]{};
+                \node[circle, draw] (3) [right of = 2]{$x$};
+                \node[circle, draw] (4) [below right of = 1]{$y$};
+                \node[circle, draw] (5) [right of = 4]{};
+                \node[circle, draw] (6) [right of = 5]{$z$};
+
+                \draw[-] (1) to (2);
+                \draw[-] (2) [red] to (3);
+                \draw[-] (1) to (4);
+                \draw[-] (4) [red] to (5);
+                \draw[-] (5) to (6);
+                \draw[-] (3) to (4);
+
+                ;
+            \end{tikzpicture}
+            % \caption{An example of a perfect matching.}
+        \end{figure}
+
+        a possible path for $P$ would be $a \to x \to y \to z$. However, the path $a \to y \to z$ is still an $M$-augmenting path that starts at $a$ but has one fewer edge not in $T$ w.r.t. $P$, contradicting the definition of $P$ $\lightning$.
+
+        Note that, in the general case we would consider the path $P' := aTy \cup yP$, however this is not guaranteed to be a path. The complete proof leverages the fact that $G$ is bipartite in order to prove that $P'$ is indeed a path, but it is very technical and outside the scope of these notes.
     \end{proof}
+
+    Finally, now that we have a procedure which is guaranteed to find an augmenting path in a given bipartite graph, to return a maximum matching it suffices to run the following algorithm.
+
+    \begin{framedalgo}{Maximum matching (bipartite graphs)}
+        Given a bipartite graph $G$, the algorithm returns a maximum matching for $G$. \\
+        \hrule
+
+        \quad
+        \begin{algorithmic}[1]
+            \Function{MaximumMatchingBipGraphs}{$G$}
+                \State $M := \varnothing$
+                \Do
+                    \State $P := \textsc{findAugmentingPath}(G)$ \Comment{the previous procedure}
+                    \State Swap the edges between $M$ and $E(G) - M$ in $P$
+                \doWhile{$P \neq \texttt{None}$}
+                \State \textbf{return} $M$
+            \EndFunction
+        \end{algorithmic}
+    \end{framedalgo}
+
+    In particular, the output of this algorithm is guaranteed to be a \tit{maximum} matching thanks to \cref{aug paths}, since the algorithm terminates when there are no more augmenting paths left in the graph $G$.
 
     \subsection{Perfect and stable matchings}
 
@@ -1345,7 +1406,7 @@
     Matchings in bipartite graphs are particularly useful as they can be applied to model various types of problems across different fields. One well-known example is the \href{https://en.wikipedia.org/wiki/Stable_marriage_problem}{stable matching problem}, which arises in scenarios like job assignments, college admissions, and matchmaking systems. In this problem, the goal is to find a \tit{stable pairing} between two sets of entities --- such as students and universities --- where no two unmatched entities would prefer each other over their current assignments.
 
     \begin{frameddefn}{Stable matching}
-        Given a graph $G$, bipartitioned through $(A, B)$, and a matching $M$ of $G$, consider a family of functions $\{w_v\}_{v \in V(G)}$ that for each vertex $v \in V(G)$, assign a value to the edges $vu \in E(G)$, for all $u \in \mathcal N (v)$ $$\forall v \in V(G) \quad \func{w_v}{\mathcal N (v)}{\R}$$ We say that $M$ is \tbf{stable} if for each $ab \in E(G)$ it does \underline{not} happen that $$(a \ \mathrm{free} \ \lor (\exists ab' \in M \quad w_a(b) > w_a(b')))$$ $$\land$$ $$(b \ \mathrm{free} \ \lor (\exists a'b \in M \quad w_b(a) > w_b(a')))$$
+        Given a graph $G$, bipartitioned through $(A, B)$, and a matching $M$ of $G$, consider a family of \tit{preference} functions $\{w_v\}_{v \in V(G)}$ that for each vertex $v \in V(G)$, assign a value to the edges $vu \in E(G)$, for all $u \in \mathcal N (v)$ $$\forall v \in V(G) \quad \func{w_v}{\mathcal N (v)}{\R}$$ We say that $M$ is \tbf{stable} if for each $ab \in E(G)$ it does \underline{not} happen that $$(a \ \mathrm{free} \ \lor (\exists ab' \in M \quad w_a(b) > w_a(b')))$$ $$\land$$ $$(b \ \mathrm{free} \ \lor (\exists a'b \in M \quad w_b(a) > w_b(a')))$$
     \end{frameddefn}
 
     For instance, consider the following bipartite graph $G$, and a matching $M$ --- outlined in \tit{red}:
@@ -1369,9 +1430,42 @@
         % \label{}
     \end{figure}
 
-    If the family of weight functions $\{w_v\}_{v \in V}$ is such that $$w_a(b) > w_b(b') \land w_b(a) > w_b(a')$$ which implies that \underline{both} $a$ and $b$ would prefer to \tit{switch} their current matched vertex --- then $M$ is \tit{not} stable.
+    If the family of preference functions $\{w_v\}_{v \in V}$ is such that $$w_a(b) > w_b(b') \land w_b(a) > w_b(a')$$ which implies that \underline{both} $a$ and $b$ would prefer to \tit{switch} their current matched vertex --- then $M$ is \tit{not} stable.
 
-    TODO \todo{da finire}
+    The following theorem, proved by \textcite{gale} in 1962, proves that a stable matching can be always constructed in a bipartite graph, regardless of the preference functions.
+
+    \begin{framedthm}{Gale's theorem}
+        Given a bipartite graph $G$, and a family of preference functions $\{w_v\}_{v \in V(G)}$, there exists a stable matching of $G$.
+    \end{framedthm}
+
+    \begin{proof}
+        Before proving the theorem, we need to introduce some definitions.
+
+        Consider a bipartite graph $G$, bipartitioned through $(A, B)$, and consider a matching $M$. Given two vertices $a \in A$ and $b \in B$, we say that $a$ is \tbf{acceptable to $b$} if
+
+        \begin{itemize}
+            \item $b$ is free, or
+            \item $b$ is matched to a vertex $a'$, and $w_b(a) > w_b(a')$
+        \end{itemize}
+
+        Moreover, we say that a vertex $a \in A$ is \tbf{happy} if either
+        
+        \begin{itemize}
+            \item $a$ is free, or
+            \item $ab \in M$ and for each $b'$ such that $a$ is acceptable to $b'$, it holds that $w_a(b) \ge w_a(b')$
+        \end{itemize}
+
+        Now, consider another matching $M'$ of $G$; we say that $M$ is \tbf{better than $M'$} if 
+
+        \begin{itemize}
+            \item $\forall a'b \in M' \quad \exists ab \in M \quad w_b(a) \ge w_b(a')$, meaning that every vertex $b \in B$ prefers its match in $M$ at least as much as its match in $M'$, and
+            \item $\exists a'b \in M', ab \in M \quad w_b(a) > w_b(a')$, meaning that there is at least one vertex $b$ that strictly perfers its match in $M$ over its match in $M'$
+        \end{itemize}
+        
+        In other words, $M$ is better than $M'$ if no match in $M$ is worse than in $M'$, and at least one match is strictly better.
+
+        TODO \todo{da finire}
+    \end{proof}
 
     \section{Exercises}
 

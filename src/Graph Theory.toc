@@ -10,5 +10,5 @@
 \contentsline {subsection}{\numberline {1.2.3}Bipartite graphs}{14}{subsection.1.2.3}%
 \contentsline {subsection}{\numberline {1.2.4}Eulerian tours and Hamiltonian cycles}{17}{subsection.1.2.4}%
 \contentsline {subsection}{\numberline {1.2.5}Matchings}{19}{subsection.1.2.5}%
-\contentsline {subsection}{\numberline {1.2.6}Perfect and stable matchings}{25}{subsection.1.2.6}%
-\contentsline {section}{\numberline {1.3}Exercises}{27}{section.1.3}%
+\contentsline {subsection}{\numberline {1.2.6}Perfect and stable matchings}{26}{subsection.1.2.6}%
+\contentsline {section}{\numberline {1.3}Exercises}{29}{section.1.3}%

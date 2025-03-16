@@ -4,5 +4,5 @@ These are my [notes](<https://raw.githubusercontent.com/aflaag-notes/graph-theor
 
 ## TODO
 
-- divide into sections
+- change hall's theorem into A-perfect matching
 
