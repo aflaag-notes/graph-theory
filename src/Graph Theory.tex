@@ -469,7 +469,7 @@
     \end{framedprop}
 
     \begin{proof}
-        Consider a graph $G = (V, E)$ that has a cycle $C$, and any two vertices $x, y \in V$; in particular, since $G$ is connected, there must exist a path $x \to y$ in $G$, and let this path be $$P = x \ e_1 \ x_1 \ \ldots \ x_{k - 1} \ e_k \ y$$ Consider an edge $e \in C$; if $P$ does not traverse $e$, trivially $G - \{e\}$ will still contain $P$.
+        Consider a graph $G = (V, E)$ that has a cycle $C$, and any two vertices $x, y \in V$; in particular, since $G$ is connected, there must be a path $x \to y$ in $G$, and let this path be $$P = x \ e_1 \ x_1 \ \ldots \ x_{k - 1} \ e_k \ y$$ Consider an edge $e \in C$; if $P$ does not traverse $e$, trivially $G - \{e\}$ will still contain $P$.
 
         Now let $$C = z_1 \ f_2 \ z_2 \ \ldots \ z_{l- 1} \ f_l \ z_l \ f_{l + 1} \ z_1$$ and w.l.o.g. assume that $e = f_2 = z_1 z_2 = x_i x_{i + 1} = e_{i + 1}$ for some $i \in [k - 1]$. Thus we can construct the following walk $$x \ e_1 \ x_1 \ \ldots \ x_i \ f_{l + 1} \ z_l \ \ldots \ f_3 \ z_2 \ e_{i + 2} \ x_{i + 2} \ \ldots \ x_{k - 1} \ e_k \ y$$ from $x$ to $y$, and by \cref{paths and walks} we have that there is a path from $x \to y$, which proves that $G - \{e\}$ is still connected.
     \end{proof}
@@ -600,7 +600,7 @@
 
                 \begin{itemize}
                     \item if $T$ is connected but contains a cycle, then $T$ is clearly not maximally acyclic
-                    \item if $T$ is acyclic but disconnected, then by definition there must exist two vertices $x, y \in V$ such that there is no path $x \to y$, which implies that $T \cup \{xy\}$ still does not contain any cycle
+                    \item if $T$ is acyclic but disconnected, then by definition there must be two vertices $x, y \in V$ such that there is no path $x \to y$, which implies that $T \cup \{xy\}$ still does not contain any cycle
                 \end{itemize}
         \end{itemize}
     \end{proof}
@@ -842,7 +842,7 @@
     }{
         Again, we will prove the contrapositive, i.e. if $G$ is not bipartite it must contain an odd-length cycle. By the previous observation, $G$ is not bipartite if and only if at least one connected component of $G$ is not bipartite, and let this component be $\overline G$. Note that, since $\overline G$ is connected, it must contain a spannning tree $T$ by \cref{spanning tree existence}. Moreover, as previously described, we can always define a bipartition on a tree, namely $(X, V(T) - X)$ where $$X := \{v \in V(T) \mid \dist_T(r, v) \ \mathrm{even}\}$$ for some root node $r \in V(T)$.
 
-        Now, since $T$ is a spanning tree of $\overline G$, which is now bipartite by hypothesis, there must exist an edge $xy \in V(\overline G)$ such that either $x, y \in X$ or $x, y \in V(T) - X$, i.e. the edge $xy$ must have both endpoints in the same set of $T$'s bipartition. Let $z$ be the LCA between $x$ and $y$ in $T$, and $P_x$ and $P_y$ be the paths of the form $x \to r$ and $y \to r$, respectively. Note that, since $xy$ has both endpoints in the same set, it must be that the lengths of $P_x$ and $P_y$ have the same parity by definition of $X$. Lastly, by statement 2 of \cref{tree alt} we have that $r \ P_x \ z = r \ P_y \ z$, which implies that the lengths of $z \ P_x \ x$ and $z \ P_y \ y$ must have the same parity. This concludes that $$z \ P_x \ x \cup z \ P_y \ y \cup xy$$ is an odd-length cycle of $G$.
+        Now, since $T$ is a spanning tree of $\overline G$, which is now bipartite by hypothesis, there must be an edge $xy \in V(\overline G)$ such that either $x, y \in X$ or $x, y \in V(T) - X$, i.e. the edge $xy$ must have both endpoints in the same set of $T$'s bipartition. Let $z$ be the LCA between $x$ and $y$ in $T$, and $P_x$ and $P_y$ be the paths of the form $x \to r$ and $y \to r$, respectively. Note that, since $xy$ has both endpoints in the same set, it must be that the lengths of $P_x$ and $P_y$ have the same parity by definition of $X$. Lastly, by statement 2 of \cref{tree alt} we have that $r \ P_x \ z = r \ P_y \ z$, which implies that the lengths of $z \ P_x \ x$ and $z \ P_y \ y$ must have the same parity. This concludes that $$z \ P_x \ x \cup z \ P_y \ y \cup xy$$ is an odd-length cycle of $G$.
     }
 
     At the start of this chapter, we introduced the \tit{Seven Bridges of Königsberg} problem, which led to the emergence of graph theory as a branch of combinatorics. Over time, as the field developed, this problem was formalized into the following definition.
@@ -916,21 +916,85 @@
         \claim{
             $x_0 = x_k$, i.e. $W$ is closed.
         }{
-            By way of contradiction, assume that $W$ $x_0 \neq x_k$. If this is the case, then $x_k = v$ for some vertex $v$ that is not $x_0$. Note that $W$ is a \tit{walk}, therefore $v$ may be repeated multiple times inside $W$, i.e. $$x_0 \ e_1 \ x_1 \ \ldots \ v \ \ldots \ v \ \ldots \ x_{k - 1} \ e_k \ v$$ If $l$ is the number of times $v$ occurs in $W$ \tit{without counting} $x_k$, then clearly in $W$ there are $2l + 1$ edges incident to $v$, namely $e_k$ and 2 edges each other time $v$ appears in $W$. However, since $2l + 1$ is odd and we assumed that $G$ has no odd-degree vertices, there must exist at least one edge $vu \in E(G)$ such that $u \notin V(W)$. This implies that $$x_0 \ e_1 \ x_1 \ \ldots \ x_{k - 1} \ e_k \ v \ vu \ u$$ is a longer walk than $W$, and it does not repeat any edges because $uv \notin E(W)$, contradicting the definition of $W$ $\lightning$.
+            By way of contradiction, assume that $W$ $x_0 \neq x_k$. If this is the case, then $x_k = v$ for some vertex $v$ that is not $x_0$. Note that $W$ is a \tit{walk}, therefore $v$ may be repeated multiple times inside $W$, i.e. $$x_0 \ e_1 \ x_1 \ \ldots \ v \ \ldots \ v \ \ldots \ x_{k - 1} \ e_k \ v$$ If $l$ is the number of times $v$ occurs in $W$ \tit{without counting} $x_k$, then clearly in $W$ there are $2l + 1$ edges incident to $v$, namely $e_k$ and 2 edges each other time $v$ appears in $W$. However, since $2l + 1$ is odd and we assumed that $G$ has no odd-degree vertices, there must be at least one edge $vu \in E(G)$ such that $u \notin V(W)$. This implies that $$x_0 \ e_1 \ x_1 \ \ldots \ x_{k - 1} \ e_k \ v \ vu \ u$$ is a longer walk than $W$, and it does not repeat any edges because $uv \notin E(W)$, contradicting the definition of $W$ $\lightning$.
         }
 
-        This claim proves that $W$ is closed, but we still need to prove that it traverses every edge to claim that it is indeed an Eulerian tour. By way of contradiction, assume that there exists at least one edge $e \notin E(W)$ not used by $W$. Consider an vertex $x_i$ of $W$; by connectivity of $G$, there must exist a path $P$ beween $x_i$ and each of the endpoints of $e$. Let $x_i u$ be the first edge of $P$, for some $u \notin E(W)$. This implies that $$u \ ux_i \ x_i \ e_{i + 1} \ x_{ i+ 1} \ \ \ldots \ x_{k - 1} \ e_k \ x_k \ e_1 \ x_1 \ \ldots \ x_{i - 1} \ e_i \ x_i$$ is a longer walk than $W$ that does not repeat any edge, since $ux_i \notin E(W)$, again contradicting the definition of $W$ $\lightning$.
+        This claim proves that $W$ is closed, but we still need to prove that it traverses every edge to claim that it is indeed an Eulerian tour. By way of contradiction, assume that there exists at least one edge $e \notin E(W)$ not used by $W$. Consider an vertex $x_i$ of $W$; by connectivity of $G$, there must be a path $P$ beween $x_i$ and each of the endpoints of $e$. Let $x_i u$ be the first edge of $P$, for some $u \notin E(W)$. This implies that $$u \ ux_i \ x_i \ e_{i + 1} \ x_{ i+ 1} \ \ \ldots \ x_{k - 1} \ e_k \ x_k \ e_1 \ x_1 \ \ldots \ x_{i - 1} \ e_i \ x_i$$ is a longer walk than $W$ that does not repeat any edge, since $ux_i \notin E(W)$, again contradicting the definition of $W$ $\lightning$.
     }
 
     Note that this theorem proves that it is not possible to describe an Eulerian tour over the bridges and landmasses of Königsberg, because every vertex of the multigraph has odd degree.
 
     Eulerian tours are closed walks that traverse every edge of the graph exactly once. But what if we are interested in traversing each \tit{vertex} exactly once instead?
 
-    \begin{frameddefn}{Hamiltonian cycle}
-        TODO
+    \begin{frameddefn}{Hamiltonian paths and cycles}
+        A \tbf{Hamiltonian path} over a graph $G$ is a subgraph $P_n$ of $G$. A \tbf{Hamiltonian cycle} over a graph $G$ is a subgraph $C_n$ of $G$.
     \end{frameddefn}
 
-    TODO \todo{recupera parte HC}
+    Hamiltonian paths and cycles are named after \href{https://en.wikipedia.org/wiki/William_Rowan_Hamilton}{W. R. Hamilton}. Note that the notation $P_n$ (or $C_n$) implies that the length of the path (or cycle) is $n$, hence this definition matches our requirements.
+
+    As for the case of Eulerian tours, when some conditions are met, Hamiltonian cycles are guaranteed to exist, as discussed in the following theorem.
+
+    \begin{framedthm}{Hamiltonian cycles}
+        A graph $G$ such that $\delta \ge \tfrac{n}{2}$ contains a Hamiltonian cycle.
+    \end{framedthm}
+
+    \begin{proof}
+        First, we will prove that the condition of the statement implies that $G$ is connected.
+
+        \claim{
+            $G$ is connected.
+        }{
+            By way of contradiction, suppose that $G$ is not connected; therefore $G$ has at least two connected components. Let $H$ be the smallest connected component of $G$; then, clearly $\abs{V(H)} \le \tfrac{n}{2}$. However, note that $\abs{\mathcal N (x)} \ge \delta \ge \tfrac{n}{2}$ and since $\{x\} \cup \mathcal N (x) \subseteq V(H)$, we get that $V(H)$ must have at least $\tfrac{n}{2} + 1$ nodes $\lightning$.
+        }
+
+        Let $P$ be the longest path of $G$, and let $x_0, \ldots, x_k$ be its vertices.
+
+        \claim{
+            There exists an index $\ell$ such that $x_0 \ e_1 \ x_1 \ \ldots \ x_k \ e_\ell \ x_\ell \ e_{\ell + 1} \ x_{\ell + 1} \ e_0 \ x_0$ is a cycle.
+        }{
+            By the same argument used in the proof of \cref{longest path len}, we know that $$\mathcal N(x_0), \mathcal N (x_k) \subseteq \{x_0, \ldots, x_k\}$$ Let $I_0$ and $I_k$ be the following two sets $$I_0 := \{i \mid i \in [1,k], x_i \in \mathcal N (x_0)\} \implies \abs{I_0} = \abs{\mathcal N(x_0)}$$ $$I_k := \{i \mid i \in [1, k], x_{i - 1} \in \mathcal N (x_k)\} \implies \abs{I_k} = \abs{\mathcal N (x_k)}$$ Since $\delta \ge \tfrac{n}{2}$, we have that $\abs{I_0}, \abs{I_k} \ge \tfrac{n}{2}$. However, note that $k \le n - 1$ --- since we started counting at 0 --- hence by the pigeonhole principle there must be at least one index $\ell \in I_0 \cap I_k$, meaning that $x_0 \sim x_\ell$ and $x_k \sim x_{\ell - 1}$, defining a cycle as described in the statement of the claim.
+        }
+
+        This means that we found a cycle $C$ in the graph that uses all the vertices of $P$, namely $x_0, \ldots, x_k$. By way of contradiction, assume that $k < n - 1$, i.e. $C$ has less than $n$ nodes, meaning that $C$ is a non-Hamiltonian cycle. In particular, if $k < n - 1$, we have that $\abs{V(G)} - \abs{V(C)} \neq \varnothing$, thus let $y \in V(G) - V(C)$. By the previous claim, we know that $G$ is connected, there must be an edge $xy \in E(G)$ such that $x \in V(C)$. However, this would imply that $P \cup \{xy\}$ is a path of longer path than $P$ $\lightning$.
+    \end{proof}
+
+    Note that the statement of this theorem cannot be improved, even by 1; for instance consider the following graph
+
+        \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.3cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
+
+            \node[circle, draw] (1) []{};
+            \node[circle, draw] (2) [right of = 1]{};
+            \node[circle, draw] (3) [below of = 1]{};
+            \node[circle, draw] (4) [right of = 3]{};
+
+            \node[circle, draw] (5) [right of = 2]{};
+            \node[circle, draw] (6) [right of = 5]{};
+            \node[circle, draw] (7) [below of = 5]{};
+            \node[circle, draw] (8) [right of = 7]{};
+
+            \draw[-] (1) to (2);
+            \draw[-] (1) to (3);
+            \draw[-] (1) to (4);
+            \draw[-] (2) to (3);
+            \draw[-] (2) to (4);
+            \draw[-] (3) to (4);
+
+            \draw[-] (5) to (6);
+            \draw[-] (5) to (7);
+            \draw[-] (5) to (8);
+            \draw[-] (6) to (7);
+            \draw[-] (6) to (8);
+            \draw[-] (7) to (8);
+
+            ;
+        \end{tikzpicture}
+        % \caption{A \tit{matching} of the previous graph.}
+        % \label{matching}
+    \end{figure}
+
+    composed of two disconnected $K_4$. Here, we have that $$\delta = 4 - 1 = 3 \ge \dfrac{2 \cdot 4}{2} - 1 = 4 - 1 = 3 = \dfrac{n}{2} - 1$$ However, $\delta \ge \tfrac{n}{2} - 1$ is not sufficient to guarantee connectivity.
 
     \subsection{Matchings}
 
@@ -1100,7 +1164,7 @@
             \item a path
         \end{itemize}
 
-        and by observation (2), we have that all the cycle components must have \tit{even} length, which implies that they have the same number of edges of $M$ and $M^*$. On the other hand, path components may have either even or odd length; in particular, even-length paths must have the same number of edges of $M$ and $M^*$ --- as for cycle components --- while odd-length paths have a different number of edges of $M$ and $M^*$. However, since $\abs M < \abs{M^*}$, there must exist at least one path component of this subgraph such that its edges of $M$ are less than the edges of $M^*$, and this is clearly an $M$-augmenting path.
+        and by observation (2), we have that all the cycle components must have \tit{even} length, which implies that they have the same number of edges of $M$ and $M^*$. On the other hand, path components may have either even or odd length; in particular, even-length paths must have the same number of edges of $M$ and $M^*$ --- as for cycle components --- while odd-length paths have a different number of edges of $M$ and $M^*$. However, since $\abs M < \abs{M^*}$, there must be at least one path component of this subgraph such that its edges of $M$ are less than the edges of $M^*$, and this is clearly an $M$-augmenting path.
     }
 
     Given a graph $G$, and a matching $M$ of $G$, what is the maximum possible value for $\abs M$? To answer this question, we need to introduce the following combinatorial structure.
@@ -1470,12 +1534,25 @@
     \section{Exercises}
 
     \begin{framedprob}{}
-        Let $G = (V, E)$ be a graph of $n$ vertices, where $n \ge 2$. Show that there must exist two vertices $x, y \in V$ such that $\deg(x) = \deg(y)$.
+        Let $G = (V, E)$ be a graph of $n$ vertices, where $n \ge 2$. Show that there must be two vertices $x, y \in V$ such that $\deg(x) = \deg(y)$.
     \end{framedprob}
 
     \solution{
         By definition, the range of the possible degrees for any node of $G$ is $[0, n - 1]$. By way of contradiction, assume that for any two vertices $x, y \in V$ it holds that $\deg(x) \neq \deg(y)$; hence, since the graph has $n$ nodes, it must be that each node is assigned a different degree, and that we use all the possible degrees in $[0, n - 1]$. In particular, this implies that there are two vertices $u, v \in V$ such that $\deg(u) = 0$ and $\deg(v) = n - 1$, but this is a contradiction because if the degree of $v$ is $n - 1$, it must be adjacent to all the other nodes of $V$, including $u$, and $\deg(u) = 0$ $\lightning$.
     }
+
+    \begin{framedprob}{}
+        Let $G$ be a $k$-regular bipartite graph, bipartitioned through $(A, B)$. Prove that
+
+        \begin{enumerate}
+            \item $\abs A = \abs B$
+            \item $G$ has a perfect matching
+        \end{enumerate}
+    \end{framedprob}
+
+    \begin{proof}
+        TODO \todo{da fare}
+    \end{proof}
 
     \printbibliography % UNCOMMENT FOR BIBLIOGRAPHY
 
