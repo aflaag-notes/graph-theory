@@ -1470,14 +1470,22 @@
         % \label{}
     \end{figure}
 
-    In fact, \href{https://en.wikipedia.org/wiki/Hall%27s_marriage_theorem}{Hall's marriage theorem} --- proved by \textcite{hall} in 1935 --- provides a characterization of bipartite graphs which have a perfect matching.
+    Because of this characterization on bipartite graphs, in addition to the concept of \tit{perfect matching}, if $\abs {A} \neq \abs{B}$ we can define a \tit{weaker} version of \curlyquotes{perfect}.
+
+    \begin{frameddefn}{$A$-perfect matching}
+        Given a bipartite graph $G$, bipartitioned through $(A, B)$ such that $\abs A \le \abs B$, we say that a matching $M$ is an \tbf{$A$-perfect matching} if it covers all the vertices in $A$.
+    \end{frameddefn}
+
+    Note that we can always assume that $\abs A \le \abs B$, without loss of generality. The following theorem, known as the \href{https://en.wikipedia.org/wiki/Hall%27s_marriage_theorem}{Hall's marriage theorem} --- proved by \textcite{hall} in 1935 --- shows the conditions that guarantee that an $A$-perfect matching exists.
 
     \begin{framedthm}{Hall's marriage theorem}
-        Given a bipartite graph $G$, bipartitioned into $(A, B)$ such that $\abs A = \abs B$, then $G$ admits a perfect matching if and only if $$\forall S \subseteq A \quad \abs S \le \abs{\mathcal N (S)}$$
+        Given a bipartite graph $G$, bipartitioned into $(A, B)$, then $G$ admits an $A$-perfect matching if and only if $$\forall S \subseteq A \quad \abs S \le \abs{\mathcal N (S)}$$
     \end{framedthm}
 
     \begin{proof}
-        The direct implication is trivially true by definition of matching. We will prove the converse implication by contrapositive. Suppose that the bipartite graph $G$ does not admit any perfect matching. TODO \todo{da finire}
+        The direct implication is trivially true by definition of matching. We will prove the converse implication by contrapositive. Therefore, suppose that the bipartite graph $G$ does not admit any $A$-perfect matching, and consider a minimum vertex cover $V^*$ of $G$. Then, by \cref{konig}, since $G$ is bipartite we know that for any maximum matching $M^*$ of $G$ it holds that $\abs{M^*} = \abs{V^*}$. However, since we are assuming that there are no $A$-perfect matchings of $G$, any maximum matching must have size strictly less than $\abs A$, meaning that $\abs{V^*} = \abs{M^*} < \abs A$.
+
+        Now, consider the set $S := A - V^*$; since $G$ is bipartite, it must hold that $$\mathcal N(S) \subseteq V^* \cap B \implies \abs{\mathcal N(S)} \le \abs{V^* \cap B} = \abs {V^*} - \abs{A \cap V^*}$$ Moreover, observe that $$V^* \cap A = A - (A - V^*) = A - S \implies \abs{V^* \cap A}  = \abs A - \abs S$$ therefore, we have that $$\abs{\mathcal N(S)} \le \abs{V^*} - \abs{V^* \cap A} = \abs{V^*} - \abs A + \abs S$$ Lastly, since $\abs {V^*} < \abs A \iff \abs{V^*} - \abs A < 0$, we conclude that $$\abs{\mathcal N (S)} \le \abs{V^*} - \abs A + \abs S < 0 + \abs S = \abs S \implies \abs{\mathcal N(S)} < \abs S$$ which proves that there is at least one set $S$ for which the \tit{Hall condition} does not hold.
     \end{proof}
 
     Matchings in bipartite graphs are particularly useful as they can be applied to model various types of problems across different fields. One well-known example is the \href{https://en.wikipedia.org/wiki/Stable_marriage_problem}{stable matching problem}, which arises in scenarios like job assignments, college admissions, and matchmaking systems. In this problem, the goal is to find a \tit{stable pairing} between two sets of entities --- such as students and universities --- where no two unmatched entities would prefer each other over their current assignments.
