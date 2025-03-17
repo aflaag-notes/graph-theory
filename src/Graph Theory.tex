@@ -1256,7 +1256,7 @@
 
                 ;
             \end{tikzpicture}
-            \caption{For instance, given this graph bipartitioned into $(A, B)$ where $A$ is the uppermost row of vertices, and the \tit{red} matching, we would construct the \tit{green} vertex cover.}
+            \caption{For instance, given this graph bipartitioned into $(A, B)$ --- where $A$ is the uppermost row of vertices --- and the \tit{red} matching, we would construct the \tit{green} vertex cover.}
             % \label{}
         \end{figure}
 
@@ -1265,13 +1265,26 @@
         \claim{
             $S$ is a vertex cover for $G$.
         }{
-            Consider an edge $ab \in E(G)$ such that $a \in A$ and $b \in B$; we have three cases.
+            Consider an edge $ab \in E(G)$ such that $a \in A$ and $b \in B$; note that, by definition of $S$ all the edges in $M^*$ are already covered, hence we may assume that $ab \notin M^*$. We have two cases.
 
             \begin{itemize}
-                \item By way of contradiction, assume that $ab$ is disjoint from $M^*$; then, either $a$ or $b$ are endpoints of an edge $e$ that is disjoint from $M$ by definition, therefore $M^* \cup \{e\}$ is still a matching, but of larger cardinality than $\abs{M^*}$ $\lightning$. Hence, $ab$ is not disjoint from $M^*$, i.e. there exists say $a' \in A$ such that $a'b \in M$, meaning that $$a \ \{a, b\} \ b \ \{b, a'\} \ a'$$ is an $M^*$-alternating path that starts in TODO \todo{there is a hole here}
-                \item TODO
+                \item $a$ is free, i.e. $\nexists ab' \in M^*$ for $b' \in B$. Note that $b$ cannot be free, otherwise $M^* \cup \{ab\}$ would still be a matching of $G$ but greater than $M^*$. Hence, there must be an edge $a'b \in M^*$ for some $a' \in A$. Therefore, since $a$ is free, the edge $ab$ is a trivial $M^*$-alternating path ending at $b \in B$, meaning that $b \in S$ by definition, implying that $ab$ is covered by $S$.
+
+                \item $a$ is matched, i.e. $\exists ab' \in M^*$ for $b' \in B$. Therefore, by definition of $S$, either $a$ or $b'$ lies in $S$. In particular, if $a \in S$, then $ab$ is trivially covered by $S$, hence suppose that $b' \in S$.
+
+                    Observe that, by definition of $S$ this implies that there must be an $M^*$-alternating path $P$ that starts in $A$ and ends at $b'$.
+
+                    \begin{itemize}
+                        \item If $ab, ab' \notin E(P)$, then $P \cup \{b'a\} \cup ab$ is an $M^*$-augmenting path, which would contradict the fact that $M^*$ is maximum by \cref{aug paths} $\lightning$
+                        \item If $ab \notin E(P)$ but $ab' \in E(P)$, then $P$ could not have been an $M^*$-alternating path starting at a vertex in $A$ $\lightning$.
+                        \item If $ab \in E(P)$ but $ab' \notin E(P)$, then $P$ must have had the following form $$\ldots \ b'' \ \{b'', a\} \ a \ \{a, b\} \ b \ \{b, a'\} \ a' \ \{a', b'\} \ b'$$ where $a' \in A$, $b'' \in B$. However, since $ab' \in M^*$ and $ab \notin M^*$, and the edges of $P$ must alternate w.r.t. $M^*$, $ab''$ must lie inside $M^*$, contradicting $ab' \in M^*$ by definition of matching $\lightning$.
+                    \end{itemize}
+
+                    This implies that $ab', ab \in E(P)$, meaning that $P$ encounters $b$ \curlyquotes{before} $b'$. However, this implies that $P - \{ab'\}$ is an $M^*$-alternating path that starts in $A$ and ends at $b$, thus $b \in S$ by definition, concluding that $ab$ is still covered by $S$.
             \end{itemize}
         }
+
+        Hence, we have constructed a vertex cover $S$ such that $\abs S = \abs{M^*}$, meaning that the statement holds because of the previous observation.
     \end{proof}
 
     Consider a matching $M$ of a graph $G$, and an $M$-augmenting path $P$; the idea of \tit{swapping} the edges of $P$ between $M$ and $E(G) - M$ is very useful when $G$ is \tbf{bipartite}. In fact, we can actually describe a procedure which is able to return a \tit{maximum matching} of a bipartite graph, by swapping the edges of the augmenting paths present in $G$. However, for this algorithm to work, we first need a procedure capable of finding augmenting paths in bipartite graphs, which is defined down below:
