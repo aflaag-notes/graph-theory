@@ -1478,7 +1478,7 @@
 
     Note that we can always assume that $\abs A \le \abs B$, without loss of generality. The following theorem, known as the \href{https://en.wikipedia.org/wiki/Hall%27s_marriage_theorem}{Hall's marriage theorem} --- proved by \textcite{hall} in 1935 --- shows the conditions that guarantee that an $A$-perfect matching exists.
 
-    \begin{framedthm}{Hall's marriage theorem}
+        \begin{framedthm}[label={hall}]{Hall's marriage theorem}
         Given a bipartite graph $G$, bipartitioned into $(A, B)$, then $G$ admits an $A$-perfect matching if and only if $$\forall S \subseteq A \quad \abs S \le \abs{\mathcal N (S)}$$
     \end{framedthm}
 
@@ -1572,7 +1572,9 @@
     \end{framedprob}
 
     \begin{proof}
-        TODO \todo{da fare}
+        Since $G$ is $k$-regular, it holds that the number of edges that have an endpoint in $A$ is precisely $k \abs A$, and the number of edges that have an endpoint in $B$ is exactly $k \abs B$; moreover, since $G$ is bipartite, we have that $$k \abs A = k \abs B \implies \abs A = \abs B$$
+
+        We will prove the second statement by using \cref{hall}. By way of contradiction, assume that there is a set $S \subseteq V(G)$ such that $\abs S > \abs{\mathcal N(S)} \implies k \abs S > k \abs{\mathcal N (S)}$. Applying the same argument as before, the number of edges $ab$ such that $a \in S, b \in \mathcal N (S)$ is exactly $k \abs S$, hence by the pigeonhole principle there must be at least one vertex in $\mathcal N (S)$ that has more than $k$ vertices, contradicting the $k$-regularity of $G$.
     \end{proof}
 
     \printbibliography % UNCOMMENT FOR BIBLIOGRAPHY
