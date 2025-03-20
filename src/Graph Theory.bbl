@@ -179,7 +179,39 @@
     \field{labeltitlesource}{title}
     \field{sortinit}{K}
     \field{sortinithash}{K}
-    \field{title}{Gr{\'a}fok {\'e}s m{\'a}trixok. Matematikai {\'e}s Fizikai Lapok, 38: 116--119, 1931}
+    \field{title}{Gr{\'a}fok {\'e}s m{\'a}trixok. Matematikai {\'e}s Fizikai
+  Lapok, 38: 116--119, 1931}
+  \endentry
+
+  \entry{tutte}{book}{}
+    \name{author}{2}{}{%
+      {{hash=LL}{%
+         family={Lov{\'a}sz},
+         familyi={L\bibinitperiod},
+         given={L.},
+         giveni={L\bibinitperiod},
+      }}%
+      {{hash=PM}{%
+         family={Plummer},
+         familyi={P\bibinitperiod},
+         given={M.D.},
+         giveni={M\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {AMS Chelsea Pub.}%
+    }
+    \strng{namehash}{LL+1}
+    \strng{fullhash}{LLPM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{L}
+    \field{sortinithash}{L}
+    \field{title}{Matching Theory}
+    \verb{url}
+    \verb https://books.google.it/books?id=OaoJBAAAQBAJ
+    \endverb
+    \field{year}{2009}
   \endentry
 \enddatalist
 \endinput

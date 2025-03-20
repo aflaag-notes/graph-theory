@@ -998,6 +998,16 @@
 
     composed of two disconnected $K_4$. Here, we have that $$\delta = 4 - 1 = 3 \ge \dfrac{2 \cdot 4}{2} - 1 = 4 - 1 = 3 = \dfrac{n}{2} - 1$$ However, $\delta \ge \tfrac{n}{2} - 1$ is not sufficient to guarantee connectivity.
 
+    \section{Exercises}
+
+    \begin{framedprob}{}
+        Let $G = (V, E)$ be a graph of $n$ vertices, where $n \ge 2$. Show that there must be two vertices $x, y \in V$ such that $\deg(x) = \deg(y)$.
+    \end{framedprob}
+
+    \solution{
+        By definition, the range of the possible degrees for any node of $G$ is $[0, n - 1]$. By way of contradiction, assume that for any two vertices $x, y \in V$ it holds that $\deg(x) \neq \deg(y)$; hence, since the graph has $n$ nodes, it must be that each node is assigned a different degree, and that we use all the possible degrees in $[0, n - 1]$. In particular, this implies that there are two vertices $u, v \in V$ such that $\deg(u) = 0$ and $\deg(v) = n - 1$, but this is a contradiction because if the degree of $v$ is $n - 1$, it must be adjacent to all the other nodes of $V$, including $u$, and $\deg(u) = 0$ $\lightning$.
+    }
+
     \chapter{Matchings}
 
     \begin{frameddefn}{Matching}
@@ -1502,7 +1512,89 @@
 
     \subsection{Tutte's theorem}
 
-    TODO \todo{tutte's theorem}
+    In the general case, what obstructs the existence of a perfect matching in a graph? Consider a graph $G$; clearly, if $n$ is odd, the graph does not admit perfect matchings, since each edge matches exactly two nodes, meaning that there will always be a free vertex in the graph.
+
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.5cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
+
+            \node[circle, draw] (1) []{};
+            \node[circle, draw] (2) [below left of = 1]{};
+            \node[circle, draw] (3) [below right of = 1]{};
+            \node[circle, draw] (4) [below of = 2]{};
+            \node[circle, draw] (5) [below of = 3]{};
+
+            \draw[-] (1) to (2);
+            \draw[-] (1) [red] to (3);
+            \draw[-] (2) [red] to (4);
+            \draw[-] (3) to (5);
+            \draw[-] (4) to (5);
+
+            ;
+        \end{tikzpicture}
+        \caption{For instance, no matching of $C_5$ can be perfect.}
+    \end{figure}
+
+    For the same reasoning, if $G$ has a connected component with an odd number of vertices, $G$ does not admit perfect matchings. Hence, if $G$ admits a perfect matching, there cannot be any connected component with an odd number of vertices. But is the converse true as well? Consider the following graph
+
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.5cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
+
+            \node[circle, draw] (1) []{};
+            \node[circle, draw] (2) [above right of = 1]{};
+            \node[circle, draw] (3) [below right of = 2]{};
+            \node[circle, draw] (4) [right of = 3]{};
+            \node[circle, draw] (5) [above right of = 4]{};
+            \node[circle, draw] (6) [below right of = 5]{};
+            \node[circle, draw] (7) [right of = 6]{};
+            \node[circle, draw] (8) [above right of = 7]{};
+            \node[circle, draw] (9) [below right of = 8]{};
+            \node[circle, draw] (10) [below left of = 6]{$x$};
+
+            \draw[-] (1) [red] to (2);
+            \draw[-] (2) to (3);
+            \draw[-] (1) to (3);
+            \draw[-] (4) [red] to (5);
+            \draw[-] (5) to (6);
+            \draw[-] (4) to (6);
+            \draw[-] (7) [red] to (8);
+            \draw[-] (8) to (9);
+            \draw[-] (7) to (9);
+
+            \draw[-] (1) to (10);
+            \draw[-] (3) to (10);
+            \draw[-] (4) to (10);
+            \draw[-] (6) to (10);
+            \draw[-] (7) to (10);
+            \draw[-] (9) to (10);
+
+            ;
+        \end{tikzpicture}
+        % \caption{For instance, no matching of $C_5$ can be perfect.}
+    \end{figure}
+
+    This graph is connected, and has 10 vertices, but it does not admit perfect matchings, meaning that the converse does not hold. Can we find a condition that guarantees that a given graph always admits a perfect matching?
+
+    Given a graph $G$, let $\mathcal O (G)$ be the number of components with an odd number of vertices. The next theorem, proved by \textcite{tutte} in 1947 shows that the following property $$\forall S \subseteq V(G) \quad \mathcal O(G[V(G) - S]) \le \abs S$$ which we will refer to as \tbf{Tutte condition} --- is a \tit{necessary} and \tit{sufficient} condition to guarantee that a graph admits a perfect matching.
+
+    \begin{framedlem}{}
+        Given a graph $G$, consider a graph $G'$ obtained by adding edges to $G$; if $G$ satisfies the Tutte condition, then $G'$ satisfies the Tutte condition as well.
+    \end{framedlem}
+
+    \begin{proof}
+        By contrapositive, suppose that $G'$ fails the Tutte condition, meaning that there exists a set $S \subseteq V(G') = V(G)$ such that $\mathcal O (G[V(G') - S]) > \abs S$. Since $G'$ is obtained by adding edges to $G$, the number of odd components in $G'$ can either remain the same, or decrease if two different components having an odd number of vertices became connected in $G'$. Therefore, we have that $$\abs S < \mathcal O (G[V(G') - S]) \le \mathcal O (G[V(G) - S])$$ meaning that $G$ fails the Tutte condition as well.
+    \end{proof}
+
+    We are now ready to prove Tutte's theorem.
+
+    \begin{framedthm}{Tutte's theorem}
+        A graph $G$ admits a perfect matching if and only if for any $S \subseteq V(G)$ it holds that $\mathcal O(G[V(G) - S]) \le \abs S$ --- meaning that it satisfies the Tutte condition.
+    \end{framedthm}
+
+    \begin{proof}
+        TODO \todo{todo}
+    \end{proof}
 
     \section{Stable matching}
 
@@ -1537,7 +1629,7 @@
 
     The following theorem, proved by \textcite{gale} in 1962, proves that a stable matching can be always constructed in a bipartite graph, regardless of the preference functions.
 
-    \begin{framedthm}{Gale's theorem}
+    \begin{framedthm}{Gale-Shapley theorem}
         Given a bipartite graph $G$, and a family of preference functions $\{w_v\}_{v \in V(G)}$, there exists a stable matching of $G$.
     \end{framedthm}
 
@@ -1590,23 +1682,19 @@
         Let $M_k$ be an unstable matching such that every vertex is happy; therefore, by the previous claim we know that there exists a vertex $a \in A$ such that $a$ is free and and acceptable to some $b \in B$. We will construct a matching $M_{k + 1}$ as follows: $$b^* \in \argmax_{\substack{b \in \mathcal N (a) : \\ a \ \mathrm{acceptable \ to} \ b}}{w_a(b)} \implies M_{k + 1} := (M_k \cup \{ab^*\}) - \{a'b^* \in M_k \mid a' \in A\}$$ meaning that $M_{k + 1}$ is obtained from $M_k$ by adding the edge $ab^*$, where $b^*$ maximizes $w_a(b^*)$, and removing the edge $a'b^*$ from $M_k$, if present --- the last set is either $\{a'b^*\}$ or $\varnothing$.
 
         \claim{
-            $M_{k + 1}$ is better than $M_k$.
+            $M_{k + 1}$ is better than $M_k$, and if $M_k$ is ensures that every vertex is happy, $M_{k +1}$ does as well.
         }{
-            The first condition that $M_{k +1}$ has to satisfy in order to be better than $M_k$ is true simply because we removed the edge $a'b^*$ if it was present in $M_k$, and the rest of the matching has not been altered. Moreover, if $b^*$ was free then the second condition is vacuously true, otherwise if the edge $a'b^*$ was present in $M_k$, in $M_{k +1}$ there we added the edge $ab^*$ and we know that $w_{b^*}(a) > w_{b^*}(a')$ because $a$ is acceptable to $b^*$ by definition.
+            First, we prove that $M_{k +1}$ is better than $M_k$. The first condition that $M_{k +1}$ has to satisfy in order to be better than $M_k$ is true simply because we removed the edge $a'b^*$ if it was present in $M_k$, and the rest of the matching has not been altered. Moreover, if $b^*$ was free then the second condition is vacuously true, otherwise if the edge $a'b^*$ was present in $M_k$, in $M_{k +1}$ there we added the edge $ab^*$ and we know that $w_{b^*}(a) > w_{b^*}(a')$ because $a$ is acceptable to $b^*$ by definition.
+
+            Now, assume that $M_k$ is such that every vertex is happy. Since $b^*$ is the neighbor of $a$ that maximizes $w_a(b^*)$, $a$ is happy by definition. Now, if $b^*$ was free in $M_k$, then we only added $ab^*$ to $M_{k + 1}$, hence every vertex is happy w.r.t. $M_{k + 1}$. Otherwise, if $b^*$ was not free in $M_k$, i.e. there was an edge $a'b^* \in M_k$, by definition $M_{k + 1}$ will not contain $a'b^*$, meaning that $a'$ is free w.r.t. $M_{k +1}$, hence $a'$ is happy by definition.
         }
 
-        Now, consider the empty matching $M_0 := \varnothing$; we already observed that $M_0$ is not stable, but is such that each vertex is happy, therefore by the previous claim we can extend $M_0$ into $M_1$ through some vertex $a \in A$ that satisfied the condition of the first claim. In particular, we can repeat this process as long as the current matching $M_i$ is still unstable. \todo{missing something}
-   \end{proof}
+        Now, consider the empty matching $M_0 := \varnothing$; we already observed that $M_0$ is not stable, but is such that each vertex is happy, therefore by the previous claim we can extend $M_0$ into $M_1$ through some vertex $a \in A$ that satisfied the condition of the first claim. In particular, since we proved that this process preserves the happiness of the vertices, we can repeat this process as long as the current matching $M_i$ is still unstable.
+
+        TODO \todo{scrivi bene parte finale}
+    \end{proof}
 
     \section{Exercises}
-
-    \begin{framedprob}{}
-        Let $G = (V, E)$ be a graph of $n$ vertices, where $n \ge 2$. Show that there must be two vertices $x, y \in V$ such that $\deg(x) = \deg(y)$.
-    \end{framedprob}
-
-    \solution{
-        By definition, the range of the possible degrees for any node of $G$ is $[0, n - 1]$. By way of contradiction, assume that for any two vertices $x, y \in V$ it holds that $\deg(x) \neq \deg(y)$; hence, since the graph has $n$ nodes, it must be that each node is assigned a different degree, and that we use all the possible degrees in $[0, n - 1]$. In particular, this implies that there are two vertices $u, v \in V$ such that $\deg(u) = 0$ and $\deg(v) = n - 1$, but this is a contradiction because if the degree of $v$ is $n - 1$, it must be adjacent to all the other nodes of $V$, including $u$, and $\deg(u) = 0$ $\lightning$.
-    }
 
     \begin{framedprob}{}
         Let $G$ be a $k$-regular bipartite graph, bipartitioned through $(A, B)$. Prove that
