@@ -845,7 +845,7 @@
         Now, since $T$ is a spanning tree of $\overline G$, which is now bipartite by hypothesis, there must be an edge $xy \in V(\overline G)$ such that either $x, y \in X$ or $x, y \in V(T) - X$, i.e. the edge $xy$ must have both endpoints in the same set of $T$'s bipartition. Let $z$ be the LCA between $x$ and $y$ in $T$, and $P_x$ and $P_y$ be the paths of the form $x \to r$ and $y \to r$, respectively. Note that, since $xy$ has both endpoints in the same set, it must be that the lengths of $P_x$ and $P_y$ have the same parity by definition of $X$. Lastly, by statement 2 of \cref{tree alt} we have that $r \ P_x \ z = r \ P_y \ z$, which implies that the lengths of $z \ P_x \ x$ and $z \ P_y \ y$ must have the same parity. This concludes that $$z \ P_x \ x \cup z \ P_y \ y \cup xy$$ is an odd-length cycle of $G$.
     }
 
-    \subsection{Eulerian tours and Hamiltonian cycles}
+    \subsection{Eulerian tours}
 
     At the start of this chapter, we introduced the \tit{Seven Bridges of Königsberg} problem, which led to the emergence of graph theory as a branch of combinatorics. Over time, as the field developed, this problem was formalized into the following definition.
 
@@ -924,6 +924,8 @@
 
     Note that this theorem proves that it is not possible to describe an Eulerian tour over the bridges and landmasses of Königsberg, because every vertex of the multigraph has odd degree.
 
+    \subsection{Hamiltonian cycles}
+    
     Eulerian tours are closed walks that traverse every edge of the graph exactly once. But what if we are interested in traversing each \tit{vertex} exactly once instead?
 
     \begin{frameddefn}{Hamiltonian paths and cycles}
@@ -996,7 +998,7 @@
 
     composed of two disconnected $K_4$. Here, we have that $$\delta = 4 - 1 = 3 \ge \dfrac{2 \cdot 4}{2} - 1 = 4 - 1 = 3 = \dfrac{n}{2} - 1$$ However, $\delta \ge \tfrac{n}{2} - 1$ is not sufficient to guarantee connectivity.
 
-    \subsection{Matchings}
+    \chapter{Matchings}
 
     \begin{frameddefn}{Matching}
         Given a graph $G = (V, E)$, a \tbf{matching} of $G$ is a set of edges $M \subseteq E$ such that $$\forall e, e' \in M \quad e \cap e' = \varnothing$$
@@ -1072,6 +1074,8 @@
 
     Given a matching $M$ in a graph $G$, what conditions must be met to increase its cardinality? Trivially, if there exists an edge $e$ disjoint from $M$, clearly $M \cup \{e\}$ is a larger matching than $M$ --- implying that $M$ was not \tit{maximal} in $G$. However, this is not the only situation in which the cardinality of $M$ can be extended. In fact, consider the following definitions.
 
+    \section{Augmenting paths}
+
     \begin{frameddefn}{Alternating path}
         Given a graph $G$, and a matching $M$ in $G$, an \tbf{$M$-alternating path} is a path of $G$ that starts at a free node w.r.t. $M$, and is composed of edges that alternate between $M$ and $E(G) - M$.
     \end{frameddefn}
@@ -1140,9 +1144,11 @@
         % \label{}
     \end{figure}
 
-    This suggests that the presence of augmenting paths in a graph is a \tit{sufficient} condition for a matching \tit{not} to be maximum, but we can actually prove that it is also \tit{necessary}, as stated in the following theorem.
+    \subsection{Berge's theorem}
 
-    \begin{framedthm}[label={aug paths}]{Augmenting paths}
+    This suggests that the presence of augmenting paths in a graph is a \tit{sufficient} condition for a matching \tit{not} to be maximum, but we can actually prove that it is also \tit{necessary}, as stated in the following theorem, proved by \textcite{berge} in 1957.
+
+    \begin{framedthm}[label={aug paths}]{Berge's theorem}
         Given a graph $G$, $M$ is a maximum matching of $G$ if and only if there are no $M$-augmenting paths.
     \end{framedthm}
 
@@ -1168,6 +1174,8 @@
     }
 
     Given a graph $G$, and a matching $M$ of $G$, what is the maximum possible value for $\abs M$? To answer this question, we need to introduce the following combinatorial structure.
+
+    \subsection{König's theorem}
 
     \begin{frameddefn}{Vertex cover}
         Given a graph $G$, a \tbf{vertex cover} for $G$ is a set of vertices $C \subseteq V(G)$ such that every edge in $G$ is incident to at least one vertex in $C$. Using symbols $$\forall (u, v) \in E(G) \quad u \in C \lor v \in C$$
@@ -1286,6 +1294,8 @@
 
         Hence, we have constructed a vertex cover $S$ such that $\abs S = \abs{M^*}$, meaning that the statement holds because of the previous observation.
     \end{proof}
+
+    \subsection{Finding maximum matchings}
 
     Consider a matching $M$ of a graph $G$, and an $M$-augmenting path $P$; the idea of \tit{swapping} the edges of $P$ between $M$ and $E(G) - M$ is very useful when $G$ is \tbf{bipartite}. In fact, we can actually describe a procedure which is able to return a \tit{maximum matching} of a bipartite graph, by swapping the edges of the augmenting paths present in $G$. However, for this algorithm to work, we first need a procedure capable of finding augmenting paths in bipartite graphs, which is defined down below:
 
@@ -1414,7 +1424,7 @@
 
     In particular, the output of this algorithm is guaranteed to be a \tit{maximum} matching thanks to \cref{aug paths}, since the algorithm terminates when there are no more augmenting paths left in the graph $G$.
 
-    \subsection{Perfect and stable matchings}
+    \section{Perfect matching}
 
     By definition, a matching is \tit{not} forced to cover all the vertices of a graph. However, if this happens the matching is called \tbf{perfect matching}.
 
@@ -1470,6 +1480,8 @@
         % \label{}
     \end{figure}
 
+    \subsection{Hall's theorem}
+
     Because of this characterization on bipartite graphs, in addition to the concept of \tit{perfect matching}, if $\abs {A} \neq \abs{B}$ we can define a \tit{weaker} version of \curlyquotes{perfect}.
 
     \begin{frameddefn}{$A$-perfect matching}
@@ -1487,6 +1499,12 @@
 
         Now, consider the set $S := A - V^*$; since $G$ is bipartite, it must hold that $$\mathcal N(S) \subseteq V^* \cap B \implies \abs{\mathcal N(S)} \le \abs{V^* \cap B} = \abs {V^*} - \abs{A \cap V^*}$$ Moreover, observe that $$V^* \cap A = A - (A - V^*) = A - S \implies \abs{V^* \cap A}  = \abs A - \abs S$$ therefore, we have that $$\abs{\mathcal N(S)} \le \abs{V^*} - \abs{V^* \cap A} = \abs{V^*} - \abs A + \abs S$$ Lastly, since $\abs {V^*} < \abs A \iff \abs{V^*} - \abs A < 0$, we conclude that $$\abs{\mathcal N (S)} \le \abs{V^*} - \abs A + \abs S < 0 + \abs S = \abs S \implies \abs{\mathcal N(S)} < \abs S$$ which proves that there is at least one set $S$ for which the \tit{Hall condition} does not hold.
     \end{proof}
+
+    \subsection{Tutte's theorem}
+
+    TODO \todo{tutte's theorem}
+
+    \section{Stable matching}
 
     Matchings in bipartite graphs are particularly useful as they can be applied to model various types of problems across different fields. One well-known example is the \href{https://en.wikipedia.org/wiki/Stable_marriage_problem}{stable matching problem}, which arises in scenarios like job assignments, college admissions, and matchmaking systems. In this problem, the goal is to find a \tit{stable pairing} between two sets of entities --- such as students and universities --- where no two unmatched entities would prefer each other over their current assignments.
 
@@ -1515,7 +1533,7 @@
         % \label{}
     \end{figure}
 
-    If the family of preference functions $\{w_v\}_{v \in V}$ is such that $$w_a(b) > w_b(b') \land w_b(a) > w_b(a')$$ which implies that \underline{both} $a$ and $b$ would prefer to \tit{switch} their current matched vertex --- then $M$ is \tit{not} stable.
+    If the family of preference functions $\{w_v\}_{v \in V}$ is such that $$w_a(b) > w_b(b') \land w_b(a) > w_b(a')$$ which implies that \underline{both} $a$ and $b$ would prefer to \tit{switch} their current matched vertex --- then $M$ is \tit{not} stable. Note that the empty matching is \tit{not} stable, by definition.
 
     The following theorem, proved by \textcite{gale} in 1962, proves that a stable matching can be always constructed in a bipartite graph, regardless of the preference functions.
 
@@ -1540,6 +1558,26 @@
             \item $ab \in M$ and for each $b'$ such that $a$ is acceptable to $b'$, it holds that $w_a(b) \ge w_a(b')$
         \end{itemize}
 
+        Observe that in the empty matching every vertex is happy.
+
+        \claim{
+            Consider a matching $M$ such that each vertex is happy; if $M$ is not stable, then there exists a vertex $a \in A$ such that $a$ is free and acceptable to some $b \in B$.
+        }{
+            By instability of $M$, there must be an edge $ab \notin M$ such that $a$ is free, or it prefers $b$ to its current partner, and vice versa. By way of contradiction, suppose that $a$ is matched to some $b' \in B$, hence by instability of $M$ through $ab$ we know that $w_a(b) > w_a(b')$
+
+            \begin{itemize}
+                \item If $b$ is free, then by definition $a$ is acceptable to $b$; however, by happiness of $a$ it must be that $w_a(b') \ge w_a(b)$ $\lightning$
+                \item If $b$ is matched by some edge $a'b \in M$, by instability of $M$ through $ab$ we know that $w_b(a) > w_b(a')$, hence $a$ is acceptable to $b$, and by happiness of $a$ it must be that $w_a(b') \ge w_a(b)$ $\lightning$
+            \end{itemize}
+
+            This implies that $a$ must be free; therefore, we have that
+
+            \begin{itemize}
+                \item If $b$ is free as well, then by definition $a$ is acceptable to $b$
+                \item If $b$ is matched by some edge $a'b \in M$, by instability of $M$ through $ab$ we know that $w_b(a) > w_b(a')$, hence $a$ is still acceptable to $b$
+            \end{itemize}
+        }
+
         Now, consider another matching $M'$ of $G$; we say that $M$ is \tbf{better than $M'$} if 
 
         \begin{itemize}
@@ -1549,8 +1587,16 @@
         
         In other words, $M$ is better than $M'$ if no match in $M$ is worse than in $M'$, and at least one match is strictly better.
 
-        TODO \todo{da finire}
-    \end{proof}
+        Let $M_k$ be an unstable matching such that every vertex is happy; therefore, by the previous claim we know that there exists a vertex $a \in A$ such that $a$ is free and and acceptable to some $b \in B$. We will construct a matching $M_{k + 1}$ as follows: $$b^* \in \argmax_{\substack{b \in \mathcal N (a) : \\ a \ \mathrm{acceptable \ to} \ b}}{w_a(b)} \implies M_{k + 1} := (M_k \cup \{ab^*\}) - \{a'b^* \in M_k \mid a' \in A\}$$ meaning that $M_{k + 1}$ is obtained from $M_k$ by adding the edge $ab^*$, where $b^*$ maximizes $w_a(b^*)$, and removing the edge $a'b^*$ from $M_k$, if present --- the last set is either $\{a'b^*\}$ or $\varnothing$.
+
+        \claim{
+            $M_{k + 1}$ is better than $M_k$.
+        }{
+            The first condition that $M_{k +1}$ has to satisfy in order to be better than $M_k$ is true simply because we removed the edge $a'b^*$ if it was present in $M_k$, and the rest of the matching has not been altered. Moreover, if $b^*$ was free then the second condition is vacuously true, otherwise if the edge $a'b^*$ was present in $M_k$, in $M_{k +1}$ there we added the edge $ab^*$ and we know that $w_{b^*}(a) > w_{b^*}(a')$ because $a$ is acceptable to $b^*$ by definition.
+        }
+
+        Now, consider the empty matching $M_0 := \varnothing$; we already observed that $M_0$ is not stable, but is such that each vertex is happy, therefore by the previous claim we can extend $M_0$ into $M_1$ through some vertex $a \in A$ that satisfied the condition of the first claim. In particular, we can repeat this process as long as the current matching $M_i$ is still unstable. \todo{missing something}
+   \end{proof}
 
     \section{Exercises}
 
