@@ -188,7 +188,7 @@
     \end{figure}
 
     \begin{frameddefn}{Subgraph}
-        Given a graph $G = (V, E)$, a \tbf{subgraph} $G' = (V', E')$ of $G$ is a graph  such that $V' \subseteq V$ and $E' \subseteq E$.
+        Given a graph $G = (V, E)$, a \tbf{subgraph} $G' = (V', E')$ of $G$ is a graph such that $V' \subseteq V$ and $E' \subseteq E$. If $G'$ is a subgraph of $G$, then $G$ is called \tbf{supergraph} of $G'$.
     \end{frameddefn}
 
     \begin{figure}[H]
@@ -1579,7 +1579,7 @@
     Given a graph $G$, let $\mathcal O (G)$ be the number of components with an odd number of vertices. The next theorem, proved by \textcite{tutte} in 1947 shows that the following property $$\forall S \subseteq V(G) \quad \mathcal O(G[V(G) - S]) \le \abs S$$ which we will refer to as \tbf{Tutte condition} --- is a \tit{necessary} and \tit{sufficient} condition to guarantee that a graph admits a perfect matching.
 
     \begin{framedlem}{}
-        Given a graph $G$, consider a graph $G'$ obtained by adding edges to $G$; if $G$ satisfies the Tutte condition, then $G'$ satisfies the Tutte condition as well.
+        Given a graph $G$, and a supergraph $G'$ of $G$, if $G$ satisfies the Tutte condition, then $G'$ satisfies the Tutte condition as well.
     \end{framedlem}
 
     \begin{proof}
@@ -1593,7 +1593,24 @@
     \end{framedthm}
 
     \begin{proof}
-        TODO \todo{todo}
+        For the direct implication, consider a graph $G$ that admits a perfect matching $M$, and fix a subset $S \subseteq V(G)$. Then, \todo{non riesco a capire la trivial part}
+
+        Vice versa, we will prove the contrapositive of the converse implication. Therefore, suppose that $G$ does not admit any perfect matching, and we will prove that there exists a set of vertices for which the Tutte condition does not hold. Let $G'$ be the maximal supergraph of $G$ that still does not admit perfect matchings. We say that a set $X$ satisfies the \tit{clique-adjacency} condition if every component of $G'[V(G') - X]$ is a clique, and every vertex $u \in X$ is adjacent to every vertex $v \notin X$.
+
+        \claim{
+            If there is a subset $S' \subseteq V(G')$ that satisfies the clique-adjacency condition, then $G$ does not satisfy the Tutte condition.
+        }{
+            Note that $S' \subseteq V(G') = V(G)$, hence if $S'$ violates the Tutte condition on $G$, the claim is trivially true. Therefore, we will assume that $S'$ satisfies both the clique-adjacency condition, and the Tutte condition on $G$.
+
+            Let $S'$ be a subset that satisfies the clique-adjacency condition; hence, by definition every component of $G'[V(G') - S']$ is a clique. Thus, consider a clique, and let $n$ be the number of its vertices.
+            
+            \begin{itemize}
+                \item If $n$ is even, we can always find a perfect matching restricted on it.
+                \item If $n$ is odd, we can always find a perfect matching restricted to $n - 1$ vertices, but since we are assuming that $S'$ satisfies the Tutte condition on $G$, we know that $\mathcal O (G[V(G) - S']) \le \abs S'$. Therefore, by the clique-adjacency condition we know that we can always match the $n$-th vertex of the clique with a vertex of $S'$.
+            \end{itemize}
+
+            Note that the vertices of $S'$ must form a clique as well, otherwise \todo{da finire}
+        }
     \end{proof}
 
     \section{Stable matching}
