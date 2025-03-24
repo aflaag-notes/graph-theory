@@ -1606,11 +1606,66 @@
             
             \begin{itemize}
                 \item If $n$ is even, we can always find a perfect matching restricted on it.
-                \item If $n$ is odd, we can always find a perfect matching restricted to $n - 1$ vertices, but since we are assuming that $S'$ satisfies the Tutte condition on $G$, we know that $\mathcal O (G[V(G) - S']) \le \abs S'$. Therefore, by the clique-adjacency condition we know that we can always match the $n$-th vertex of the clique with a vertex of $S'$.
+                \item If $n$ is odd, we can always find a perfect matching restricted to $n - 1$ vertices, but since we are assuming that $S'$ satisfies the Tutte condition on $G$, we know that $\mathcal O (G[V(G) - S']) \le \abs {S'}$. Therefore, by the clique-adjacency condition we know that we can always match the $n$-th vertex of the clique with a vertex of $S'$.
             \end{itemize}
 
-            Note that the vertices of $S'$ must form a clique as well, otherwise \todo{da finire}
+            % Note that the free vertices of $S'$ must form a clique as well, otherwise \todo{va visto nel dettaglio il motivo}. 
+            TODO \todo{da finire}
         }
+
+        Consider the set $$S := \{v \in V(G') \mid \deg_{G'}(v) = n - 1\}$$ By way of contradiction, suppose that $S$ violates the clique-adjacency condition. This happens if at least one of the following holds:
+
+        \begin{enumerate}[label={(\arabic*)}]
+            \item there are two vertices $u \in S$ and $v \notin S$ such that $u \notin S$
+            \item there is a component of $G'[V(G') - S]$ that is not a clique
+        \end{enumerate}
+
+        However, by definition of $S$, each vertex $v \in S$ has $\deg_{G'} = n - 1$, hence $(1)$ cannot be true, meaning that $(2)$ must hold. Hence, consider a connected component of $G'[V(G') - S]$ that is not a clique, i.e. there are at least two vertices $x$ and $y$ such that $x \nsim y$.
+
+        Let $P$ be the shortest path from $x$ to $y$ in $G'[V(G') - S]$, and let $a$, $b$ and $c$ be the first three vertices of $P$ --- note that $a, b, c \notin S$. We observe that $a \nsim c$, otherwise $P$ would not be the shortest path. Note that $b \notin S$, therefore $\deg_{G'} < n - 1$, i.e. there exists a vertex $d$ such that $b \nsim d$.
+
+        \begin{figure}[H]
+            \centering
+            \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.75cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
+
+                \node[circle, draw] (1) []{$a$};
+                \node[circle, draw] (2) [below right of = 1]{$b$};
+                \node[circle, draw] (3) [above right of = 2]{$c$};
+                \node[circle, draw] (4) [below of = 2]{$d$};
+
+                \draw[-] (1) to (2);
+                \draw[-] (2) to (3);
+                \draw[dashed] (1) to (3);
+                \draw[dashed] (2) to (4);
+
+                ;
+            \end{tikzpicture}
+            \caption{The \curlyquotes{kite-shaped} figure we are considering --- the dashed lines represent the missing edges.}
+        \end{figure}
+
+        By maximality of $G'$, we know that $G' \cup \{ac\}$ must have a perfect matching $M_1$, and $G' \cup \{bd\}$ must have a perfect matching $M_2$. Moreover, $ac \in M_1$ and $bd \in M_2$, otherwise $M_1$ and $M_2$ would be perfect matchings on $G'$.
+
+        \claim{
+            $(M_1 - \{ac\}) \cup (M_2 - \{bd\})$ contains a perfect matching for $G'$.
+        }{
+            Let $\overline M = (M_1 - \{ac\}) \Delta (M_2 - \{bd\})$. By the same reasoning applied for \cref{aug paths}, since $M_1$ and $M_2$ are two matchings, every vertex of $\overline M$ has degree at most 2. Hence, consider a vertex $z$ in the subgraph induced by $\overline M$
+
+            \begin{itemize}
+                \item if $\deg_{\overline M}(z)$ is 0 or 2, $z$ is matched both by $M_1$ and $M_2$
+                \item since $M_1$ is a perfect matching, each vertex of $G'$ is matched by $M_1 - \{ac\}$, except for $a$ and $c$
+                \item likewise, since $M_2$ is a perfect matching, each vertex of $G'$ is matched by $M_2 - \{bd\}$, except for $b$ and $d$
+            \end{itemize}
+
+            which implies that the only vertices $z$ that have $\deg_{\overline M}(z) = 1$ are precisely $a$, $b$, $c$ and $d$.
+
+            Moreover, each component of the subgraph induced by $\overline M$ is either an isolated vertex, a cycle or a path, and the edges of the components must alternate between $M_1$ and $M_2$. Therefore, because of the degrees of $a$, $b$, $c$ and $d$, it must be that these vertices are endpoints of two alternating paths $P_1$ and $P_2$. Moreover, since $ac \in M_1$ and $bd \in M_2$, one of these paths must be an $M_1$-alternating path, while other must be $M_2$ alternating --- and w.l.o.g. let $P_1$ be the $M_1$-alternating. Note that the set $$M' := (M_1 \cup M_2) - (E(P_1) \cup E(P_2))$$ is a perfect matching on $G[V(G) - (V(P_1) \cup V(P_2))]$. We have three cases for $P_1$ and $P_2$:
+
+            \begin{enumerate}
+                \item TODO
+            \end{enumerate}
+       }
+
+       TODO \todo{da finire}
     \end{proof}
 
     \section{Stable matching}
