@@ -1576,7 +1576,7 @@
 
     This graph is connected, and has 10 vertices, but it does not admit perfect matchings, meaning that the converse does not hold. Can we find a condition that guarantees that a given graph always admits a perfect matching?
 
-    Given a graph $G$, let $\mathcal O (G)$ be the number of components with an odd number of vertices. The next theorem, proved by \textcite{tutte} in 1947 shows that the following property $$\forall S \subseteq V(G) \quad \mathcal O(G[V(G) - S]) \le \abs S$$ which we will refer to as \tbf{Tutte condition} --- is a \tit{necessary} and \tit{sufficient} condition to guarantee that a graph admits a perfect matching.
+    Given a graph $G$, let $\mathcal O (G)$ be the number of components with an odd number of vertices. The next theorem, proved by \textcite{tutte} in 1947 shows that the following property $$\forall S \subseteq V(G) \quad \mathcal O(G[V(G) - S]) \le \abs S$$ which we will refer to as \tbf{Tutte condition} --- is a \tit{necessary} and \tit{sufficient} condition to guarantee that a graph admits a perfect matching. In fact, in the example of $C_5$ we observe that the set that violates the Tutte condition is $S = \varnothing$, and in the second example is $S = \{x\}$.
 
     \begin{framedlem}{}
         Given a graph $G$, and a supergraph $G'$ of $G$, if $G$ satisfies the Tutte condition, then $G'$ satisfies the Tutte condition as well.
@@ -1592,10 +1592,10 @@
         A graph $G$ admits a perfect matching if and only if for any $S \subseteq V(G)$ it holds that $\mathcal O(G[V(G) - S]) \le \abs S$ --- meaning that it satisfies the Tutte condition.
     \end{framedthm}
 
-    \begin{proof}
-        For the direct implication, consider a graph $G$ that admits a perfect matching $M$, and fix a subset $S \subseteq V(G)$. Then, \todo{non riesco a capire la trivial part}
-
-        Vice versa, we will prove the contrapositive of the converse implication. Therefore, suppose that $G$ does not admit any perfect matching, and we will prove that there exists a set of vertices for which the Tutte condition does not hold. Let $G'$ be the maximal supergraph of $G$ that still does not admit perfect matchings. We say that a set $X$ satisfies the \tit{clique-adjacency} condition if every component of $G'[V(G') - X]$ is a clique, and every vertex $u \in X$ is adjacent to every vertex $v \notin X$.
+    \proofiff{
+        For the direct implication, consider a graph $G$ that admits a perfect matching $M$, and by way of contradiction assume that there exists a set $S \subseteq V(G)$ that violates the Tutte condition. For the previous observation, we know that each component of $G[V(G) - S]$ that has an even number of vertices will not have free nodes w.r.t. $M$, and each component of $G[V(G) - S]$ that has an odd number of vertices will have one free node w.r.t. $M$. In particular, these free vertices must be covered by $M$, since $M$ is perfect, and the only way they can be covered by $M$ is through the vertices of $S$. However, since $\mathcal O (G[V(G) - S]) > \abs S$, there exists at least one free vertex in $G[V(G) - S]$ w.r.t. $M$ that cannot be matched to any of the vertices of $S$, meaning that $M$ is not perfect $\lightning$.
+    }{
+        We will prove the contrapositive of the converse implication. Therefore, suppose that $G$ does not admit any perfect matching, and we will prove that there exists a set of vertices for which the Tutte condition does not hold. Let $G'$ be the maximal supergraph of $G$ that still does not admit perfect matchings. We say that a set $X$ satisfies the \tit{clique-adjacency} condition if every component of $G'[V(G') - X]$ is a clique, and every vertex $u \in X$ is adjacent to every vertex $v \notin X$.
 
         \claim{
             If there is a subset $S' \subseteq V(G')$ that satisfies the clique-adjacency condition, then $G$ does not satisfy the Tutte condition.
@@ -1665,10 +1665,10 @@
                 \item $P_1$ is a path $a \to b$, and $P_2$ is a path $c \to d$; then $$(M_1 \cap E(P_2)) \cup (M_2 \cap E(P_1)) \cup M' \cup \{bd\}$$ is a perfect matching on $G'$
                 \item $P_1$ is a path $a \to d$, and $P_2$ is a path $b \to c$; then $$(M_1 \cap E(P_2)) \cup (M_2 \cap E(P_1)) \cup M' \cup \{ac\}$$ is a perfect matching on $G'$
             \end{enumerate}
-       }
+        }
 
-       TODO \todo{how do we conclude?}
-    \end{proof}
+        Therefore, because of this claim $G'$ always contains a perfect matching, contradicting the definition of $G'$. This implies that $S$ must satisfy the clique-adjacency condition. Hence, by the first claim we have that $G$ satisfies the Tutte condition \todo{first claim is wrong?}
+    }
 
     \section{Stable matching}
 
