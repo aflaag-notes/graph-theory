@@ -167,7 +167,7 @@
         \label{first graph}
     \end{figure}
 
-    Note that, in this definition, we are assuming that each edge has exactly 2 \tit{distinct} endpoints --- i.e. the graphs do not admit \tbf{loops} --- and there cannot exist two edges with the same endpoints. In fact, if we drop these assumption we obtain what is called a \tbf{multigraph}.
+    Note that, in this definition, we are assuming that each edge has exactly 2 \tit{distinct} endpoints --- i.e. the graphs do not admit \tbf{loops} --- and there cannot be two edges with the same endpoints. In fact, if we drop these assumption we obtain what is called a \tbf{multigraph}.
 
     \begin{figure}[H]
         \centering
@@ -1784,6 +1784,104 @@
 
         We will prove the second statement by using \cref{hall}. By way of contradiction, assume that there is a set $S \subseteq V(G)$ such that $\abs S > \abs{\mathcal N(S)} \implies k \abs S > k \abs{\mathcal N (S)}$. Applying the same argument as before, the number of edges $ab$ such that $a \in S, b \in \mathcal N (S)$ is exactly $k \abs S$, hence by the pigeonhole principle there must be at least one vertex in $\mathcal N (S)$ that has more than $k$ vertices, contradicting the $k$-regularity of $G$.
     \end{proof}
+
+    \chapter{TODO}
+
+    \begin{frameddefn}{$A$-$B$ paths}
+        Given a graph $G$, and two sets $A, B \subseteq V(G)$, an \tbf{$A$-$B$ path} is a path that has one end in $A$, one end in $B$, and no internal vertices in $A \cup B$.
+    \end{frameddefn}
+
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.75cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
+
+            \node[circle, draw, fill=green] (1) []{};
+            \node[circle, draw] (2) [right of = 1]{};
+            \node[circle, draw, fill=orange] (3) [right of = 2]{};
+            \node[circle, draw, fill=green] (4) [below of = 1]{};
+            \node[circle, draw, fill=orange] (5) [below of = 3]{};
+            \node[circle, draw, fill=orange] (6) [above of = 3]{};
+
+            \draw[-] (1) [red] to (2);
+            \draw[-] (2) [red] to (3);
+            \draw[-] (4) [blue] to (5);
+            \draw[-] (5) [blue] to (1);
+            \draw[-] (1) [blue] to (6);
+
+            ;
+        \end{tikzpicture}
+        \caption{For instance, if $A$ is the set of \tit{green} vertices, and $B$ is the set of \tit{orange} vertices, then the \tit{red} is an $A$-$B$ path but the \tit{blue} one is not.}
+        % \label{first graph}
+    \end{figure}
+
+    Note that if $A \cap B \neq \varnothing$, any vertex in $A \cap B$ is a trivial $A$-$B$ path.
+
+    \begin{frameddefn}{$A$-$B$ hitting set}
+        Given a graph $G$, and two sets $A, B \subseteq V(G)$, an \tbf{$A$-$B$ hitting} set is a set $X \subseteq V(G)$ such that every $A$-$B$ path has a vertex in $X$.
+    \end{frameddefn}
+
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.75cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
+
+            \node[circle, draw, fill=green] (1) []{};
+            \node[circle, draw, fill=blue] (2) [right of = 1]{};
+            \node[circle, draw, fill=blue] (3) [right of = 2]{};
+            \node[circle, draw, fill=orange] (4) [right of = 3]{};
+            \node[circle, draw] (5) [below of = 2]{};
+            \node[circle, draw, fill=green] (6) [below of = 1]{};
+            \node[circle, draw, fill=orange] (7) [below of = 4]{};
+
+            \draw[-] (1) to (2);
+            \draw[-] (2) to (3);
+            \draw[-] (3) to (4);
+            \draw[-] (2) to (5);
+            \draw[-] (6) to (2);
+            \draw[-] (5) to (7);
+            \draw[-] (3) to (7);
+
+            ;
+        \end{tikzpicture}
+        \caption{For example, if $A$ is the set of \tit{green} vertices, and $B$ is the set of \tit{orange} vertices, then the \tit{blue} is an $A$-$B$ hitting set.}
+        % \label{first graph}
+    \end{figure}
+
+    Consider an $A$-$B$ hitting set $X$ of a graph $G$; by definition, all the $A$-$B$ paths must have at least one vertex in $X$, but since $A$-$B$ paths do not have internal vertices in $A \cup B$, there cannot be $\abs X + 1$ disjoint $A$-$B$ paths.
+
+    \begin{frameddefn}{$A$-$B$ separation}
+        Given a graph $G$, and two sets $A, B \subseteq V(G)$, two sets $X, Y \subseteq V(G)$ describe a \tbf{separation $(X, Y)$} of $G$ if and only if
+
+        \begin{itemize}
+            \item $A \subseteq X$
+            \item $B \subseteq Y$
+            \item $X \cup Y = V(G)$
+            \item no edge has one end in $X - Y$ and the other in $Y - X$
+        \end{itemize}
+ 
+        We say that a separation $(X, Y)$ has \tbf{order} $\abs{X \cap Y}$.
+    \end{frameddefn}
+
+    \begin{framedprop}{}
+        Given a graph $G$, there exists an $A$-$B$ hitting set of size $k$ in $G$ if and only if there exists an $A$-$B$ separation of order $k$.
+    \end{framedprop}
+
+    \begin{proof}
+        The converse implication is trivially true, because if $(X, Y)$ is an $A$-$B$ separation of $G$, then $X \cap Y$ itself is an $A$-$B$ hitting set of $G$ by definition; therefore, we just need to prove the direct implication.
+        
+        Let $Z$ be an $A$-$B$ hitting set of $G$ such that $\abs Z = k$, and consider the connected components $C_1, \ldots, C_\ell$ of $G[V(G) - Z]$. Note that there cannot be any component $C_i$ that has a vertex $a \in V(G) \cap (A - Z)$ and a vertex $b \in V(C) \cap (B - Z)$, because otherwise by connectivity of $C_i$ there would be a path $a \to b$ --- which is an $A$-$B$ path --- that avoids the hitting set $Z$. Hence, we can define the two following sets $$X := Z \cup \bigcup_{\substack{C \ \mathrm{component} \\ \mathrm{of} \ G[V(G) - Z] \\ \ \mathrm{such \ that} \ A \cap C \neq \varnothing}}{V(C)}$$ $$Y := Z \cup \bigcup_{\substack{C \ \mathrm{component} \\ \mathrm{of} \ G[V(G) - Z] \\ \mathrm{such \ that} \ A \cap C = \varnothing}}{V(C)}$$ We observe that, by definition
+
+        \begin{itemize}
+            \item $A \subseteq X$
+            \item $Y$ contains all the vertices in $B - Z$, therefore if $B \cap Z = \varnothing$ then trivially $B \subseteq Y$, and if $B \cap Z \neq \varnothing$ we observe that $Z \subseteq Y$ by definition, hence $B$ is always completely covered by $Y$
+            \item $X \cap Y = Z$
+        \end{itemize}
+
+        and for the previous observation there cannot be edges with one end in $X - Y$ and the other in $Y - X$. Hence, we conclude that $(X, Y)$ is a separation of $G$, and $X \cap Y = Z \implies \abs{X \cap Y} = \abs Z = k$.
+    \end{proof}
+
+    The following theorem
+
+    % Menger’s theorem, a fundamental result in graph theory, was proved by the Austrian mathematician Karl Menger in 1927. It establishes a deep connection between connectivity and separation in graphs, stating that the minimum number of vertices (or edges) needed to separate two non-adjacent vertices equals the maximum number of pairwise internally disjoint paths between them. Menger’s work laid the foundation for modern connectivity theory and influenced later results, such as the max-flow min-cut theorem. While the precise historical development of the theorem is not widely documented, it emerged from Menger’s broader research in combinatorial mathematics and influenced key figures like Paul Erdős in advancing graph theory. \todo{modifica}
 
     \printbibliography % UNCOMMENT FOR BIBLIOGRAPHY
 
