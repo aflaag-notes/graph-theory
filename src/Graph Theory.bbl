@@ -33,6 +33,7 @@
     \strng{fullhash}{BC1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
+    \field{labelalpha}{Ber57}
     \field{sortinit}{B}
     \field{sortinithash}{B}
     \verb{doi}
@@ -64,6 +65,7 @@
     \strng{fullhash}{cW1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
+    \field{labelalpha}{con25}
     \field{sortinit}{C}
     \field{sortinithash}{C}
     \field{title}{{Seven Bridges of Königsberg}}
@@ -87,6 +89,7 @@
     \strng{fullhash}{EL1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
+    \field{labelalpha}{Eul41}
     \field{sortinit}{E}
     \field{sortinithash}{E}
     \field{pages}{128\bibrangedash 140}
@@ -113,10 +116,11 @@
     \list{publisher}{1}{%
       {Taylor \& Francis}%
     }
-    \strng{namehash}{GD+1}
+    \strng{namehash}{GDSLS1}
     \strng{fullhash}{GDSLS1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
+    \field{labelalpha}{GS62}
     \field{sortinit}{G}
     \field{sortinithash}{G}
     \field{number}{1}
@@ -143,6 +147,7 @@
     \strng{fullhash}{HP1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
+    \field{labelalpha}{Hal35}
     \field{sortinit}{H}
     \field{sortinithash}{H}
     \verb{doi}
@@ -177,10 +182,10 @@
     \strng{fullhash}{KD1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
+    \field{labelalpha}{Kon}
     \field{sortinit}{K}
     \field{sortinithash}{K}
-    \field{title}{Gr{\'a}fok {\'e}s m{\'a}trixok. Matematikai {\'e}s Fizikai
-  Lapok, 38: 116--119, 1931}
+    \field{title}{Gr{\'a}fok {\'e}s m{\'a}trixok. Matematikai {\'e}s Fizikai Lapok, 38: 116--119, 1931}
   \endentry
 
   \entry{tutte}{book}{}
@@ -201,10 +206,11 @@
     \list{publisher}{1}{%
       {AMS Chelsea Pub.}%
     }
-    \strng{namehash}{LL+1}
+    \strng{namehash}{LLPM1}
     \strng{fullhash}{LLPM1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
+    \field{labelalpha}{LP09}
     \field{sortinit}{L}
     \field{sortinithash}{L}
     \field{title}{Matching Theory}
@@ -212,6 +218,33 @@
     \verb https://books.google.it/books?id=OaoJBAAAQBAJ
     \endverb
     \field{year}{2009}
+  \endentry
+
+  \entry{menger}{article}{}
+    \name{author}{1}{}{%
+      {{hash=MK}{%
+         family={Menger},
+         familyi={M\bibinitperiod},
+         given={Karl},
+         giveni={K\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Polska Akademia Nauk. Instytut Matematyczny PAN}%
+    }
+    \strng{namehash}{MK1}
+    \strng{fullhash}{MK1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{Men27}
+    \field{sortinit}{M}
+    \field{sortinithash}{M}
+    \field{number}{1}
+    \field{pages}{96\bibrangedash 115}
+    \field{title}{Zur allgemeinen kurventheorie}
+    \field{volume}{10}
+    \field{journaltitle}{Fundamenta Mathematicae}
+    \field{year}{1927}
   \endentry
 \enddatalist
 \endinput

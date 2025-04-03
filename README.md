@@ -4,5 +4,6 @@ These are my [notes](<https://raw.githubusercontent.com/aflaag-notes/graph-theor
 
 ## TODO list
 
-- finish Tutte's theorem
+- finish Tutte's theorem (guarda armando (?))
+- dividi bene il nuovo capitolo
 
