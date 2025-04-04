@@ -167,7 +167,7 @@
         \label{first graph}
     \end{figure}
 
-    Note that, in this definition, we are assuming that each edge has exactly 2 \tit{distinct} endpoints --- i.e. the graphs do not admit \tbf{loops} --- and there cannot be two edges with the same endpoints. In fact, if we drop these assumption we obtain what is called a \tbf{multigraph}.
+    Note that, in this definition, we are assuming that each edge has exactly 2 \tit{distinct} endpoints --- i.e. the graphs do not admit \tbf{loops} --- and there cannot be two edges with the same endpoints --- i.e. the graphs do not admit \tbf{parallel edges}. In fact, if we drop these assumption we obtain what is called a \tbf{multigraph}.
 
     \begin{figure}[H]
         \centering
@@ -1846,7 +1846,7 @@
         % \label{first graph}
     \end{figure}
 
-    Consider an $A$-$B$ hitting set $X$ of a graph $G$; by definition, all the $A$-$B$ paths must have at least one vertex in $X$, but since $A$-$B$ paths do not have internal vertices in $A \cup B$, there cannot be $\abs X + 1$ disjoint $A$-$B$ paths.
+    Note that if $X$ is an $A$-$B$ hitting set, then $A \cap B \subseteq X$, otherwise any single vertex in $A \cap B$ would represent an $A$-$B$ trivial path that does not pass through the hitting set $X$. Moreover, consider an $A$-$B$ hitting set $X$ of a graph $G$; by definition, all the $A$-$B$ paths must have at least one vertex in $X$, but since $A$-$B$ paths do not have internal vertices in $A \cup B$, there cannot be $\abs X + 1$ disjoint $A$-$B$ paths.
 
     \begin{frameddefn}{$A$-$B$ separation}
         Given a graph $G$, and two sets $A, B \subseteq V(G)$, two sets $X, Y \subseteq V(G)$ describe a \tbf{separation $(X, Y)$} of $G$ if and only if
@@ -1882,13 +1882,13 @@
     The following theorem establishes a deep connection between \tit{connectivity} and \tit{separation} in graphs, and was proved by \textcite{menger} in 1927.
 
     \begin{framedthm}[label={menger}]{Menger's theorem}
-        Given a graph $G$, and two sets $A, B \subseteq V(G)$, the maximum number of disjoint $A$-$B$ paths is equal to the minimum order of an $A$-$B$ separation of $G$.
+        Given a graph $G$, and two sets $A, B \subseteq V(G)$, the number of disjoint $A$-$B$ paths is equal to the minimum order of an $A$-$B$ separation of $G$.
     \end{framedthm}
 
     \proofind{
-        Consider an $A$-$B$ separation $(X, Y)$ of minimum order of $G$, i.e. a separation that minimizes $\abs{X \cap Y}$; observe that each $A$-$B$ path must traverse at least one vertex of $X \cap Y$, therefore the maximum number of disjoint $A$-$B$ paths that can exist is at most $\abs{X \cap Y}$. This proves the direct implication of the theorem.
+        Consider an $A$-$B$ separation $(X, Y)$ of minimum order of $G$, i.e. a separation that minimizes $\abs{X \cap Y}$; observe that each $A$-$B$ path must traverse at least one vertex of $X \cap Y$, therefore the number of disjoint $A$-$B$ paths that can exist is at most $\abs{X \cap Y}$. This proves the direct implication of the theorem.
 
-        To prove the converse implication, we would need to prove that the minimum order of an $A$-$B$ separation of $G$ is no more than the maximum number of disjoint $A$-$B$ paths. Instead, we will prove that, for a fixed value $k$, in $G$ there are $k$ disjoint $A$-$B$ paths, or there is an $A$-$B$ separation of order at most $k - 1$, which is logically equivalent. In particular, we will proceed by induction on $m$, i.e. the number of edges of $G$.
+        To prove the converse implication, we would need to prove that the minimum order of an $A$-$B$ separation of $G$ is no more than the number of disjoint $A$-$B$ paths. Instead, we will prove that, for a fixed value $k$, in $G$ there are $k$ disjoint $A$-$B$ paths, or there is an $A$-$B$ separation of order at most $k - 1$, which is logically equivalent. In particular, we will proceed by induction on $m$, i.e. the number of edges of $G$.
     }{
         If $m = 0$, the only possible $A$-$B$ paths in $G$ are trivial paths, i.e. isolated vertices in $A \cap B$. Hence, if $\abs{A \cap B} \ge k$ the base case holds; instead, if $\abs{A \cap B} \le k - 1$, we observe that $A \cap B$ itself is an $A$-$B$ hitting set of $G$ of size at most $k - 1$, which means that there exists an $A$-$B$ separation of order at most $k - 1$ by \cref{menger prop}.
     }{
@@ -2114,8 +2114,40 @@
     \end{framedthm}
 
     \begin{proof}
-        If $G$ is 3-connected, then by \cref{kconn} we know that $\delta_G \ge 3$, and by \cref{min deg 2} this means that in $G$ there is a cycle $C$. Hence, consider a vertex $v \notin V(C)$ --- note that this vertex must exist by 3-connectivity of $G$. Note that $\delta_G \ge 3 \implies \delta_{G[V(G) - \{v\}]} \ge 2$, and by applying \cref{min deg 2} on $G[V(G) - \{v\}]$ we have that the latter has a cycle as well. \todo{da finire}
+        If $G$ is 3-connected, then by \cref{kconn} we know that $\delta_G \ge 3$, and by \cref{min deg 2} this means that in $G$ there is a cycle $C$. Hence, consider a vertex $v \notin V(C)$ --- note that this vertex must exist by 3-connectivity of $G$. Note that $\delta_G \ge 3 \implies \delta_{G[V(G) - \{v\}]} \ge 2$, and by applying \cref{min deg 2} on $G[V(G) - \{v\}]$ we have that the latter contains a cycle as well. \todo{da finire}
     \end{proof}
+
+    \begin{framedprop}{}
+        If $G$ is 3-regular multigraph, then $G$ has a cycle of length at most $2 \ceil{\log n}$.
+    \end{framedprop}
+
+    \begin{proof}
+        Clearly, if $G$ admits loops or parallel edges, the statement is trivially true, therefore we may assume that $G$ is a simple graph.
+
+        Fix a vertex $v \in V(G)$, and grow a BFS tree $T$ from $x$ as long no cycles of length at most $2 \ceil{\log n}$ are encountered. Since $G$ is 3-regular, $T$ will be a tree in which the root $x$ has 3 children, and all the other nodes that are not leaves will have 2 children. If the BFS stopped before visiting all the vertices of $G$, the statement holds, so we may assume that $T$ covers all $V(G)$.
+
+        By 3-regularity of $G$, we have that
+
+        \begin{itemize}
+            \item $\delta \ge 3$, hence by \cref{min deg 2} we know that $G$ must contain a cycle
+            \item the only possible cycle that can be formed in $G$ is by connecting two leaves of $T$ through an edge
+        \end{itemize}
+
+        and lastly, since $V(T) = V(G) = n$, the height of $T$ is $\ceil{\log n} - 1$ \todo{questa non è l'altezza e lo statement è sbagliato}, which means that such a cycle must have length $$\ceil{\log n} - 1 + \ceil{\log n} - 1 + 1 = 2 \ceil{\log n} - 1$$
+    \end{proof}
+
+    \begin{framedlem}{}
+        Given a graph $G$, if there is a subgraph $H$ of $G$ such that $H$ is 3-regular on at least $c' k \log(k + 1)$ vertices for some constant $c'$, then $G$ contains $k$ disjoint cycles.
+    \end{framedlem}
+
+    \proofind{
+        We proceed by induction on $k$.
+    }{
+        If $k = 1$, and $G$ contains a subgraph $H$ 3-regular on $$c' k \log(k + 1) = c' \cdot 1 \cdot \log 2 = c'$$ vertices, then $\delta_H \ge 3$, meaning that $H$ contains a cycle for \cref{min deg 2}.
+    }{
+        TODO \todo{da finire}
+    }{
+    }
 
     \printbibliography % UNCOMMENT FOR BIBLIOGRAPHY
 
