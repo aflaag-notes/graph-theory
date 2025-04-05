@@ -76,6 +76,38 @@
     \field{year}{2025}
   \endentry
 
+  \entry{erdos}{article}{}
+    \name{author}{2}{}{%
+      {{hash=Ep}{%
+         family={Erdös},
+         familyi={E\bibinitperiod},
+         given={p.},
+         giveni={p\bibinitperiod},
+      }}%
+      {{hash=PL}{%
+         family={Pósa},
+         familyi={P\bibinitperiod},
+         given={L.},
+         giveni={L\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{EpPL1}
+    \strng{fullhash}{EpPL1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{EP65}
+    \field{sortinit}{E}
+    \field{sortinithash}{E}
+    \verb{doi}
+    \verb 10.4153/CJM-1965-035-8
+    \endverb
+    \field{pages}{347–352}
+    \field{title}{On Independent Circuits Contained in a Graph}
+    \field{volume}{17}
+    \field{journaltitle}{Canadian Journal of Mathematics}
+    \field{year}{1965}
+  \endentry
+
   \entry{konigsberg}{article}{}
     \name{author}{1}{}{%
       {{hash=EL}{%

@@ -1970,12 +1970,43 @@
     \end{figure}
 
     \begin{framedprop}{}
-        Given a $k$-connected graph, and two sets $A, B \subseteq V(G)$, if $\abs A, \abs B \ge k$ then there exists $k$ disjoint $A$-$B$ paths in $G$.
+        Given a $k$-connected graph, and two sets $A, B \subseteq V(G)$, if $\abs A, \abs B \ge k$ then there exist $k$ disjoint $A$-$B$ paths in $G$.
     \end{framedprop}
 
     \begin{proof}
         By way of contradiction, if $G$ does not admit $k$ disjoint $A$-$B$ paths, then by \cref{menger} there can be $A$-$B$ separations of order at most $k - 1$. \todo{non mi torna} TODO \todo{CHE SENSO HA DIRE MAX NUM OF AB PATHS}
     \end{proof}
+
+    \begin{framedprop}{}
+        Given a $k$-connected graph, for any pair of vertices $x, y \in V(G)$ such that $x \neq y$ there exist $k$ $\{x\}$-$\{y\}$ internally disjoint paths.
+    \end{framedprop}
+
+    \begin{proof}
+        Fix a pair of distinct vertices $x, y \in V(G)$; we have two cases.
+
+        \begin{itemize}
+            \item The two vertices are not adjacent, i.e. $x \nsim y$. By \cref{kconn}, we know that $\abs{\mathcal N(x)} , \abs{\mathcal N(y)} \ge k$, hence by the previous proposition we there exist $k$ disjoint $\mathcal N(x)$-$\mathcal N(y)$ paths, which form $k$ internally disjoint $\{x\}$-$\{y\}$ paths by $k$-connectivity of $G$. \todo{impreciso, che significa?}
+            \item The two vertices are not adjacent, i.e. $x \nsim y$. By $k$-connectivity of $G$, we know that $G - \{xy\}$ is $(k-1)$-connected \todo{this is false by definition} and TODO
+        \end{itemize}
+    \end{proof}
+
+    \begin{framedprop}{}
+        Given a $k$-connected graph $G$, a vertex $x \in V(G)$, and a subset $Y \subseteq V(G)$ such that $\abs Y \ge k$, there exist $k$ $\{x\}$-$Y$ paths $P_1, \ldots, P_k$ such that $P_i \cap P_j = \{x\}$ --- for all $i, j \in [k]$ such that $i \neq j$.
+    \end{framedprop}
+
+    \begin{proof}
+        TODO \todo{da fare}
+    \end{proof}
+
+    \begin{framedthm}{}
+        Given a $k$-connected graph $G$ such that $k \ge 2$, and $k$ vertices $x_1, \ldots, x_k \in V(G)$, there exist a cycle in $G$ that contains all the vertices $x_1, \ldots, x_k$.
+    \end{framedthm}
+    
+    \begin{proof}
+        TODO \todo{da fare}
+    \end{proof}
+
+    TODO \todo{buco}
 
     Consider a graph $G$, and an edge $xy \in E(G)$; to \tbf{subdivide} $xy$ means to \tit{remove} the edge $xy$ from $E(G)$ and \tit{replacing} with a 2-edge path $x \ z \ y$ for some new vertex $z$. For instance, if $G$ contains the edge $xy$
 
@@ -2147,7 +2178,24 @@
     }{
         TODO \todo{da finire}
     }{
+        % Let $C$ be the shortest cycle of $G$; by the previous proposition, we know that 
+        TODO \todo{ha detto che forse la rifà perché è imprecisa}
     }
+
+    Thanks to this lemma, it is possible to prove the following result, first presented by \textcite{erdos} in 1965.
+
+    \begin{framedthm}{Erdős-Pósa theorem}
+        There is a constant $c$ such that for any graph $G$, and any $k \in \N$
+
+        \begin{itemize}
+            \item either $G$ has $k$ vertex-disjoint cycles or
+            \item there is a subset $X \subseteq V(G)$ that intersects all cycles such that $\abs X \le c k\log k$
+        \end{itemize}
+    \end{framedthm}
+
+    \begin{proof}
+        TODO \todo{l'ha fatta incompleta, forsa la prossima volta la rifà}
+    \end{proof}
 
     \printbibliography % UNCOMMENT FOR BIBLIOGRAPHY
 
