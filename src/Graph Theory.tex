@@ -1787,6 +1787,8 @@
 
     \chapter{TODO}
 
+    TODO \todo{introduction}
+    
     \begin{frameddefn}{$A$-$B$ paths}
         Given a graph $G$, and two sets $A, B \subseteq V(G)$, an \tbf{$A$-$B$ path} is a path that has one end in $A$, one end in $B$, and no internal vertices in $A \cup B$.
     \end{frameddefn}
@@ -1861,6 +1863,8 @@
         We say that a separation $(X, Y)$ has \tbf{order} $\abs{X \cap Y}$.
     \end{frameddefn}
 
+    Given a graph $G$, two sets $A, B \subseteq V(G)$, and an $A$-$B$ separation of $G$, we observe that $G[V(G)-(X \cap Y)]$ is disconnected.
+
     \begin{framedprop}[label={menger prop}]{}
         Given a graph $G$, and two sets $A, B \subseteq V(G)$, there exists an $A$-$B$ hitting set of size $k$ in $G$ if and only if there exists an $A$-$B$ separation of order $k$.
     \end{framedprop}
@@ -1894,10 +1898,14 @@
     }{
         Assume that the statement holds on a graph that has $m - 1$ edges.
     }{
-        We will prove that the statement holds for a graph $G$ that has $m$ edges as well. In particular, fix an edge $xy \in E(G)$, and note that the graph $G - \{xy\}$ has $m - 1$ edges, meaning that the inductive hypothesis holds for $G - \{xy\}$. However, if $G - \{xy\}$ has $k$ disjoint $A$-$B$ paths, then $G$ also has $k$ disjoint $A$-$B$ paths, therefore we may assume that the inductive hypothesis holds for $G - \{xy\}$ because the latter has an $A$-$B$ separation of order at most $k - 1$.
+        We will prove that the statement holds for a graph $G$ that has $m$ edges as well. In particular, fix an edge $xy \in E(G)$, and note that the graph $G - \{xy\}$ has $m - 1$ edges, meaning that the inductive hypothesis holds for $G - \{xy\}$. However, if $G - \{xy\}$ has $k$ disjoint $A$-$B$ paths, then $G$ also has $k$ disjoint $A$-$B$ paths, therefore we may assume that the inductive hypothesis holds for $G - \{xy\}$ precisely because the latter has an $A$-$B$ separation of order at most $k - 1$.
 
-        Consider an $A$-$B$ separation $(X, Y)$ of $G$, and consider two vertices $x \in X - Y$ and $y \in Y - X$. \todo{perché esistono?} Note that \todo{da finire}
+        Consider an $A$-$B$ separation $(X, Y)$ of $G - \{xy\}$, and assume that the two vertices $x \in X - Y$ and $y \in Y - X$. \todo{stanno a cavallo perché altrimenti non danno problemi}
+
+        TODO \todo{da finire}
     }
+
+    \section{$k$-connectivity}
 
     \begin{frameddefn}{$k$-connectivity}
         A graph $G$ is said to be \tbf{$k$-connected} if $\abs{V(G)} \ge k + 1$, and for each $X \subseteq V(G)$ such that $\abs X \le k - 1$ it holds that $G[V(G) - X]$ is connected.
@@ -1944,6 +1952,14 @@
         By way of contradiction, assume that $\delta < k$, i.e. there is a vertex $x \in V(G)$ such that $\deg(x) < k \implies \abs{\mathcal N(x)} < k$. However, this violates the $k$-connectivity of $G$, because $G[V(G) - \mathcal N (x)]$ is disconnected even though $\abs{\mathcal N(x)} \le k - 1$ $\lightning$.
     \end{proof}
 
+    \begin{framedprop}[label={k-1 conn}]{}
+        If $G$ is $k$-connected, then for any $xy \in E(G)$ it holds that $G - \{xy\}$ is $(k - 1)$-connected.
+    \end{framedprop}
+
+    \begin{proof}
+        By way of contradiction, suppose that $G - \{xy\}$ is not $(k - 1)$-connected, i.e. there exists a set $X \subseteq V(G)$ such that $\abs X \le k - 2$ and $(G - \{xy\})[V(G) - X]$ is disconnected. By $k$-connectivity of $G$, since $\abs X \le k - 2$, we know that $G[V(G) - X]$ is connected, therefore if $(G - \{xy\})[V(G) - X]$ is disconnected it must imply that by removing $xy$ we disconnect $G[V(G) - X]$. Now, since $\abs X \le k - 2$, we know that $\abs{X \cup \{y\}} \le k - 1$, but $G[V(G) - (X \cup \{y\})]$ does not contain the edge $xy$, hence it is disconnected, contradicting the $k$-connectivity of $G$ $\lightning$.
+    \end{proof}
+
     \begin{frameddefn}{Internal disjointness}
         Given a graph $G$, two paths $P_1$ and $P_2$ of $G$ are said to be \tbf{internally disjoint} if every vertex of $V(P_1) \cap V(P_2)$ is an endpoint of $P_1$ and $P_2$.
     \end{frameddefn}
@@ -1974,10 +1990,10 @@
     \end{framedprop}
 
     \begin{proof}
-        By way of contradiction, if $G$ does not admit $k$ disjoint $A$-$B$ paths, then by \cref{menger} there can be $A$-$B$ separations of order at most $k - 1$. \todo{non mi torna} TODO \todo{CHE SENSO HA DIRE MAX NUM OF AB PATHS}
+        By way of contradiction, if $G$ does not admit $k$ disjoint $A$-$B$ paths, therefore by \cref{menger} the minimum order of an $A$-$B$ separation is at most $k - 1$; hence, let $(X, Y)$ be a minimum order $A$-$B$ separation of $G$, i.e. $\abs{X \cap Y} \le k - 1$. Observe that $\abs{A} \ge k$ and $A \subseteq X$, therefore $\abs X \ge k$ which means that $X - Y \neq \varnothing$. \todo{preisa meglio sta cosa} However, by definition of $A$-$B$ separation we observe that $G[V(G)-(X \cap Y)]$ is disconnected, and we removed less than $k$ vertices, contradicting the $k$-connectivity of $G$ $\lightning$.
     \end{proof}
 
-    \begin{framedprop}{}
+    \begin{framedprop}[label={intern disj menger}]{}
         Given a $k$-connected graph, for any pair of vertices $x, y \in V(G)$ such that $x \neq y$ there exist $k$ $\{x\}$-$\{y\}$ internally disjoint paths.
     \end{framedprop}
 
@@ -1985,17 +2001,17 @@
         Fix a pair of distinct vertices $x, y \in V(G)$; we have two cases.
 
         \begin{itemize}
-            \item The two vertices are not adjacent, i.e. $x \nsim y$. By \cref{kconn}, we know that $\abs{\mathcal N(x)} , \abs{\mathcal N(y)} \ge k$, hence by the previous proposition we there exist $k$ disjoint $\mathcal N(x)$-$\mathcal N(y)$ paths, which form $k$ internally disjoint $\{x\}$-$\{y\}$ paths by $k$-connectivity of $G$. \todo{impreciso, che significa?}
-            \item The two vertices are not adjacent, i.e. $x \nsim y$. By $k$-connectivity of $G$, we know that $G - \{xy\}$ is $(k-1)$-connected \todo{this is false by definition} and TODO
+            \item The two vertices are not adjacent, i.e. $x \nsim y$. By \cref{kconn}, we know that $\abs{\mathcal N(x)} , \abs{\mathcal N(y)} \ge k$, hence by the previous proposition we there exist $k$ disjoint $\mathcal N(x)$-$\mathcal N(y)$ paths, which will form $k$ \tit{internally disjoint} $\{x\}$-$\{y\}$ paths along with the edges to $x$ and $y$.
+            \item The two vertices are not adjacent, i.e. $x \nsim y$. By $k$-connectivity of $G$, we know that $G - \{xy\}$ is $(k-1)$-connected by \cref{k-1 conn}, therefore by the same argument of the previous case we have $k - 1$ internally disjoint $\{x\}$-$\{y\}$ path, therefore $G$ will have $k$ internally disjoint $\{x\}$-$\{y\}$ paths along with the edge $xy$.
         \end{itemize}
     \end{proof}
 
-    \begin{framedprop}{}
+    \begin{framedcor}{}
         Given a $k$-connected graph $G$, a vertex $x \in V(G)$, and a subset $Y \subseteq V(G)$ such that $\abs Y \ge k$, there exist $k$ $\{x\}$-$Y$ paths $P_1, \ldots, P_k$ such that $P_i \cap P_j = \{x\}$ --- for all $i, j \in [k]$ such that $i \neq j$.
-    \end{framedprop}
+    \end{framedcor}
 
     \begin{proof}
-        TODO \todo{da fare}
+        Add a vertex $z$ to the vertices of $G$, and for each $y \in Y$ add an edge $yz$; we observe that $G[V(G) \cup \{z\}]$ is still $k$-connected, because $\abs Y \ge k$ \todo{ragiona meglio}. Now, since $x \neq z$, by the previous proposition there exist $k$ $\{x\}$-$\{z\}$ internally disjoint paths, and these paths must traverse $Y$, therefore each path $P_i$ must have the form $x \to y_i \to z$ for some $y_i \in Y$. Hence, if we consider the subpaths $x \to y_i$ for each $i$, in $G$ these are precisely $k$ $\{x\}$-$Y$ paths intersects only in $x$.
     \end{proof}
 
     \begin{framedthm}{}
@@ -2003,10 +2019,20 @@
     \end{framedthm}
     
     \begin{proof}
-        TODO \todo{da fare}
+        By way of contradiction, let $C$ be the cycle that contains as many vertices $x_i$ as possible; if $x_1, \ldots, x_k \in V(C)$, the theorem is trivially verified, hence we may assume that at least one vertex $x_i$ is not in $V(C)$, and w.l.o.g. assume that $x_k \notin V(C)$. By \cref{kconn} we know that $\delta \ge k$, and by \cref{min deg 2} we know that $\abs{V(C)} \ge k + 1$. Hence, by the previous corollary we know that exist $k$ $\{x_k\}$-$V(C)$ paths that only intersect in $x_k$.
+
+        Now, since there are at most $k - 1$ vertices $x_i$ in $V(C)$, and there are $k$ $\{x_k\}$-$V(C)$ paths, by the pigeonhole principle there must be a subpath $Q$ of $C$ of the form $x_i \to x_j$ --- for $i, j \in [k - 1]$ distinct --- that has no internal vertex in $\{x_1, \ldots, x_{k - 1}\}$, and such that there are two paths $P_1$ and $P_2$ that $x_k$ as one endpoint and the other lies in $Q$
+
+        TODO \todo{fai figura}
+
+        Therefore, we can reroute $Q$ by passing through $P_1$ and $P_2$ in order to find a cycle $C \cup \{x_k\}$ that has a larger number of vertices $x_i$, contradicting the definition of $C$ $\lightning$.
     \end{proof}
 
     TODO \todo{buco}
+
+    \section{Subdivision and suppression}
+
+    \subsection{Topological minors}
 
     Consider a graph $G$, and an edge $xy \in E(G)$; to \tbf{subdivide} $xy$ means to \tit{remove} the edge $xy$ from $E(G)$ and \tit{replacing} with a 2-edge path $x \ z \ y$ for some new vertex $z$. For instance, if $G$ contains the edge $xy$
 
@@ -2148,6 +2174,8 @@
         If $G$ is 3-connected, then by \cref{kconn} we know that $\delta_G \ge 3$, and by \cref{min deg 2} this means that in $G$ there is a cycle $C$. Hence, consider a vertex $v \notin V(C)$ --- note that this vertex must exist by 3-connectivity of $G$. Note that $\delta_G \ge 3 \implies \delta_{G[V(G) - \{v\}]} \ge 2$, and by applying \cref{min deg 2} on $G[V(G) - \{v\}]$ we have that the latter contains a cycle as well. \todo{da finire}
     \end{proof}
 
+    \subsection{Erdős-Pósa theorem}
+
     \begin{framedprop}{}
         If $G$ is 3-regular multigraph, then $G$ has a cycle of length at most $2 \ceil{\log n}$.
     \end{framedprop}
@@ -2168,18 +2196,17 @@
     \end{proof}
 
     \begin{framedlem}{}
-        Given a graph $G$, if there is a subgraph $H$ of $G$ such that $H$ is 3-regular on at least $c' k \log(k + 1)$ vertices for some constant $c'$, then $G$ contains $k$ disjoint cycles.
+        Given a graph $G$, if $G$ contains a topological minor of a 3-regular graph $H$, where $V(H) \ge c' k \log(k + 1)$ for some constant $c'$, then $G$ contains $k$ disjoint cycles.
     \end{framedlem}
 
     \proofind{
         We proceed by induction on $k$.
     }{
-        If $k = 1$, and $G$ contains a subgraph $H$ 3-regular on $$c' k \log(k + 1) = c' \cdot 1 \cdot \log 2 = c'$$ vertices, then $\delta_H \ge 3$, meaning that $H$ contains a cycle for \cref{min deg 2}.
+        For $k = 1$, if $G$ contains a topological minor of a 3-regular graph $H$, then $\delta_H \ge 3$ meaning that $H$ contains a cycle for \cref{min deg 2}, and its subdivision contained in $G$ will also contain a cycle --- since the subdivision operation only adds edges.
     }{
-        TODO \todo{da finire}
+        Assume that the statement holds for $k - 1$.
     }{
-        % Let $C$ be the shortest cycle of $G$; by the previous proposition, we know that 
-        TODO \todo{ha detto che forse la rifà perché è imprecisa}
+        Let $C$ be the shortest cycle of $H$; by the previous proposition, we know that $\abs{V(C)} \le 2 \log(c'k\log(k +1)) + 2$ --- adding 2 takes care of the rounding error introduced by the \tit{ceiling} operation --- and note that $$\abs{V(C)} \le 2 \log(c'k \log(k + 1)) + 2 = 2 \log c' + 2 \log k + 2 \log \log(k + 1) + 2$$ Now, consider the induced subgraph $H - C$: by 3-regularity \todo{sta roba non funziona}
     }
 
     Thanks to this lemma, it is possible to prove the following result, first presented by \textcite{erdos} in 1965.
