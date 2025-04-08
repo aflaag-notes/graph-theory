@@ -2192,12 +2192,72 @@
             \item the only possible cycle that can be formed in $G$ is by connecting two leaves of $T$ through an edge
         \end{itemize}
 
-        and lastly, since $V(T) = V(G) = n$, the height of $T$ is $\ceil{\log n} - 1$ \todo{questa non è l'altezza e lo statement è sbagliato}, which means that such a cycle must have length $$\ceil{\log n} - 1 + \ceil{\log n} - 1 + 1 = 2 \ceil{\log n} - 1$$
+        and lastly, since $V(T) = V(G) = n$, the height of $T$ is $\ceil{\log n} - 1$, which means that such a cycle must have length $$\ceil{\log n} - 1 + \ceil{\log n} - 1 + 1 = 2 \ceil{\log n} - 1$$
     \end{proof}
 
-    TODO \todo{introduce suppression}
+    Along with the \tit{subdivision} operation that we introduced previously, it naturally follows to defined the \tit{inverse} operation of the subdivision, i.e. the \tbf{suppression}. Given a graph $G$, and two edges $xz, zy \in E(G)$ such that $\deg(z) = 2$, to \tit{suppress} $z$ means to \tit{remove} the vertex $z$ from $V(G)$ along with the edges $xz$ and $zy$, and \tit{replacing} them with an edge $xy$ in $E(G)$. For instance, if $G$ contains the edges $xz$ and $zy$
 
-    TODO \todo{define what is a cut}
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.5cm,thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
+
+            \node[circle, draw] (1) []{$x$};
+            \node[circle, draw] (2) [right of = 1]{$z$};
+            \node[circle, draw] (3) [right of = 2]{$y$};
+
+            \draw[-] (1) to (2);
+            \draw[-] (2) to (3);
+
+            ;
+        \end{tikzpicture}
+    \end{figure}
+
+    to \tit{suppress} the vertex $z$ means to replace $xz$ and $zy$ in $G$ with the following edge $xy$
+
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.5cm,thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
+
+            \node[circle, draw] (1) []{$x$};
+            \node[circle, draw] (2) [right of = 1]{$y$};
+
+            \draw[-] (1) to (2);
+
+            ;
+        \end{tikzpicture}
+    \end{figure}
+
+    Now, consider the following definition.
+
+    \begin{frameddefn}{Cut}
+        Given a graph $G$, and a subset $S \subseteq V(G)$, a the \tbf{cut} induced by $S$ is defined as follows $$\mathrm{cut}(S) := \{e \in E(G) \mid \abs{S \cap e} = 1\}$$
+    \end{frameddefn}
+
+    In other words, a \tit{cut} induced by a set $S$ of vertices is the set of edges that have exactly one endpoint in $S$.
+
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.5cm,thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
+
+            \node[circle, draw] (1) []{};
+            \node[circle, draw, fill=red] (2) [right of = 1]{};
+            \node[circle, draw] (3) [below of = 1]{};
+            \node[circle, draw, fill=red] (4) [right of = 3]{};
+            \node[circle, draw] (5) [left of = 1]{};
+
+            \draw[-] (1) [green] to (2);
+            \draw[-] (2) to (4);
+            \draw[-] (1) to (3);
+            \draw[-] (3) [green] to (4);
+            \draw[-] (1) to (5);
+            \draw[-] (3) to (5);
+
+            ;
+        \end{tikzpicture}
+        \caption{For instance, if the set $S$ is described by the \tit{red} vertices, then $\mathrm{cut}(S)$ is the set of green edges.}
+    \end{figure}
+
+    We will use the definition of cut in order to prove the following lemma.
 
     \begin{framedlem}{}
         Given a 3-regular graph $H$ such that $\abs{V(H)} \ge c'k \log (k +1)$ for some constant $c'$, then $H$ contains $k$ disjoint cycles.
@@ -2222,7 +2282,19 @@
             Finally, since $H'$ is 3-regular by construction, and $H[V(H) - V]$ is a subdivision of $H'$ that is contained in $H - C$, this concludes the claim.
         }
 
-        Now \todo{da finire, manca poco credo}
+        Now, since $\abs{V(H)} \ge c'k \log(k + 1)$, and by the previous proposition we know that $$\abs{V(C)} \le 2 \log (\abs{V(H)}) + 2 \iff - 2 \abs{V(C)} \ge - 4 \log (\abs{V(H)}) - 4$$ where the added term 2 takes care of the rounding error from the ceiling operation --- we obtain the following
+        \begin{equation*}
+            \begin{split}
+                \abs{V(H')} &\ge \abs{V(H)} - 2\abs{V(C)} \\
+                            &\ge \abs{V(H)} - 4 \log (\log{V(H)}) - 4 \\
+                            &\ge c'k \log (k +1) - 4 \log (c'k \log (k + 1)) - 4 \\
+                            &\ge c'k \log (k + 1) - 4[ \log c' + \log k + \log(\log(k + 1))] - 4
+            \end{split}
+        \end{equation*}
+
+        which is at least $c'(k - 1) \log k$ for sufficiently big values of $c'$. In particular, since $\abs{V(H')} \ge c' (k - 1) \log k$, and we know that $H'$ is 3-regular, we can apply the inductive hypothesis on $H'$, which means that $H'$ contains $k - 1$ disjoint cycles.
+
+        Finally, if $H'$ contains $k$ disjoint cycles, and $H - C$ has $H'$ as topological minor, i.e. $H - C$ contains a subdivision $H''$ of $H'$, by definition of the subdivision operation $H''$ will contain $k$ disjoint cycles as well. Therefore, since $H - C$ contains $H''$, $H$ contains $k$ disjoint cycles along with the cycle $C$.
     }
 
     Thanks to this lemma, it is possible to prove the following result, first presented by \textcite{erdos} in 1965.
