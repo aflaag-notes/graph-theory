@@ -25,4 +25,5 @@
 \contentsline {section}{\numberline {3.1}$k$-connectivity}{41}{section.3.1}%
 \contentsline {section}{\numberline {3.2}Subdivision and suppression}{44}{section.3.2}%
 \contentsline {subsection}{\numberline {3.2.1}Topological minors}{44}{subsection.3.2.1}%
-\contentsline {subsection}{\numberline {3.2.2}Erdős-Pósa theorem}{45}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.2}Erdős-Pósa theorem}{46}{subsection.3.2.2}%
+\contentsline {section}{\numberline {3.3}Exercises}{49}{section.3.3}%

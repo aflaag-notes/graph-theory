@@ -471,7 +471,7 @@
     \begin{proof}
         Consider a graph $G = (V, E)$ that has a cycle $C$, and any two vertices $x, y \in V$; in particular, since $G$ is connected, there must be a path $x \to y$ in $G$, and let this path be $$P = x \ e_1 \ x_1 \ \ldots \ x_{k - 1} \ e_k \ y$$ Consider an edge $e \in C$; if $P$ does not traverse $e$, trivially $G - \{e\}$ will still contain $P$.
 
-        Now let $$C = z_1 \ f_2 \ z_2 \ \ldots \ z_{l- 1} \ f_l \ z_l \ f_{l + 1} \ z_1$$ and w.l.o.g. assume that $e = f_2 = z_1 z_2 = x_i x_{i + 1} = e_{i + 1}$ for some $i \in [k - 1]$. Thus we can construct the following walk $$x \ e_1 \ x_1 \ \ldots \ x_i \ f_{l + 1} \ z_l \ \ldots \ f_3 \ z_2 \ e_{i + 2} \ x_{i + 2} \ \ldots \ x_{k - 1} \ e_k \ y$$ from $x$ to $y$, and by \cref{paths and walks} we have that there is a path from $x \to y$, which proves that $G - \{e\}$ is still connected.
+        Now let $$C = z_1 \ f_2 \ z_2 \ \ldots \ z_{l- 1} \ f_l \ z_l \ f_{l + 1} \ z_1$$ and without loss of generality assume that $e = f_2 = z_1 z_2 = x_i x_{i + 1} = e_{i + 1}$ for some $i \in [k - 1]$. Thus we can construct the following walk $$x \ e_1 \ x_1 \ \ldots \ x_i \ f_{l + 1} \ z_l \ \ldots \ f_3 \ z_2 \ e_{i + 2} \ x_{i + 2} \ \ldots \ x_{k - 1} \ e_k \ y$$ from $x$ to $y$, and by \cref{paths and walks} we have that there is a path from $x \to y$, which proves that $G - \{e\}$ is still connected.
     \end{proof}
 
     \subsection{Trees}
@@ -838,7 +838,7 @@
     \end{framedthm}
 
     \proofiff{
-        We will prove the contrapositive, i.e. if $G$ has an odd-length cycle, then $G$ cannot be bipartitioned. Consider a graph $G$ with an odd-length cycle $C_{2k + 1}$ of vertices $x_1, \ldots, x_{2k + 1}$; by way of contradiction, assume that $G$ is bipartite through a bipartition $(X, V(G)) - X)$ for some $X \subseteq V(G)$. W.l.o.g. assume that $x_1 \in X$; then, since $X$ defines a bipartition of $G$ it must be that $x_2 \notin X$, and $x_3 \in X$ and so on and so forth. In particular, for any odd value of $i$ we will have that $x_i \in X$, but this implies that both $x_1$ and $x_{2k + 1}$ must be inside $X$, which means that the edge $x_1x_{2k + 1}$ violates the bipartition induced by $X$ $\lightning$.
+        We will prove the contrapositive, i.e. if $G$ has an odd-length cycle, then $G$ cannot be bipartitioned. Consider a graph $G$ with an odd-length cycle $C_{2k + 1}$ of vertices $x_1, \ldots, x_{2k + 1}$; by way of contradiction, assume that $G$ is bipartite through a bipartition $(X, V(G)) - X)$ for some $X \subseteq V(G)$. Without loss of generality assume that $x_1 \in X$; then, since $X$ defines a bipartition of $G$ it must be that $x_2 \notin X$, and $x_3 \in X$ and so on and so forth. In particular, for any odd value of $i$ we will have that $x_i \in X$, but this implies that both $x_1$ and $x_{2k + 1}$ must be inside $X$, which means that the edge $x_1x_{2k + 1}$ violates the bipartition induced by $X$ $\lightning$.
     }{
         Again, we will prove the contrapositive, i.e. if $G$ is not bipartite it must contain an odd-length cycle. By the previous observation, $G$ is not bipartite if and only if at least one connected component of $G$ is not bipartite, and let this component be $\overline G$. Note that, since $\overline G$ is connected, it must contain a spannning tree $T$ by \cref{spanning tree existence}. Moreover, as previously described, we can always define a bipartition on a tree, namely $(X, V(T) - X)$ where $$\textstyle X := \{v \in V(T) \mid \dist_T(r, v) \ \mathrm{even}\}$$ for some root node $r \in V(T)$.
 
@@ -909,7 +909,7 @@
     \end{framedthm}
     
     \proofiff{
-        Consider the contrapositive of the direct implication, and assume that $G$ contains at least one odd-degree vertex $v$. Recall that an Eulerian tour is a closed walk that does not allow edge repetition, which implies that the \tit{starting} point of the walk is actually not relevant. Therefore, we can assume w.l.o.g. that any possible Eulerian tour defined on $G$ starts on $v$ itself, but then to be \tit{closed} it must end on $v$ as well. Moreover, each time any Eulerian tour passes through $v$ it must use 2 distinct edges, however $v$ is an odd-degree vertex, therefore at the end of the Eulerian tour there is no way we can come back to $v$ and close the walk.
+        Consider the contrapositive of the direct implication, and assume that $G$ contains at least one odd-degree vertex $v$. Recall that an Eulerian tour is a closed walk that does not allow edge repetition, which implies that the \tit{starting} point of the walk is actually not relevant. Therefore, we can assume without loss of generality that any possible Eulerian tour defined on $G$ starts on $v$ itself, but then to be \tit{closed} it must end on $v$ as well. Moreover, each time any Eulerian tour passes through $v$ it must use 2 distinct edges, however $v$ is an odd-degree vertex, therefore at the end of the Eulerian tour there is no way we can come back to $v$ and close the walk.
     }{
         Consider a graph $G$ in which every vertex has even degree, and let $W$ be the \tit{longest} walk of $G$ that does not repeat edges, and let it be labeled as follows $$x_0 \ e_1 \ x_1 \ \ldots \ x_{k - 1} \ e_k \ x_k$$ 
 
@@ -1370,7 +1370,7 @@
     \end{framedprop}
 
     \begin{proof}
-        Let $P$ be an $M$-augmenting path that starts in $a$ and minimizes the edges in $E(P) - E(T)$ and, by way of contradiction, assume that $E(P) - E(T) \neq \varnothing$, i.e. $P$ is not completely contained in $T$. Therefore, let $xy$ be the first edge in $E(P) - E(T)$ encountered while traversing $P$, starting at $a$, and w.l.o.g. assume that $x \in V(P)$.
+        Let $P$ be an $M$-augmenting path that starts in $a$ and minimizes the edges in $E(P) - E(T)$ and, by way of contradiction, assume that $E(P) - E(T) \neq \varnothing$, i.e. $P$ is not completely contained in $T$. Therefore, let $xy$ be the first edge in $E(P) - E(T)$ encountered while traversing $P$, starting at $a$, and without loss of generality assume that $x \in V(P)$.
 
         \claim{
             $x \in A$.
@@ -1658,7 +1658,7 @@
 
             which implies that the only vertices $z$ that have $\deg_{\overline M}(z) = 1$ are precisely $a$, $b$, $c$ and $d$.
 
-            Moreover, each component of the subgraph induced by $\overline M$ is either an isolated vertex, a cycle or a path, and the edges of the components must alternate between $M_1$ and $M_2$. Therefore, because of the degrees of $a$, $b$, $c$ and $d$, it must be that these vertices are endpoints of two alternating paths $P_1$ and $P_2$. Moreover, since $ac \in M_1$ and $bd \in M_2$, one of these paths must be an $M_1$-alternating path, while other must be $M_2$ alternating --- and w.l.o.g. let $P_1$ be the $M_1$-alternating. Note that the set $$M' := (M_1 \cup M_2) - (E(P_1) \cup E(P_2))$$ is a perfect matching on $G[V(G) - (V(P_1) \cup V(P_2))]$. We have three cases for $P_1$ and $P_2$:
+            Moreover, each component of the subgraph induced by $\overline M$ is either an isolated vertex, a cycle or a path, and the edges of the components must alternate between $M_1$ and $M_2$. Therefore, because of the degrees of $a$, $b$, $c$ and $d$, it must be that these vertices are endpoints of two alternating paths $P_1$ and $P_2$. Moreover, since $ac \in M_1$ and $bd \in M_2$, one of these paths must be an $M_1$-alternating path, while other must be $M_2$ alternating --- and without loss of generality let $P_1$ be the $M_1$-alternating. Note that the set $$M' := (M_1 \cup M_2) - (E(P_1) \cup E(P_2))$$ is a perfect matching on $G[V(G) - (V(P_1) \cup V(P_2))]$. We have three cases for $P_1$ and $P_2$:
 
             \begin{enumerate}
                 \item $P_1$ is a path $a \to c$, and $P_2$ is a path $b \to d$; then $$(M_1 \cap E(P_2)) \cup (M_2 \cap E(P_1)) \cup M'$$ is a perfect matching on $G'$
@@ -1900,9 +1900,9 @@
     }{
         We will prove that the statement holds for a graph $G$ that has $m$ edges as well. In particular, fix an edge $xy \in E(G)$, and note that the graph $G - \{xy\}$ has $m - 1$ edges, meaning that the inductive hypothesis holds for $G - \{xy\}$. However, if $G - \{xy\}$ has $k$ disjoint $A$-$B$ paths, then $G$ also has $k$ disjoint $A$-$B$ paths, therefore we may assume that the inductive hypothesis holds for $G - \{xy\}$ precisely because the latter has an $A$-$B$ separation of order at most $k - 1$.
 
-        Consider an $A$-$B$ separation $(X, Y)$ of $G - \{xy\}$, and assume that the two vertices $x \in X - Y$ and $y \in Y - X$. \todo{stanno a cavallo perché altrimenti non danno problemi}
+        Hence, let $(X, Y)$ be an $A$-$B$ separation of $G - \{xy\}$ of order at most $k - 1$; we observe that if $x, y \in X$, or $x, y \in Y$, then $(X, Y)$ is also a separation for $G$, which would conclude the proof. Thus, suppose that $x \in X - Y$ and $y \in Y - X$; then $(X, Y \cup \{x\})$ is an $A$-$B$ separation of $G$ that either has still order at most $k - 1$, or it becomes a separation of order $k$ with $k - 1$ $A$-$B$ paths. Since the first case concludes the proof, we may assume the second one to hold.
 
-        TODO \todo{da finire}
+        Consider the induced subgraphs $G[X]$ and $G[Y]$ \todo{da finire}
     }
 
     \section{$k$-connectivity}
@@ -1990,7 +1990,7 @@
     \end{framedprop}
 
     \begin{proof}
-        By way of contradiction, if $G$ does not admit $k$ disjoint $A$-$B$ paths, therefore by \cref{menger} the minimum order of an $A$-$B$ separation is at most $k - 1$; hence, let $(X, Y)$ be a minimum order $A$-$B$ separation of $G$, i.e. $\abs{X \cap Y} \le k - 1$. Observe that $\abs{A} \ge k$ and $A \subseteq X$, therefore $\abs X \ge k$ which means that $X - Y \neq \varnothing$. \todo{preisa meglio sta cosa} However, by definition of $A$-$B$ separation we observe that $G[V(G)-(X \cap Y)]$ is disconnected, and we removed less than $k$ vertices, contradicting the $k$-connectivity of $G$ $\lightning$.
+        By way of contradiction, if $G$ does not admit $k$ disjoint $A$-$B$ paths, therefore by \cref{menger} the minimum order of an $A$-$B$ separation is at most $k - 1$; hence, let $(X, Y)$ be a minimum order $A$-$B$ separation of $G$, i.e. $\abs{X \cap Y} \le k - 1$. Observe that $\abs{A} \ge k$ and $A \subseteq X$, therefore $\abs X \ge k$ which means that $X - Y \neq \varnothing$, and analogously $Y - X \neq \varnothing$. However, by definition of $A$-$B$ separation we observe that $G[V(G)-(X \cap Y)]$ is disconnected, and we removed less than $k$ vertices, contradicting the $k$-connectivity of $G$ $\lightning$.
     \end{proof}
 
     \begin{framedprop}[label={intern disj menger}]{}
@@ -2006,12 +2006,12 @@
         \end{itemize}
     \end{proof}
 
-    \begin{framedcor}{}
+    \begin{framedcor}[label={menger cor}]{}
         Given a $k$-connected graph $G$, a vertex $x \in V(G)$, and a subset $Y \subseteq V(G)$ such that $\abs Y \ge k$, there exist $k$ $\{x\}$-$Y$ paths $P_1, \ldots, P_k$ such that $P_i \cap P_j = \{x\}$ --- for all $i, j \in [k]$ such that $i \neq j$.
     \end{framedcor}
 
     \begin{proof}
-        Add a vertex $z$ to the vertices of $G$, and for each $y \in Y$ add an edge $yz$; we observe that $G[V(G) \cup \{z\}]$ is still $k$-connected, because $\abs Y \ge k$ \todo{ragiona meglio}. Now, since $x \neq z$, by the previous proposition there exist $k$ $\{x\}$-$\{z\}$ internally disjoint paths, and these paths must traverse $Y$, therefore each path $P_i$ must have the form $x \to y_i \to z$ for some $y_i \in Y$. Hence, if we consider the subpaths $x \to y_i$ for each $i$, in $G$ these are precisely $k$ $\{x\}$-$Y$ paths intersects only in $x$.
+        Add a vertex $z$ to the vertices of $G$, and for each $y \in Y$ add an edge $yz$; we observe that $G[V(G) \cup \{z\}]$ is still $k$-connected, because $\abs Y \ge k$. Now, since $x \neq z$, by the previous proposition there exist $k$ $\{x\}$-$\{z\}$ internally disjoint paths, and these paths must traverse $Y$, therefore each path $P_i$ must have the form $x \to y_i \to z$ for some $y_i \in Y$. Hence, if we consider the subpaths $x \to y_i$ for each $i$, in $G$ these are precisely $k$ $\{x\}$-$Y$ paths intersects only in $x$.
     \end{proof}
 
     \begin{framedthm}{}
@@ -2019,16 +2019,45 @@
     \end{framedthm}
     
     \begin{proof}
-        By way of contradiction, let $C$ be the cycle that contains as many vertices $x_i$ as possible; if $x_1, \ldots, x_k \in V(C)$, the theorem is trivially verified, hence we may assume that at least one vertex $x_i$ is not in $V(C)$, and w.l.o.g. assume that $x_k \notin V(C)$. By \cref{kconn} we know that $\delta \ge k$, and by \cref{min deg 2} we know that $\abs{V(C)} \ge k + 1$. Hence, by the previous corollary we know that exist $k$ $\{x_k\}$-$V(C)$ paths that only intersect in $x_k$.
+        By way of contradiction, let $C$ be the cycle that contains as many vertices $x_i$ as possible; if $x_1, \ldots, x_k \in V(C)$, the theorem is trivially verified, hence we may assume that at least one vertex $x_i$ is not in $V(C)$, and without loss of generality assume that $x_k \notin V(C)$. By \cref{kconn} we know that $\delta \ge k$, and by \cref{min deg 2} we know that $\abs{V(C)} \ge k + 1$. Hence, by the previous corollary we know that exist $k$ $\{x_k\}$-$V(C)$ paths that only intersect in $x_k$.
 
-        Now, since there are at most $k - 1$ vertices $x_i$ in $V(C)$, and there are $k$ $\{x_k\}$-$V(C)$ paths, by the pigeonhole principle there must be a subpath $Q$ of $C$ of the form $x_i \to x_j$ --- for $i, j \in [k - 1]$ distinct --- that has no internal vertex in $\{x_1, \ldots, x_{k - 1}\}$, and such that there are two paths $P_1$ and $P_2$ that $x_k$ as one endpoint and the other lies in $Q$
+        Now, since there are at most $k - 1$ vertices $x_i$ in $V(C)$, and there are $k$ $\{x_k\}$-$V(C)$ paths, by the pigeonhole principle there must be a subpath $Q$ of $C$ of the form $x_i \to x_j$ --- for $i, j \in [k - 1]$ distinct --- that has no internal vertex in $\{x_1, \ldots, x_{k - 1}\}$, and such that there are two paths $P_1$ and $P_2$ that $x_k$ as one endpoint and the other lies in $Q$.
 
-        TODO \todo{fai figura}
+        \begin{figure}[H]
+            \centering
+            \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.5cm,thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
+
+                \node[circle, draw] (1) []{};
+                \node[circle, draw] (2) [above right of = 1]{$x_i$};
+                \node[circle, draw] (3) [below right of = 2]{};
+                \node[circle, draw] (4) [below of = 3]{};
+                \node[circle, draw] (5) [below left of = 4]{$x_j$};
+                \node[circle, draw] (6) [above left of = 5]{};
+                \node[circle, draw] (7) [right of = 3]{$x_k$};
+
+                \draw[-] (1) to (2);
+                \draw[-] (2) [red] to (3);
+                \draw[-] (3) [red] to (4);
+                \draw[-] (4) [red] to (5);
+                \draw[-] (5) to (6);
+                \draw[-] (1) to (6);
+
+                \draw[-] (7) [bend right] to node[above]{$P_1$} (3);
+                \draw[-] (7) [bend left] to node[below]{$P_2$} (4);
+
+                ;
+            \end{tikzpicture}
+            \caption{In the figure, the \tit{red} segments compose the subpath $Q$.}
+        \end{figure}
 
         Therefore, we can reroute $Q$ by passing through $P_1$ and $P_2$ in order to find a cycle $C \cup \{x_k\}$ that has a larger number of vertices $x_i$, contradicting the definition of $C$ $\lightning$.
     \end{proof}
 
-    TODO \todo{buco}
+    Note that this theorem \tit{does not} guarantee the order in which the vertices are present in the cycle. In fact, asking to preserve the order of the vertices $x_1, \ldots, x_k$ given is a \tit{much harder} question, and the only result we currently know is the following.
+
+    \begin{framedthm}{}
+        Given a $10k$-connected graph $G$, and $k$ vertices $x_1, \ldots, x_k \in V(G)$, there exist a cycle in $G$ that contains all the vertices $x_1, \ldots, x_k$ in the same order.
+    \end{framedthm}
 
     \section{Subdivision and suppression}
 
@@ -2171,7 +2200,7 @@
     \end{framedthm}
 
     \begin{proof}
-        If $G$ is 3-connected, then by \cref{kconn} we know that $\delta_G \ge 3$, and by \cref{min deg 2} this means that in $G$ there is a cycle $C$. Hence, consider a vertex $v \notin V(C)$ --- note that this vertex must exist by 3-connectivity of $G$. Note that $\delta_G \ge 3 \implies \delta_{G[V(G) - \{v\}]} \ge 2$, and by applying \cref{min deg 2} on $G[V(G) - \{v\}]$ we have that the latter contains a cycle as well. \todo{da finire}
+        If $G$ is 3-connected, then by \cref{kconn} we know that $\delta_G \ge 3$, and by \cref{min deg 2} this means that in $G$ there is a cycle $C$. Moreover, by 3-connectivity of $G$, we know that $G$ cannot be a cycle itself, therefore there must be at least one vertex $v \notin V(C)$. Now, by 3-connectivity agin we can apply \cref{menger cor}, obtaining 3 $\{v\}$-$V(C')$ paths $P_1$, $P_2$ and $P_3$ that only intersect in $v$, and finally $G[V(C) \cup V(P_1) \cup V(P_2) \cup V(P_3)]$ is a subdivision of $K_4$.
     \end{proof}
 
     \subsection{Erdős-Pósa theorem}
@@ -2311,6 +2340,16 @@
     \begin{proof}
         TODO \todo{l'ha fatta incompleta, forsa la prossima volta la rifà}
     \end{proof}
+
+    \section{Exercises}
+    
+    \begin{framedprob}
+        Given a $k$-connected graph $G$ such that $V(G) \ge 2k$, show that $G$ contains a cycle of length at least 2k.
+    \end{framedprob}
+
+    \solution{
+        TODO \todo{da fare}
+    }
 
     \printbibliography % UNCOMMENT FOR BIBLIOGRAPHY
 
