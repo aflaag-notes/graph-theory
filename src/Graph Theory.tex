@@ -2195,18 +2195,34 @@
         and lastly, since $V(T) = V(G) = n$, the height of $T$ is $\ceil{\log n} - 1$ \todo{questa non è l'altezza e lo statement è sbagliato}, which means that such a cycle must have length $$\ceil{\log n} - 1 + \ceil{\log n} - 1 + 1 = 2 \ceil{\log n} - 1$$
     \end{proof}
 
+    TODO \todo{introduce suppression}
+
+    TODO \todo{define what is a cut}
+
     \begin{framedlem}{}
-        Given a graph $G$, if $G$ contains a topological minor of a 3-regular graph $H$, where $V(H) \ge c' k \log(k + 1)$ for some constant $c'$, then $G$ contains $k$ disjoint cycles.
+        Given a 3-regular graph $H$ such that $\abs{V(H)} \ge c'k \log (k +1)$ for some constant $c'$, then $H$ contains $k$ disjoint cycles.
     \end{framedlem}
 
     \proofind{
         We proceed by induction on $k$.
     }{
-        For $k = 1$, if $G$ contains a topological minor of a 3-regular graph $H$, then $\delta_H \ge 3$ meaning that $H$ contains a cycle for \cref{min deg 2}, and its subdivision contained in $G$ will also contain a cycle --- since the subdivision operation only adds edges.
+        For $k = 1$, if $H$ is 3-regular then $\delta_H = 3$, therefore by \cref{min deg 2} it must contain a cycle.
     }{
         Assume that the statement holds for $k - 1$.
     }{
-        Let $C$ be the shortest cycle of $H$; by the previous proposition, we know that $\abs{V(C)} \le 2 \log(c'k\log(k +1)) + 2$ --- adding 2 takes care of the rounding error introduced by the \tit{ceiling} operation --- and note that $$\abs{V(C)} \le 2 \log(c'k \log(k + 1)) + 2 = 2 \log c' + 2 \log k + 2 \log \log(k + 1) + 2$$ Now, consider the induced subgraph $H - C$: by 3-regularity \todo{sta roba non funziona}
+        Let $C$ be a cycle of $H$, and consider the graph $H - C$ --- note that we are \tit{not} considering the induced subgraph $H[V(H) - V(C)]$, but we are just removing the edges of $C$ from $H$.
+
+        \claim{
+            $H - C$ has a 3-regular graph $H'$ as topological minor, such that $\abs{V(H')} \ge \abs{V(H)}- 2\abs{V(C)}$.
+        }{
+            Starting with $V := V(C)$, as long as $H[V(H) - V]$ contains vertices of degree at most 1, move them into $V$; let $M$ be the number of moved vertices. Then, since we are adding vertices to $V$, we have that $\abs{\mathrm{cut}(V)} \le \abs{\mathrm{cut}(C)} - M$. We observe that, by construction $\delta_{H[V(H)- V]} \ge 2$, and the number of vertices that have degree 2 in $H[V(H) - V]$ is at most $\abs{\mathrm{cut}(V)} \le \abs{\mathrm{cut}(C)} - M$.
+
+            Lastly, let $H'$ be the graph obtained from $H[V(H) - V]$ by suppressing all the vertices of degree 2; then we have that $H'$ contains at least the vertices of $H$, withouth the vertices of $C$, without the $M$ vertices that we moved during the procedure, withouth the vertices of degree 2 that we suppressed. In other words, we have that $$\abs{V(H')} \ge \abs{V(H)} - \abs{V(C)} - M - (\abs{\mathrm{cut}(C)}-M) \ge \abs{V(H)} - 2\abs{V(C)}$$ Note that the last inquality comes from the observation that $\abs{\mathrm{cut}(C)} \le \abs{V(C)}$, which follows by 3-regularity of $H$
+
+            Finally, since $H'$ is 3-regular by construction, and $H[V(H) - V]$ is a subdivision of $H'$ that is contained in $H - C$, this concludes the claim.
+        }
+
+        Now \todo{da finire, manca poco credo}
     }
 
     Thanks to this lemma, it is possible to prove the following result, first presented by \textcite{erdos} in 1965.
