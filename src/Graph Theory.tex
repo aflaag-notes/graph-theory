@@ -2059,7 +2059,50 @@
         Given a $10k$-connected graph $G$, and $k$ vertices $x_1, \ldots, x_k \in V(G)$, there exist a cycle in $G$ that contains all the vertices $x_1, \ldots, x_k$ in the same order.
     \end{framedthm}
 
-    \section{Subdivision and suppression}
+    \section{Feedback vertex set}
+
+    Consider the following combinatorial structure.
+
+    \begin{frameddefn}{Feedback vertex set}
+        Given a graph $G$, a subset $X \subseteq V(G)$ is said to be a \tbf{feedback vertex set} (FVS) if $G[V(G) - X]$ is acyclic; equivalently, $X$ is an FVS if it intersects all cycles of $G$.
+    \end{frameddefn}
+
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.5cm,thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
+
+            \node[circle, draw] (1) []{};
+            \node[circle, draw, fill=red] (2) [right of = 1]{};
+            \node[circle, draw] (3) [below right of = 2]{};
+            \node[circle, draw] (4) [below left of = 3]{};
+            \node[circle, draw] (5) [left of = 4]{};
+            \node[circle, draw, fill=red] (6) [above left of = 5]{};
+
+            \node[circle, draw, fill=red] (7) [right of = 3]{};
+            \node[circle, draw] (8) [above right of = 7]{};
+            \node[circle, draw] (9) [below right of = 7]{};
+
+            \draw[-] (1) to (2);
+            \draw[-] (2) to (3);
+            \draw[-] (3) to (4);
+            \draw[-] (4) to (5);
+            \draw[-] (5) to (6);
+            \draw[-] (6) to (1);
+
+            \draw[-] (3) to (7);
+            \draw[-] (7) to (8);
+            \draw[-] (8) to (9);
+            \draw[-] (9) to (7);
+
+            \draw[-] (1) to (4);
+            \draw[-] (2) to (5);
+
+            ;
+        \end{tikzpicture}
+        \caption{For instance, the \tit{red} set of vertices is an FVS of this graph.}
+    \end{figure}
+
+    In many applications, it is important to find a \tbf{minimum} FVS; however, this problem is known to be \NPComplete --- as proved by \textcite{karp} in 1972. Therefore, we often focus on estimating the size of this set by computing lower and upper bounds. In particular, in this section we will present a result proved by \textcite{erdos} in 1965. But before introducing their result about FVSs, we must discuss some combinatorial structures first.
 
     \subsection{Topological minors}
 
@@ -2326,19 +2369,47 @@
         Finally, if $H'$ contains $k$ disjoint cycles, and $H - C$ has $H'$ as topological minor, i.e. $H - C$ contains a subdivision $H''$ of $H'$, by definition of the subdivision operation $H''$ will contain $k -1$ disjoint cycles as well. Therefore, since $H - C$ contains $H''$, $H$ contains $k$ disjoint cycles along with the cycle $C$.
     }
 
-    Thanks to this lemma, it is possible to prove the following result, first presented by \textcite{erdos} in 1965.
+    We are now ready to prove the theorem that we introduced at the beginning of this section.
 
     \begin{framedthm}{Erdős-Pósa theorem}
         There is a constant $c$ such that for any graph $G$, and any $k \in \N$
 
         \begin{itemize}
             \item either $G$ has $k$ vertex-disjoint cycles or
-            \item there is a subset $X \subseteq V(G)$ that intersects all cycles such that $\abs X \le c k\log k$
+            \item there is an FVS $X$ of $G$ such that $\abs X \le c k\log k$
         \end{itemize}
     \end{framedthm}
 
     \begin{proof}
-        TODO \todo{l'ha fatta incompleta, forsa la prossima volta la rifà}
+        If $G$ contains $k$ disjoint cycles, the theorem is trivially true, hence we may assume that $G$ does not have $k$ disjoint cycles. Fix $H$ to be the larget subgraph of $G$ such that $\forall v \in V(H) \quad 2 \le \deg_H(v) \le 3$ --- note that $H$ always exists because we may assume that $G$ contains at least 1 cycle, since if $G$ is acyclic the theorem is trivially true (and we would pick the cycle as $H$ itself). Moreover, fix $\overline H$ to be the subgraph of $G$ without all the \curlyquotes{cycle components} of $G$ --- i.e. components of $G$ that are cycles --- and let $U := \{v \in V(\overline H) \mid \deg_{\overline H}(v) = 3\}$.
+
+        By TODO \todo{discrepanze lemma} we know that $\abs{U} < c'k\log(k + 1)$, for some constant $c$. Let $W$ be a set of vertices composed of one vertex for each cycle component --- the ones not present in $\overline H$.
+
+        \claim{
+            Every cycle of $G$ is in $H$.
+        }{
+            If there was a cycle of $G$ not present in $H$, this cycle would have contained vertices of degree at least 2, contradicting the maximality of $H$.
+        }
+
+        \tbf{Claim:} There are no paths $P$ in $G[V(G) - (U \cup W)]$ of length at least 1 such that
+
+        \begin{itemize}
+            \item both ends of $P$ are in $H[V(H) - (U \cup W)]$
+            \item no internal vertex of $P$ is in $H$
+            \item no edge of $P$ is in $H$
+        \end{itemize}
+
+        \proofenv[Proof of the Claim]{
+            If such a path $P$ exists, then $H \cup P$ is a bigger graph than $H$ that has every vertex of degree 2 or 3, contradicting the maximality of $H$.
+        }
+
+        \claim{
+            Every cycle of $G - (U \cup W)$ intersects $H$ in exactly one vertex.
+        }{
+            TODO \todo{da finire}
+        }
+
+        TODO \todo{da finire}
     \end{proof}
 
     \section{Exercises}
