@@ -2509,6 +2509,22 @@
         TODO \todo{da finire}
 
         \claim{
+            If $n \ge r$, then $t(n, r) = t(n - r, r) + (n - r)(r - 1) + \binom{r}{2}$.
+        }{
+            Let $X_1, \ldots, X_r$ be a partition of $T(n, r)$. Since $n \ge r$, we know that the independent sets are not empty, thus fix $x_i \in X_i$ for each $X_i$ of the partition, and let $Z := \{x_1, \ldots, x_r\}$. Now, we observe that
+
+            \begin{itemize}
+                \item $G[Z] = K_r$, hence there are $\binom{r}{2}$ edges in $G[Z]$
+                \item $G[V(G) - Z] = T(n -r, r)$ since we only removed one vertex per independent set, thus there are $t(n - r, r)$ edges in $G - Z$
+                \item TODO \todo{da finire}
+            \end{itemize}
+
+            Therefore \todo{da finire}
+        }
+
+        TODO \todo{da finire}
+
+        \claim{
             If $G$ is EM$K_r$ and $(r-1)$-partite, then $G = T(n, r - 1)$.
         }{
             Since no edges can be added to $G$ without creating $K_r$ as subgraph of $G$, it must be that $G$ is complete $(r - 1)$-partite. Let $X_1, \ldots, X_r$ be the partition that defines $G$, and by way of contradiction suppose that $G \neq T(n, r - 1)$. By definition of Turán graph, this implies that for distinct $i, j \in [r]$ it holds that $\abs{\abs{X_i} - \abs{X_j}} \ge 2$, and without loss of generality suppose that $\abs{X_i} < \abs{X_j}$.
