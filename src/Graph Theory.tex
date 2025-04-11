@@ -691,7 +691,7 @@
     \subsection{Bipartite graphs}
 
     \begin{frameddefn}{Bipartite graph}
-        A graph $G = (V, E)$ is said to be \tbf{bipartite} if there exists a set $X \subseteq V$ such that every edge of $G$ has exactly one endpoint in $X$ and one in $V - X$. If such a set $X$ exists, we say that $(X, V - x)$ is a \tbf{bipartition} of $G$.
+        A graph $G = (V, E)$ is said to be \tbf{bipartite} if there exists a set $X \subseteq V$ such that every edge of $G$ has exactly one endpoint in $X$ and one in $V - X$. If such a set $X$ exists, we say that $(X, V - x)$ is a \tbf{bipartition} of $G$. If $G$ has the maximum number of edges that preserve the bipartition, we say that is \tbf{complete bipartite}.
     \end{frameddefn}
 
     \begin{figure}[H]
@@ -2427,12 +2427,37 @@
     TODO \todo{introduction}
 
     \begin{frameddefn}{Independent set}
-        TODO
+        Given a graph $G$, a subset $X \subseteq V(G)$ is said to be an \tbf{independent set} if for all $u$ and $v$ in $X$, it holds that $u \nsim v$
     \end{frameddefn}
 
-    TODO \todo{exampl}
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.75cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
 
-    TODO \todo{oss bip graphs}
+            \node[circle, draw, fill=red] (1) []{};
+            \node[circle, draw] (2) [right of = 1]{};
+            \node[circle, draw] (3) [below of = 1]{};
+            \node[circle, draw, fill=red] (4) [below of = 2]{};
+            \node[circle, draw] (5) [left of = 1]{};
+            \node[circle, draw] (6) [right of = 2]{};
+
+            \draw[-] (1) to (2);
+            \draw[-] (1) to (3);
+            \draw[-] (2) to (4);
+            \draw[-] (1) to (5);
+            \draw[-] (3) to (4);
+            \draw[-] (2) to (6);
+            \draw[-] (4) to (6);
+
+            ;
+        \end{tikzpicture}
+        \caption{For instance, the \tit{red} set of vertices is an independent set.}
+        % \label{first graph}
+    \end{figure}
+
+    Note that we already encountered independent sets when discussing bipartite graphs: in fact, if $G$ is bipartite through the bipartition $(A, B)$, we observe that both $A$ and $B$ must be independent sets.
+
+    TODO \todo{interlude}
 
     \begin{frameddefn}{$r$-partite graph}
         A graph is sait to be \tbf{$r$-partite} if it can be partitioned into $X_1, \ldots, X_r$ sets of vertices such that $X_1, \ldots, X_r$ are independent sets.
@@ -2473,10 +2498,10 @@
         Let $G$ by an $(r-1)$-partite graph; by definition, $G$ is composed of $r - 1$ independent sets, therefore any subgraph of $G$ that has $r$ vertices $x_1, \ldots, x_r$ must have 2 vertices lying in the same independent set by the pigeonhole principle, meaning that any subgraph of vertices $x_1, \ldots, x_r$ will have two non-adjacent vertices.
     \end{proof}
 
-    In particular, we are going to define the following \href{https://en.wikipedia.org/wiki/Tur%C3%A1n_graph}{type of graph}, named after \href{https://en.wikipedia.org/wiki/P%C3%A1l_Tur%C3%A1n}{Pál Turán}.
+    In particular, we are going to define the following type of graph, named after \href{https://en.wikipedia.org/wiki/P%C3%A1l_Tur%C3%A1n}{Pál Turán}.
 
     \begin{frameddefn}{Turán graph}
-        The Turán graph $T(n, r)$ is the complete $r$-partite graph that has $n$ nodes, partitioned into $X_1, \ldots, X_r$, such that for all $i, j \in [r]$, if $i \neq j$ then $\abs{\abs{X_i} - \abs{X_j}} \le 1$ --- i.e. the cardinality of the partitions are as close to equal as possible.
+        The \href{https://en.wikipedia.org/wiki/Tur%C3%A1n_graph}{Turán graph} $T(n, r)$ is the complete $r$-partite graph that has $n$ nodes, partitioned into $X_1, \ldots, X_r$, such that for all $i, j \in [r]$, if $i \neq j$ then $\abs{\abs{X_i} - \abs{X_j}} \le 1$ --- i.e. the cardinality of the partitions are as close to equal as possible.
     \end{frameddefn}
 
     TODO \todo{example}
@@ -2489,7 +2514,24 @@
 
     In other words, $G$ is edge maximum without $K_r$ if by adding an edge to $G$ we obtain a graph $G'$ that contains $K_r$ as subgraph.
 
-    TODO \todo{example}
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.75cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
+
+            \node[circle, draw] (1) []{};
+            \node[circle, draw] (2) [right of = 1]{};
+            \node[circle, draw] (4) [below of = 1]{};
+            \node[circle, draw] (5) [right of = 4]{};
+
+            \draw[-] (1) to (4);
+            \draw[-] (1) to (5);
+            \draw[-] (2) to (4);
+            \draw[-] (2) to (5);
+
+            ;
+        \end{tikzpicture}
+        \caption{For instance, in this graph clearly there are no cliques as subgraph, and if we add one edge we construct $K_3$ as subgraph.}
+    \end{figure}
 
     \begin{framedprop}[label={turan bound}]{}
         If $G$ is EM$K_r$, then $t(n, r - 1) \le \abs{E(G)}$.
@@ -2499,7 +2541,7 @@
         We observe that $T(n, r - 1)$ is $(r - 1)$-partite in particular, therefore it does not contain $K_r$ as subgraph by \cref{partite kr}. However, since $G$ has $n$ vertices as well, and $G$ is EM$K_r$, it must be that $t(n , r - 1) \le \abs{E(G)}$.
     \end{proof}
 
-    Now, we are going to prove Turán's theorem, prove by \textcite{turan} in 1941.
+    Finally, we are going to prove Turán's theorem, proved by \textcite{turan} in 1941.
     
     \begin{framedthm}{Turán's theorem}
         If $G$ is EM$K_r$, then $G = T(n, r - 1)$.
@@ -2538,12 +2580,16 @@
             \item Any vertex $z \notin Y$ must have at most $r - 2$ neighbors in $Y$ --- if $z$ had $r - 1$ neighbors, $G[Y \cup \{z\}]$ would be a $K_r$, contradicting the definition of $G$. Hence, there are $(r - 2)(n - (r - 1))$ edges between $G[Y]$ and $G[V(G) - Y]$.
         \end{itemize}
 
-        Therefore, we get that $$\abs{E(G)} \le \binom{ r- 1}{2} + (r - 2)(n - (r - 1)) + t(n - (r - 1), r - 1) = t(n , r - 1)$$ where the last inequality follows from the previous claim. Moreover, for \cref{turan bound} this upper bound is tight. However, if this bound is tight, it must be that the vertices $z \notin Y$ have \tit{exactly} $r - 2$ neighbors in $Y$; hence, for each $i \in [r - 1]$ let $X_i := \{z \in V(G) - Y \mid z \nsim y_i\} \cup \{y_i\}$ --- in particular $z$ is adjacent to every vertex in $Y$ except for $y_i$ because it has exacly $r - 2$ neighbors in $Y$.
+        Therefore, we get that $$\abs{E(G)} \le \binom{ r- 1}{2} + (r - 2)(n - (r - 1)) + t(n - (r - 1), r - 1) = t(n , r - 1)$$ where the last inequality follows from the previous claim. Moreover, for \cref{turan bound} this upper bound is tight. However, if this bound is tight, it must be that the vertices $z \notin Y$ have \tit{exactly} $r - 2$ neighbors in $Y$; hence, for each $i \in [r - 1]$ let $X_i := \{z \in V(G) - Y \mid z \nsim y_i\} \cup \{y_i\}$. In particular, since $z$ has exactly $r - 2$ neighbors in $Y$, it is adjacent to every vertex in $Y$ except for $y_i$, meaning that for any vertex $z \in V(G)$ it holds that $z$ is in \tit{exactly} one set between $X_1, \ldots, X_{r - 1}$. Therefore, these sets describe a \tit{partition} of $G$.
 
-        % We observe that $X_1, \ldots, X_{r - 1}$ is a partition of 
+        \claim{
+            For all $i \in [r - 1]$, it holds that $X_i$ is an independent set.
+        }{
+            Fix $i \in [r - 1]$, and by way of contradiction suppose that $X_i$ is not an independent set, i.e. $\exists z, z' \in X_i \quad z \sim z'$. However, $z \in X_i \implies z \notin Y$, and by the previous observation we know that $z$ has $r - 2$ neighbors in $Y$, meaning that $z$ is adjacent to every vertex in $Y - \{y_i\}$ --- and the same reasoning can be applied on $z'$. Therefore, we have that $G[(Y - y_i) \cup \{z, z'\}]$ is $K_r$ because $z \sim z'$, contradicting the definition of $G$ $\lightning$.
+        }
 
-        TODO \todo{da finire}
-
+        Therefore, $G$ is $(r - 1)$-partite through the partition $X_1, \ldots, X_{r - 1}$.
+        
         \claim{
             If $G$ is EM$K_r$ and $(r-1)$-partite, then $G = T(n, r - 1)$.
         }{
@@ -2551,7 +2597,7 @@
             Fix a vertex $y \in X_j$, and construct the graph $G'$ starting from $G$ as follows: remove all the edges $\{y, x_i\}$ for $x_i \in X_i$, move $y$ into $X_i$, and add all the edges $\{y, x_j\}$ for $x_j \in X_j - \{y\}$. We observe that $G'$ is still $(r- 1)$-partite by construction, and by \cref{partite kr} we know that $G'$ cannot contain $K_r$ as subgraph. However, we observe that $$\abs{E(G')} = \abs{E(G)} - \abs{X_i} + \abs{X_j} - 1 > \abs{E(G)}$$ contradicting the fact that $G$ was EM$K_r$ $\lightning$.
         }
 
-        Finally, the statement follows from this claim.
+        Finally, the statement follows from this last claim.
     }
 
     \printbibliography % UNCOMMENT FOR BIBLIOGRAPHY
