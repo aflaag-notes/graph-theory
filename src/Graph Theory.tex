@@ -2491,6 +2491,14 @@
 
     TODO \todo{example}
 
+    \begin{framedprop}[label={turan bound}]{}
+        If $G$ is EM$K_r$, then $t(n, r - 1) \le \abs{E(G)}$.
+    \end{framedprop}
+    
+    \begin{proof}
+        We observe that $T(n, r - 1)$ is $(r - 1)$-partite in particular, therefore it does not contain $K_r$ as subgraph by \cref{partite kr}. However, since $G$ has $n$ vertices as well, and $G$ is EM$K_r$, it must be that $t(n , r - 1) \le \abs{E(G)}$.
+    \end{proof}
+
     Now, we are going to prove Turán's theorem, prove by \textcite{turan} in 1941.
     
     \begin{framedthm}{Turán's theorem}
@@ -2504,23 +2512,35 @@
     }{
         Assume that the statament is true for an EM$K_r$ graph of $r \le k \le n - 1$ vertices.
     }{
-        We are going to prove the statement for $n \ge r$. Note that $G$ is EM$K_r$, therefore by adding an edge between two non-adjacent vertices we obtain $K_r$ as subgraph of $G$; this must imply that $K_{r - 1}$ must be a subgraph of $G$. Hence, let $Y := \{y_1, \ldots, y_{r - 1}\}$ be the vertices such that $G[Y] = K_{r - 1}$, and in particular $\abs{V(G[Y])} = \binom{r - 1}{2}$. Moreover, note that any vertex outside $Y$ must have at most $r - 2$ neighbors in $Y$ --- if $z$ had $r - 1$ neighbors, $G[Y \cup \{z\}]$ would be a $K_r$, contradicting the definition of $G$.
+        We are going to prove the statement for $n \ge r$. Note that $G$ is EM$K_r$, therefore by adding an edge between two non-adjacent vertices we obtain $K_r$ as subgraph of $G$; this must imply that $K_{r - 1}$ must be a subgraph of $G$. Hence, let $Y := \{y_1, \ldots, y_{r - 1}\}$ be the vertices such that $G[Y] = K_{r - 1}$.
 
-        TODO \todo{da finire}
+        Now, since $G$ is EM$K_r$, then $G[V(G) - Y]$ does not contain $K_r$, therefore it must be that $\abs{E(G[V(G) - Y])}$ is at most the number of edges of a graph $H$ that is EM$K_r$ of $n - (r - 1)$ vertices. However, by strong inductive hypothesis we know that $H = T(n - (r - 1), r - 1)$, therefore $$\abs{E(G[V(G) - Y])} \le \abs{E(H)} = t(n - (r - 1), r - 1)$$
 
         \claim{
             If $n \ge r$, then $t(n, r) = t(n - r, r) + (n - r)(r - 1) + \binom{r}{2}$.
         }{
-            Let $X_1, \ldots, X_r$ be a partition of $T(n, r)$. Since $n \ge r$, we know that the independent sets are not empty, thus fix $x_i \in X_i$ for each $X_i$ of the partition, and let $Z := \{x_1, \ldots, x_r\}$. Now, we observe that
+            Let $X_1, \ldots, X_r$ be a partition of $T(n, r)$. Since $n \ge r$, we know that the independent sets are not empty, thus fix $x_i \in X_i$ for each $X_i$ of the partition, and let $Z := \{x_1, \ldots, x_r\}$. Now, we observe the following.
 
             \begin{itemize}
-                \item $G[Z] = K_r$, hence there are $\binom{r}{2}$ edges in $G[Z]$
-                \item $G[V(G) - Z] = T(n -r, r)$ since we only removed one vertex per independent set, thus there are $t(n - r, r)$ edges in $G - Z$
-                \item TODO \todo{da finire}
+                \item $G[Z] = K_r$, hence there are $\binom{r}{2}$ edges in $G[Z]$.
+                \item $G[V(G) - Z] = T(n -r, r)$ since we only removed one vertex per independent set, thus there are $t(n - r, r)$ edges in $G[V(G) - Z]$.
+                \item Fix an independent set $X_i$, and consider a vertex $y \in X_i$; this vertex has $r -1 $ neighbors in $Z$, i.e. $\abs{N(y) \cap Z} = r - 1$, because $T(n, r)$ is a complete $r$-partite graph, and the $r$-th node of $Z$ is in $X_i$ itself. Therefore, because there are $n- r$ vertices outside $G$, there are $(r - 1)(n- r)$ edges between $G[Z]$ and $G[V(G) - Z]$.
             \end{itemize}
 
-            Therefore \todo{da finire}
+            The claim follows from the above statements.
         }
+
+        Now, similar to what we did in the claim, we observe the following.
+
+        \begin{itemize}
+            \item $G[Y] = K_{r - 1}$, hence there are $\binom{r - 1}{2}$ edges in $G[Y]$.
+            \item $\abs{E(G[V(G) - Y])} \le t(n - (r - 1), r - 1)$ for the previous observation.
+            \item Any vertex $z \notin Y$ must have at most $r - 2$ neighbors in $Y$ --- if $z$ had $r - 1$ neighbors, $G[Y \cup \{z\}]$ would be a $K_r$, contradicting the definition of $G$. Hence, there are $(r - 2)(n - (r - 1))$ edges between $G[Y]$ and $G[V(G) - Y]$.
+        \end{itemize}
+
+        Therefore, we get that $$\abs{E(G)} \le \binom{ r- 1}{2} + (r - 2)(n - (r - 1)) + t(n - (r - 1), r - 1) = t(n , r - 1)$$ where the last inequality follows from the previous claim. Moreover, for \cref{turan bound} this upper bound is tight. However, if this bound is tight, it must be that the vertices $z \notin Y$ have \tit{exactly} $r - 2$ neighbors in $Y$; hence, for each $i \in [r - 1]$ let $X_i := \{z \in V(G) - Y \mid z \nsim y_i\} \cup \{y_i\}$ --- in particular $z$ is adjacent to every vertex in $Y$ except for $y_i$ because it has exacly $r - 2$ neighbors in $Y$.
+
+        % We observe that $X_1, \ldots, X_{r - 1}$ is a partition of 
 
         TODO \todo{da finire}
 
