@@ -311,5 +311,28 @@
     \field{journaltitle}{Fundamenta Mathematicae}
     \field{year}{1927}
   \endentry
+
+  \entry{turan}{article}{}
+    \name{author}{1}{}{%
+      {{hash=TP}{%
+         family={Tur{\'a}n},
+         familyi={T\bibinitperiod},
+         given={Paul},
+         giveni={P\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{TP1}
+    \strng{fullhash}{TP1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{Tur41}
+    \field{sortinit}{T}
+    \field{sortinithash}{T}
+    \field{pages}{436\bibrangedash 452}
+    \field{title}{On an external problem in graph theory}
+    \field{volume}{48}
+    \field{journaltitle}{Mat. Fiz. Lapok}
+    \field{year}{1941}
+  \endentry
 \enddatalist
 \endinput

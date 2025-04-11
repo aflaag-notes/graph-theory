@@ -2484,22 +2484,39 @@
     We will refer to the number of edges of $T(n, r)$ as follows \todo{why?} $$t(n, r) := \abs{E(T(n, r))} \sim \binom{n}{2} \dfrac{ r- 1}{r}$$
 
     \begin{frameddefn}{Edge maximum graph without $K_r$ subgraphs}
-        A graph $G$ is said to be \tbf{edge maximum without $K_r$ subgraph} --- denoted as $\mathrm{ex}(n, K_r)$, for short --- if for any $G'$ such that $\abs{V(G')} = \abs{V(G)}$ and $\abs{E(G')} > \abs{E(G)}$, $G'$ has $K_r$ as subgraph
+        A graph $G$ is said to be \tbf{edge maximum without $K_r$ subgraph} --- denoted as EM$K_r$, for short --- if for any $G'$ such that $\abs{V(G')} = \abs{V(G)}$ and $\abs{E(G')} > \abs{E(G)}$, $G'$ has $K_r$ as subgraph
     \end{frameddefn}
 
     In other words, $G$ is edge maximum without $K_r$ if by adding an edge to $G$ we obtain a graph $G'$ that contains $K_r$ as subgraph.
 
     TODO \todo{example}
 
-    \begin{framedprop}{}
-        If $G$ is $\mathrm{ex}(n, K_r)$ and $(r-1)$-partite, then $G = T(n, r - 1)$.
-    \end{framedprop}
+    Now, we are going to prove Turán's theorem, prove by \textcite{turan} in 1941.
+    
+    \begin{framedthm}{Turán's theorem}
+        If $G$ is EM$K_r$, then $G = T(n, r - 1)$.
+    \end{framedthm}
 
-    \begin{proof}
-        Since no edges can be added to $G$ without creating $K_r$ as subgraph of $G$, it must be that $G$ is complete $(r - 1)$-partite. Let $X_1, \ldots, X_r$ be the partition that defines $G$, and by way of contradiction suppose that $G \neq T(n, r - 1)$. By definition of Turán graph, this implies that for distinct $i, j \in [r]$ it holds that $\abs{\abs{X_i} - \abs{X_j}} \ge 2$, and without loss of generality suppose that $\abs{X_i} < \abs{X_j}$.
+    \proofstrind{
+        We proceed by induction on $n$.
+    }{
+        For the base case, we consider $n < r$; in fact, $G$ is EM$K_r$, and in particular it is edge maximum, therefore for $n < r$ we have that $G$ is $K_n$. Hence, $G = T(n, r - 1)$ --- some of the $r - 1$ partitions may be empty.
+    }{
+        Assume that the statament is true for an EM$K_r$ graph of $r \le k \le n - 1$ vertices.
+    }{
+        We are going to prove the statement for $n \ge r$. Note that $G$ is EM$K_r$, therefore by adding an edge between two non-adjacent vertices we obtain $K_r$ as subgraph of $G$; this must imply that $K_{r - 1}$ must be a subgraph of $G$. Hence, let $Y := \{y_1, \ldots, y_{r - 1}\}$ be the vertices such that $G[Y] = K_{r - 1}$, and in particular $\abs{V(G[Y])} = \binom{r - 1}{2}$. Moreover, note that any vertex outside $Y$ must have at most $r - 2$ neighbors in $Y$ --- if $z$ had $r - 1$ neighbors, $G[Y \cup \{z\}]$ would be a $K_r$, contradicting the definition of $G$.
 
-        Fix a vertex $y \in X_j$, and construct the graph $G'$ starting from $G$ as follows: remove all the edges $\{y, x_i\}$ for $x_i \in X_i$, move $y$ into $X_i$, and add all the edges $\{y, x_j\}$ for $x_j \in X_j - \{y\}$. We observe that $G'$ is still $(r- 1)$-partite by construction, and by \cref{partite kr} we know that $G'$ cannot contain $K_r$ as subgraph. However, we observe that $$\abs{E(G')} = \abs{E(G)} - \abs{X_i} + \abs{X_j} - 1 > \abs{E(G)}$$ contradictin the fact that $G$ was $\mathrm{ex}(n, K_r)$ $\lightning$.
-    \end{proof}
+        TODO \todo{da finire}
+
+        \claim{
+            If $G$ is EM$K_r$ and $(r-1)$-partite, then $G = T(n, r - 1)$.
+        }{
+            Since no edges can be added to $G$ without creating $K_r$ as subgraph of $G$, it must be that $G$ is complete $(r - 1)$-partite. Let $X_1, \ldots, X_r$ be the partition that defines $G$, and by way of contradiction suppose that $G \neq T(n, r - 1)$. By definition of Turán graph, this implies that for distinct $i, j \in [r]$ it holds that $\abs{\abs{X_i} - \abs{X_j}} \ge 2$, and without loss of generality suppose that $\abs{X_i} < \abs{X_j}$.
+            Fix a vertex $y \in X_j$, and construct the graph $G'$ starting from $G$ as follows: remove all the edges $\{y, x_i\}$ for $x_i \in X_i$, move $y$ into $X_i$, and add all the edges $\{y, x_j\}$ for $x_j \in X_j - \{y\}$. We observe that $G'$ is still $(r- 1)$-partite by construction, and by \cref{partite kr} we know that $G'$ cannot contain $K_r$ as subgraph. However, we observe that $$\abs{E(G')} = \abs{E(G)} - \abs{X_i} + \abs{X_j} - 1 > \abs{E(G)}$$ contradicting the fact that $G$ was EM$K_r$ $\lightning$.
+        }
+
+        Finally, the statement follows from this claim.
+    }
 
     \printbibliography % UNCOMMENT FOR BIBLIOGRAPHY
 
