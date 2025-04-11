@@ -2414,13 +2414,92 @@
 
     \section{Exercises}
     
-    \begin{framedprob}
+    \begin{framedprob}{}
         Given a $k$-connected graph $G$ such that $V(G) \ge 2k$, show that $G$ contains a cycle of length at least 2k.
     \end{framedprob}
 
     \solution{
         TODO \todo{da fare}
     }
+
+    \chapter{Extremal graph theory}
+
+    TODO \todo{introduction}
+
+    \begin{frameddefn}{Independent set}
+        TODO
+    \end{frameddefn}
+
+    TODO \todo{exampl}
+
+    TODO \todo{oss bip graphs}
+
+    \begin{frameddefn}{$r$-partite graph}
+        A graph is sait to be \tbf{$r$-partite} if it can be partitioned into $X_1, \ldots, X_r$ sets of vertices such that $X_1, \ldots, X_r$ are independent sets.
+
+        Moreover, the graph is said to be \tbf{complete $r$-partite} if forall $i, j \in [r]$ such that $i \neq j$, if $x \in X_i$ and $y \in X_j$ then $x \sim y$.
+    \end{frameddefn}
+
+    TODO \todo{example}
+
+    % \begin{figure}[H]
+    %     \centering
+    %     \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.75cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
+    %
+    %         \node[circle, draw] (1) []{};
+    %         \node[circle, draw] (2) [right of = 1]{};
+    %         \node[circle, draw] (3) [right of = 2]{};
+    %         \node[circle, draw] (4) [right of = 3]{};
+    %         % \node[circle, draw] (5) [left of = 1]{};
+    %
+    %         \draw[-] (1) to (2);
+    %         \draw[-] (1) to (3);
+    %         \draw[-] (2) to (4);
+    %         \draw[-] (1) to (5);
+    %         \draw[-] (3) to (4);
+    %         \draw[-] (3) to (5);
+    %
+    %         ;
+    %     \end{tikzpicture}
+    %     \caption{A simple graph.}
+    %     \label{first graph}
+    % \end{figure}
+
+    \begin{framedprop}[label={partite kr}]{}
+        An $(r - 1)$-partite graph cannot contain $K_r$ as subgraph.
+    \end{framedprop}
+    
+    \begin{proof}
+        Let $G$ by an $(r-1)$-partite graph; by definition, $G$ is composed of $r - 1$ independent sets, therefore any subgraph of $G$ that has $r$ vertices $x_1, \ldots, x_r$ must have 2 vertices lying in the same independent set by the pigeonhole principle, meaning that any subgraph of vertices $x_1, \ldots, x_r$ will have two non-adjacent vertices.
+    \end{proof}
+
+    In particular, we are going to define the following \href{https://en.wikipedia.org/wiki/Tur%C3%A1n_graph}{type of graph}, named after \href{https://en.wikipedia.org/wiki/P%C3%A1l_Tur%C3%A1n}{Pál Turán}.
+
+    \begin{frameddefn}{Turán graph}
+        The Turán graph $T(n, r)$ is the complete $r$-partite graph that has $n$ nodes, partitioned into $X_1, \ldots, X_r$, such that for all $i, j \in [r]$, if $i \neq j$ then $\abs{\abs{X_i} - \abs{X_j}} \le 1$ --- i.e. the cardinality of the partitions are as close to equal as possible.
+    \end{frameddefn}
+
+    TODO \todo{example}
+
+    We will refer to the number of edges of $T(n, r)$ as follows \todo{why?} $$t(n, r) := \abs{E(T(n, r))} \sim \binom{n}{2} \dfrac{ r- 1}{r}$$
+
+    \begin{frameddefn}{Edge maximum graph without $K_r$ subgraphs}
+        A graph $G$ is said to be \tbf{edge maximum without $K_r$ subgraph} --- denoted as $\mathrm{ex}(n, K_r)$, for short --- if for any $G'$ such that $\abs{V(G')} = \abs{V(G)}$ and $\abs{E(G')} > \abs{E(G)}$, $G'$ has $K_r$ as subgraph
+    \end{frameddefn}
+
+    In other words, $G$ is edge maximum without $K_r$ if by adding an edge to $G$ we obtain a graph $G'$ that contains $K_r$ as subgraph.
+
+    TODO \todo{example}
+
+    \begin{framedprop}{}
+        If $G$ is $\mathrm{ex}(n, K_r)$ and $(r-1)$-partite, then $G = T(n, r - 1)$.
+    \end{framedprop}
+
+    \begin{proof}
+        Since no edges can be added to $G$ without creating $K_r$ as subgraph of $G$, it must be that $G$ is complete $(r - 1)$-partite. Let $X_1, \ldots, X_r$ be the partition that defines $G$, and by way of contradiction suppose that $G \neq T(n, r - 1)$. By definition of Turán graph, this implies that for distinct $i, j \in [r]$ it holds that $\abs{\abs{X_i} - \abs{X_j}} \ge 2$, and without loss of generality suppose that $\abs{X_i} < \abs{X_j}$.
+
+        Fix a vertex $y \in X_j$, and construct the graph $G'$ starting from $G$ as follows: remove all the edges $\{y, x_i\}$ for $x_i \in X_i$, move $y$ into $X_i$, and add all the edges $\{y, x_j\}$ for $x_j \in X_j - \{y\}$. We observe that $G'$ is still $(r- 1)$-partite by construction, and by \cref{partite kr} we know that $G'$ cannot contain $K_r$ as subgraph. However, we observe that $$\abs{E(G')} = \abs{E(G)} - \abs{X_i} + \abs{X_j} - 1 > \abs{E(G)}$$ contradictin the fact that $G$ was $\mathrm{ex}(n, K_r)$ $\lightning$.
+    \end{proof}
 
     \printbibliography % UNCOMMENT FOR BIBLIOGRAPHY
 
