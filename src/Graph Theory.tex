@@ -2424,7 +2424,36 @@
 
     \chapter{Extremal graph theory}
 
-    TODO \todo{introduction}
+    \section{Edge maximum graphs without $K_n$}
+
+    A fundamental question in graph theory is \tbf{determining the existence} of cliques within a given graph. In general, finding the largest clique in a graph is an \NPclass-Hard problem. This leads to a natural question: under what conditions can we guarantee the existence of a $K_n$ subgraph?
+
+    \href{https://en.wikipedia.org/wiki/P%C3%A1l_Tur%C3%A1n}{Pál Turán} addressed this by providing an exact upper bound on the number of edges a graph can have without containing a clique of a given size. But before discussing his results, let us first introduce some important definitions.
+
+    \begin{frameddefn}{Edge maximum graph without $K_r$ subgraphs}
+        A graph $G$ is said to be \tbf{edge maximum without $K_r$ subgraph} --- denoted as EM$K_r$, for short --- if for any $G'$ such that $\abs{V(G')} = \abs{V(G)}$ and $\abs{E(G')} > \abs{E(G)}$, $G'$ has $K_r$ as subgraph.
+    \end{frameddefn}
+
+    In other words, $G$ is edge maximum without $K_r$ if by adding an edge to $G$ we obtain a graph $G'$ that contains $K_r$ as subgraph.
+
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.75cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
+
+            \node[circle, draw] (1) []{};
+            \node[circle, draw] (2) [right of = 1]{};
+            \node[circle, draw] (4) [below of = 1]{};
+            \node[circle, draw] (5) [right of = 4]{};
+
+            \draw[-] (1) to (4);
+            \draw[-] (1) to (5);
+            \draw[-] (2) to (4);
+            \draw[-] (2) to (5);
+
+            ;
+        \end{tikzpicture}
+        \caption{For instance, in this graph clearly there are no cliques as subgraph, and if we add one edge we construct $K_3$ as subgraph.}
+    \end{figure}
 
     \begin{frameddefn}{Independent set}
         Given a graph $G$, a subset $X \subseteq V(G)$ is said to be an \tbf{independent set} if for all $u$ and $v$ in $X$, it holds that $u \nsim v$.
@@ -2457,7 +2486,7 @@
 
     Note that we already encountered independent sets when discussing bipartite graphs: in fact, if $G$ is bipartite through the bipartition $(A, B)$, we observe that both $A$ and $B$ must be independent sets.
 
-    TODO \todo{interlude}
+    Now, consider the following type of graphs.
 
     \begin{frameddefn}{$r$-partite graph}
         A graph is sait to be \tbf{$r$-partite} if it can be partitioned into $X_1, \ldots, X_r$ sets of vertices such that $X_1, \ldots, X_r$ are independent sets.
@@ -2465,30 +2494,59 @@
         Moreover, the graph is said to be \tbf{complete $r$-partite} if forall $i, j \in [r]$ such that $i \neq j$, if $x \in X_i$ and $y \in X_j$ then $x \sim y$.
     \end{frameddefn}
 
-    TODO \todo{example}
+    \begin{figure}[H]
+        \centering
+        \resizebox{0.6\textwidth}{!}{
+            \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=2cm,thick,main node/.style={scale=3,circle,draw,font=\sffamily\normalsize}]
+                \node[main node] (1) [fill = Carmine,]{};
+                \node[main node] (2) [fill = Carmine, below left of = 1]{};
+                \node[main node] (3) [fill = Carmine, below left of = 2]{};
+                \node[main node] (4) [fill = BlueLagoon, below right of = 3, yshift = -40, xshift = 20]{};
+                \node[main node] (5) [fill = BlueLagoon, right of = 4]{};
+                \node[main node] (6) [fill = BlueLagoon, right of = 5]{};
+                \node[main node] (7) [fill = BlueLagoon, right of = 6]{};
+                \node[main node] (8) [fill = BlueLagoon, right of = 7]{};
+                \node[main node] (9) [fill = Green, above right of = 8, yshift = 60]{};
+                \node[main node] (10) [fill = Green, above left of = 9]{};
+                \path[every node/.style={font=\sffamily\small}]
+                    (1) edge (4)
+                    (1) edge (5)
+                    (1) edge (6)
+                    (1) edge (7)
+                    (1) edge (8)
+                    (1) edge (9)
+                    (1) edge (10)
+                    (2) edge (4)
+                    (2) edge (5)
+                    (2) edge (6)
+                    (2) edge (7)
+                    (2) edge (8)
+                    (2) edge (9)
+                    (2) edge (10)
+                    (3) edge (4)
+                    (3) edge (5)
+                    (3) edge (6)
+                    (3) edge (7)
+                    (3) edge (8)
+                    (3) edge (9)
+                    (3) edge (10)
+                    (9) edge (4)
+                    (9) edge (5)
+                    (9) edge (6)
+                    (9) edge (7)
+                    (9) edge (8)
+                    (10) edge (4)
+                    (10) edge (5)
+                    (10) edge (6)
+                    (10) edge (7)
+                    (10) edge (8)
+                ;
+            \end{tikzpicture}
+        }
+        \caption{A complete 3-partite graph.}
+    \end{figure}
 
-    % \begin{figure}[H]
-    %     \centering
-    %     \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.75cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
-    %
-    %         \node[circle, draw] (1) []{};
-    %         \node[circle, draw] (2) [right of = 1]{};
-    %         \node[circle, draw] (3) [right of = 2]{};
-    %         \node[circle, draw] (4) [right of = 3]{};
-    %         % \node[circle, draw] (5) [left of = 1]{};
-    %
-    %         \draw[-] (1) to (2);
-    %         \draw[-] (1) to (3);
-    %         \draw[-] (2) to (4);
-    %         \draw[-] (1) to (5);
-    %         \draw[-] (3) to (4);
-    %         \draw[-] (3) to (5);
-    %
-    %         ;
-    %     \end{tikzpicture}
-    %     \caption{A simple graph.}
-    %     \label{first graph}
-    % \end{figure}
+    The following proposition shows that such graphs cannot contain cliques as subgraphs.
 
     \begin{framedprop}[label={partite kr}]{}
         An $(r - 1)$-partite graph cannot contain $K_r$ as subgraph.
@@ -2498,40 +2556,113 @@
         Let $G$ by an $(r-1)$-partite graph; by definition, $G$ is composed of $r - 1$ independent sets, therefore any subgraph of $G$ that has $r$ vertices $x_1, \ldots, x_r$ must have 2 vertices lying in the same independent set by the pigeonhole principle, meaning that any subgraph of vertices $x_1, \ldots, x_r$ will have two non-adjacent vertices.
     \end{proof}
 
-    In particular, we are going to define the following type of graph, named after \href{https://en.wikipedia.org/wiki/P%C3%A1l_Tur%C3%A1n}{Pál Turán}.
+    From this proposition, it follows that the number of edges of a \tit{complete} $(r - 1)$-partite graph provides a \tit{lower bound} for the maximum number of edges that a graph can have before inducing $K_r$ as subgraph. Therefore, consider the following definition.
 
     \begin{frameddefn}{Turán graph}
         The \href{https://en.wikipedia.org/wiki/Tur%C3%A1n_graph}{Turán graph} $T(n, r)$ is the complete $r$-partite graph that has $n$ nodes, partitioned into $X_1, \ldots, X_r$, such that for all $i, j \in [r]$, if $i \neq j$ then $\abs{\abs{X_i} - \abs{X_j}} \le 1$ --- i.e. the cardinality of the partitions are as close to equal as possible.
     \end{frameddefn}
 
-    TODO \todo{example}
-
-    We will refer to the number of edges of $T(n, r)$ as follows \todo{why?} $$t(n, r) := \abs{E(T(n, r))} \sim \binom{n}{2} \dfrac{ r- 1}{r}$$
-
-    \begin{frameddefn}{Edge maximum graph without $K_r$ subgraphs}
-        A graph $G$ is said to be \tbf{edge maximum without $K_r$ subgraph} --- denoted as EM$K_r$, for short --- if for any $G'$ such that $\abs{V(G')} = \abs{V(G)}$ and $\abs{E(G')} > \abs{E(G)}$, $G'$ has $K_r$ as subgraph
-    \end{frameddefn}
-
-    In other words, $G$ is edge maximum without $K_r$ if by adding an edge to $G$ we obtain a graph $G'$ that contains $K_r$ as subgraph.
-
     \begin{figure}[H]
         \centering
-        \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.75cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
+        \resizebox{0.45\textwidth}{!}{
+            \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=2cm,thick,main node/.style={scale=1,circle,draw,font=\sffamily\normalsize}]
+                \node[main node] (1) [fill = Carmine,]{};
+                \node[main node] (2) [fill = Carmine, below of=1] {};
+                \node[main node] (3) [fill = Carmine, below of=2] {};
 
-            \node[circle, draw] (1) []{};
-            \node[circle, draw] (2) [right of = 1]{};
-            \node[circle, draw] (4) [below of = 1]{};
-            \node[circle, draw] (5) [right of = 4]{};
+                \node[main node] (4) [fill = BlueLagoon, below right of = 3, yshift = -20, xshift=40]{};
+                \node[main node] (5) [fill = BlueLagoon, right of=4] {};
+                \node[main node] (6) [fill = BlueLagoon, right of=5] {};
 
-            \draw[-] (1) to (4);
-            \draw[-] (1) to (5);
-            \draw[-] (2) to (4);
-            \draw[-] (2) to (5);
+                \node[main node] (7) [fill = Green, above right of = 6, yshift = 20, xshift=40]{};
+                \node[main node] (8) [fill = Green, above of=7] {};
+                \node[main node] (9) [fill = Green, above of=8] {};
 
-            ;
-        \end{tikzpicture}
-        \caption{For instance, in this graph clearly there are no cliques as subgraph, and if we add one edge we construct $K_3$ as subgraph.}
+                \node[main node] (10) [fill = Orange, above left of = 9, yshift = 20, xshift=-10]{};
+                \node[main node] (11) [fill = Orange, left of=10] {};
+                \node[main node] (12) [fill = Orange, left of=11] {};
+                \node[main node] (13) [fill = Orange, left of=12] {};
+            
+                \path[every node/.style={font=\sffamily\small}]
+                    (1) edge (4)
+                    (1) edge (5)
+                    (1) edge (6)
+                    (1) edge (7)
+                    (1) edge (8)
+                    (1) edge (9)
+                    (1) edge (10)
+                    (1) edge (11)
+                    (1) edge (12)
+                    (1) edge (13)
+
+                    (2) edge (4)
+                    (2) edge (5)
+                    (2) edge (6)
+                    (2) edge (7)
+                    (2) edge (8)
+                    (2) edge (9)
+                    (2) edge (10)
+                    (2) edge (11)
+                    (2) edge (12)
+                    (2) edge (13)
+
+                    (3) edge (4)
+                    (3) edge (5)
+                    (3) edge (6)
+                    (3) edge (7)
+                    (3) edge (8)
+                    (3) edge (9)
+                    (3) edge (10)
+                    (3) edge (11)
+                    (3) edge (12)
+                    (3) edge (13)
+
+                    (4) edge (7)
+                    (4) edge (8)
+                    (4) edge (9)
+                    (4) edge (10)
+                    (4) edge (11)
+                    (4) edge (12)
+                    (4) edge (13)
+
+                    (5) edge (7)
+                    (5) edge (8)
+                    (5) edge (9)
+                    (5) edge (10)
+                    (5) edge (11)
+                    (5) edge (12)
+                    (5) edge (13)
+
+                    (6) edge (7)
+                    (6) edge (8)
+                    (6) edge (9)
+                    (6) edge (10)
+                    (6) edge (11)
+                    (6) edge (12)
+                    (6) edge (13)
+
+                    (7) edge (10)
+                    (7) edge (11)
+                    (7) edge (12)
+                    (7) edge (13)
+
+                    (8) edge (10)
+                    (8) edge (11)
+                    (8) edge (12)
+                    (8) edge (13)
+
+                    (9) edge (10)
+                    (9) edge (11)
+                    (9) edge (12)
+                    (9) edge (13)
+                ;
+            \end{tikzpicture}
+        }
+        \caption{The Turán graph $T(13,4)$.}
     \end{figure}
+
+    We will refer to the number of edges of $T(n, r)$ as follows $$t(n, r) := \abs{E(T(n, r))} \sim \binom{n}{2} \dfrac{ r- 1}{r}$$ Note that, by definition, if $n \le r$ then $T(n, r)$ can be partitioned into $n$ independent sets that contain exactly 1 vertex each, and $r - n$ empty sets, meaning that $T(n, r) = K_n$.
+
 
     \begin{framedprop}[label={turan bound}]{}
         If $G$ is EM$K_r$, then $t(n, r - 1) \le \abs{E(G)}$.
@@ -2541,7 +2672,7 @@
         We observe that $T(n, r - 1)$ is $(r - 1)$-partite in particular, therefore it does not contain $K_r$ as subgraph by \cref{partite kr}. However, since $G$ has $n$ vertices as well, and $G$ is EM$K_r$, it must be that $t(n , r - 1) \le \abs{E(G)}$.
     \end{proof}
 
-    Finally, we are going to prove Turán's theorem, proved by \textcite{turan} in 1941.
+    Turán graphs are important not only because of the \tit{lower bound} we discussed for \cref{partite kr}, but also because Turán was able to prove in 1941 \cite{turan} that any EM$K_r$ graph \tit{must be} exactly $T(n, r- 1)$.
     
     \begin{framedthm}{Turán's theorem}
         If $G$ is EM$K_r$, then $G = T(n, r - 1)$.

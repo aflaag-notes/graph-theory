@@ -28,3 +28,4 @@
 \contentsline {subsection}{\numberline {3.2.2}Erdős-Pósa theorem}{46}{subsection.3.2.2}%
 \contentsline {section}{\numberline {3.3}Exercises}{50}{section.3.3}%
 \contentsline {chapter}{\numberline {4}Extremal graph theory}{51}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Edge maximum graphs without $K_n$}{51}{section.4.1}%
