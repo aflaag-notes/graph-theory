@@ -2302,10 +2302,10 @@
     Now, consider the following definition.
 
     \begin{frameddefn}{Cut}
-        Given a graph $G$, and a subset $S \subseteq V(G)$, a the \tbf{cut} induced by $S$ is defined as follows $$\mathrm{cut}(S) := \{e \in E(G) \mid \abs{S \cap e} = 1\}$$
+        Given an undirected graph $G = (V, E)$, and two subsets $S, T \subseteq V$, the \tbf{cut} induced by $S$ and $T$ on $G$ is defined as follows $$\mathrm{cut}(S, T) = \{e \in E : \abs{S \cap e} = \abs{T \cap e} = 1\}$$ In the case in which $T = \overline S = V - S$ we will simply write $\mathrm{cut}(S) = \mathrm{cut}(S, \overline S)$.
     \end{frameddefn}
 
-    In other words, a \tit{cut} induced by a set $S$ of vertices is the set of edges that have exactly one endpoint in $S$.
+    In other words, a \tit{cut} induced by a two sets $S$ and $T$ of vertices is the set of edges that have one endpoint in $S$ and the other one in $T$.
 
     \begin{figure}[H]
         \centering
