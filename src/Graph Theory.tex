@@ -284,6 +284,14 @@
         Trivially, the sum of the degrees counts every edge in $E$ exactly twice, once for each of the 2 endpoints.
     \end{proof}
 
+    \begin{framedcor}[label={cor handshaking}]{}
+        Given a graph $G = (V, E)$, it holds that $\abs{E} \ge \tfrac{\delta \cdot n}{2}$.
+    \end{framedcor}
+
+    \begin{proof}
+        By the Handshaking lemma, we have that $$2 \abs E = \sum_{x \in V}{\deg(x)} \ge \delta \cdot n \iff \abs E \ge \dfrac{\delta \cdot n}{2}$$
+    \end{proof}
+
     \begin{frameddefn}{$k$-regular graph}
         A graph $G$ is said to be \tbf{$k$-regular} if every vertex of $G$ has degree $k$.
     \end{frameddefn}
@@ -1785,7 +1793,7 @@
         We will prove the second statement by using \cref{hall}. By way of contradiction, assume that there is a set $S \subseteq V(G)$ such that $\abs S > \abs{\mathcal N(S)} \implies k \abs S > k \abs{\mathcal N (S)}$. Applying the same argument as before, the number of edges $ab$ such that $a \in S, b \in \mathcal N (S)$ is exactly $k \abs S$, hence by the pigeonhole principle there must be at least one vertex in $\mathcal N (S)$ that has more than $k$ vertices, contradicting the $k$-regularity of $G$.
     \end{proof}
 
-    \chapter{TODO}
+    \chapter{Graph packing}
 
     TODO \todo{introduction}
     
@@ -2243,7 +2251,7 @@
     \end{framedthm}
 
     \begin{proof}
-        If $G$ is 3-connected, then by \cref{kconn} we know that $\delta_G \ge 3$, and by \cref{min deg 2} this means that in $G$ there is a cycle $C$. Moreover, by 3-connectivity of $G$, we know that $G$ cannot be a cycle itself, therefore there must be at least one vertex $v \notin V(C)$. Now, by 3-connectivity agin we can apply \cref{menger cor}, obtaining 3 $\{v\}$-$V(C')$ paths $P_1$, $P_2$ and $P_3$ that only intersect in $v$, and finally $G[V(C) \cup V(P_1) \cup V(P_2) \cup V(P_3)]$ is a subdivision of $K_4$.
+        If $G$ is 3-connected, then by \cref{kconn} we know that $\delta(G) \ge 3$, and by \cref{min deg 2} this means that in $G$ there is a cycle $C$. Moreover, by 3-connectivity of $G$, we know that $G$ cannot be a cycle itself, therefore there must be at least one vertex $v \notin V(C)$. Now, by 3-connectivity agin we can apply \cref{menger cor}, obtaining 3 $\{v\}$-$V(C')$ paths $P_1$, $P_2$ and $P_3$ that only intersect in $v$, and finally $G[V(C) \cup V(P_1) \cup V(P_2) \cup V(P_3)]$ is a subdivision of $K_4$.
     \end{proof}
 
     \subsection{Erdős-Pósa theorem}
@@ -2338,7 +2346,7 @@
     \proofind{
         We proceed by induction on $k$.
     }{
-        For $k = 1$, if $H$ is 3-regular then $\delta_H = 3$, therefore by \cref{min deg 2} it must contain a cycle.
+        For $k = 1$, if $H$ is 3-regular then $\delta(H) = 3$, therefore by \cref{min deg 2} it must contain a cycle.
     }{
         Assume that the statement holds for $k - 1$.
     }{
@@ -2347,7 +2355,7 @@
         \claim{
             $H - C$ has a 3-regular graph $H'$ as topological minor, such that $\abs{V(H')} \ge \abs{V(H)}- 2\abs{V(C)}$.
         }{
-            Starting with $V := V(C)$, as long as $H[V(H) - V]$ contains vertices of degree at most 1, move them into $V$; let $M$ be the number of moved vertices. Then, since we are adding vertices to $V$, we have that $\abs{\mathrm{cut}(V)} \le \abs{\mathrm{cut}(C)} - M$. We observe that, by construction $\delta_{H[V(H)- V]} \ge 2$, and the number of vertices that have degree 2 in $H[V(H) - V]$ is at most $\abs{\mathrm{cut}(V)} \le \abs{\mathrm{cut}(C)} - M$.
+            Starting with $V := V(C)$, as long as $H[V(H) - V]$ contains vertices of degree at most 1, move them into $V$; let $M$ be the number of moved vertices. Then, since we are adding vertices to $V$, we have that $\abs{\mathrm{cut}(V)} \le \abs{\mathrm{cut}(C)} - M$. We observe that, by construction $\delta(H[V(H)- V) \ge 2$, and the number of vertices that have degree 2 in $H[V(H) - V]$ is at most $\abs{\mathrm{cut}(V)} \le \abs{\mathrm{cut}(C)} - M$.
 
             Lastly, let $H'$ be the graph obtained from $H[V(H) - V]$ by suppressing all the vertices of degree 2; then we have that $H'$ contains at least the vertices of $H$, without the vertices of $C$, the $M$ vertices that we moved during the procedure, and the vertices of degree 2 that we suppressed. In other words, we have that $$\abs{V(H')} \ge \abs{V(H)} - \abs{V(C)} - M - (\abs{\mathrm{cut}(C)}-M) \ge \abs{V(H)} - 2\abs{V(C)}$$ Note that the last inquality comes from the observation that $\abs{\mathrm{cut}(C)} \le \abs{V(C)}$, which follows by 3-regularity of $H$
 
@@ -2775,18 +2783,23 @@
         \claim{
             It holds that $\abs{E(G[X])} \ge (2k - 1)(\abs X - k)$ or $\abs{E(G[Y])} \ge (2k - 1)(\abs Y - k)$.
         }{
-            By way of contradiction, suppose that $\abs{E(G[X])} \le (2k - 1)(\abs - k) - 1$ and $\abs{E(G[Y])} \le (2k - 1)(\abs Y - k) - 1$. We observe that $$$$ Thus, we have that
+            By way of contradiction, suppose that $\abs{E(G[X])} \le (2k - 1)(\abs X - k) - 1$ and $\abs{E(G[Y])} \le (2k - 1)(\abs Y - k) - 1$. Thus, we have that
             \begin{equation*}
                 \begin{split}
                     \abs{E(G)} &\le \abs{E(G[X])} + \abs{E(G[Y])} \\
-                               &\le \abs{E(G[X])} \le (2k - 1)(\abs - k) - 1 + \abs{E(G[Y])} \le (2k - 1)(\abs Y - k) - 1 \\
+                               &\le (2k - 1)(\abs X - k) - 1 + (2k - 1)(\abs Y - k) - 1 \\
                                &= (2k - 1) (\abs X + \abs Y - 2k) - 2 \\
-                               &TODO
+                               &= (2k - 1) (\abs{X \cup Y} + \abs{X \cap Y} - 2k) - 2 \\
+                               &\le (2k - 1) (n + k - 1 - 2k) - 2\\
+                               &= (2k - 1) (n - k -1) - 2 \\
+                               &< (2k - 1)(n - k)
                 \end{split}
             \end{equation*}
 
-            TODO \todo{da finire (anche lo split)}
+            TODO \todo{da finire}
         }
+
+        TODO \todo{da finire}
 
         Finally, by the claim we can apply the inductive hypothesis on at least one between $X$ or $Y$, concluding the proof.
     }
@@ -2949,12 +2962,37 @@
 
         \begin{itemize}
             \item For $p = 2$, we see that $\abs{E(G)} \ge (2 - 2)n - \binom{2 - 1}{2} + 1 = 1$, therefore $G$ contains at least 1 edge, and in fact $K_2$ is nothing more than a single edge.
-            \item For $p = 3$, we have that $\abs{E(G)} \ge (3 - 2) n - \binom{3 - 1}{2} + 1 = n - 1 + 1 = n$. Thus, by \cref{m n - 1} this implies that $G$ is not a tree (nor a forest), and in particular it is not acyclic, meaning that it contains at least one cycle $C$. Lastly, if we contract all but 3 edges on the cycle we obtain $K_3$.
+            \item For $p = 3$, we have that $\abs{E(G)} \ge (3 - 2) n - \binom{3 - 1}{2} + 1 = n - 1 + 1 = n$. Thus, by \cref{m n - 1} this implies that $G$ is not a tree (nor a forest), and in particular it is not acyclic, meaning that it contains at least one cycle $C$. Hence, if we contract all but 3 edges on $C$ we obtain $K_3$.
             \item For $p = 4$, we have that $\abs{E(G)} \ge (4 - 2)n - \binom{4 - 1}{2} + 1 = 2n - 3 + 1 = 2n - 2$. We proceed by induction on $n$.
 
                 We observe that if $n = 2$ then $\abs{E(G)} \ge 2 \cdot 2 - 2 = 2$ which is impossible with only 2 vertices, and similarly if $n = 3$ then $\abs{E(G)} \ge 2 \cdot 3 - 2 = 4$ which is impossible with only 3 vertices. Hence, to satisfy the edge bound $n$ must be at least 4. Therefore, for the base case assume that $n = 4$, which means that $\abs{E(G)} \ge 2 \cdot 4 - 2 = 6$, which implies that $G = K_4$.
 
                 Now, assume that the property is true for a graph of $n - 1$ vertices and consider a graph $G$ of $n$ vertices such that $n \ge 5$. Suppose that $\abs{E(G)} > 2n - 2$, and fix an edge $e \in E(G)$. Now, consider the graph $G - \{e\}$: clearly, this graph has still $n$ vertices but since we removed an edge it holds that $\abs{E(G - \{e\})} > 2n - 2 - 1 > 2n - 3 \iff \abs{E(G - \{e\})} \ge 2n - 2$, therefore we can apply the \todo{THIS IS FALSE}
+
+                Therefore, we may assume that $\abs{E(G)} = 2n - 2$. Fix an edge $e \in E(G)$, and consider the contracted graph $G/e$: this graph has $n - 1$ vertices, hence if $\abs{E(G/e)} \ge 2(n - 1) - 2$ by the inductive hypothesis the theorem holds trivially. Thus, we may assume that $\abs{E(G/e)} < 2(n - 1) - 2 = 2n - 4 \iff \abs{E(G/e)} \le 2n - 5$, and since we are assuming that $\abs{E(G)} = 2n - 2$, this means that by contracting $e$ we removed at least 3 edges from $G$ --- one of which is $e$ itself. Therefore, we know that in $G$ we have the following structure
+
+                \begin{figure}[H]
+                    \centering
+                    \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.5cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
+
+                        \node[circle, draw] (1) []{};
+                        \node[circle, draw] (2) [right of = 1]{};
+                        \node[circle, draw] (3) [below of = 1]{};
+                        \node[circle, draw] (4) [below of = 2]{};
+
+                        \draw[-] (1) to node[above]{$e$} (2);
+                        \draw[-] (1) to (3);
+                        \draw[-] (1) to (4);
+                        \draw[-] (2) to (3);
+                        \draw[-] (2) to (4);
+
+                        ;
+                    \end{tikzpicture}
+                \end{figure}
+
+                and in particular, the endpoints of $e$ must have at least two common neighbors. This implies that $e$ is contained in at least two distinct $K_3$'s. By applying the same argument on every edge $e$ of $G$, we get that $\delta \ge 3$ because the degree of the endpoints of $e$ must be at least 3. Moreover, if $\delta \ge 4$, by \cref{cor handshaking} we have that $\abs{E(G)} \ge \dfrac{4n}{2} = 2n$ which is greater than $2n - 2$, contradicting our assumption that $\abs{E(G)} = 2n - 2$. This implies that $\delta = 3$. Finally, fix a vertex $v$ of degree 3: TODO \todo{da finire}
+            \item For $p = 5$ TODO \todo{da finire}
+            \item Lastly, the cases for $p = 6$ and $p = 7$ were proved by 
         \end{itemize}
     \end{proof}
 
