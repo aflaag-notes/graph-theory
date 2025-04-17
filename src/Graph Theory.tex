@@ -214,10 +214,10 @@
     \end{figure}
 
     \begin{frameddefn}{Induced subgraph}
-        Given a graph $G = (V, E)$, a subgraph $G' = (V', E')$ of $G$ is \tbf{induced} if every edge of $G$ with both ends in $V$ is an edge of $V'$.
+        Given a graph $G = (V, E)$, and a set of vertices $S \subseteq V$, then $G[S]$ represents the \tbf{subgraph induced by $S$ on $G$}, and it is obtained by removing from $G$ all the nodes of $V - S$ --- and their corresponding edges.
     \end{frameddefn}
 
-    This definition is \tit{stricter} than the previous one: in fact, the last graph is \tit{not} an example of an induced subgraph, but the following is:
+    In other words, a subgraph $G' = (V', E')$ of $G$ is \tbf{induced} if every edge of $G$ with both ends in $V$ is an edge of $V'$. We observe that this definition is \tit{stricter} than the previous one: in fact, the last graph is \tit{not} an example of an induced subgraph, but the following is:
 
     \begin{figure}[H]
         \centering
@@ -268,7 +268,7 @@
 
     then, the induced subgraph in \cref{induced subgraph first graph} would have been referred to as $G[\{1, 3, 5\}]$.
 
-    Intuitively, two vertices $x, y \in V$ are said to be \tbf{adjacent}, if there is an edge $xy \in E$, and we write $x \sim y$. If there is no such edge, we write $x \nsim y$ for non-adjacency. The \tbf{neighborhood} of a vertex $x \in V$ is the set of vertices that are adjacent to $x$, and it will be indicated as follows $$\mathcal N (x) := \{y \in V \mid x \sim y\}$$ Similarly, the neighborhood of a set of vertices will be defined as follows $$\forall S \subseteq V \quad \mathcal N(S) := \bigcup_{v \in S}{\mathcal N (v)}$$ The \tbf{degree} of a vertex $x \in V$, denoted with $\deg(x)$, is exactly $\abs{\mathcal N (x)}$. We will use the following notation for the \tbf{minimum} and \tbf{maximum} degree of a graph, respectively
+    Intuitively, two vertices $x, y \in V$ are said to be \tbf{adjacent}, if there is an edge $xy \in E$, and we write $x \sim y$. If there is no such edge, we write $x \nsim y$ for non-adjacency and we say that $xy$ is an \tbf{anti-edge}. The \tbf{neighborhood} of a vertex $x \in V$ is the set of vertices that are adjacent to $x$, and it will be indicated as follows $$\mathcal N (x) := \{y \in V \mid x \sim y\}$$ Similarly, the neighborhood of a set of vertices will be defined as follows $$\forall S \subseteq V \quad \mathcal N(S) := \bigcup_{v \in S}{\mathcal N (v)}$$ The \tbf{degree} of a vertex $x \in V$, denoted with $\deg(x)$, is exactly $\abs{\mathcal N (x)}$. We will use the following notation for the \tbf{minimum} and \tbf{maximum} degree of a graph, respectively
 
     \begin{center}
         \begin{tabular}{ccc}
@@ -614,13 +614,13 @@
     \end{proof}
 
     \begin{framedlem}[label={tree without leaf}]{}
-        Given a tree $T$, and a leaf $v$ of $T$, it holds that $T - \{v\}$ is still a tree.
+        Given a tree $T$, and a leaf $v$ of $T$, it holds that $T[V(T) - \{v\}]$ is still a tree.
     \end{framedlem}
 
     \begin{proof}
-        Since $T$ is acyclic by definition, $T - \{v\}$ is still acyclic, we just need to prove that $T - \{v\}$ is still connected. By way of contradiction, assume that in $T - \{v\}$ there exist two vertices $x$ and $y$ such that there is no path between them. However, since $T$ is connected, there is a path $P$ of the form $x \to y$ in $T$.
+        Since $T$ is acyclic by definition, $T[V(T) - \{v\}]$ is still acyclic, we just need to prove that $T[V(T) - \{v\}]$ is still connected. By way of contradiction, assume that in $T[V(T) - \{v\}]$ there exist two vertices $x$ and $y$ such that there is no path between them. However, since $T$ is connected, there is a path $P$ of the form $x \to y$ in $T$.
 
-        Note that, if by removing $v$ from $T$ we disconnect $x$ and $y$, it must be that $v$ lies in $P$. Moreover, since $v$ is in $T$ but not in $T - \{v\}$, while both $x$ and $y$ are also in $T - \{v\}$, it must be that $v$ is an \tit{internal} node of $P$, i.e. $v \neq x, y$, which implies that $\deg(v) \ge 2$ by definition of path, contradicting the hypothesis for which $v$ was a leaf $\lightning$.
+        Note that, if by removing $v$ from $T$ we disconnect $x$ and $y$, it must be that $v$ lies in $P$. Moreover, since $v$ is in $T$ but not in $T[V(T) - \{v\}]$, while both $x$ and $y$ are also in $T[V(T) - \{v\}]$, it must be that $v$ is an \tit{internal} node of $P$, i.e. $v \neq x, y$, which implies that $\deg(v) \ge 2$ by definition of path, contradicting the hypothesis for which $v$ was a leaf $\lightning$.
     \end{proof}
 
     \begin{framedprop}[label={m n - 1}]{}
@@ -634,7 +634,7 @@
     }{
         Assume that for a tree that has $n = k - 1$ nodes the statement holds.
     }{
-        We will prove the statement for a tree $T$ that has $n = k$ nodes. Note that, since $n = 1$ is the base case, we can assume that $n = k \ge 2$, hence by \cref{leaf existence} $T$ contains at least one leaf. Let this leaf be $v$; then, by \cref{tree without leaf} it holds that $T - \{v\}$ is still a tree, and clearly $T - \{v\}$ has $k - 1$ nodes, which implies that we can apply the inductive hypothesis on $T - \{v\}$, i.e. $$\abs{E(T - \{v\})} = \abs{V(T - \{v\})} - 1 = k - 1 - 1 = k - 2$$ However, note that $v$ is a leaf, concluding that $$m = \abs{E(T)} = \abs{E(T - \{v\})} + 1 = k - 2 + 1 = k - 1 = n - 1$$
+        We will prove the statement for a tree $T$ that has $n = k$ nodes. Note that, since $n = 1$ is the base case, we can assume that $n = k \ge 2$, hence by \cref{leaf existence} $T$ contains at least one leaf. Let this leaf be $v$; then, by \cref{tree without leaf} it holds that $T[V(T) - \{v\}]$ is still a tree, and clearly $T[V(T) - \{v\}]$ has $k - 1$ nodes, which implies that we can apply the inductive hypothesis on $T[V(T) - \{v\}]$, i.e. $$\abs{E(T[V(T) - \{v\}])} = \abs{V(T[V(T) - \{v\}])} - 1 = k - 1 - 1 = k - 2$$ However, note that $v$ is a leaf, concluding that $$m = \abs{E(T)} = \abs{E(T[V(T) - \{v\}])} + 1 = k - 2 + 1 = k - 1 = n - 1$$
     }
 
     \begin{frameddefn}{Spanning tree}
@@ -833,12 +833,12 @@
         % \label{}
     \end{figure}
 
-    \begin{framedthm}{Bipartite graphs}
+    \begin{framedthm}{}
         $G$ is bipartite if and only if $G$ has no odd-length cycle.
     \end{framedthm}
 
     \proofiff{
-        We will prove the contrapositive, i.e. if $G$ has an odd-length cycle, then $G$ cannot be bipartitioned. Consider a graph $G$ with an odd-length cycle $C_{2k + 1}$ of vertices $x_1, \ldots, x_{2k + 1}$; by way of contradiction, assume that $G$ is bipartite through a bipartition $(X, V(G)) - X)$ for some $X \subseteq V(G)$. Without loss of generality assume that $x_1 \in X$; then, since $X$ defines a bipartition of $G$ it must be that $x_2 \notin X$, and $x_3 \in X$ and so on and so forth. In particular, for any odd value of $i$ we will have that $x_i \in X$, but this implies that both $x_1$ and $x_{2k + 1}$ must be inside $X$, which means that the edge $x_1x_{2k + 1}$ violates the bipartition induced by $X$ $\lightning$.
+        We will prove the contrapositive, i.e. if $G$ has an odd-length cycle, then $G$ cannot be bipartitioned. Consider a graph $G$ with an odd-length cycle $C_{2k + 1}$ of vertices $x_1, \ldots, x_{2k + 1}$; by way of contradiction, assume that $G$ is bipartite through a bipartition $(X, V(G) - X)$ for some $X \subseteq V(G)$. Without loss of generality assume that $x_1 \in X$; then, since $X$ defines a bipartition of $G$ it must be that $x_2 \notin X$, and $x_3 \in X$ and so on and so forth. In particular, for any odd value of $i$ we will have that $x_i \in X$, but this implies that both $x_1$ and $x_{2k + 1}$ must be inside $X$, which means that the edge $x_1x_{2k + 1}$ violates the bipartition induced by $X$ $\lightning$.
     }{
         Again, we will prove the contrapositive, i.e. if $G$ is not bipartite it must contain an odd-length cycle. By the previous observation, $G$ is not bipartite if and only if at least one connected component of $G$ is not bipartite, and let this component be $\overline G$. Note that, since $\overline G$ is connected, it must contain a spannning tree $T$ by \cref{spanning tree existence}. Moreover, as previously described, we can always define a bipartition on a tree, namely $(X, V(T) - X)$ where $$\textstyle X := \{v \in V(T) \mid \dist_T(r, v) \ \mathrm{even}\}$$ for some root node $r \in V(T)$.
 
@@ -996,7 +996,7 @@
         % \label{matching}
     \end{figure}
 
-    composed of two disconnected $K_4$. Here, we have that $$\delta = 4 - 1 = 3 \ge \dfrac{2 \cdot 4}{2} - 1 = 4 - 1 = 3 = \dfrac{n}{2} - 1$$ However, $\delta \ge \tfrac{n}{2} - 1$ is not sufficient to guarantee connectivity.
+    composed of two disconnected $K_4$. Here, we have that $$\delta = 4 - 1 = 3 \ge \dfrac{2 \cdot 4}{2} - 1 = 4 - 1 = 3 = \dfrac{n}{2} - 1$$ Therefore, $\delta \ge \tfrac{n}{2} - 1$ is not sufficient to guarantee connectivity.
 
     \section{Exercises}
 
@@ -2106,7 +2106,7 @@
 
     \subsection{Topological minors}
 
-    Consider a graph $G$, and an edge $xy \in E(G)$; to \tbf{subdivide} $xy$ means to \tit{remove} the edge $xy$ from $E(G)$ and \tit{replacing} with a 2-edge path $x \ z \ y$ for some new vertex $z$. For instance, if $G$ contains the edge $xy$
+    Consider a graph $G$, and an edge $xy \in E(G)$; to \tbf{subdivide} $xy$ means to \tit{remove} the edge $xy$ from $E(G)$ and \tit{replacing} it with a 2-edge path $x \ z \ y$ for some new vertex $z$. For instance, if $G$ contains the edge $xy$
 
     \begin{figure}[H]
         \centering
@@ -2195,7 +2195,7 @@
     Trivially, any graph is a subdivision of itself.
 
     \begin{frameddefn}{Topological minor}
-        Given a graph $G$, and a graph $H$, we say that $G$ contains $H$ as a \tbf{topological minor} if $G$ has a subgraph which is a subdivision of $H$.
+        Given a graph $G$, and a graph $H$, we say that $G$ contains $H$ as \tbf{topological minor} if $G$ has a subgraph which is a subdivision of $H$. Similarly, we say that $H$ is a \tit{topological minor} of $G$.
     \end{frameddefn}
 
     \begin{figure}[H]
@@ -2424,9 +2424,17 @@
 
     \chapter{Extremal graph theory}
 
-    \section{Edge maximum graphs without $K_n$}
+    Extremal graph theory is a field of mathematics that investigates how \tit{global properties} of a graph influence the \tbf{presence or absence} of specific substructures. Broadly speaking, it seeks to understand how large or dense a graph can be while avoiding certain configurations, or conversely, what constraints guarantee the appearance of particular patterns.
 
-    A fundamental question in graph theory is \tbf{determining the existence} of cliques within a given graph. In general, finding the largest clique in a graph is an \NPclass-Hard problem. This leads to a natural question: under what conditions can we guarantee the existence of a $K_n$ subgraph?
+    The central theme of the discipline lies in \tit{exploring thresholds}: determining the minimal or maximal values of graph parameters --- such as the number of edges, degrees, or vertices --- beyond which a given substructure must necessarily exist. These substructures can range from simple motifs like \tit{paths} and \tit{cycles} to more complex or irregular patterns.
+
+    This area plays a crucial role in understanding the fundamental behavior of graphs under constraints, offering insights that are both theoretically significant and applicable in various areas such as network design, data analysis, and algorithm optimization.
+
+    \section{Existence of substructures}
+
+    \subsection{Cliques}
+
+    We will start our discussion of extremal graph theory with the question of \tbf{determining the existence} of cliques within a given graph. In general, finding the largest clique in a graph is an \NPclass-Hard problem. This leads to a natural question: under what conditions can we guarantee the existence of a $K_n$ subgraph?
 
     \href{https://en.wikipedia.org/wiki/P%C3%A1l_Tur%C3%A1n}{Pál Turán} addressed this by providing an exact upper bound on the number of edges a graph can have without containing a clique of a given size. But before discussing his results, let us first introduce some important definitions.
 
@@ -2496,7 +2504,7 @@
 
     \begin{figure}[H]
         \centering
-        \resizebox{0.6\textwidth}{!}{
+        \resizebox{0.45\textwidth}{!}{
             \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=2cm,thick,main node/.style={scale=3,circle,draw,font=\sffamily\normalsize}]
                 \node[main node] (1) [fill = Carmine,]{};
                 \node[main node] (2) [fill = Carmine, below left of = 1]{};
@@ -2730,6 +2738,225 @@
 
         Finally, the statement follows from this last claim.
     }
+
+    As a corollary of this theorem, we have the answer to our original question: if a graph $G$ has $n$ vertices and more than $t(n, r - 1)$ edges, it clearly cannot be $T(n, r - 1)$, therefore by the theorem it must contain $K_r$ as subgraph, hence the bound is $$\abs{E(G)} \ge t(n, r - 1) + 1$$
+
+    \subsection{$k$-connected subgraphs}
+
+    TODO \todo{intro}
+
+    \textcite{mader}
+
+    \begin{framedthm}{Mader's theorem}
+        If $G$ is such that $\abs{V(G)} \ge 2k$ and $\abs{E(G)} \ge (2k - 1)(n - k)$, then $G$ contains a $k$-connected subgraph.
+    \end{framedthm}
+
+    \proofstrind{
+        We proceed by strong induction on $n$.
+    }{
+        Since $n \ge 2k$, the base case of the induction is $n = 2k$, thus we have that $$\abs{E(G)} \ge (2k - 1) k = \dfrac{(2k - 1) 2k}{2} = \binom{2k}{2}$$ which must imply that $G = K_{2k}$, which is $(2k - 1)$-connected by definition.
+    }{
+        Assume that the statement holds for any graph of $h$ vertices such that $n - 1 \ge h > 2k$ vertices.
+    }{
+        We are going to prove the statement for a graph $G$ of $n$ vertices such that $n > 2k$, i.e. $n \ge 2k + 1$.
+
+        Suppose that $\delta < 2k$, i.e. $\delta \le 2k - 1$, implying that there exists a vertex $v$ such that $\deg(v) \le 2k - 1$, and consider $G[V(G) - \{v\}]$. Since this subgraph has $n - 1$ vertices, and \todo{WHAT last ineq} $$\abs{E(G[V(G) - \{v\}])} \ge \abs{E(G)} - (2k - 1) \ge (2k - 1) ((n - 1) - k)$$ Moreover, since $n \ge 2k + 1 \iff n - 1 \ge 2k$ and $G[V(G) - \{v\}]$ has $n - 1$ vertices, the latter has at least $2k$ vertices, hence we can apply the inductive hypothesis on it and obtaining a $k$-connected subgraph to prove the statement trivially. Therefore, we may assume that $\delta \ge 2k$.
+
+        To recap, we are now assuming that
+
+        \begin{enumerate}
+            \item $n \ge 2k + 1$
+            \item $\delta \ge 2k$
+            \item $G$ does not contain a $k$-connected graph --- otherwise the statement is trivially true
+        \end{enumerate}
+
+        and in particular, the last assumption implies that we may assume there is an $A$-$B$ separation $(X, Y)$ of $G$ having order $\abs{X \cap Y} \le k - 1$, where $X - Y , Y - X \neq \varnothing$ --- for some subsets $A, B \subseteq V(G)$.
+
+        \claim{
+            It holds that $\abs{E(G[X])} \ge (2k - 1)(\abs X - k)$ or $\abs{E(G[Y])} \ge (2k - 1)(\abs Y - k)$.
+        }{
+            By way of contradiction, suppose that $\abs{E(G[X])} \le (2k - 1)(\abs - k) - 1$ and $\abs{E(G[Y])} \le (2k - 1)(\abs Y - k) - 1$. We observe that $$$$ Thus, we have that
+            \begin{equation*}
+                \begin{split}
+                    \abs{E(G)} &\le \abs{E(G[X])} + \abs{E(G[Y])} \\
+                               &\le \abs{E(G[X])} \le (2k - 1)(\abs - k) - 1 + \abs{E(G[Y])} \le (2k - 1)(\abs Y - k) - 1 \\
+                               &= (2k - 1) (\abs X + \abs Y - 2k) - 2 \\
+                               &TODO
+                \end{split}
+            \end{equation*}
+
+            TODO \todo{da finire (anche lo split)}
+        }
+
+        Finally, by the claim we can apply the inductive hypothesis on at least one between $X$ or $Y$, concluding the proof.
+    }
+
+    \subsection{Cliques as minors}
+
+    TODO \todo{intro}
+
+    \begin{framedthm}{Bollobás-Thomason theorem}
+        There exists a constant $c$ such that if $G$ has at least $ck^2n$ edges, then $G$ has $K_k$ as topological minor.
+    \end{framedthm}
+
+    TODO $2 \le c \le 10$ \todo{interlude}
+
+    Consider a graph $G$, and an edge $xy \in E(G)$; to \tbf{contract} $xy$ means to \tit{identify} the vertices $x$ and $y$ and delete any parralel edge that formed afterwards. For instance, if $G$ contains the edge $xy$
+
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.75cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
+
+            \node[circle, draw] (1) []{$x$};
+            \node[circle, draw] (2) [right of = 1]{$y$};
+            \node[circle, draw] (4) [below of = 1]{};
+            \node[circle, draw] (3) [left of = 4]{};
+            \node[circle, draw] (5) [below of = 2]{};
+            \node[circle, draw] (6) [right of = 5]{};
+
+            \draw[-] (1) to (2);
+            \draw[-] (1) to (3);
+            \draw[-] (1) to (4);
+            \draw[-] (1) to (5);
+            \draw[-] (2) to (4);
+            \draw[-] (2) to (5);
+            \draw[-] (2) to (6);
+
+            ;
+        \end{tikzpicture}
+    \end{figure}
+
+    to \tit{contract} the edge $xy$ means to identify $x$ and $y$ in a new vertex $z$, and removing the 2 parallel edges that formed
+
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.75cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
+
+            \node[circle, draw] (1) []{$z$};
+            \node[circle, draw] (2) [below left of = 1]{};
+            \node[circle, draw] (3) [left of = 2]{};
+            \node[circle, draw] (4) [below right of = 1]{};
+            \node[circle, draw] (5) [right of = 4]{};
+
+            \draw[-] (1) to (2);
+            \draw[-] (1) to (3);
+            \draw[-] (1) to (4);
+            \draw[-] (1) to (5);
+
+            ;
+        \end{tikzpicture}
+    \end{figure}
+
+    If we contracted the edge $e$ in a graph $G$, we will denote the resulting graph as $G/e$.
+
+    \begin{frameddefn}{Minor}
+        Given a graph $G$, and a graph $H$, we say that $G$ contains $H$ as \tbf{minor} if $H$ can be obtained from $G$ by a series of \tit{vertex deletions}, \tit{edge deletions} and \tit{edge contractions}. Similarly, we say that $H$ is a \tit{minor} of $G$.
+    \end{frameddefn}
+
+    For instance, consider the following graph $G$
+
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.5cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
+
+            \node[circle, draw] (1) []{};
+            \node[circle, draw] (2) [right of = 1]{};
+            \node[circle, draw] (3) [right of = 2]{};
+            \node[circle, draw] (4) [right of = 3]{};
+            \node[circle, draw] (5) [right of = 4]{};
+            \node[circle, draw] (6) [above of = 2]{};
+            \node[circle, draw] (7) [below of = 3]{};
+
+            \draw[-] (1) to (2);
+            \draw[-] (1) to (6);
+            \draw[-] (2) to (3);
+            \draw[-] (3) to (4);
+            \draw[-] (4) to (5);
+            \draw[-] (2) to (6);
+            \draw[-] (3) to (7);
+            \draw[-] (4) to (7);
+
+            ;
+        \end{tikzpicture}
+    \end{figure}
+
+    then clearly the following graph $H$ is a minor of $G$ --- the \tit{dashed} edges and vertices are the removed ones, and the \tit{gray} edge is the contracted edge
+
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.5cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
+
+            \node[circle, draw] (1) []{};
+            \node[circle, draw] (2) [right of = 1]{};
+            \node[circle, draw] (3) [right of = 2]{};
+            \node[circle, draw] (4) [right of = 3]{};
+            \node[circle, draw, dashed] (5) [right of = 4]{};
+            \node[circle, draw] (6) [above of = 2]{};
+            \node[circle, draw] (7) [below of = 3]{};
+
+            \draw[-] (1) to (2);
+            \draw[dashed] (1) to (6);
+            \draw[-] (2) [gray] to (3);
+            \draw[-] (3) to (4);
+            \draw[dashed] (4) to (5);
+            \draw[-] (2) to (6);
+            \draw[-] (3) to (7);
+            \draw[dashed] (4) to (7);
+
+            ;
+        \end{tikzpicture}
+    \end{figure}
+
+    Consider a graph $G$ that has $H$ as topological minor, meaning that it contains a graph $H'$ that is a subdivision of $H$; if we remove from $G$ all the edges and vertices that are \tit{not} part of $H'$, we are left with a subdivision of $H$, and through the \tit{edge contraction} operation we can actually reverse the \tit{edge subdivision} in order to obtain $H$ from $H'$. In fact, for any 2-edge path $x \ y \ z$, we can contract $x \ y$ obtaining an edge $y \ z$, and no parallel edge can form because we previously removed all the other edges that are not in $H'$, i.e. edges that were not constructed through subdivision. This means that if $G$ contains $H$ as topological minor, then $G$ contains $H$ as minor as well. However, the opposite is not true in general: for instance, consider the following graph $G$
+
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.5cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
+
+            \node[circle, draw] (1) []{$x$};
+            \node[circle, draw] (2) [right of = 1]{$y$};
+            \node[circle, draw] (3) [below of = 1]{};
+            \node[circle, draw] (4) [below of = 2]{};
+            \node[circle, draw] (5) [below of = 3]{};
+            \node[circle, draw] (6) [below of = 4]{};
+
+            \draw[-] (1) to (2);
+            \draw[-] (1) to (3);
+            \draw[-] (1) [bend right] to (5);
+            \draw[-] (2) to (4);
+            \draw[-] (2) [bend left] to (6);
+            \draw[-] (3) to (4);
+            \draw[-] (3) to (5);
+            \draw[-] (3) to (6);
+            \draw[-] (4) to (5);
+            \draw[-] (4) to (6);
+            \draw[-] (5) to (6);
+
+            ;
+        \end{tikzpicture}
+    \end{figure}
+
+    If we contract the edge $xy$, we obtain $K_5$, therefore $G$ contains $K_5$ as minor, even if $K_5$ is not a topological minor of $G$: in fact, every subdivision of $K_5$ has 5 vertices of degree 4, but $G$ has only 4 vertices of degree 4.
+
+    TODO \todo{interlude}
+
+    \begin{framedthm}{}
+        If $p$ is an integer such that $2 \le p \le 7$, then for any graph $G$ such that $$\abs{E(G)} \ge (p - 2)n - \binom{p - 1}{2} + 1$$ it holds that $G$ contains $K_p$ as minor.
+    \end{framedthm}
+
+    \begin{proof}
+        We will prove each value of $p$ individually.
+
+        \begin{itemize}
+            \item For $p = 2$, we see that $\abs{E(G)} \ge (2 - 2)n - \binom{2 - 1}{2} + 1 = 1$, therefore $G$ contains at least 1 edge, and in fact $K_2$ is nothing more than a single edge.
+            \item For $p = 3$, we have that $\abs{E(G)} \ge (3 - 2) n - \binom{3 - 1}{2} + 1 = n - 1 + 1 = n$. Thus, by \cref{m n - 1} this implies that $G$ is not a tree (nor a forest), and in particular it is not acyclic, meaning that it contains at least one cycle $C$. Lastly, if we contract all but 3 edges on the cycle we obtain $K_3$.
+            \item For $p = 4$, we have that $\abs{E(G)} \ge (4 - 2)n - \binom{4 - 1}{2} + 1 = 2n - 3 + 1 = 2n - 2$. We proceed by induction on $n$.
+
+                We observe that if $n = 2$ then $\abs{E(G)} \ge 2 \cdot 2 - 2 = 2$ which is impossible with only 2 vertices, and similarly if $n = 3$ then $\abs{E(G)} \ge 2 \cdot 3 - 2 = 4$ which is impossible with only 3 vertices. Hence, to satisfy the edge bound $n$ must be at least 4. Therefore, for the base case assume that $n = 4$, which means that $\abs{E(G)} \ge 2 \cdot 4 - 2 = 6$, which implies that $G = K_4$.
+
+                Now, assume that the property is true for a graph of $n - 1$ vertices and consider a graph $G$ of $n$ vertices such that $n \ge 5$. Suppose that $\abs{E(G)} > 2n - 2$, and fix an edge $e \in E(G)$. Now, consider the graph $G - \{e\}$: clearly, this graph has still $n$ vertices but since we removed an edge it holds that $\abs{E(G - \{e\})} > 2n - 2 - 1 > 2n - 3 \iff \abs{E(G - \{e\})} \ge 2n - 2$, therefore we can apply the \todo{THIS IS FALSE}
+        \end{itemize}
+    \end{proof}
 
     \printbibliography % UNCOMMENT FOR BIBLIOGRAPHY
 

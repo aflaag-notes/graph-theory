@@ -284,6 +284,32 @@
     \field{year}{2009}
   \endentry
 
+  \entry{mader}{inproceedings}{}{}
+    \name{author}{1}{}{%
+      {{hash=MW}{%
+         family={Mader},
+         familyi={M\bibinitperiod},
+         given={Wolfgang},
+         giveni={W\bibinitperiod},
+      }}%
+    }
+    \list{organization}{1}{%
+      {Springer}%
+    }
+    \strng{namehash}{MW1}
+    \strng{fullhash}{MW1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{Mad72}
+    \field{sortinit}{M}
+    \field{sortinithash}{M}
+    \field{booktitle}{Abhandlungen aus dem mathematischen Seminar der Universit{\"a}t Hamburg}
+    \field{pages}{86\bibrangedash 97}
+    \field{title}{Existenz n-fach zusammenh{\"a}ngender Teilgraphen in Graphen gen{\"u}gend grosser Kantendichte}
+    \field{volume}{37}
+    \field{year}{1972}
+  \endentry
+
   \entry{menger}{article}{}{}
     \name{author}{1}{}{%
       {{hash=MK}{%
