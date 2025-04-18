@@ -100,11 +100,11 @@
 
         It seemed simple enough, yet no one had managed to do it. The challenge became a favorite pastime, debated in marketplaces and whispered about in taverns. Some claimed it was possible with the right path, while others remained skeptical.
 
-    \centeredimage[The map of Königsberg in Euler's time, showing the actual layout of the seven bridges. \cite{bridges}]{0.5}{../assets/konigsberg.png}
+    \centeredimage[The map of Königsberg in Euler's time, showing the actual layout of the seven bridges \cite{bridges}.]{0.5}{../assets/konigsberg.png}
 
-    Word of this peculiar problem reached the brilliant Swiss mathematician, \href{/}{Leonhard Euler}, a man whose mind was always drawn to patterns and logic. Intrigued, Euler set out to solve the riddle --- not by drawing endless maps or walking the streets himself, but by \tbf{abstracting} the problem into something entirely new.
+    Word of this peculiar problem reached the brilliant Swiss mathematician \href{/}{Leonhard Euler}, a man whose mind was always drawn to patterns and logic. Intrigued, Euler set out to solve the riddle --- not by drawing endless maps or walking the streets himself, but by \tbf{abstracting} the problem into something entirely new.
 
-    Euler realized that the specific layout of the city was \tit{irrelevant}. What truly mattered was the way the landmasses were connected by the bridges. He represented each landmass as a \tbf{dot} and each bridge as a \tbf{line} between them. In doing so, he stripped away unnecessary details and created a simple, elegant combinatorial structure that we know refer to as \tbf{graph}.
+    Euler realized that the specific layout of the city was \tit{irrelevant}. What truly mattered was the way the landmasses were connected by the bridges. He represented each landmass as a \tbf{dot} and each bridge as a \tbf{line} between them. In doing so, he stripped away unnecessary details and created a simple, elegant combinatorial structure that we now refer to as \tbf{graph}.
 
     \begin{figure}[H]
         \centering
@@ -130,7 +130,7 @@
 
     Through his analysis, Euler discovered a fundamental rule: for a walk to cross each bridge exactly once and return to the starting point, every landmass had to be connected by an \tbf{even} number of bridges. In Königsberg's case, however, each landmass had an odd number of bridges, making the task impossible.
 
-    Euler's proof, published in 1736, was groundbreaking --- not just because he solved the Königsberg puzzle, but because he laid the foundation for an entirely new branch of mathematics: \href{https://en.wikipedia.org/wiki/Graph_theory}{graph theory}. His ideas would go on to shape the study of networks, from modern transportation systems to social media connections and even the vast web of the internet itself. And so, from a simple question about bridges in a small Prussian city, a whole new field of mathematics was born—one that continues to shape the world centuries later.
+    Euler's proof, published in 1736, was groundbreaking --- not just because he solved the Königsberg puzzle, but because he laid the foundation for an entirely new branch of mathematics: \href{https://en.wikipedia.org/wiki/Graph_theory}{graph theory}. His ideas would go on to shape the study of networks, from modern transportation systems to social media connections and even the vast web of the internet itself. And so, from a simple question about bridges in a small Prussian city, a whole new field of mathematics was born --- one that continues to shape the world centuries later.
 
     This chapter will discuss the basics of the field of \tbf{graph theory}, and will lay the foundation for later chapters.
 
@@ -167,7 +167,7 @@
         \label{first graph}
     \end{figure}
 
-    Note that, in this definition, we are assuming that each edge has exactly 2 \tit{distinct} endpoints --- i.e. the graphs do not admit \tbf{loops} --- and there cannot be two edges with the same endpoints --- i.e. the graphs do not admit \tbf{parallel edges}. In fact, if we drop these assumption we obtain what is called a \tbf{multigraph}.
+    Note that, in this definition, we are assuming that each edge has exactly 2 \tit{distinct} endpoints --- i.e. the graphs do not admit \tbf{loops} --- and there cannot be two edges with the same endpoints --- i.e. the graphs do not admit \tbf{parallel edges}. In fact, if we drop these assumptions, we obtain what is called a \tbf{multigraph}.
 
     \begin{figure}[H]
         \centering
@@ -214,7 +214,7 @@
     \end{figure}
 
     \begin{frameddefn}{Induced subgraph}
-        Given a graph $G = (V, E)$, and a set of vertices $S \subseteq V$, then $G[S]$ represents the \tbf{subgraph induced by $S$ on $G$}, and it is obtained by removing from $G$ all the nodes of $V - S$ --- and their corresponding edges.
+        Given a graph $G = (V, E)$, and a set of vertices $S \subseteq V$, then $G[S]$ represents the \tbf{subgraph induced by $S$ on $G$}, obtained by removing from $G$ all the nodes of $V - S$ and the edges incident on them.
     \end{frameddefn}
 
     In other words, a subgraph $G' = (V', E')$ of $G$ is \tbf{induced} if every edge of $G$ with both ends in $V$ is an edge of $V'$. We observe that this definition is \tit{stricter} than the previous one: in fact, the last graph is \tit{not} an example of an induced subgraph, but the following is:
@@ -268,7 +268,7 @@
 
     then, the induced subgraph in \cref{induced subgraph first graph} would have been referred to as $G[\{1, 3, 5\}]$.
 
-    Intuitively, two vertices $x, y \in V$ are said to be \tbf{adjacent}, if there is an edge $xy \in E$, and we write $x \sim y$. If there is no such edge, we write $x \nsim y$ for non-adjacency and we say that $xy$ is an \tbf{anti-edge}. The \tbf{neighborhood} of a vertex $x \in V$ is the set of vertices that are adjacent to $x$, and it will be indicated as follows $$\mathcal N (x) := \{y \in V \mid x \sim y\}$$ Similarly, the neighborhood of a set of vertices will be defined as follows $$\forall S \subseteq V \quad \mathcal N(S) := \bigcup_{v \in S}{\mathcal N (v)}$$ The \tbf{degree} of a vertex $x \in V$, denoted with $\deg(x)$, is exactly $\abs{\mathcal N (x)}$. We will use the following notation for the \tbf{minimum} and \tbf{maximum} degree of a graph, respectively
+    Intuitively, two vertices $x, y \in V$ are said to be \tbf{adjacent} if there is an edge $xy \in E$, and we write $x \sim y$. If there is no such edge, we write $x \nsim y$ for non-adjacency and we say that $xy$ is an \tbf{anti-edge}. The \tbf{neighborhood} of a vertex $x \in V$ is the set of vertices that are adjacent to $x$, and it will be indicated as follows $$\mathcal N (x) := \{y \in V \mid x \sim y\}$$ Similarly, the neighborhood of a set of vertices will be defined as follows $$\forall S \subseteq V \quad \mathcal N(S) := \bigcup_{v \in S}{\mathcal N (v)}$$ The \tbf{degree} of a vertex $x \in V$, denoted with $\deg(x)$, is exactly $\abs{\mathcal N (x)}$. We will use the following notation for the \tbf{minimum} and \tbf{maximum} degree of a graph, respectively
 
     \begin{center}
         \begin{tabular}{ccc}
@@ -307,8 +307,6 @@
     \end{proof}
 
     \section{Important structures}
-
-    \subsection{Paths, walks and cycles}
 
     \begin{frameddefn}{Path}
         A \tbf{path} is a \tit{graph} with vertex set $x_0, \ldots, x_n$ and edge set $e_1, \ldots, e_n$ such that $e_i = x_{i - 1}x_i$.
@@ -2768,17 +2766,27 @@
     }{
         We are going to prove the statement for a graph $G$ of $n$ vertices such that $n > 2k$, i.e. $n \ge 2k + 1$.
 
-        Suppose that $\delta < 2k$, i.e. $\delta \le 2k - 1$, implying that there exists a vertex $v$ such that $\deg(v) \le 2k - 1$, and consider $G[V(G) - \{v\}]$. Since this subgraph has $n - 1$ vertices, and \todo{WHAT last ineq} $$\abs{E(G[V(G) - \{v\}])} \ge \abs{E(G)} - (2k - 1) \ge (2k - 1) ((n - 1) - k)$$ Moreover, since $n \ge 2k + 1 \iff n - 1 \ge 2k$ and $G[V(G) - \{v\}]$ has $n - 1$ vertices, the latter has at least $2k$ vertices, hence we can apply the inductive hypothesis on it and obtaining a $k$-connected subgraph to prove the statement trivially. Therefore, we may assume that $\delta \ge 2k$.
+        Suppose that $\delta < 2k$, i.e. $\delta \le 2k - 1$, implying that there exists a vertex $v$ such that $\deg(v) \le 2k - 1$, and consider $G[V(G) - \{v\}]$. Since this subgraph has $n - 1$ vertices, and we are assuming that $\abs{E(G)} \ge (2k - 1)(n - k)$ then we have that
+        \begin{equation*}
+            \begin{split}
+                \abs{E(G[V(G) - \{v\}])} &\ge \abs{E(G)} - (2k - 1) \\
+                                         &\ge (2k - 1)(n - k) - (2k - 1)\\
+                                         &\ge (2k - 1) (n - k - 1) \\
+                                         &\ge (2k - 1) ((n - 1) - k)
+            \end{split}
+        \end{equation*}
+        Moreover, since $n \ge 2k + 1 \iff n - 1 \ge 2k$ and $G[V(G) - \{v\}]$ has $n - 1$ vertices, the latter has at least $2k$ vertices, hence we can apply the inductive hypothesis on it and obtaining a $k$-connected subgraph to prove the statement trivially. Therefore, we may assume that $\delta \ge 2k$.
 
         To recap, we are now assuming that
 
         \begin{enumerate}
-            \item $n \ge 2k + 1$
-            \item $\delta \ge 2k$
             \item $G$ does not contain a $k$-connected graph --- otherwise the statement is trivially true
+            \item $\abs{E(G)} \ge (2k - 1)(n - k)$
+            \item $\delta \ge 2k$
+            \item $n \ge 2k + 1$
         \end{enumerate}
 
-        and in particular, the last assumption implies that we may assume there is an $A$-$B$ separation $(X, Y)$ of $G$ having order $\abs{X \cap Y} \le k - 1$, where $X - Y , Y - X \neq \varnothing$ --- for some subsets $A, B \subseteq V(G)$.
+        and in particular, assumption (a) implies that we may assume there is an $A$-$B$ separation $(X, Y)$ of $G$ having order $\abs{X \cap Y} \le k - 1$, where $X - Y , Y - X \neq \varnothing$ --- for some subsets $A, B \subseteq V(G)$.
 
         \claim{
             It holds that $\abs{E(G[X])} \ge (2k - 1)(\abs X - k)$ or $\abs{E(G[Y])} \ge (2k - 1)(\abs Y - k)$.
@@ -2796,12 +2804,12 @@
                 \end{split}
             \end{equation*}
 
-            TODO \todo{da finire}
+            which contradicts assumption (b) $\lightning$.
         }
 
-        TODO \todo{da finire}
+        This claim implies that at least one between $G[X]$ and $G[Y]$ satisfies the edge bound, hence if we can prove that they also satisfy the vertex bound we can apply the inductive hypothesis and conclude the proof.
 
-        Finally, by the claim we can apply the inductive hypothesis on at least one between $X$ or $Y$, concluding the proof.
+        Now consider assumption (c): if $\delta \ge 2k$ then for each vertex $v \in V(G)$ its degree must be at least $2k$, and in particular this is true for any $v \in X - Y$. However, $(X, Y)$ is a separation of $G$, meaning that there are not edges in $\mathrm{cut}(X, Y)$; therefore, all the neighbors of $v$ must lie inside $X$, meaning that $\abs X \ge \abs{\mathcal N(v) \cup v} \ge 2k + 1$. \todo{SHOULD BE LESS TO APPLY INDUCTION?}
     }
 
     \subsection{Cliques as minors}
@@ -2963,11 +2971,18 @@
         \begin{itemize}
             \item For $p = 2$, we see that $\abs{E(G)} \ge (2 - 2)n - \binom{2 - 1}{2} + 1 = 1$, therefore $G$ contains at least 1 edge, and in fact $K_2$ is nothing more than a single edge.
             \item For $p = 3$, we have that $\abs{E(G)} \ge (3 - 2) n - \binom{3 - 1}{2} + 1 = n - 1 + 1 = n$. Thus, by \cref{m n - 1} this implies that $G$ is not a tree (nor a forest), and in particular it is not acyclic, meaning that it contains at least one cycle $C$. Hence, if we contract all but 3 edges on $C$ we obtain $K_3$.
-            \item For $p = 4$, we have that $\abs{E(G)} \ge (4 - 2)n - \binom{4 - 1}{2} + 1 = 2n - 3 + 1 = 2n - 2$. We proceed by induction on $n$.
+            \item For $p = 4$, we have that $\abs{E(G)} \ge (4 - 2)n - \binom{4 - 1}{2} + 1 = 2n - 3 + 1 = 2n - 2$. We proceed by induction on $n + m$.
 
-                We observe that if $n = 2$ then $\abs{E(G)} \ge 2 \cdot 2 - 2 = 2$ which is impossible with only 2 vertices, and similarly if $n = 3$ then $\abs{E(G)} \ge 2 \cdot 3 - 2 = 4$ which is impossible with only 3 vertices. Hence, to satisfy the edge bound $n$ must be at least 4. Therefore, for the base case assume that $n = 4$, which means that $\abs{E(G)} \ge 2 \cdot 4 - 2 = 6$, which implies that $G = K_4$.
+                We observe that if $n = 2$ then $\abs{E(G)} \ge 2 \cdot 2 - 2 = 2$ which is impossible with only 2 vertices, and similarly if $n = 3$ then $\abs{E(G)} \ge 2 \cdot 3 - 2 = 4$ which is impossible with only 3 vertices. Hence, to satisfy the edge bound $n$ must be at least 4. Therefore, for the base case assume that $n = 4$, which means that $\abs{E(G)} \ge 2 \cdot 4 - 2 = 6$, and thus $G = K_4$.
 
-                Now, assume that the property is true for a graph of $n - 1$ vertices and consider a graph $G$ of $n$ vertices such that $n \ge 5$. Suppose that $\abs{E(G)} > 2n - 2$, and fix an edge $e \in E(G)$. Now, consider the graph $G - \{e\}$: clearly, this graph has still $n$ vertices but since we removed an edge it holds that $\abs{E(G - \{e\})} > 2n - 2 - 1 > 2n - 3 \iff \abs{E(G - \{e\})} \ge 2n - 2$, therefore we can apply the \todo{THIS IS FALSE}
+                Now, for the inductive hypothesis, we need to be careful: since we are applying the induction on $n + m$, then
+
+                \begin{itemize}
+                    \item if the graph $G$ we are considering has $m - 1$ edges, we are going to inductively assume that the property holds for $G$ such that $\abs{E(G)} \ge 2n - 2$
+                    \item if the graph $G$ we are considering has $n - 1$ vertices, we are going to inductively assume that the property holds for $G$ such that $\abs{E(G)} \ge 2 (n - 1) - 2$
+                \end{itemize}
+
+                Now, because of the base case, consider a graph $G$ of $n$ vertices such that $n \ge 5$; moreover, suppose that $\abs{E(G)} > 2n - 2$, and fix an edge $e \in E(G)$. Now, consider the graph $G - \{e\}$: clearly, this graph has still $n$ vertices but since we removed an edge it holds that $\abs{E(G - \{e\})} > 2n - 2 - 1 > 2n - 3 \iff \abs{E(G - \{e\})} \ge 2n - 2$, therefore we can apply the inductive hypothesis as we described, and the theorem holds.
 
                 Therefore, we may assume that $\abs{E(G)} = 2n - 2$. Fix an edge $e \in E(G)$, and consider the contracted graph $G/e$: this graph has $n - 1$ vertices, hence if $\abs{E(G/e)} \ge 2(n - 1) - 2$ by the inductive hypothesis the theorem holds trivially. Thus, we may assume that $\abs{E(G/e)} < 2(n - 1) - 2 = 2n - 4 \iff \abs{E(G/e)} \le 2n - 5$, and since we are assuming that $\abs{E(G)} = 2n - 2$, this means that by contracting $e$ we removed at least 3 edges from $G$ --- one of which is $e$ itself. Therefore, we know that in $G$ we have the following structure
 
@@ -2992,7 +3007,7 @@
 
                 and in particular, the endpoints of $e$ must have at least two common neighbors. This implies that $e$ is contained in at least two distinct $K_3$'s. By applying the same argument on every edge $e$ of $G$, we get that $\delta \ge 3$ because the degree of the endpoints of $e$ must be at least 3. Moreover, if $\delta \ge 4$, by \cref{cor handshaking} we have that $\abs{E(G)} \ge \dfrac{4n}{2} = 2n$ which is greater than $2n - 2$, contradicting our assumption that $\abs{E(G)} = 2n - 2$. This implies that $\delta = 3$. Finally, fix a vertex $v$ of degree 3: TODO \todo{da finire}
             \item For $p = 5$ TODO \todo{da finire}
-            \item Lastly, the cases for $p = 6$ and $p = 7$ were proved by 
+            \item Lastly, the cases for $p = 6$ and $p = 7$ were proved by TODO \todo{da trovare i paper}
         \end{itemize}
     \end{proof}
 

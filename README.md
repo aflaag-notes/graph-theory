@@ -4,6 +4,8 @@ These are my [notes](<https://raw.githubusercontent.com/aflaag-notes/graph-theor
 
 ## TODO list
 
-- finish Tutte's theorem (guarda armando (?))
-- dividi bene il nuovo capitolo
+- Tutte's theorem
+- Menger's theorem
+- Erdős-Pósa theorem
+- $p$ values theorem
 
