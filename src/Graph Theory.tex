@@ -2807,9 +2807,9 @@
             which contradicts assumption (b) $\lightning$.
         }
 
-        This claim implies that at least one between $G[X]$ and $G[Y]$ satisfies the edge bound, hence if we can prove that they also satisfy the vertex bound we can apply the inductive hypothesis and conclude the proof.
+        This claim implies that at least one between $G[X]$ or $G[Y]$ satisfies the edge bound, hence if we can prove that they also satisfy the vertex bound we can apply the inductive hypothesis and conclude the proof.
 
-        Now consider assumption (c): if $\delta \ge 2k$ then for each vertex $v \in V(G)$ its degree must be at least $2k$, and in particular this is true for any $v \in X - Y$. However, $(X, Y)$ is a separation of $G$, meaning that there are not edges in $\mathrm{cut}(X, Y)$; therefore, all the neighbors of $v$ must lie inside $X$, meaning that $\abs X \ge \abs{\mathcal N(v) \cup v} \ge 2k + 1$. \todo{SHOULD BE LESS TO APPLY INDUCTION?}
+        Now consider assumption (c): if $\delta \ge 2k$ then for each vertex $v \in V(G)$ its degree must be at least $2k$, and in particular this is true for any $v \in X - Y$. However, $(X, Y)$ is a separation of $G$, meaning that there are not edges in $\mathrm{cut}(X, Y)$; therefore, all the neighbors of $v$ must lie inside $X$, meaning that $\abs X \ge \abs{\mathcal N(v) \cup v} \ge 2k + 1 > 2k$. This last condition implies that the vertex bound of the inductive hypothesis is satisfied, so by applying the latter on one between $G[X]$ or $G[Y]$ the theorem holds.
     }
 
     \subsection{Cliques as minors}
