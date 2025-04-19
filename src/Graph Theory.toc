@@ -10,24 +10,24 @@
 \contentsline {subsection}{\numberline {1.2.3}Eulerian tours}{17}{subsection.1.2.3}%
 \contentsline {subsection}{\numberline {1.2.4}Hamiltonian cycles}{19}{subsection.1.2.4}%
 \contentsline {section}{\numberline {1.3}Exercises}{20}{section.1.3}%
-\contentsline {chapter}{\numberline {2}Matchings}{21}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Augmenting paths}{22}{section.2.1}%
-\contentsline {subsection}{\numberline {2.1.1}Berge's theorem}{23}{subsection.2.1.1}%
-\contentsline {subsection}{\numberline {2.1.2}Kőnig's theorem}{24}{subsection.2.1.2}%
-\contentsline {subsection}{\numberline {2.1.3}Finding maximum matchings}{26}{subsection.2.1.3}%
-\contentsline {section}{\numberline {2.2}Perfect matching}{28}{section.2.2}%
-\contentsline {subsection}{\numberline {2.2.1}Hall's theorem}{29}{subsection.2.2.1}%
-\contentsline {subsection}{\numberline {2.2.2}Tutte's theorem}{30}{subsection.2.2.2}%
-\contentsline {section}{\numberline {2.3}Stable matching}{34}{section.2.3}%
-\contentsline {section}{\numberline {2.4}Exercises}{37}{section.2.4}%
-\contentsline {chapter}{\numberline {3}Graph packing}{38}{chapter.3}%
-\contentsline {section}{\numberline {3.1}$k$-connectivity}{41}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Feedback vertex set}{44}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}Topological minors}{45}{subsection.3.2.1}%
-\contentsline {subsection}{\numberline {3.2.2}Erdős-Pósa theorem}{46}{subsection.3.2.2}%
-\contentsline {section}{\numberline {3.3}Exercises}{50}{section.3.3}%
-\contentsline {chapter}{\numberline {4}Extremal graph theory}{51}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Existence of substructures}{51}{section.4.1}%
-\contentsline {subsection}{\numberline {4.1.1}Cliques}{51}{subsection.4.1.1}%
-\contentsline {subsection}{\numberline {4.1.2}$k$-connected subgraphs}{56}{subsection.4.1.2}%
-\contentsline {subsection}{\numberline {4.1.3}Cliques as minors}{58}{subsection.4.1.3}%
+\contentsline {chapter}{\numberline {2}Matchings}{22}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Augmenting paths}{23}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Berge's theorem}{24}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.2}Kőnig's theorem}{25}{subsection.2.1.2}%
+\contentsline {subsection}{\numberline {2.1.3}Finding maximum matchings}{27}{subsection.2.1.3}%
+\contentsline {section}{\numberline {2.2}Perfect matching}{29}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Hall's theorem}{30}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Tutte's theorem}{31}{subsection.2.2.2}%
+\contentsline {section}{\numberline {2.3}Stable matching}{35}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Exercises}{38}{section.2.4}%
+\contentsline {chapter}{\numberline {3}Graph packing}{39}{chapter.3}%
+\contentsline {section}{\numberline {3.1}$k$-connectivity}{42}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Feedback vertex set}{45}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Topological minors}{46}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Erdős-Pósa theorem}{47}{subsection.3.2.2}%
+\contentsline {section}{\numberline {3.3}Exercises}{51}{section.3.3}%
+\contentsline {chapter}{\numberline {4}Extremal graph theory}{52}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Existence of substructures}{52}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Cliques}{52}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}$k$-connected subgraphs}{57}{subsection.4.1.2}%
+\contentsline {subsection}{\numberline {4.1.3}Cliques as minors}{59}{subsection.4.1.3}%

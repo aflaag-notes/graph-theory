@@ -1014,6 +1014,25 @@
         By definition, the range of the possible degrees for any node of $G$ is $[0, n - 1]$. By way of contradiction, assume that for any two vertices $x, y \in V$ it holds that $\deg(x) \neq \deg(y)$; hence, since the graph has $n$ nodes, it must be that each node is assigned a different degree, and that we use all the possible degrees in $[0, n - 1]$. In particular, this implies that there are two vertices $u, v \in V$ such that $\deg(u) = 0$ and $\deg(v) = n - 1$, but this is a contradiction because if the degree of $v$ is $n - 1$, it must be adjacent to all the other nodes of $V$, including $u$, and $\deg(u) = 0$ $\lightning$.
     }
 
+    \begin{framedprob}{}
+        Let $G$ be a graph containing a cycle $C$, and assume that $G$ contains a path of length at least $k$ between two vertiecs of $C$. Show that $G$ contains a cycle of length at least $\sqrt k$. Can this bound be improved?
+    \end{framedprob}
+
+    \solution{
+        Consider a graph $G$ that contains a cycle $C$, and let $P$ be a path between two vertices $x, y \in V(C)$ such that $\abs{E(P)} \ge k$ for some $k$. Starting from $x$, let $x_1, \ldots, x_t$ be the vertices through which $P$ \curlyquotes{leaves} $C$, and $y_1, \ldots, y_t$ be the vertices through which $P$ \curlyquotes{joins back} $C$. We observe that if $2t \ge \sqrt k$, it means that there are at least $\sqrt k$ vertices in $C$, thus the theorem trivially holds by simply considering $C$ itself, so we may assume that $2t < \sqrt k$.
+
+        Let $P_i := x_i \ P \ y_i$ and $\overline{P_i} := y_i \ P \ x_{i + 1}$, and let $C_i$ be the shortest subpath of $C$ of the form $x_i \ C \ y_i$ --- there are two subpaths of this form. We observe that there are $t$ subpaths of the form $P_i$, and at most $t + 1$ subpaths of the form $\overline{P_i}$, meaning that $P$ can be partitioned in at most $2t + 1$ subpaths of the forms described. Now, let $P^*$ be the subpath of $P$ that maximizes its length --- $P^*$ may be of the form $P_i$ or $\overline P_i$. Hence, we get that $$k \le \abs{E(P)} \le (2t + 1) \abs{E(P^*)} < (\sqrt k + 1) \abs{E(P^*)}$$ and in particular $$\abs{E(P^*)} (\sqrt k + 1) > k \iff \abs{E(P^*)} > \dfrac{k}{\sqrt k + 1} \iff \abs{E(P^*)} \ge \dfrac{k}{\sqrt k + 1} + 1 \ge \sqrt k$$ where the last inequality can be proved as follows $$\dfrac{k}{\sqrt k + 1} + 1 \ge \sqrt k \iff \dfrac{k + \sqrt k + 1}{\sqrt k + 1} \ge \sqrt k \iff k + \sqrt k + 1 \ge \sqrt k (\sqrt k + 1) = k + \sqrt k$$
+
+        Now, if the subpath $P^*$ lies inside $C$, since $\abs{E(P^*)} \ge \sqrt k$ the theorem holds by considering the cycle $C$ itself, so we may assume that there exists $i^* \in [t]$ such that $P_{i^*} = P^*$.
+
+        Lastly, since $P_i$ and $C_i$ do not intersect for each $i \in [t]$, we have that $$\abs{E(P_i \cup C_i)} = \abs{E(P_i)} + \abs{E(C_i)} \ge \abs{E(P_i)} + 1$$ and in particular $$\abs{E(P_{i^*} \cup C_{i^*})} \ge \sqrt k + 1 \ge \sqrt k$$ which means that
+
+        \begin{itemize}
+            \item $P_{i^*} \cup C_{i^*}$ is the cycle that proves the statement
+            \item we can improve the bound of the statement to be at least $\sqrt k + 1$
+        \end{itemize}
+    }
+
     \chapter{Matchings}
 
     \begin{frameddefn}{Matching}
@@ -2962,7 +2981,7 @@
     TODO \todo{interlude}
 
     \begin{framedthm}{}
-        If $p$ is an integer such that $2 \le p \le 7$, then for any graph $G$ such that $n \ge 3$ and $$\abs{E(G)} \ge (p - 2)n - \binom{p - 1}{2} + 1$$ it holds that $G$ contains $K_p$ as minor.
+        If $p$ is an integer such that $2 \le p \le 7$, then for any graph $G$ such that $n \ge p$ and $$\abs{E(G)} \ge (p - 2)n - \binom{p - 1}{2} + 1$$ it holds that $G$ contains $K_p$ as minor.
     \end{framedthm}
 
     \begin{proof}
@@ -2973,9 +2992,7 @@
             \item For $p = 3$, we have that $\abs{E(G)} \ge (3 - 2) n - \binom{3 - 1}{2} + 1 = n - 1 + 1 = n$. Thus, by \cref{m n - 1} this implies that $G$ is not a tree (nor a forest), and in particular it is not acyclic, meaning that it contains at least one cycle $C$. Hence, if we contract all but 3 edges on $C$ we obtain $K_3$.
             \item For $p = 4$, we have that $\abs{E(G)} \ge (4 - 2)n - \binom{4 - 1}{2} + 1 = 2n - 3 + 1 = 2n - 2$. We proceed by induction on $n + m$.
 
-                We observe that if $n = 3$ then $\abs{E(G)} \ge 2 \cdot 3 - 2 = 4$ which is impossible with only 3 vertices. Hence, to satisfy the edge bound $n$ must be at least 4. Therefore, for the base case assume that $n = 4$, which means that $\abs{E(G)} \ge 2 \cdot 4 - 2 = 6$, and thus $G = K_4$.
-
-                Now, for the inductive hypothesis, we need to be careful: since we are applying the induction on $n + m$, then
+                For $n = p = 4$, we have that $\abs{E(G)} \ge 2 \cdot 4 - 2 = 6$, and thus $G = K_4$. Now, for the inductive hypothesis, we need to be careful: since we are applying the induction on $n + m$, then
 
                 \begin{itemize}
                     \item if the graph $G$ we are considering has $m - 1$ edges, we are going to inductively assume that the property holds for $G$ such that $\abs{E(G)} \ge 2n - 2$
@@ -2984,7 +3001,7 @@
 
                 Now, because of the base case, consider a graph $G$ of $n$ vertices such that $n \ge 5$; moreover, suppose that $\abs{E(G)} > 2n - 2$, and fix an edge $e \in E(G)$. Now, consider the graph $G - \{e\}$: clearly, this graph has still $n$ vertices but since we removed an edge it holds that $\abs{E(G - \{e\})} > 2n - 2 - 1 = 2n - 3 \iff \abs{E(G - \{e\})} \ge 2n - 2$, therefore we can apply the inductive hypothesis as we described, and the theorem holds.
 
-                Therefore, we may assume that $\abs{E(G)} = 2n - 2$. Fix an edge $e \in E(G)$, and consider the contracted graph $G/e$: this graph has $n - 1$ vertices, hence if $\abs{E(G/e)} \ge 2(n - 1) - 2$ by the inductive hypothesis the theorem holds trivially. Thus, we may assume that $\abs{E(G/e)} < 2(n - 1) - 2 = 2n - 4 \iff \abs{E(G/e)} \le 2n - 5$, and since we are assuming that $\abs{E(G)} = 2n - 2$, this means that by contracting $e$ we removed at least 3 edges from $G$ --- one of which is $e$ itself. Therefore, we know that in $G$ we have the following structure
+                Therefore, we may assume that $\abs{E(G)} = 2n - 2$. Fix an edge $e \in E(G)$, and consider the contracted graph $G/e$: this graph has $n - 1$ vertices, hence if $\abs{E(G/e)} \ge 2(n - 1) - 2$ by the inductive hypothesis the theorem holds trivially. Thus, we may assume that $\abs{E(G/e)} < 2(n - 1) - 2 = 2n - 4 \iff \abs{E(G/e)} \le 2n - 5$, and since we are assuming that $\abs{E(G)} = 2n - 2$, this means that by contracting $e$ we removed at least 3 edges from $G$ --- one of which is $e$ itself. Therefore, for each edge $e$ of $G$ we have the following structure
 
                 \begin{figure}[H]
                     \centering
@@ -3014,8 +3031,7 @@
                 }
             \item For $p = 5$, we have that $\abs{E(G)} \ge (5 - 2)n - \binom{5 - 1}{2} + 1 = 3n - 6 + 1 = 3n - 5$. We proceed by induction on $n + m$ in the same fashion we did for the case of $p = 4$.
 
-                We observe that if $n = 3$ then $\abs{E(G)} \ge 3 \cdot 3 - 5 = 9 - 5 = 4$ which is impossible with only 3 vertices, and if $n = 4$ then $\abs{E(G)} \ge 3 \cdot 4 - 5 = 12 - 5 = 7$ which is impossible with 6 vertices. Hence, to satisfy the edge bound $n$ must be at least 5. Therefore, for the base case assume that $n = 5$, which means that $\abs{E(G)} \ge 3 \cdot 5 - 5 = 15 - 5 = 10$, and thus $°G = K_5$.
-                By pplying the same reasoning of the case for $p = 4$, we can consider a graph $G$ such that $n \ge 6$, and fix an edge $e \in E(G)$; now, if we assume that $\abs{E(G)}> 3n - 5$ then $\abs{E(G - \{e\})} > 3n - 5 - 1 = 3n - 6 \iff \abs{E(G - \{e\})} \ge 3n - 5$ therefore we can apply the inductive hypothesis and theorem holds.
+                For $n = p = 5$, we have that $\abs{E(G)} \ge 3 \cdot 5 - 5 = 15 - 5 = 10$, and thus $G = K_5$. By applying the same reasoning of the case for $p = 4$, we can consider a graph $G$ such that $n \ge 6$, and fix an edge $e \in E(G)$; now, if we assume that $\abs{E(G)}> 3n - 5$ then $\abs{E(G - \{e\})} > 3n - 5 - 1 = 3n - 6 \iff \abs{E(G - \{e\})} \ge 3n - 5$ therefore we can apply the inductive hypothesis and theorem holds.
 
                 Thus, we may assume that $\abs{E(G)} = 3n - 5$. Fix an edge $e \in E(G)$, and consider $G/e$: this graph has $n - 1$ vertices, and by the same reasoning as the case for $p = 4$ we may assume that $\abs{E(G/e)} < 3(n - 1) - 5 = 3n -3 -5 = 3n - 8 \iff \abs{E(G/e)} \le \abs{E(G/e)} \le 3n - 9$, and since we are assuming $\abs{E(G)} = 3n - 5$, this means that by contracting $e$ we removed at least 4 edges from $G$ --- one of which is $e$ itself. This implies that the endpoints of $e$ must have at least three distinct common neighbors, i.e. $e$ is contained in at least three distinct $K_3$'s.
 
@@ -3024,7 +3040,7 @@
                 \claim{
                     If $\delta = 5$, for any $v \in V(G)$ such that $\deg(v) = 5$ it holds that $K_5$ is a minor of $G[\mathcal N( v) \cup \{v\}]$.
                 }{
-                    Consider $G[\mathcal N (v)]$: by the same argument applied in the final claim of the case for $p = 4$, we know that each edge in $G[\mathcal N (v)]$ must have $\deg_{G[\mathcal N (v)]}(v) \ge 3$, otherwise the edges connecting $v$ to $\mathcal N (v)$ would not be contained in at least three distinct 3-cliques. Now, if $G[\mathcal N (v)]$ is fully connected, we have that $G[\mathcal N(v)] = K_5$ hence the claim trivially holds, so we may assume the opposite. In fact, the degree bound we derived does not guarantee that $G[\mathcal N (v)]$ is fully connected; however, there cannot be more than 2 anti-edges, as shown in the figure below --- the \tit{dashed} edges are the anti-edges of $G[\mathcal N (v)]$
+                    Consider $G[\mathcal N (v)]$: by the same argument applied in the final claim of the case for $p = 4$, we know that each vertex $x$ in $G[\mathcal N (v)]$ must have $\deg_{G[\mathcal N (v)]}(x) \ge 3$, otherwise the edges connecting $v$ to $\mathcal N (v)$ would not be contained in at least three distinct 3-cliques. Now, if $G[\mathcal N (v)]$ is fully connected, we have that $G[\mathcal N(v)] = K_5$ hence the claim trivially holds, so we may assume the opposite. In fact, the degree bound we derived does not guarantee that $G[\mathcal N (v)]$ is fully connected; however, there cannot be more than 2 anti-edges, as shown in the figure below --- the \tit{dashed} edges are possible anti-edges of $G[\mathcal N (v)]$
 
                     \begin{figure}[H]
                         \centering
