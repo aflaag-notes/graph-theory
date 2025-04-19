@@ -1033,6 +1033,28 @@
         \end{itemize}
     }
 
+    \begin{framedprob}{Tree-order}
+        Consider a tree $T$, and let $r \in V(T)$ be its root. We define the \tbf{tree-order} $\le_r$ associated with $r$ as follows: $$\forall x, y \in V(T) \quad x \le_r y \iff x \in V(r \ T \ y)$$ Prove that
+
+        \begin{enumerate}
+            \item $r$ is the least element in this partial order.
+            \item Every leaf different from $r$ is a maximal element.
+            \item the endpoints of any edge of $T$ are comparable.
+            \item For any $y \in V(T)$, every set of the form $\{x \in V(T) \mid x \le_r y\}$ is a \tit{chain}, i.e. a set of pairwise comparable elements.
+        \end{enumerate}
+    \end{framedprob}
+
+    \solution{
+        We can prove the statements by using the properties of trees.
+
+        \begin{enumerate}
+            \item By way of contradiction, suppose that there is an element $m$ such that $m \le_r r$ and $m \neq r$; by definition, this happens if and only if $m \in V(r \ T \ r) = \{r\}$, meaning that $m = r$ $\lightning$.
+            \item By way of contradiction, let $l \neq r$ be a leaf of $T$ that is not maximal, i.e. there is a node $v \in V(T)$ such that $l \le_r v$ and $l \neq v$. By definition, this can happen if and only if $l \in V(r \ T \ v)$, but if $l \neq v$ and $l$ is in a path $r \to v$, then $\deg(l) \ge 2$ contradicting the fact that $l$ was a leaf of $T$ $\lightning$.
+            \item Fix an edge $e \in E(T)$; we can label the endpoints of $e$ with $x$ and $y$ such $\dist(r, y) = \dist(r, x) + 1$ --- i.e. $x$ \curlyquotes{comes before} $y$ in the path $r \to y$ --- and this suffices to show that $x \in V(r \ T \ y) \iff x \le_r y$.
+            \item Let $y \in V(T)$, and fix a set $S_y := \{x \in V(T) \mid x \le_r y\}$. We observe that $x \le_r y \iff x \in V(r \ T \ y)$, which implies that $x \in S_y \iff x \in V(r \ T \ y)$ meaning that $S_y = V(r \ T \ y)$. Then, fix a pair of distinct elements $a, b \in S_y$, and without loss of generality suppose that $b$ is the element that maximizes the distance from $r$. We observe that $S_y = V(r \ T \ y)$ implies that for any $x \in S_y$ the path $r \ T \ y$ contains $r \ T \ x$, and in particular it contains both $r \ T \ a$ and $r \ T \ b$. Moreover, since $b$ is further from $r$ than $a$, the path $r \ T \ a$ is contained in $r \ T \ b$, which means that $a \in V(r \ T \ b) \iff a \le_r b$.
+        \end{enumerate}
+    }
+
     \chapter{Matchings}
 
     \begin{frameddefn}{Matching}
