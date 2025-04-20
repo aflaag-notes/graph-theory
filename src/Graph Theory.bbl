@@ -52,6 +52,38 @@
     \field{year}{1957}
   \endentry
 
+  \entry{bollobas}{article}{}{}
+    \name{author}{2}{}{%
+      {{hash=BB}{%
+         family={Bollob{\'a}s},
+         familyi={B\bibinitperiod},
+         given={B{\'e}la},
+         giveni={B\bibinitperiod},
+      }}%
+      {{hash=TA}{%
+         family={Thomason},
+         familyi={T\bibinitperiod},
+         given={Andrew},
+         giveni={A\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Springer}%
+    }
+    \strng{namehash}{BBTA1}
+    \strng{fullhash}{BBTA1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{BT96}
+    \field{sortinit}{B}
+    \field{sortinithash}{B}
+    \field{pages}{313\bibrangedash 320}
+    \field{title}{Highly linked graphs}
+    \field{volume}{16}
+    \field{journaltitle}{Combinatorica}
+    \field{year}{1996}
+  \endentry
+
   \entry{bridges}{misc}{}{}
     \name{author}{1}{}{%
       {{hash=cW}{%

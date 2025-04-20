@@ -2285,9 +2285,9 @@
         \caption{For instance, this graph has $K_4$ as topological minor, because it contains a subdivision of $K_4$ as subgraph.}
     \end{figure}
 
-    \begin{framedthm}{}
+    \begin{framedprop}[label={3-conn prop}]{}
         If $G$ is 3-connected, then $G$ has $K_4$ as topological minor.
-    \end{framedthm}
+    \end{framedprop}
 
     \begin{proof}
         If $G$ is 3-connected, then by \cref{kconn} we know that $\delta(G) \ge 3$, and by \cref{min deg 2} this means that in $G$ there is a cycle $C$. Moreover, by 3-connectivity of $G$, we know that $G$ cannot be a cycle itself, therefore there must be at least one vertex $v \notin V(C)$. Now, by 3-connectivity agin we can apply \cref{menger cor}, obtaining 3 $\{v\}$-$V(C')$ paths $P_1$, $P_2$ and $P_3$ that only intersect in $v$, and finally $G[V(C) \cup V(P_1) \cup V(P_2) \cup V(P_3)]$ is a subdivision of $K_4$.
@@ -2790,9 +2790,7 @@
 
     \subsection{$k$-connected subgraphs}
 
-    TODO \todo{intro}
-
-    \textcite{mader}
+    After examining extremal edge conditions that guarantee the presence of a clique as subgraph, we now turn our attention to extremal conditions that ensure the existence of a $k$-connected subgraph. These types of conditions are particularly significant --- unsurprisingly so, given that we have already seen how $k$-connectivity plays a key role in the emergence of structural properties within graphs. In particular, the following theorem --- proved by \textcite{mader} in 1972 --- provides some conditions that guarantee the existence of a $k$-connected subgraph in a given graph.
 
     \begin{framedthm}{Mader's theorem}
         If $G$ is such that $\abs{V(G)} \ge 2k$ and $\abs{E(G)} \ge (2k - 1)(n - k)$, then $G$ contains a $k$-connected subgraph.
@@ -2824,7 +2822,7 @@
             \item $G$ does not contain a $k$-connected graph --- otherwise the statement is trivially true
             \item $\abs{E(G)} \ge (2k - 1)(n - k)$
             \item $\delta \ge 2k$
-            \item $n \ge 2k + 1$
+            % \item $n \ge 2k + 1$
         \end{enumerate}
 
         and in particular, assumption (a) implies that we may assume there is an $A$-$B$ separation $(X, Y)$ of $G$ having order $\abs{X \cap Y} \le k - 1$, where $X - Y , Y - X \neq \varnothing$ --- for some subsets $A, B \subseteq V(G)$.
@@ -2850,18 +2848,73 @@
 
         This claim implies that at least one between $G[X]$ or $G[Y]$ satisfies the edge bound, hence if we can prove that they also satisfy the vertex bound we can apply the inductive hypothesis and conclude the proof.
 
-        Now consider assumption (c): if $\delta \ge 2k$ then for each vertex $v \in V(G)$ its degree must be at least $2k$, and in particular this is true for any $v \in X - Y$. However, $(X, Y)$ is a separation of $G$, meaning that there are not edges in $\mathrm{cut}(X, Y)$; therefore, all the neighbors of $v$ must lie inside $X$, meaning that $\abs X \ge \abs{\mathcal N(v) \cup v} \ge 2k + 1 > 2k$. This last condition implies that the vertex bound of the inductive hypothesis is satisfied, so by applying the latter on one between $G[X]$ or $G[Y]$ the theorem holds.
+        Now consider assumption (c): if $\delta \ge 2k$ then for each vertex $v \in V(G)$ its degree must be at least $2k$, and in particular this is true for any $v \in X - Y$. However, $(X, Y)$ is a separation of $G$, meaning that there are not edges in $\mathrm{cut}(X, Y)$; therefore, all the neighbors of $v$ must lie inside $X$, meaning that $\abs X \ge \abs{\mathcal N(v) \cup \{v\}} \ge 2k + 1 > 2k$. This last condition implies that the vertex bound of the inductive hypothesis is satisfied, so by applying the latter on one between $G[X]$ or $G[Y]$ the theorem holds.
     }
 
-    \subsection{Cliques as minors}
+    It is not known if the edge bound provided by Mader's theorem is optimal, i.e. we do not know if there are graph with fewer than $(2k - 1)(n - k)$ edges that do not contain $k$-connected subgraphs. In fact, this is an open question in the field of extremal graph theory: given $k \in \N$, what is the smallest value $c_k$ such that all graphs with $n$ vertices and $\abs{E(G)} \ge c_kn + f(k)$ --- for some function $f(k)$ --- contain a $k$-connected subgraph?
 
-    TODO \todo{intro}
+    By Mader's theorem we that $c_k$ is \tit{upper bounded} by $c_k \le 2k - 1$, and some type of graphs are known to provide \tit{lower bounds}, such as the following type.
+
+    \begin{frameddefn}{Split graph}
+        A \tbf{split graph} is a graph whose vertices can be partitiones into a \tit{clique} and an independent set. A \tbf{complete split graph} is a split graph where the independent set is fully connected to the clique.
+    \end{frameddefn}
+
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.80cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
+
+            \node[circle, draw] (1) []{};
+            \node[circle, draw] (2) [right of = 1]{};
+            \node[circle, draw] (3) [below of = 1]{};
+            \node[circle, draw] (4) [below of = 2]{};
+            \node[circle, draw] (6) [xshift = 175, yshift=-0.9cm]{};
+            \node[circle, draw] (5) [above of = 6]{};
+            \node[circle, draw] (7) [below of = 6]{};
+
+            \draw[-] (1) to (2);
+            \draw[-] (1) to (3);
+            \draw[-] (1) to (4);
+            \draw[-] (2) to (3);
+            \draw[-] (2) to (4);
+            \draw[-] (3) to (4);
+
+            \draw[-] (5) to (1);
+            \draw[-] (5) to (2);
+            \draw[-] (5) to (3);
+            \draw[-] (5) to (4);
+
+            \draw[-] (6) to (1);
+            \draw[-] (6) to (2);
+            \draw[-] (6) to (3);
+            \draw[-] (6) to (4);
+
+            \draw[-] (7) to (1);
+            \draw[-] (7) to (2);
+            \draw[-] (7) to (3);
+            \draw[-] (7) to (4);
+
+            ;
+        \end{tikzpicture}
+        \caption{The complit split graph constructed from $K_4$ and an independent set of 3 vertices.}
+    \end{figure}
+
+    In fact, any complete split graph constructed from a $(k - 1)$-clique and an independent set of $n - (k - 1)$ vertices has the following number of edges $$\abs{E(G)} = \binom{k - 1}{2} +  (k - 1)(n - (k - 1))$$ and such split graphs are clearly not $k$-connected --- removing $K_{k - 1}$ disconnect the graph by definition. Therefore, this implies that $c_k \ge k - 1$.
+
+    Lastly, as a corollary of Mader's theorem and \cref{3-conn prop}, we get the following proposition.
+
+    \begin{framedcor}{}
+        A graph $G$ such that $\abs{V(G)} \ge 6$ and $\abs{E(G)} \ge 5n$ contains $K_4$ as topological minor.
+    \end{framedcor}
+
+    Moreover, in 1996 \textcite{bollobas} proved that the above corollary can be extended to any $k$-clique with a relatively small blow-up on the edge bound.
 
     \begin{framedthm}{Bollobás-Thomason theorem}
-        There exists a constant $c$ such that if $G$ has at least $ck^2n$ edges, then $G$ has $K_k$ as topological minor.
+        There exists a constant $c > 0$ such that if $G$ has at least $ck^2n$ edges, then $G$ has $K_k$ as topological minor.
     \end{framedthm}
 
-    TODO $2 \le c \le 10$ \todo{interlude}
+    The topic of finding cliques as substructures of a given graph will be discussed in greater detail in the following section.
+
+    \subsection{Cliques as minors}
 
     Consider a graph $G$, and an edge $xy \in E(G)$; to \tbf{contract} $xy$ means to \tit{identify} the vertices $x$ and $y$ and delete any parralel edge that formed afterwards. For instance, if $G$ contains the edge $xy$
 
@@ -3000,8 +3053,6 @@
 
     If we contract the edge $xy$, we obtain $K_5$, therefore $G$ contains $K_5$ as minor, even if $K_5$ is not a topological minor of $G$: in fact, every subdivision of $K_5$ has 5 vertices of degree 4, but $G$ has only 4 vertices of degree 4.
 
-    TODO \todo{interlude}
-
     \begin{framedthm}{}
         If $p$ is an integer such that $2 \le p \le 7$, then for any graph $G$ such that $n \ge p$ and $$\abs{E(G)} \ge (p - 2)n - \binom{p - 1}{2} + 1$$ it holds that $G$ contains $K_p$ as minor.
     \end{framedthm}
@@ -3098,9 +3149,27 @@
 
                     Therefore, in both cases we have that $G[\mathcal N (v) \cup \{v\}]/e = K_5$, where $e$ was chosen accordingly.
                 }
-            \item Lastly, the cases for $p = 6$ and $p = 7$ were proved by TODO \todo{da trovare i paper}
+            \item The cases for $p = 6$ and $p = 7$ are analogous to the ones for $p = 4$ and $p = 5$.
         \end{itemize}
     \end{proof}
+
+    TODO \todo{interlude}
+
+    \begin{framedthm}{Kostochaka-Thomason theorem}
+        There is a constant $c > 0$ such that any graph $G$ with $\abs{E(G)} \ge cp \sqrt{\log p}n$ contains $K_p$ as minor.
+    \end{framedthm}
+
+    TODO \todo{interlude}
+
+    \begin{framedconj}{Seymour-Thomas conjecture}
+        For all $p \in \N$ there is a constant $N_p > 0$ such that any $(p - 2)$-connected graph $G$ with $n \ge N_p$ and $\abs{E(G)} \ge (p - 2)n - \binom{p - 1}{2} + 1$ contains $K_p$ as minor.
+    \end{framedconj}
+
+    TODO \todo{interlude}
+
+    \begin{framedthm}{}
+        There is a constant $c > 0$ such that for all $p \in \N$ there is another constant $N_p > 0$ for which any $c(p + 1)$-connected graph $G$ with $n \ge N_p$ contains $K_p$ as minor.
+    \end{framedthm}
 
     \printbibliography % UNCOMMENT FOR BIBLIOGRAPHY
 
