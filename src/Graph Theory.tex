@@ -2459,10 +2459,103 @@
         TODO \todo{da finire}
     \end{proof}
 
+    \section{Directed graphs}
+
+    Up until this point, we only discussed \tit{undirected graphs}. In this section we are going briefly presents some results regarding \tbf{directed graphs} (or \tit{digraphs}, for short), in which the edges have an \tbf{orientation} --- implying that the edge $(x, y)$ is different from the edge $(y, x)$.
+
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.75cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
+
+            \node[circle, draw] (1) []{};
+            \node[circle, draw] (2) [right of = 1]{};
+            \node[circle, draw] (3) [below left of = 1]{};
+            \node[circle, draw] (4) [below right of = 2]{};
+            \node[circle, draw] (5) [below right of = 3]{};
+            \node[circle, draw] (6) [below left of = 4]{};
+
+            \draw[->] (1) [bend left] to (3);
+            \draw[->] (1) to (4);
+            \draw[->] (1) to (6);
+            \draw[->] (2) to (4);
+            \draw[->] (2) to (5);
+            \draw[->] (3) [bend left] to (1);
+            \draw[->] (3) to (5);
+            \draw[->] (3) to (6);
+            \draw[->] (5) to (6);
+            \draw[->] (6) [bend left] to (5);
+
+            ;
+        \end{tikzpicture}
+        \caption{An example of a \tit{digraph}.}
+    \end{figure}
+
+    \begin{frameddefn}{Path cover}
+        Let $G$ be a digraph; a \tbf{path cover} for $G$ is a set $\mathcal P$ of disjoint paths such that $$\displaystyle V(G) = \bigcup_{P \in \mathcal P}{V(P)}$$
+    \end{frameddefn}
+
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.75cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
+
+            \node[circle, draw] (1) []{};
+            \node[circle, draw] (2) [right of = 1]{};
+            \node[circle, draw] (3) [below left of = 1]{};
+            \node[circle, draw] (4) [below right of = 2]{};
+            \node[circle, draw] (5) [below right of = 3]{};
+            \node[circle, draw] (6) [below left of = 4]{};
+
+            \draw[->] (1) [bend left, red] to (3);
+            \draw[->] (1) to (4);
+            \draw[->] (1) to (6);
+            \draw[->] (2) [red] to (4);
+            \draw[->] (2) to (5);
+            \draw[->] (3) [bend left] to (1);
+            \draw[->] (3) [red] to (5);
+            \draw[->] (3) to (6);
+            \draw[->] (5) [red] to (6);
+            \draw[->] (6) [bend left] to (5);
+
+            ;
+        \end{tikzpicture}
+        \caption{For instance, if we consider the digraph of the previous example, the set of \tit{red} vertices form a \tit{path cover}.}
+    \end{figure}
+
+    We observe that any digraph contains a trivial path cover, i.e. the one formed by the sef of every trivial path of the graph. In fact, we are interested in finding the path cover having \tit{minimum cardinality}. \textcite{gallai} proved that path covers are strictly related to independent sets, through the following theorem.
+
+    \begin{framedthm}{Gallai-Milgram theorem}
+        Given a digraph $G$, there are a path cover $\mathcal P$ of $G$ and an independent set $X \subseteq V(G)$ such that $$\forall P \in \mathcal P \quad \abs{X \cap V(P)} = 1$$
+    \end{framedthm}
+
+
+    We are going to prove a slightly stronger result that directly implies the above theorem. First, consider the following definitions.
+
+    \begin{frameddefn}{Terminal nodes}
+        Given a digraph $G$, and a path cover $\mathcal P$ of $G$, the set of \tbf{terminal nodes} of the paths of $\mathcal P$ is defined as follows: $$\mathrm{ter}(\mathcal P) := \{v \in V(P) \mid P \in \mathcal P \land \deg_P^{out}(v) = 0\}$$
+    \end{frameddefn}
+
+    TODO \todo{do an example}
+
+    \begin{frameddefn}{Minimality by inclusion}
+        Given a digraph $G$, and a path cover $\mathcal P$ of $G$, we say that $\mathcal P$ is \tbf{minimal by inclusion} if there is no other path cover $\mathcal P'$ of $G$ such that $\mathrm{ter}(\mathcal P') \subset \mathrm{ter}(\mathcal P)$.
+    \end{frameddefn}
+
+    TODO \todo{do an example}
+
+    We can now prove our proposition.
+
+    \begin{framedprop}{}
+        Given a graph $G$, and a path cover $\mathcal P$ of $G$ that is minimal by inclusion, there is an independent set $X \subseteq V(G)$ such that $$\forall P \in \mathcal P \quad \abs{X \cap V(P)} = 1$$
+    \end{framedprop}
+
+    \begin{proof}
+        TODO \todo{da fare}
+    \end{proof}
+
     \section{Exercises}
     
     \begin{framedprob}{}
-        Given a $k$-connected graph $G$ such that $V(G) \ge 2k$, show that $G$ contains a cycle of length at least 2k.
+        Given a $k$-connected graph $G$ such that $V(G) \ge 2k$, show that $G$ contains a cycle of length at least $2k$.
     \end{framedprob}
 
     \solution{

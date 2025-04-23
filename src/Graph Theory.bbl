@@ -162,6 +162,35 @@
     \field{year}{1741}
   \endentry
 
+  \entry{gallai}{article}{}{}
+    \name{author}{2}{}{%
+      {{hash=GT}{%
+         family={Gallai},
+         familyi={G\bibinitperiod},
+         given={Tilbor},
+         giveni={T\bibinitperiod},
+      }}%
+      {{hash=MAN}{%
+         family={Milgram},
+         familyi={M\bibinitperiod},
+         given={Arthur\bibnamedelima Norton},
+         giveni={A\bibinitperiod\bibinitdelim N\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{GTMAN1}
+    \strng{fullhash}{GTMAN1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{GM60}
+    \field{sortinit}{G}
+    \field{sortinithash}{G}
+    \field{pages}{181\bibrangedash 186}
+    \field{title}{Verallgemeinerung eines graphentheoretischen Satzes von R{\'e}dei}
+    \field{volume}{21}
+    \field{journaltitle}{Acta Sc. Math}
+    \field{year}{1960}
+  \endentry
+
   \entry{gale}{article}{}{}
     \name{author}{2}{}{%
       {{hash=GD}{%
