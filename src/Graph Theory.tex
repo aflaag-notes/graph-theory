@@ -2555,11 +2555,13 @@
     \section{Exercises}
     
     \begin{framedprob}{}
-        Given a $k$-connected graph $G$ such that $V(G) \ge 2k$, show that $G$ contains a cycle of length at least $2k$.
+        Given a $k$-connected graph $G$ such that $\abs{V(G)} \ge 2k$, show that $G$ contains a cycle of length at least $2k$.
     \end{framedprob}
 
     \solution{
-        TODO \todo{da fare}
+        Since $\abs{V(G)} \ge 2k$, we can split $G$ into two sets $A$ and $B$ such that $\abs{A}, \abs{B} \ge k$ and $A \cap B = \varnothing$. Fix a vertex $a \in A$; since $G$ is $k$-connected, by \cref{menger cor} there exist at least 1 $\{a\}-B$ path, and let $b \in B$ be the other endpoint of this path; now, we can repeat the same argument for $b$ to find a $\{b\}-A$ path, and the \todo{da finire}
+
+        \cref{intern disj menger}
     }
 
     \chapter{Extremal graph theory}
