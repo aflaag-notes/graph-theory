@@ -2467,12 +2467,12 @@
         \centering
         \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.75cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
 
-            \node[circle, draw] (1) []{};
-            \node[circle, draw] (2) [right of = 1]{};
-            \node[circle, draw] (3) [below left of = 1]{};
-            \node[circle, draw] (4) [below right of = 2]{};
-            \node[circle, draw] (5) [below right of = 3]{};
-            \node[circle, draw] (6) [below left of = 4]{};
+            \node[circle, draw] (1) []{1};
+            \node[circle, draw] (2) [right of = 1]{2};
+            \node[circle, draw] (3) [below left of = 1]{3};
+            \node[circle, draw] (4) [below right of = 2]{4};
+            \node[circle, draw] (5) [below right of = 3]{5};
+            \node[circle, draw] (6) [below left of = 4]{6};
 
             \draw[->] (1) [bend left] to (3);
             \draw[->] (1) to (4);
@@ -2498,12 +2498,12 @@
         \centering
         \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.75cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
 
-            \node[circle, draw] (1) []{};
-            \node[circle, draw] (2) [right of = 1]{};
-            \node[circle, draw] (3) [below left of = 1]{};
-            \node[circle, draw] (4) [below right of = 2]{};
-            \node[circle, draw] (5) [below right of = 3]{};
-            \node[circle, draw] (6) [below left of = 4]{};
+            \node[circle, draw] (1) []{1};
+            \node[circle, draw] (2) [right of = 1]{2};
+            \node[circle, draw] (3) [below left of = 1]{3};
+            \node[circle, draw] (4) [below right of = 2]{4};
+            \node[circle, draw] (5) [below right of = 3]{5};
+            \node[circle, draw] (6) [below left of = 4]{6};
 
             \draw[->] (1) [bend left, red] to (3);
             \draw[->] (1) to (4);
@@ -2519,6 +2519,7 @@
             ;
         \end{tikzpicture}
         \caption{For instance, if we consider the digraph of the previous example, the set of \tit{red} vertices form a \tit{path cover}.}
+        \label{path cover}
     \end{figure}
 
     We observe that any digraph contains a trivial path cover, i.e. the one formed by the sef of every trivial path of the graph. In fact, we are interested in finding the path cover having \tit{minimum cardinality}. \textcite{gallai} proved that path covers are strictly related to independent sets, through the following theorem.
@@ -2527,22 +2528,19 @@
         Given a digraph $G$, there are a path cover $\mathcal P$ of $G$ and an independent set $X \subseteq V(G)$ such that $$\forall P \in \mathcal P \quad \abs{X \cap V(P)} = 1$$
     \end{framedthm}
 
-
     We are going to prove a slightly stronger result that directly implies the above theorem. First, consider the following definitions.
 
     \begin{frameddefn}{Terminal nodes}
         Given a digraph $G$, and a path cover $\mathcal P$ of $G$, the set of \tbf{terminal nodes} of the paths of $\mathcal P$ is defined as follows: $$\mathrm{ter}(\mathcal P) := \{v \in V(P) \mid P \in \mathcal P \land \deg_P^{out}(v) = 0\}$$
     \end{frameddefn}
 
-    TODO \todo{do an example}
+    For example, in \cref{path cover} the terminal nodes are 4 and 6.
 
     \begin{frameddefn}{Minimality by inclusion}
         Given a digraph $G$, and a path cover $\mathcal P$ of $G$, we say that $\mathcal P$ is \tbf{minimal by inclusion} if there is no other path cover $\mathcal P'$ of $G$ such that $\mathrm{ter}(\mathcal P') \subset \mathrm{ter}(\mathcal P)$.
     \end{frameddefn}
 
-    TODO \todo{do an example}
-
-    We can now prove our proposition.
+    For instance, the path cover $\mathcal P$ in \cref{path cover} is clearly minimal by inclusion, because no directed edge can be removed from $\mathcal P$ such that the latter still covers $G$.
 
     \begin{framedprop}{}
         Given a graph $G$, and a path cover $\mathcal P$ of $G$ that is minimal by inclusion, there is an independent set $X \subseteq V(G)$ such that $$\forall P \in \mathcal P \quad \abs{X \cap V(P)} = 1$$
@@ -2559,10 +2557,12 @@
     \end{framedprob}
 
     \solution{
-        Since $\abs{V(G)} \ge 2k$, we can split $G$ into two sets $A$ and $B$ such that $\abs{A}, \abs{B} \ge k$ and $A \cap B = \varnothing$. Fix a vertex $a \in A$; since $G$ is $k$-connected, by \cref{menger cor} there exist at least 1 $\{a\}-B$ path, and let $b \in B$ be the other endpoint of this path; now, we can repeat the same argument for $b$ to find a $\{b\}-A$ path, and the \todo{da finire}
+        Since $\abs{V(G)} \ge 2k$, we can split $G$ into two sets $A$ and $B$ such that $\abs{A}, \abs{B} \ge k$ and $A \cap B = \varnothing$. Fix a vertex $a \in A$; since $G$ is $k$-connected and $\abs A \ge k$, by \cref{menger cor} there exists at least one $\{a\}$-$B$ path, and let $b \in B$ be the other endpoint of this path. By the same argument, since $\abs B \ge k$ there exists at least one $\{b\}-A$ path different from $a \to b$, and let $a' \in A$ be the other endpoint of this path.
 
-        \cref{intern disj menger}
-    }
+        We can repeat the same argument --- starting from $a'$ --- going \curlyquotes{back and forth} from $A$ to $B$, and since $\abs A , \abs B \ge k$ this process can be repeated at least $2k - 1$ times. Hence, at the end of this procedure we found a path $P$ such that $\abs{E(P)} \ge 2k - 1$ that starts in $a$ and ends in some vertex $x \in B$.
+
+        Lastly, consider the vertices $a$ and $x$; clearly $a \neq x$, and since $G$ is $k$-connected by \cref{intern disj menger} there exists at least one $\{x\}$-$\{a\}$ path $P_{x,a}$, meaning that $P \cup P_{x,a}$ forms a cycle in $G$ that must have length at least $2k - 1 + 1 = 2k$.
+   }
 
     \chapter{Extremal graph theory}
 
