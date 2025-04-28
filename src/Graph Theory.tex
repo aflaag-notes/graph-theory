@@ -958,7 +958,7 @@
         Let $P$ be the longest path of $G$, and let $x_0, \ldots, x_k$ be its vertices.
 
         \claim{
-            There exists an index $\ell$ such that $x_0 \ e_1 \ x_1 \ \ldots \ x_k \ e_\ell \ x_\ell \ e_{\ell + 1} \ x_{\ell + 1} \ e_0 \ x_0$ is a cycle.
+            There exists an index $\ell$ such that $x_0 \ x_\ell \ x_{\ell + 1} \ \ldots \ x_{k - 1} \ x_k \ x_{\ell - 1} \ x_{\ell - 2} \ \ldots \ x_1 \ x_0 $ is a cycle.
         }{
             By the same argument used in the proof of \cref{longest path len}, we know that $$\mathcal N(x_0), \mathcal N (x_k) \subseteq \{x_0, \ldots, x_k\}$$ Let $I_0$ and $I_k$ be the following two sets $$I_0 := \{i \mid i \in [1,k], x_i \in \mathcal N (x_0)\} \implies \abs{I_0} = \abs{\mathcal N(x_0)}$$ $$I_k := \{i \mid i \in [1, k], x_{i - 1} \in \mathcal N (x_k)\} \implies \abs{I_k} = \abs{\mathcal N (x_k)}$$ Since $\delta \ge \tfrac{n}{2}$, we have that $\abs{I_0}, \abs{I_k} \ge \tfrac{n}{2}$. However, note that $k \le n - 1$ --- since we started counting at 0 --- hence by the pigeonhole principle there must be at least one index $\ell \in I_0 \cap I_k$, meaning that $x_0 \sim x_\ell$ and $x_k \sim x_{\ell - 1}$, defining a cycle as described in the statement of the claim.
         }
@@ -1053,6 +1053,22 @@
             \item Fix an edge $e \in E(T)$; we can label the endpoints of $e$ with $x$ and $y$ such $\dist(r, y) = \dist(r, x) + 1$ --- i.e. $x$ \curlyquotes{comes before} $y$ in the path $r \to y$ --- and this suffices to show that $x \in V(r \ T \ y) \iff x \le_r y$.
             \item Let $y \in V(T)$, and fix a set $S_y := \{x \in V(T) \mid x \le_r y\}$. We observe that $x \le_r y \iff x \in V(r \ T \ y)$, which implies that $x \in S_y \iff x \in V(r \ T \ y)$ meaning that $S_y = V(r \ T \ y)$. Then, fix a pair of distinct elements $a, b \in S_y$, and without loss of generality suppose that $b$ is the element that maximizes the distance from $r$. We observe that $S_y = V(r \ T \ y)$ implies that for any $x \in S_y$ the path $r \ T \ y$ contains $r \ T \ x$, and in particular it contains both $r \ T \ a$ and $r \ T \ b$. Moreover, since $b$ is further from $r$ than $a$, the path $r \ T \ a$ is contained in $r \ T \ b$, which means that $a \in V(r \ T \ b) \iff a \le_r b$.
         \end{enumerate}
+    }
+
+    \begin{framedprob}{}
+        Show that every connected graph $G$ contains a path of length at least $\min\{2 \delta, n - 1\}$.
+    \end{framedprob}
+
+    \solution{
+        Let $P$ be the longest path of vertices $x_1 \ \ldots \ x_k$. If $\abs{V(P)} = n$ then $\abs{E(P)} = n - 1 \ge \min\{2 \delta, n - 1\}$, so we may assume that $\abs{V(P)} \le n - 1$.
+
+        \claim{
+            If $x_i \in \mathcal N(x_1)$, then $x_{i - 1} \notin \mathcal N(x_k)$.
+        }{
+            By way of contradiction, suppose that there is an index $j$ such that $x_1 \sim x_j$ and $x_{j - 1} \sim x_k$; then $$x_1 \ \ldots \ x_{j - 2} \ x_{j - 1} \ x_k \ x_{k - 1} \ \ldots \ x_{j + 1} \ x_j \ x_1$$ is a cycle --- call this cycle $C$. Since we are assuming that $\abs{V(P)} \le n - 1$, there must be at least another vertex $z \in V(G) - V(P)$. By connectivity of $G$, we know that there is a path $Q$ from $z$ to some vertex $v_i \in V(C)$; hence, we have that $$Q \cup x_i \ x_{i + 1} \ \ldots \ x_k \ x_1 \ \ldots \ x_{i - 1}$$ is a path containing more vertices than the vertices of $P$, contradicting the maximality of $\abs{E(P)}$ $\lightning$.
+        }
+        
+        We observe that $\mathcal N(x_1) , \mathcal N(x_k) \subseteq V(P) = \{x_1, \ldots, x_k\}$, otherwise we would contradict the maximality of $P$. Let $\mathcal N(x_1) = \{x_{i_1}, \ldots, x_{i_\ell}\}$; by the previous claim, we get that $$\mathcal N(x_k) \subseteq \{x_2, \ldots, x_k\} - \{x_{i_1 - 1} , \ldots, x_{i_\ell - 1}\}$$ therefore $$\delta \le \abs{\mathcal N(x_k)} \le k - 1 - \abs{\mathcal N(x_1)} \le k - 1 - \delta$$ meaning that $k \ge 2 \delta + 1 \implies \abs{E(P)} \ge 2\delta \ge \min\{2 \delta, n -1\}$.
     }
 
     \chapter{Matchings}
@@ -2033,7 +2049,7 @@
     \end{framedprop}
 
     \begin{proof}
-        By way of contradiction, assume that $\delta < k$, i.e. there is a vertex $x \in V(G)$ such that $\deg(x) < k \implies \abs{\mathcal N(x)} < k$. However, this violates the $k$-connectivity of $G$, because $G[V(G) - \mathcal N (x)]$ is disconnected even though $\abs{\mathcal N(x)} \le k - 1$ $\lightning$.
+        By way of contradiction, assume that $\delta < k$, i.e. there is a vertex $x \in V(G)$ such that $\deg(x) < k \implies \abs{\mathcal N(x)} < k$. Now, consider $G[V(G) - \mathcal N (x)]$: this subgraph is disconnected because it has $x$ isolated, but $\abs{\mathcal N(x)} \le k - 1$, meaning that this set contradicts the $k$-connectivity of $G$ $\lightning$.
     \end{proof}
 
     \begin{framedprop}[label={k-1 conn}]{}
