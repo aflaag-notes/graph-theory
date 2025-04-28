@@ -1071,6 +1071,31 @@
         We observe that $\mathcal N(x_1) , \mathcal N(x_k) \subseteq V(P) = \{x_1, \ldots, x_k\}$, otherwise we would contradict the maximality of $P$. Let $\mathcal N(x_1) = \{x_{i_1}, \ldots, x_{i_\ell}\}$; by the previous claim, we get that $$\mathcal N(x_k) \subseteq \{x_2, \ldots, x_k\} - \{x_{i_1 - 1} , \ldots, x_{i_\ell - 1}\}$$ therefore $$\delta \le \abs{\mathcal N(x_k)} \le k - 1 - \abs{\mathcal N(x_1)} \le k - 1 - \delta$$ meaning that $k \ge 2 \delta + 1 \implies \abs{E(P)} \ge 2\delta \ge \min\{2 \delta, n -1\}$.
     }
 
+    \begin{framedprob}{}
+        Show that every tree $T$ has at least $\Delta(T)$ leaves.
+    \end{framedprob}
+
+    \solution{
+        Consider a vertex $v$ of maximum degree, i.e. $\deg(v) = \Delta(T)$.
+
+        \claim{
+            There are $\Delta(T)$ connected components in $T[V(T) - \{v\}]$.
+        }{
+            By way of contradiction suppose that there are less than $\Delta(T)$ components in this subgraph. However, by pigeonhole principle, since there are $\Delta(T)$ edges incident to $v$, and less than $\Delta(T)$ components, there must be two neighbors of $v$ --- say $x$ and $y$ --- lying in the same component of $T[V(T) - \{v\}]$. However, since the component is connected by definition, there is a path between $x$ and $y$, say $P$, which implies that $v \ \{v, x\} \ P \ y \ \{y, v\} \ v$ is a cycle, contradicting the fact that $T$ was a tree.
+
+            Finally, if there are more than $\Delta(T)$ components when removing $v$ from $T$, it meant that at least one component was already present in $T$, meaning that $T$ had at least 2 different components, contradicting the fact that $T$ was a tree.
+        }
+
+        Moreover, since $T$ is a tree, each of the $\Delta(T)$ components in $T[V(T) - \{v\}]$ must be both connected and acyclic, implying that all of these components are trees themselves. Lastly, for each subtree we have two cases:
+
+        \begin{itemize}
+            \item if the subtree has 1 vertex, the subtree was a leaf of $T$
+            \item else, if the subtree has at least 2 vertices, by \cref{leaf existence} the subtree contains at least one leaf
+        \end{itemize}
+
+        and in both cases each subtree contains at least one leaf, meaning that $T$ contains at least $\Delta(T)$ leaves.
+    }
+    
     \chapter{Matchings}
 
     \begin{frameddefn}{Matching}
