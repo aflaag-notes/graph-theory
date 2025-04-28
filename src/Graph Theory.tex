@@ -1826,11 +1826,48 @@
         \end{enumerate}
     \end{framedprob}
 
-    \begin{proof}
+    \solution{
         Since $G$ is $k$-regular, it holds that the number of edges that have an endpoint in $A$ is precisely $k \abs A$, and the number of edges that have an endpoint in $B$ is exactly $k \abs B$; moreover, since $G$ is bipartite, we have that $$k \abs A = k \abs B \implies \abs A = \abs B$$
 
         We will prove the second statement by using \cref{hall}. By way of contradiction, assume that there is a set $S \subseteq V(G)$ such that $\abs S > \abs{\mathcal N(S)} \implies k \abs S > k \abs{\mathcal N (S)}$. Applying the same argument as before, the number of edges $ab$ such that $a \in S, b \in \mathcal N (S)$ is exactly $k \abs S$, hence by the pigeonhole principle there must be at least one vertex in $\mathcal N (S)$ that has more than $k$ vertices, contradicting the $k$-regularity of $G$.
-    \end{proof}
+    }
+
+    \begin{framedprob}{}
+        Let $k$ be an integer. Show that any two partitions of a finite set into $k$-sets admit a common choice of representatives.
+    \end{framedprob}
+
+    \solution{
+        Let $S$ be a finite set, and let $\mathcal P := \{P_1, \ldots, P_k\}$ and $\mathcal P' : = \{P_1', \ldots, P_k'\}$ be two partitions over $S$ into $k$-sets --- we observe that $\abs{\mathcal P} = \abs{\mathcal P'} = k$ and for any $Q_1, Q_2 \in \mathcal P \cup \mathcal P'$ we have that $\abs{Q_1} = \abs{Q_2} = \tfrac{\abs S}{k}$.
+
+        Now, construct a graph $G$ as follows:
+        
+        \begin{itemize}
+            \item add a vertex for each $k$-set of the two partitions --- hence $V(G) = \mathcal P \cup \mathcal P'$
+            \item $\forall Q_1, Q_2 \in \mathcal P \cup \mathcal P' \quad Q_1 \sim Q_2 \iff Q_1 \cap Q_2 \neq \varnothing$
+        \end{itemize}
+
+        We observe that $G$ is a bipartite graph, bipartitioned through $(\mathcal P, \mathcal P')$ itself: in fact, since $\mathcal P$ is a partition of $S$, its $k$-sets cannot intersect, hence $\mathcal P$ induces an independent set --- and the same reasoning can be applied for $\mathcal P'$ as well.
+
+        \claim{
+            $G$ admits a perfect matching.
+        }{
+            Fix $X \subseteq \mathcal P$. Since $\mathcal P$ is a partition of $S$ into $k$-sets, we have that $\abs{\bigcup_{P \in X}}{P} = k \abs X$ since the $k$-sets cannot overlap. By a similar argument, since $\mathcal P'$ is a partition of $S$ into $k$-sets as well, we have that $\abs{\bigcup_{P' \in \mathcal N(X)}{P'}} = k \abs{\mathcal N(X)}$.
+
+            By way of contradiction, suppose that there is an element $x \in \bigcup_{P \in X}{P} - \bigcup_{P' \in \mathcal N(X)}{P'}$, meaning that there is an element $x \in P$ for a $k$-set $P \in X$ such that for any $P' \in \mathcal N(X)$ it holds that $x \notin \mathcal P'$. However, $\mathcal P$ and $\mathcal P'$ partition $S$, and in particular they cover $S$, meaning that there exists a $k$-set in $\mathcal P$ containing $x$, say $P'$. Moreover, by construction of $G$ if $x \in P \cap P'$ then $G$ contains the edge $\{P, P'\}$, meaning that $P' \in \mathcal N(X)$, but we assumed that no $k$-set of $\mathcal N(X)$ contained $x$ $\lightning$. This proves that $\bigcup_{P \in X}{P} \subseteq \bigcup_{P' \in \mathcal N(X)}{P'}$.
+
+            Finally, together with the previous observation, this implies that $$k \abs S = \abs{\bigcup_{P \in X}{P}} \le \abs{\bigcup_{P' \in \mathcal N(X)}{P'}} = k \abs{\mathcal N (X)}$$ and in particular, we have that $$k \abs S \le k \abs{\mathcal N(X)} \iff \abs X \le \abs{\mathcal N(X)}$$ meaning that the Hall condition is satisfied for any set $X \subseteq \mathcal P$. Hence, by \cref{hall} we get that $G$ admits a $\mathcal P$-perfect matching, but because $\abs{\mathcal P} = \abs{\mathcal P'}$ then any $\mathcal P$-perfect matching of $G$ is also a perfect matching of $G$.
+        }
+
+        Now, let $M$ be a perfect matching of $G$, and consider the set $R$ constructed as follows: for each edge $\{P, P'\} \in M$, pick one element $r \in P \cap P'$ and add it to $R$.
+
+        \claim{
+            $R$ is a set of representatives for both $\mathcal P$ and $\mathcal P'$.
+        }{
+            Since $M$ is a matching, every element of $R$ will represent exactly two partitions, namely one in $\mathcal P$ and the other in $\mathcal P'$. Moreover, since $M$ is perfect, every partition of $\mathcal P$ and $\mathcal P'$ will be covered by at least one element of $R$. Finally, no element of $R$ can represent more than one $k$-set in the same partition since $\mathcal P$ and $\mathcal P'$ are independent sets in $G$.
+        }
+
+        This last claim concludes the proof.
+    }
 
     \chapter{Graph packing}
 
