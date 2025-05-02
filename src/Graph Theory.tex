@@ -3360,6 +3360,50 @@
         There is a constant $c > 0$ such that for all $p \in \N$ there is another constant $N_p > 0$ for which any $c(p + 1)$-connected graph $G$ with $n \ge N_p$ contains $K_p$ as minor.
     \end{framedthm}
 
+    \section{Ramsey number}
+
+    Up until now, we focused on finding conditions on the number of \tbf{edges} which guaranteed the existence of particular structures inside graphs. A natural extension of this idea is to finding conditions on the number of \tbf{vertices}. In 1917, \textcite{ramsey} published a groundbreaking paper in which he proved the existence of the so-called \tbf{Ramsey number}.
+
+    \begin{frameddefn}{Ramsey number (first version)}
+        Given a value $t \in \N$, the \tbf{Ramsey number} $R(t)$ is the number of vertices such that every graph with at least $R(t)$ vertices has $K_t$ as subgraph or contains an independent set of size $t$.
+    \end{frameddefn}
+
+    \begin{framedthm}{Ramsey's theorem}
+        For any $t \ge 1$, $R(t)$ exists. Moreover, if $t \neq 1$ then $R(t) \le 2^{2t - 3}$.
+    \end{framedthm}
+    
+    \begin{proof}
+        We are going to construct a sequence of sets of vertices.
+
+        \begin{itemize}
+            \item Let $X_1 := V(G)$, and fix $x_1 \in X_1$ arbitrarily
+            \item Let $X_2$ to be the larger between $\mathcal N(x_1)$ and $V(G) - (\mathcal N(x_1) \cup \{x_1\})$; fix $x_2 \in X_2$ arbitrarily.
+            \item In general, suppose that we have defined $X_i$ and $x_i$ for $i \in [1, k]$. Fix $X_{k + 1}$ to be the larger between $\mathcal N(x_k) \cap X_k$ and $X_k - (\mathcal N(x_k) \cup \{x_k\})$
+        \end{itemize}
+
+        TODO \todo{da finire}
+        % We are going to define a sequence of sets $X_i \subseteq V(G)$ for vertices $x_i \in V(G)$ where $1 \le i \le 2t - 2$, such that
+
+    \end{proof}
+
+    Trivially, $R(1) = 1$ since a single vertex is an independent set of size 1, and $R(2) = 2$ since a graph with two vertices can only be either $K_2$ or an independent set of size 2. What about other values?
+
+    \begin{framedthm}{}
+        $R(3) = 6$
+    \end{framedthm}
+    
+    \begin{proof}
+        By way of contradiction, suppose that there is a graph $G$ with 6 vertices that does not contain $K_3$ as subgraph, nor any independent sets of size 3.
+
+        \claim{
+            $\Delta(G) \le 2$.
+        }{
+            By way of contradiction, suppose that there is a vertex $v$ of degree 3; however, if there was an edge with two endpoints in $\mathcal N(v)$ then there would be $K_3$ as subgraph of $G$. Therefore, the three vertices in $\mathcal N(v)$ cannot have edges between them, implying that $\mathcal N(v)$ forms an independent set of size 3 $\lightning$.
+        }
+
+        Fix a vertex $v$ with at least 3 non-neighbors --- its existence is guaranteed by the previous claim, since $n = 6$ --- and let the latter be $x$, $y$ and $z$. If two of the 3 non-neighbors of $v$ are not adjacent, say $x$ and $y$, then $\{v, x, y\}$ is an independent set of size 3. This implies that all of the non-neighbors of $v$ must be pairwise adjacent, meaning that $x$, $y$ and $z$ form a $K_3$ in $G$ $\lightning$.
+    \end{proof}
+
     \section{Exercises}
 
     \begin{framedprob}{}

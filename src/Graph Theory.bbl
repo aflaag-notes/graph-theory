@@ -398,6 +398,31 @@
     \field{year}{1927}
   \endentry
 
+  \entry{ramsey}{incollection}{}{}
+    \name{author}{1}{}{%
+      {{hash=RFP}{%
+         family={Ramsey},
+         familyi={R\bibinitperiod},
+         given={Frank\bibnamedelima P},
+         giveni={F\bibinitperiod\bibinitdelim P\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Springer}%
+    }
+    \strng{namehash}{RFP1}
+    \strng{fullhash}{RFP1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{Ram87}
+    \field{sortinit}{R}
+    \field{sortinithash}{R}
+    \field{booktitle}{Classic Papers in Combinatorics}
+    \field{pages}{1\bibrangedash 24}
+    \field{title}{On a problem of formal logic}
+    \field{year}{1987}
+  \endentry
+
   \entry{turan}{article}{}{}
     \name{author}{1}{}{%
       {{hash=TP}{%
