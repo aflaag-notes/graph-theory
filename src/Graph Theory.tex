@@ -303,7 +303,7 @@
     \end{framedprop}
     
     \begin{proof}
-        By way of contradiction, suppose that there exists a $k$-regular graph $G = (V, E)$ such that both $k$ and $n$ are odd; however, by the handshaking lemma we would get that $$2 \abs E = \sum_{x \in V} {\deg(x)} = k \cdot n$$ but the product of two odd numbers, namely $k$ and $n$, is still an odd number, while $2 \abs E$ must be even $\lightning$.
+        By way of contradiction, suppose that there exists a $k$-regular graph $G = (V, E)$ such that both $k$ and $n$ are odd; however, by the Handshaking lemma we would get that $$2 \abs E = \sum_{x \in V} {\deg(x)} = k \cdot n$$ but the product of two odd numbers, namely $k$ and $n$, is still an odd number, while $2 \abs E$ must be even $\lightning$.
     \end{proof}
 
     \section{Important structures}
@@ -311,7 +311,7 @@
     \begin{frameddefn}{Path}
         A \tbf{path} is a \tit{graph} with vertex set $x_0, \ldots, x_n$ and edge set $e_1, \ldots, e_n$ such that $e_i = x_{i - 1}x_i$.
 
-        The \tbf{length} of a path is the number of edges between $x_0$ and $x_n$, i.e. $\abs{\{e_1, \ldots, e_n\}}$, namely $n$ in this case. A path of length 1 is called \tit{trivial} path.
+        The \tbf{length} of a path is the number of edges between $x_0$ and $x_n$, i.e. $\abs{\{e_1, \ldots, e_n\}}$, namely $n$ in this case. A path of length 1 is called \tit{trivial} path. $P_n$ is the path graph having $n$ vertices.
     \end{frameddefn}
 
     \begin{figure}[H]
@@ -404,7 +404,7 @@
     \begin{frameddefn}{Cycle}
         A \tbf{cycle} is a \tit{graph} with vertex set $x_1, \ldots, x_n$ and edge set $x_1x_2, x_2x_3, \ldots, x_{n- 1}x_n, x_nx_1$.
 
-        The \tbf{length} of a cycle is the number of edges between $x_1$ and $x_n$, namely $n$ in this case. A cycle of length $n$ is denoted as $C_n$.
+        The \tbf{length} of a cycle is the number of edges between $x_1$ and $x_n$, namely $n$ in this case. $C_n$ is the cycle graph having $n$ vertices.
     \end{frameddefn}
 
         \begin{figure}[H]
@@ -1096,6 +1096,22 @@
         and in both cases each subtree contains at least one leaf, meaning that $T$ contains at least $\Delta(T)$ leaves.
     }
     
+    \begin{framedprob}{}
+        Show that any non-trivial tree without a vertex of degree 2 has more leaves than other vertices. Can you find a very short proof that does not use induction?
+    \end{framedprob}
+
+    \solution{
+        Let $T$ be a non-trivial tree that does not contain vertices of degree 2, and let $L = \{v \in V(T) \mid \deg(v) = 1\}$ the set of its leaves. By the Handshaking lemma, we know that
+        \begin{equation*}
+            \begin{split}
+                2 \abs{E(T)} &= \sum_{v \in V(T)}{\deg(v)} \\
+                             &= \sum_{v \in V(T) - L}{\deg(v)} + \sum_{v \in L}{\deg(v)} \\
+                             &\ge \abs L + 3 \abs{V(T) - L}
+            \end{split}
+        \end{equation*}
+        Moreover, since $T$ is a tree, we have that $$2 \abs{E(T)} = 2(n - 1) = 2(\abs L + \abs{V(T) - L} - 1) = 2 \abs L + 2 \abs{V(T) - L} - 2$$ Therefore, we have that $$2 \abs L + 2 \abs{V(T) - L} - 2 \ge \abs L + 3 \abs{V(T) - L}$$ implying that $\abs L \ge \abs{V(T) - L} + 2 \iff \abs L > \abs{V(T) - L} + 1$.
+    }
+
     \chapter{Matchings}
 
     \begin{frameddefn}{Matching}
@@ -3343,6 +3359,33 @@
     \begin{framedthm}{}
         There is a constant $c > 0$ such that for all $p \in \N$ there is another constant $N_p > 0$ for which any $c(p + 1)$-connected graph $G$ with $n \ge N_p$ contains $K_p$ as minor.
     \end{framedthm}
+
+    \section{Exercises}
+
+    \begin{framedprob}{}
+        Prove that $\mathrm{ex}(n, P_4) \le n + 1$.
+    \end{framedprob}
+
+    \solution{
+        Let $G$ be a graph such that $\abs{E(G)} = n + 1$, and by way of contradiction suppose that $G$ does not contain $P_4$ as subgraph. By the number of edges, we know that $G$ cannot be a forest, implying that at least one of the components of $G$ contains a cycle. Moreover, we observe that
+
+        \begin{itemize}
+            \item no cycle can be longer than 3, otherwise that cycle would contain $P_4$ as subgraph trivially
+            \item no component containing a cycle can have more than 3 vertices, otherwise it would contain $P_4$ as subgraph trivially --- by connectivity of the components
+        \end{itemize}
+
+        Therefore, we get that every component of $G$ is either $K_3$ or a tree. Let $C_1, \ldots, C_\ell$ be the $K_3$-components of $G$, and let $T_1, \ldots, T_h$ be its tree components. Then, we have that
+        \begin{equation*}
+            \begin{split}
+                \abs{E(G)} &= \sum_{i = 1}^\ell{\abs{E(C_i)}} + \sum_{i = 1}^h{\abs{E(T_i)}} \\
+                           &= \sum_{i = 1}^\ell{\abs{V(C_i)}} + \sum_{i = 1}^h{\abs{V(T_i)} - 1} \\
+                           &= \sum_{i = 1}^\ell{\abs{V(C_i)}} + \sum_{i = 1}^h{\abs{V(T_i)}} - h \\
+                           &= 3 \ell + n - 3 \ell - h \\
+                           &= n - h
+            \end{split}
+        \end{equation*}
+        However, this implies that $$n + 1 = \abs{E(G)} = n - h \iff h = -1$$ which is impossible because $h \ge 0$ $\lightning$.
+    }
 
     \printbibliography % UNCOMMENT FOR BIBLIOGRAPHY
 

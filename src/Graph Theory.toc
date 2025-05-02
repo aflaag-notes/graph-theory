@@ -32,3 +32,4 @@
 \contentsline {subsection}{\numberline {4.1.1}Cliques}{58}{subsection.4.1.1}%
 \contentsline {subsection}{\numberline {4.1.2}$k$-connected subgraphs}{63}{subsection.4.1.2}%
 \contentsline {subsection}{\numberline {4.1.3}Cliques as minors}{66}{subsection.4.1.3}%
+\contentsline {section}{\numberline {4.2}Exercises}{71}{section.4.2}%
