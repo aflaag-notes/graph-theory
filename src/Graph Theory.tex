@@ -3360,35 +3360,78 @@
         There is a constant $c > 0$ such that for all $p \in \N$ there is another constant $N_p > 0$ for which any $c(p + 1)$-connected graph $G$ with $n \ge N_p$ contains $K_p$ as minor.
     \end{framedthm}
 
-    \section{Ramsey number}
+    \section{Ramsey numbers}
 
     Up until now, we focused on finding conditions on the number of \tbf{edges} which guaranteed the existence of particular structures inside graphs. A natural extension of this idea is to finding conditions on the number of \tbf{vertices}. In 1917, \textcite{ramsey} published a groundbreaking paper in which he proved the existence of the so-called \tbf{Ramsey number}.
 
-    \begin{frameddefn}{Ramsey number (first version)}
-        Given a value $t \in \N$, the \tbf{Ramsey number} $R(t)$ is the number of vertices such that every graph with at least $R(t)$ vertices has $K_t$ as subgraph or contains an independent set of size $t$.
+    \begin{frameddefn}{Ramsey number}
+        Given a value $t \in \N$, the \tbf{Ramsey number} $R(t)$ is the minimum number of vertices such that every graph with at least $R(t)$ vertices has $K_t$ as subgraph or contains an independent set of size $t$.
     \end{frameddefn}
+
+    TODO \todo{example?}
+
+    Trivially, $R(1) = 1$ since a single vertex is an independent set of size 1, and $R(2) = 2$ since a graph with two vertices can only be either $K_2$ or an independent set of size 2.
 
     \begin{framedthm}{Ramsey's theorem}
         For any $t \ge 1$, $R(t)$ exists. Moreover, if $t \neq 1$ then $R(t) \le 2^{2t - 3}$.
     \end{framedthm}
     
     \begin{proof}
-        We are going to construct a sequence of sets of vertices.
+        We already know the values for $R(1)$ and $R(2)$, therefore they exist. Hence, fix $t \ge 2$ and let $G$ be a graph with $2^{2t - 3}$ vertices.
+        
+        \textbf{Claim}: There are a sequence of sets $X_1, \ldots, X_{2t -3}$ and a sequence vertices$x_1, \ldots , x_{2t - 3}$ such that for each $i \in [2t - 2]$ it holds that
+
+        \begin{enumerate}
+            \item $x_i \in X_i$ and $\abs{X_i} \ge 2^{2t - 2 - i}$
+            \item $X_{i + 1} \subseteq X_i - \{x_i\}$
+            \item $x_i$ is either adjacent to every vertex of $X_{i + 1}$ or non-adjacent to all vertices of $X_{i + 1}$
+        \end{enumerate}
+
+        \begin{proof}[Proof of the Claim]
+            We are going to construct the sequences inductively. First, let $X_1 := V(G)$, and fix $x_1 \in X_1$ arbitrarily. Now, let $X_2$ to be the larger between $\mathcal N(x_1)$ and $V(G) - (\mathcal N(x_1) \cup \{x_1\})$; then, fix $x_2 \in X_2$ arbitrarily. We observe that the first last two properties are satisfied by construction. For the first property, we observe that $$\mathcal N (x_1) \cup (V(G) - (\mathcal N(x_1) \cup \{x_1\})) = X_1 - \{x_1\} = V(G) - \{x_1\}$$ meaning that the cardinality of their union is $\abs{V(G) - \{x_1\}} = 2^{2t - 3} - 1$, therefore
+            \begin{equation*}
+                \begin{split}
+                    \abs{X_2} &= \max(\abs{\mathcal N(x_1)}, \abs{V(G) - (\mathcal N(x_1) \cup \{x_1\}})) \\
+                              &\ge \dfrac{\abs{\mathcal N (x_1) \cup (V(G) - (\mathcal N(x_1) \cup \{x_1\}))}}{2} \\
+                              &= \dfrac{2^{2t - 3} - 1}{2} \\
+                              &\ge 2^{2t - 4} \\
+                              &= 2^{2t - 2 - 2} \quad \quad (i = 2)
+                \end{split}
+            \end{equation*}
+
+            In general, suppose that we have defined $X_i$ and $x_i$ for some $i < 2t - 2$; then, let $X_{i + 1}$ be the larger between $\mathcal N(x_i) \cap X_i$ and $X_i - (\mathcal N(x_i) \cup \{x_i\})$. Again, we observe that the last two properties of the claim are satisfied by construction of $X_{i + 1}$. For the first property, we observe that $$(\mathcal N(x_1) \cup X_i) \cup (X_i - (\mathcal N(x_i) \cup \{x_i\})) = X_i - \{x_i\}$$ meaning that the cardinality of their union is $\abs{X_i - \{x_i\}} \ge 2^{2t - 2 - i} - 1$ by induction, therefore
+            \begin{equation*}
+                \begin{split}
+                    \abs{X_{i + 1}} &= \max(\abs{\mathcal N(x_1) \cup X_i}, \abs{X_i - (\mathcal N(x_i) \cup \{x_i\}})) \\
+                                    &\ge \dfrac{\abs{(\mathcal N(x_1) \cup X_i) \cup (X_i - (\mathcal N(x_i) \cup \{x_i\}))}}{2} \\
+                                    &\ge \dfrac{2^{2t - 2 - i} - 1}{2} \\
+                                    &\ge 2^{2t - 2 - (i + 1)}
+                \end{split}
+            \end{equation*}
+            TODO \todo{ricontrolla i conti che non funzionano}
+        \end{proof}
+
+        Now, consider the sequence of sets and the sequence of vertices that we constructed.
+
+        \tbf{Claim:} For each $i, j \in [2t - 2]$ such that $i < j$ it holds that:
 
         \begin{itemize}
-            \item Let $X_1 := V(G)$, and fix $x_1 \in X_1$ arbitrarily
-            \item Let $X_2$ to be the larger between $\mathcal N(x_1)$ and $V(G) - (\mathcal N(x_1) \cup \{x_1\})$; fix $x_2 \in X_2$ arbitrarily.
-            \item In general, suppose that we have defined $X_i$ and $x_i$ for $i \in [1, k]$. Fix $X_{k + 1}$ to be the larger between $\mathcal N(x_k) \cap X_k$ and $X_k - (\mathcal N(x_k) \cup \{x_k\})$
+            \item $x_i \sim x_j \implies \forall j' \in [i + 1, 2t - 2] \quad x_i \sim x_{j'}$
+            \item $x_i \nsim x_j \implies \forall j' \in [i + 1, 2t - 2] \quad x_i \nsim x_{j'}$
         \end{itemize}
 
-        TODO \todo{da finire}
-        % We are going to define a sequence of sets $X_i \subseteq V(G)$ for vertices $x_i \in V(G)$ where $1 \le i \le 2t - 2$, such that
+        \begin{proof}[Proof of the Claim]
+            Fix $i, j \in [2t- 2]$ such that $i < j$, and $j' \in [i + 1, 2t - 2]$. By construction of the sequence, since $j' \ge i + 1$ we have that $x_{j'} \in X_{j'} \subseteq X_{i+1}$. Moreover, by construction of $X_{i + 1}$ we know that $x_i$ is either adjacent to all the vertices in $X_{i +1}$, or non-adjacent to all the vertices in $X_{i +1}$. Thus, if $x_i \sim x_j$ then $x_i \sim x_{j'}$, otherwise $x_i \nsim x_{j'}$.
+        \end{proof}
 
+        In particular, this claim implies that if a vertex $x_i$ is adjacent (or non-adjacent) to a vertex $x_j$ that comes \curlyquotes{after} $x_i$, then $x_i$ is actually adjacent (or non-adjacent) to \tit{all} the vertices $x_{j'}$ that come \curlyquotes{after} $x_i$.
+
+        Now, consider the set $\mathcal U := \mathcal N(x_{2t - 2}) \cup \{x_1, \ldots, x_{2t - 2}\}$. If $\abs{\mathcal U} \ge t - 1$, by the second claim $\mathcal U \cup \{x_{2t - 2}\}$ contains a $t$-clique; otherwise, if $\abs{\mathcal U} \le t - 2$, again by the second claim $V(G) - (\mathcal N(x_{2t - 2}) \cup \{x_{2t - 2}\})$ contains an independent set of size $2t - 2 - \abs{\mathcal U} \ge 2t - 2 - (t - 2) = t$.
     \end{proof}
 
-    Trivially, $R(1) = 1$ since a single vertex is an independent set of size 1, and $R(2) = 2$ since a graph with two vertices can only be either $K_2$ or an independent set of size 2. What about other values?
+    TODO \todo{interlude, mention that the following is an upper bound but can be lowerbounded by examples}
 
-    \begin{framedthm}{}
+    \begin{framedthm}[label={r3 = 6}]{}
         $R(3) = 6$
     \end{framedthm}
     
@@ -3402,6 +3445,56 @@
         }
 
         Fix a vertex $v$ with at least 3 non-neighbors --- its existence is guaranteed by the previous claim, since $n = 6$ --- and let the latter be $x$, $y$ and $z$. If two of the 3 non-neighbors of $v$ are not adjacent, say $x$ and $y$, then $\{v, x, y\}$ is an independent set of size 3. This implies that all of the non-neighbors of $v$ must be pairwise adjacent, meaning that $x$, $y$ and $z$ form a $K_3$ in $G$ $\lightning$.
+    \end{proof}
+
+    TODO \todo{interlude}
+
+    \begin{frameddefn}{Complementary graph}
+        Given a graph $G$, the \tbf{complement of $G$} --- denoted as $\overline G$ --- is defined as follows:
+
+        \begin{itemize}
+            \item $V(\overline G) := V(G)$
+            \item $E(\overline G) := \overline{E(G)} = V(G) \times V(G) - E(G)$
+        \end{itemize}
+    \end{frameddefn}
+
+    TODO \todo{interlude + example}
+
+    By definition, we observe that a graph $G$ contains an independent set of size $s$ if and only if $\overline G$ contains $K_s$ as subgraph.
+
+    TODO \todo{interlude}
+
+    \begin{frameddefn}{Generalized Ramsey number}
+        Given two values $t, s \in \N$, the \tbf{generalized Ramsey number} $R(t, s)$ is the minimum number of vertices such that every graph $G$ with at least $R(t, s)$ vertices has $K_t$ as subgraph, or $\overline G$ has $K_s$ as subgraph.
+    \end{frameddefn}
+
+    By definition we observe that $R(t, t) = R(t)$. Moreover, we note that $R(t, s) = R(s, t)$ since $G = \overline{\overline G}$.
+    
+    \begin{framedlem}{}
+        $R(4, 3) \le 9$
+    \end{framedlem}
+
+    \begin{proof}
+        By way of contradiction, let $G$ be a graph having 9 vertices that has no $K_4$ as subgraph nor any independent set of size 3.
+
+        By the same reasoning applied for proof of \cref{r3}, we know that $\Delta(G) \le 5$, and that no vertex of $G$ can have more than 3 non-neighbors. Moreover, since $n = 9$, this implies that the degree of every vertex of $G$ is \tit{exactly} 5, i.e. $G$ is 5-regular. However, we observe that $\sum_{x \in V(G)}{\deg(x)} = 5 \cdot 9 = 45$, which is impossible because 45 is odd and the sum of the degrees of $G$ must be even by the Handshaking lemma $\lightning$.
+    \end{proof}
+
+    TODO \todo{interlude + lower bound counterex}
+
+    \begin{framedcor}{}
+        $R(4) = 18$
+    \end{framedcor}
+
+    \begin{proof}
+        By way of contradiction, let $G$ be a graph having 9 vertices that has no $K_4$ as subgraph nor any independent set of size 4, and fix a vertex $v \in V(G)$. Since $n = 18$, we observe that $v$ has either at least 9 neighbors or at least 9 non-neighbors. Thus
+
+        \begin{itemize}
+            \item if $\abs{\mathcal N(v)} \ge 9$, then $\mathcal N (v)$ contains $K_3$ as subgraph or an independent set of size 4 by the previous lemma
+            \item if $\abs{V(G) - (\mathcal N (v) \cup \{v\})} \ge 9$, then $V(G) - (\mathcal N (v) \cup \{v\})$ contains $K_4$ as subgraph or an independent set of size 4, again by the previous lemma
+        \end{itemize}
+
+        meaning that $G$ has $K_4$ as subgraph or an independent set of size 4, contradicting the definition of $G$ $\lightning$.
     \end{proof}
 
     \section{Exercises}
