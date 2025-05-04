@@ -2134,18 +2134,20 @@
         By way of contradiction, if $G$ does not admit $k$ disjoint $A$-$B$ paths, therefore by \cref{menger} the minimum order of an $A$-$B$ separation is at most $k - 1$; hence, let $(X, Y)$ be a minimum order $A$-$B$ separation of $G$, i.e. $\abs{X \cap Y} \le k - 1$. Observe that $\abs{A} \ge k$ and $A \subseteq X$, therefore $\abs X \ge k$ which means that $X - Y \neq \varnothing$, and analogously $Y - X \neq \varnothing$. However, by definition of $A$-$B$ separation we observe that $G[V(G)-(X \cap Y)]$ is disconnected, and we removed less than $k$ vertices, contradicting the $k$-connectivity of $G$ $\lightning$.
     \end{proof}
 
-    \begin{framedprop}[label={intern disj menger}]{}
-        Given a $k$-connected graph, for any pair of vertices $x, y \in V(G)$ such that $x \neq y$ there exist $k$ $\{x\}$-$\{y\}$ internally disjoint paths.
-    \end{framedprop}
+    \begin{framedthm}[label={intern disj menger}]{}
+        A graph is $k$-connected graph if and only if for any pair of vertices $x, y \in V(G)$ such that $x \neq y$ there exist $k$ $\{x\}$-$\{y\}$ internally disjoint paths.
+    \end{framedthm}
 
-    \begin{proof}
+    \proofiff{
         Fix a pair of distinct vertices $x, y \in V(G)$; we have two cases.
 
         \begin{itemize}
             \item The two vertices are not adjacent, i.e. $x \nsim y$. By \cref{kconn}, we know that $\abs{\mathcal N(x)} , \abs{\mathcal N(y)} \ge k$, hence by the previous proposition we there exist $k$ disjoint $\mathcal N(x)$-$\mathcal N(y)$ paths, which will form $k$ \tit{internally disjoint} $\{x\}$-$\{y\}$ paths along with the edges to $x$ and $y$.
             \item The two vertices are not adjacent, i.e. $x \nsim y$. By $k$-connectivity of $G$, we know that $G - \{xy\}$ is $(k-1)$-connected by \cref{k-1 conn}, therefore by the same argument of the previous case we have $k - 1$ internally disjoint $\{x\}$-$\{y\}$ path, therefore $G$ will have $k$ internally disjoint $\{x\}$-$\{y\}$ paths along with the edge $xy$.
         \end{itemize}
-    \end{proof}
+    }{
+        Fix two distinct vertices $x, y \in V(G)$; since there are $k$ $\{x\}$-$\{y\}$ internally disjoint paths, no set of $k - 1$ --- or less --- vertices of $G$ can disconnect $x$ and $y$, implying that $G$ is $k$-connected by definition.
+    }
 
     \begin{framedcor}[label={menger cor}]{}
         Given a $k$-connected graph $G$, a vertex $x \in V(G)$, and a subset $Y \subseteq V(G)$ such that $\abs Y \ge k$, there exist $k$ $\{x\}$-$Y$ paths $P_1, \ldots, P_k$ such that $P_i \cap P_j = \{x\}$ --- for all $i, j \in [k]$ such that $i \neq j$.
