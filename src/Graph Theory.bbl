@@ -1,5 +1,5 @@
 % $ biblatex auxiliary file $
-% $ biblatex bbl format version 3.2 $
+% $ biblatex bbl format version 3.3 $
 % Do not modify the above lines!
 %
 % This is an auxiliary file used by the 'biblatex' package.
@@ -16,8 +16,44 @@
   {}
 \endgroup
 
-\datalist[entry]{anyt/global//global/global}
-  \entry{berge}{article}{}
+\datalist[entry]{anyt/global//global/global/global}
+  \entry{angeltveit}{misc}{}{}
+    \name{author}{2}{}{%
+      {{hash=AV}{%
+         family={Angeltveit},
+         familyi={A\bibinitperiod},
+         given={Vigleik},
+         giveni={V\bibinitperiod},
+      }}%
+      {{hash=MBD}{%
+         family={McKay},
+         familyi={M\bibinitperiod},
+         given={Brendan\bibnamedelima D.},
+         giveni={B\bibinitperiod\bibinitdelim D\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {arXiv}%
+    }
+    \keyw{Combinatorics (math.CO), FOS: Mathematics, FOS: Mathematics, 05D10 (Primary)}
+    \strng{namehash}{AVMBD1}
+    \strng{fullhash}{AVMBD1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{AM24}
+    \field{sortinit}{A}
+    \field{sortinithash}{A}
+    \verb{doi}
+    \verb 10.48550/ARXIV.2409.15709
+    \endverb
+    \field{title}{$R(5, 5)\le 46$}
+    \verb{url}
+    \verb https://arxiv.org/abs/2409.15709
+    \endverb
+    \field{year}{2024}
+  \endentry
+
+  \entry{berge}{article}{}{}
     \name{author}{1}{}{%
       {{hash=BC}{%
          family={Berge},
@@ -52,7 +88,51 @@
     \field{year}{1957}
   \endentry
 
-  \entry{bollobas}{article}{}
+  \entry{bohme}{article}{}{}
+    \name{author}{4}{}{%
+      {{hash=BT}{%
+         family={Böhme},
+         familyi={B\bibinitperiod},
+         given={Thomas},
+         giveni={T\bibinitperiod},
+      }}%
+      {{hash=iKK}{%
+         prefix={ichi},
+         prefixi={i\bibinitperiod},
+         family={Kawarabayashi},
+         familyi={K\bibinitperiod},
+         given={Ken},
+         giveni={K\bibinitperiod},
+      }}%
+      {{hash=MJ}{%
+         family={Maharry},
+         familyi={M\bibinitperiod},
+         given={John},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=MB}{%
+         family={Mohar},
+         familyi={M\bibinitperiod},
+         given={Bojan},
+         giveni={B\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{BTKKiMJ+1}
+    \strng{fullhash}{BTKKiMJMB1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{BKM+09}
+    \field{sortinit}{B}
+    \field{sortinithash}{B}
+    \verb{doi}
+    \verb https://doi.org/10.1016/j.jctb.2008.07.006
+    \endverb
+    \field{title}{Linear connectivity forces large complete bipartite minors}
+    \field{journaltitle}{Journal of Combinatorial Theory, Series B}
+    \field{year}{2009}
+  \endentry
+
+  \entry{bollobas}{article}{}{}
     \name{author}{2}{}{%
       {{hash=BB}{%
          family={Bollob{\'a}s},
@@ -84,7 +164,7 @@
     \field{year}{1996}
   \endentry
 
-  \entry{bridges}{misc}{}
+  \entry{bridges}{misc}{}{}
     \name{author}{1}{}{%
       {{hash=cW}{%
          family={contributors},
@@ -108,7 +188,31 @@
     \field{year}{2025}
   \endentry
 
-  \entry{erdos}{article}{}
+  \entry{dirac_p_2to5}{article}{}{}
+    \name{author}{1}{}{%
+      {{hash=DG}{%
+         family={Dirac},
+         familyi={D\bibinitperiod},
+         given={G.A.},
+         giveni={G\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{DG1}
+    \strng{fullhash}{DG1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{Dir64}
+    \field{sortinit}{D}
+    \field{sortinithash}{D}
+    \verb{doi}
+    \verb https://doi.org/10.1007/BF01361708
+    \endverb
+    \field{title}{Homomorphism theorems for graphs}
+    \field{journaltitle}{Math. Ann. 153}
+    \field{year}{1964}
+  \endentry
+
+  \entry{erdos}{article}{}{}
     \name{author}{2}{}{%
       {{hash=Ep}{%
          family={Erdös},
@@ -140,7 +244,7 @@
     \field{year}{1965}
   \endentry
 
-  \entry{konigsberg}{article}{}
+  \entry{konigsberg}{article}{}{}
     \name{author}{1}{}{%
       {{hash=EL}{%
          family={Euler},
@@ -162,7 +266,42 @@
     \field{year}{1741}
   \endentry
 
-  \entry{gallai}{article}{}
+  \entry{exoo}{article}{}{}
+    \name{author}{1}{}{%
+      {{hash=EG}{%
+         family={Exoo},
+         familyi={E\bibinitperiod},
+         given={Geoffrey},
+         giveni={G\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Wiley}%
+    }
+    \strng{namehash}{EG1}
+    \strng{fullhash}{EG1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{Exo89}
+    \field{sortinit}{E}
+    \field{sortinithash}{E}
+    \verb{doi}
+    \verb 10.1002/jgt.3190130113
+    \endverb
+    \field{issn}{1097-0118}
+    \field{number}{1}
+    \field{pages}{97–98}
+    \field{title}{A lower bound for r(5, 5)}
+    \verb{url}
+    \verb http://dx.doi.org/10.1002/jgt.3190130113
+    \endverb
+    \field{volume}{13}
+    \field{journaltitle}{Journal of Graph Theory}
+    \field{month}{03}
+    \field{year}{1989}
+  \endentry
+
+  \entry{gallai}{article}{}{}
     \name{author}{2}{}{%
       {{hash=GT}{%
          family={Gallai},
@@ -185,14 +324,13 @@
     \field{sortinit}{G}
     \field{sortinithash}{G}
     \field{pages}{181\bibrangedash 186}
-    \field{title}{Verallgemeinerung eines graphentheoretischen Satzes von
-  R{\'e}dei}
+    \field{title}{Verallgemeinerung eines graphentheoretischen Satzes von R{\'e}dei}
     \field{volume}{21}
     \field{journaltitle}{Acta Sc. Math}
     \field{year}{1960}
   \endentry
 
-  \entry{gale}{article}{}
+  \entry{gale}{article}{}{}
     \name{author}{2}{}{%
       {{hash=GD}{%
          family={Gale},
@@ -225,7 +363,31 @@
     \field{year}{1962}
   \endentry
 
-  \entry{hall}{article}{}
+  \entry{gyori}{article}{}{}
+    \name{author}{1}{}{%
+      {{hash=GE}{%
+         family={Gyori},
+         familyi={G\bibinitperiod},
+         given={E.},
+         giveni={E\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{GE1}
+    \strng{fullhash}{GE1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{Gyo82}
+    \field{sortinit}{G}
+    \field{sortinithash}{G}
+    \verb{doi}
+    \verb https://doi.org/10.1007/BF01848093
+    \endverb
+    \field{title}{On the edge numbers of graphs with hadwiger number 4 and 5}
+    \field{journaltitle}{Period Math Hung 13}
+    \field{year}{1982}
+  \endentry
+
+  \entry{hall}{article}{}{}
     \name{author}{1}{}{%
       {{hash=HP}{%
          family={Hall},
@@ -260,7 +422,66 @@
     \field{year}{1935}
   \endentry
 
-  \entry{karp}{inbook}{}
+  \entry{jorgensen}{article}{}{}
+    \name{author}{1}{}{%
+      {{hash=JLK}{%
+         family={Jorgensen},
+         familyi={J\bibinitperiod},
+         given={Leif\bibnamedelima K.},
+         giveni={L\bibinitperiod\bibinitdelim K\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{JLK1}
+    \strng{fullhash}{JLK1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{Jor94}
+    \field{sortinit}{J}
+    \field{sortinithash}{J}
+    \verb{doi}
+    \verb https://doi.org/10.1002/jgt.3190180502
+    \endverb
+    \field{title}{Contractions to k8}
+    \field{journaltitle}{Journal of Graph Theory}
+    \field{year}{1994}
+  \endentry
+
+  \entry{kalbfleisch}{article}{}{}
+    \name{author}{1}{}{%
+      {{hash=KJG}{%
+         family={Kalbfleisch},
+         familyi={K\bibinitperiod},
+         given={J.\bibnamedelima G.},
+         giveni={J\bibinitperiod\bibinitdelim G\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Canadian Mathematical Society}%
+    }
+    \strng{namehash}{KJG1}
+    \strng{fullhash}{KJG1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{Kal65}
+    \field{sortinit}{K}
+    \field{sortinithash}{K}
+    \verb{doi}
+    \verb 10.4153/cmb-1965-041-7
+    \endverb
+    \field{issn}{1496-4287}
+    \field{number}{5}
+    \field{pages}{575–584}
+    \field{title}{Construction of Special Edge-Chromatic Graphs}
+    \verb{url}
+    \verb http://dx.doi.org/10.4153/CMB-1965-041-7
+    \endverb
+    \field{volume}{8}
+    \field{journaltitle}{Canadian Mathematical Bulletin}
+    \field{month}{10}
+    \field{year}{1965}
+  \endentry
+
+  \entry{karp}{inbook}{}{}
     \name{author}{1}{}{%
       {{hash=KRM}{%
          family={Karp},
@@ -292,7 +513,7 @@
     \field{year}{1972}
   \endentry
 
-  \entry{konig}{misc}{}
+  \entry{konig}{misc}{}{}
     \name{author}{1}{}{%
       {{hash=KD}{%
          family={Konig},
@@ -311,11 +532,10 @@
     \field{labelalpha}{Kon}
     \field{sortinit}{K}
     \field{sortinithash}{K}
-    \field{title}{Gr{\'a}fok {\'e}s m{\'a}trixok. Matematikai {\'e}s Fizikai
-  Lapok, 38: 116--119, 1931}
+    \field{title}{Gr{\'a}fok {\'e}s m{\'a}trixok. Matematikai {\'e}s Fizikai Lapok, 38: 116--119, 1931}
   \endentry
 
-  \entry{tutte}{book}{}
+  \entry{tutte}{book}{}{}
     \name{author}{2}{}{%
       {{hash=LL}{%
          family={Lov{\'a}sz},
@@ -347,7 +567,31 @@
     \field{year}{2009}
   \endentry
 
-  \entry{mader}{inproceedings}{}
+  \entry{mader_p_6to7}{article}{}{}
+    \name{author}{1}{}{%
+      {{hash=MW}{%
+         family={Mader},
+         familyi={M\bibinitperiod},
+         given={W.},
+         giveni={W\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{MW1}
+    \strng{fullhash}{MW1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{Mad68}
+    \field{sortinit}{M}
+    \field{sortinithash}{M}
+    \field{title}{Homomorphiesätze für Graphen.}
+    \verb{url}
+    \verb http://eudml.org/doc/161741
+    \endverb
+    \field{journaltitle}{Mathematische Annalen}
+    \field{year}{1968}
+  \endentry
+
+  \entry{mader}{inproceedings}{}{}
     \name{author}{1}{}{%
       {{hash=MW}{%
          family={Mader},
@@ -359,23 +603,21 @@
     \list{organization}{1}{%
       {Springer}%
     }
-    \strng{namehash}{MW1}
-    \strng{fullhash}{MW1}
+    \strng{namehash}{MW2}
+    \strng{fullhash}{MW2}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
     \field{labelalpha}{Mad72}
     \field{sortinit}{M}
     \field{sortinithash}{M}
-    \field{booktitle}{Abhandlungen aus dem mathematischen Seminar der
-  Universit{\"a}t Hamburg}
+    \field{booktitle}{Abhandlungen aus dem mathematischen Seminar der Universit{\"a}t Hamburg}
     \field{pages}{86\bibrangedash 97}
-    \field{title}{Existenz n-fach zusammenh{\"a}ngender Teilgraphen in Graphen
-  gen{\"u}gend grosser Kantendichte}
+    \field{title}{Existenz n-fach zusammenh{\"a}ngender Teilgraphen in Graphen gen{\"u}gend grosser Kantendichte}
     \field{volume}{37}
     \field{year}{1972}
   \endentry
 
-  \entry{menger}{article}{}
+  \entry{menger}{article}{}{}
     \name{author}{1}{}{%
       {{hash=MK}{%
          family={Menger},
@@ -402,7 +644,7 @@
     \field{year}{1927}
   \endentry
 
-  \entry{ramsey}{incollection}{}
+  \entry{ramsey}{incollection}{}{}
     \name{author}{1}{}{%
       {{hash=RFP}{%
          family={Ramsey},
@@ -427,7 +669,61 @@
     \field{year}{1987}
   \endentry
 
-  \entry{turan}{article}{}
+  \entry{song}{article}{}{}
+    \name{author}{2}{}{%
+      {{hash=SZX}{%
+         family={Song},
+         familyi={S\bibinitperiod},
+         given={Zi-Xia},
+         giveni={Z\bibinithyphendelim X\bibinitperiod},
+      }}%
+      {{hash=TR}{%
+         family={Thomas},
+         familyi={T\bibinitperiod},
+         given={Robin},
+         giveni={R\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{SZXTR1}
+    \strng{fullhash}{SZXTR1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{ST06}
+    \field{sortinit}{S}
+    \field{sortinithash}{S}
+    \verb{doi}
+    \verb https://doi.org/10.1016/j.jctb.2005.07.008
+    \endverb
+    \field{title}{The extremal function for K9 minors}
+    \field{journaltitle}{Journal of Combinatorial Theory, Series B}
+    \field{year}{2006}
+  \endentry
+
+  \entry{thomason}{article}{}{}
+    \name{author}{1}{}{%
+      {{hash=TA}{%
+         family={Thomason},
+         familyi={T\bibinitperiod},
+         given={Andrew},
+         giveni={A\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{TA1}
+    \strng{fullhash}{TA1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{Tho01}
+    \field{sortinit}{T}
+    \field{sortinithash}{T}
+    \verb{doi}
+    \verb https://doi.org/10.1006/jctb.2000.2013
+    \endverb
+    \field{title}{The Extremal Function for Complete Minors}
+    \field{journaltitle}{Journal of Combinatorial Theory, Series B}
+    \field{year}{2001}
+  \endentry
+
+  \entry{turan}{article}{}{}
     \name{author}{1}{}{%
       {{hash=TP}{%
          family={Tur{\'a}n},
@@ -448,6 +744,30 @@
     \field{volume}{48}
     \field{journaltitle}{Mat. Fiz. Lapok}
     \field{year}{1941}
+  \endentry
+
+  \entry{zhu}{thesis}{}{}
+    \name{author}{1}{}{%
+      {{hash=ZD}{%
+         family={Zhu},
+         familyi={Z\bibinitperiod},
+         given={Dantong},
+         giveni={D\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{ZD1}
+    \strng{fullhash}{ZD1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{Zhu21}
+    \field{sortinit}{Z}
+    \field{sortinithash}{Z}
+    \field{title}{The extremal function for K10 minors}
+    \list{institution}{1}{%
+      {School of Mathematics Georgia Institute of Technology}%
+    }
+    \field{type}{phdthesis}
+    \field{year}{2021}
   \endentry
 \enddatalist
 \endinput
