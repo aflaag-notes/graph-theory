@@ -728,6 +728,8 @@
         % \label{}
     \end{figure}
 
+    The graph $K_{a, b}$ is the \tit{complete bipartite} graph bipartitioned through $(A, B)$ such that $\abs A = a$ and $\abs B = b$.
+
     There are various types of graphs that can be bipartitioned. For example, any \tbf{tree} $T$ can be bipartitioned through a bipartition $(X, V(T) - X)$ by considering the following set of vertices $$X := \{v \in V(T) \mid \dist(r, v) \ \mathrm{even}\}$$ where $r$ is $T$'s root.
 
     \begin{figure}[H]
@@ -1111,6 +1113,16 @@
         \end{equation*}
         Moreover, since $T$ is a tree, we have that $$2 \abs{E(T)} = 2(n - 1) = 2(\abs L + \abs{V(T) - L} - 1) = 2 \abs L + 2 \abs{V(T) - L} - 2$$ Therefore, we have that $$2 \abs L + 2 \abs{V(T) - L} - 2 \ge \abs L + 3 \abs{V(T) - L}$$ implying that $\abs L \ge \abs{V(T) - L} + 2 \iff \abs L > \abs{V(T) - L} + 1$.
     }
+
+    % \begin{framedprob}{}
+    %     Let $\mathcal T := \{T_1, \ldots, T_k\}$ be a set of subtrees of a tree $T$. ASsume that the trees in $\mathcal T$ have pairwise non-empty intersection. Show that their overall intersection $\bigcap_{i = 1}^k{V(T_i)}$ is non-empty.
+    % \end{framedprob}
+    %
+    % \solution{
+    %     If $k = 1$, i.e. $\mathcal T = \{T_1\}$, the implication is vacuously true. Moreover, if $k = 2$ we have that $T_1 \cap T_2 \neq \varnothing$ meaning that the theorem trivially holds. However, we observe that the intersection between $T_1$ and $T_2$ cannot contain more than one single vertex. In fact, suppose that $T_1 \cap T_2 = \{x, y\}$ for some vertice $x \neq y$: then, by connectivity of $T_1$ there is a path $P_1$ of the form $x \to y$ in $T_1$, and by connectivity of $T_2$ there is a path $P_2$ of the form $x \to y$ in $T_2$, meaning that $P_1 \cup P_2$ is a cycle in $T$, which is impossible since $T$ is a tree. This observation implies that if $T_i \cap T_j \neq \varnothing$, then $\abs{T_i \cap T_j} = 1$.
+    %
+    %     By way of contradiction, suppose that the pairwise intersection of the trees in $\mathcal T$ is non-empty, but thei overall intersection is empty. If this is the case, it means that there is no vertex which belongs to all the subtrees in $\mathcal T$, 
+    % }
 
     \chapter{Matchings}
 
@@ -1924,6 +1936,14 @@
         }
 
         This last claim concludes the proof.
+    }
+
+    \begin{framedprob}{}
+        Prove that any $t$-connected subgraph $G$ with $n \ge t + 2$ contains $K_{2, t}$ as a topological minor.
+    \end{framedprob}
+
+    \solution{
+        TODO \todo{da scrivere}
     }
 
     \chapter{Graph packing}
@@ -3634,6 +3654,38 @@
             \end{split}
         \end{equation*}
         However, this implies that $$n + 1 = \abs{E(G)} = n - h \iff h = -1$$ which is impossible because $h \ge 0$ $\lightning$.
+    }
+
+    \begin{framedprob}{}
+        Show that $\mathrm{ex}(n, K_{1,3}) = n$.
+    \end{framedprob}
+
+    \solution{
+        First, we observe that any $C_n$ cycle graph on $n$ vertices has $n$ edges but does not contain $K_{1,3}$ as subgraph, therefore $\mathrm{ex}(n, K_{1,3}) \ge n$.
+
+        Consider a graph of $n$ vertices and $n + 1$ edges --- in particular, this implies that $\delta \ge 2$. By way of contradiction suppose that $\Delta(G) \le 2$. If this is the case, we observe that $$\forall v \in V(G) \quad 2 \le \delta \le \deg(v) \le \Delta \le 2 \implies \deg(v) = 2$$ However, by the Handshaking lemma we know that $$\sum_{v \in V(G)}{\deg(v)} = 2 \abs{E(G)} = 2(n + 1)$$ which means that the number of vertices of $G$ is given by $\tfrac{2(n + 1)}{2} = n + 1$ contradicting the fact that $G$ had $n$ vertices $\lightning$.
+
+        In particular, if $\Delta(G) \ge 3$, it implies that $K_{1,3}$ must be a subgraph of $G$, concluding that $\mathrm{ex}(n, K_{1,3}) \le n$.
+    }
+
+    \begin{framedprob}
+        Find the value of $\mathrm{ex}(n, K_{1,t})$ for all $t \ge 4$ and prove it.
+    \end{framedprob}
+
+    \solution{
+        We observe that if $n < t + 1 \iff n \le t$ it is impossible to have $K_{1, t}$ as subgraph since it requires at least $t + 1$ vertices in the graph. This means that $$n \le t \implies \mathrm{ex}(n, K_{1,t}) = \binom{n}{2} \le \binom{t}{2}$$ Therefore, we may assume that $n \ge t + 1$.
+
+        Note that to guarantee that $K_{1,t}$ is a subgraph of $G$, it suffices to guarantee that $G$ contains a vertex of degree at least $t$. Hence, the largest number of edges $G$ can have must be such that every vertex has degree $t - 1$, i.e. the sum of the degrees of $G$ is $n (t - 1)$. Hence, by the Handshaking lemma we get that $$2 \abs{E(G)} = \sum_{v \in V(G)}{\deg(v)} = n (t - 1) \iff \abs{E(G)} = \dfrac{n}{2}(t - 1)$$ We are going to prove that this is in fact the exact value of $\mathrm{ex}(n, K_{1,t})$.
+
+        For the lower bound, consider the graph $K_{t - 1, t - 1}$. Clearly, each vertex has degree $t - 1$ meaning that it cannot contain $K_{1,t}$ as subgraph, and by the Handshaking lemma the number of edges is given by $$2 \abs{E(G)} = \sum_{v \in V(G)}{\deg(v)} = n (t - 1) \iff \abs{E(G)} = \dfrac{n}{2}(t - 1)$$
+
+        \claim{
+            For $t \ge 4$ it holds that $\mathrm{ex}(n, K_{1,t}) \le \tfrac{n}{2}(t  - 1)$.
+        }{
+            Let $G$ be a graph of $n$ vertices and $\tfrac{n}{2}(t - 1) + 1$ edges, and by way of contradiction suppose that $\Delta(G) \le t - 1$. By the Handshaking lemma, we have that $$\sum_{v \in V(G)}{\deg(v)} = 2 \abs{E(G)} = 2\sbk{\tfrac{n}{2}(t - 1) + 1} = n(t - 1) + 2$$ meaning that the number of vertices of $G$ is given by $$\dfrac{n (t - 1) + 2}{t - 1} \ge n + \dfrac{2}{t - 1} > n$$ since $t \ge 4 \implies \tfrac{2}{t - 1} \ge \tfrac{2}{3}$, contradicting the fact that $G$ had $n$ vertices $\lightning$.
+        }
+
+        Together with the previous counterexample, we get that $$n \ge t + 1 \implies \mathrm{ex}(n, K_{1, t}) = \dfrac{n}{2}(t - 1)$$
     }
 
     \printbibliography % UNCOMMENT FOR BIBLIOGRAPHY
