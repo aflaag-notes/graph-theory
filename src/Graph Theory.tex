@@ -1938,14 +1938,6 @@
         This last claim concludes the proof.
     }
 
-    \begin{framedprob}{}
-        Prove that any $t$-connected subgraph $G$ with $n \ge t + 2$ contains $K_{2, t}$ as a topological minor.
-    \end{framedprob}
-
-    \solution{
-        TODO \todo{da scrivere}
-    }
-
     \chapter{Graph packing}
 
     TODO \todo{introduction}
@@ -2680,6 +2672,35 @@
         Lastly, consider the vertices $a$ and $x$; clearly $a \neq x$, and since $G$ is $k$-connected by \cref{intern disj menger} there exists at least one $\{x\}$-$\{a\}$ path $P_{x,a}$, meaning that $P \cup P_{x,a}$ forms a cycle in $G$ that must have length at least $2k - 1 + 1 = 2k$.
    }
 
+    \begin{framedprob}{}
+        Prove that any $t$-connected subgraph $G$ with $n \ge t + 2$ contains $K_{2, t}$ as a topological minor.
+    \end{framedprob}
+
+    \solution{
+        Fix two vertices $x , y \in V(G)$; since $n \ge t + 2$, we have that $\abs{V(G) - \{x, y\}} \ge t$, and since $G$ is $t$-connected, by \cref{menger cor}
+        
+        \begin{itemize}
+            \item there are $t$ $\{x\}$-$V(G) - \{x, y\}$ paths that only intersect in $x$ --- let $X$ be the set of the first vertices that these paths encounter from $x$ to $V(G) - \{x, y\}$
+            \item there are $t$ $\{y\}$-$V(G) - \{x, y\}$ paths that only intersect in $y$ --- let $Y$ be the set of the first vertices that these paths encounter from $y$ to $V(G) - \{x, y\}$
+        \end{itemize}
+
+        and in particular, we observe that $\abs X, \abs Y \ge t$.
+
+        Fix two vertices $a \in X$ and $b \in Y$; by \cref{intern disj menger}, $a$ and $b$ must be connected by at least one path, say $P_{b, a}$. Now, if we consider the path $P_{y, b}$ that connects $y$ and $a$, we get a path $P_{y, b} \cup P_{b, a}$ that connects $y$ and $a$.
+
+        The same reasoning can be applied to any pair of vertices in $X$ and $Y$, which means that all the vertices in $X$ are connected to $x$ by definition, and they are also connected to $y$ thanks to the paths passing through $Y$. This implies that $G$ contains a subgraph that is a subdivision of $K_{2, t}$, meaning that $K_{2, t}$ is a topological minor of $G$.
+    }
+
+    \begin{framedprob}{}
+        Show, without using Menger's theorem, that any two vertices of a 2-connected graph lie on a common cycle.
+    \end{framedprob}
+    
+    \solution{
+        Let $G$ be a 2-connected graph, and by way of contradiction suppose that there are two vertices $x, y \in V(G)$ that do not lie on a common cycle of $G$. By \cref{kconn}, we know that $\delta \ge 2$, hence there must be vertices $x_1, x_2$ and $y_1, y_2$ such that $x \sim x_1, x_2$ and $y \sim y_1, y_2$.
+
+        If $x$ and $y$ do not lie on a common cycle, without of loss of generality we may assume that $x_1$ and $y_1$ are connected by only one path --- there must be at least one otherwise $G$ would be disconnected. However, since $x_1 \sim x \sim x_2$ and $y_1 \sim y \sim y_2$, such path must pass through $x$, $x_2$, $y_2$ and $y$. In particular, this implies that $G[V(G) - \{x_2\}]$ is disconnected because $x_1$ and $y_1$ are not connected anymore. Therefore, we can find a set of 1 vertex that disconnects $G$, meaning that $G$ is not 2-connected $\lightning$.
+    }
+    
     \chapter{Extremal graph theory}
 
     Extremal graph theory is a field of mathematics that investigates how \tit{global properties} of a graph influence the \tbf{presence or absence} of specific substructures. Broadly speaking, it seeks to understand how large or dense a graph can be while avoiding certain configurations, or conversely, what constraints guarantee the appearance of particular patterns.
