@@ -3995,7 +3995,7 @@
     \end{framedprop}
 
     \begin{proof}
-        Since $V(H) \cap V(H') \neq \varnothing$, we know that neither $H$ nor $H'$ are isolated vertices --- if both of them were isolated vertices, they would have empty intersection, and if one of them were an isolated vertex it would have been part of the other block, meaning that $H$ and $H'$ actually were a single block. Moreover, if at least one between $H$ and $H'$ is a bridge, the theorem trivially holds. Hence, we may assume that $\abs{V(H)}, \abs{V(H')} \ge 3$ --- and in particular, they are 2-connected by \cref{blocks 2conn}
+        Since $V(H) \cap V(H') \neq \varnothing$, we know that neither $H$ nor $H'$ are isolated vertices --- if both of them were isolated vertices, they would have empty intersection, and if one of them were an isolated vertex it would have been part of the other block, meaning that $H$ and $H'$ actually were a single block. Moreover, if at least one between $H$ and $H'$ is a bridge, the theorem trivially holds. Hence, we may assume that $\abs{V(H)}, \abs{V(H')} \ge 3$ --- and in particular, they are 2-connected by \cref{blocks 2conn}.
 
         By the previous theorem, if $V(H) \cap V(H') \neq \varnothing$ it holds that $\abs{V(H) \cap V(H')} = 1$, hence let $z$ be the vertex in the intersection of the two blocks, and by way of contradiction suppose that $z$ is not a cut vertex. Then, by definition this means that for any two fixed vertices $u \in V(H - \{z\})$ and $v \in V(H' - \{z\})$ there is a path $P$ that does not pass through $z$.
 
@@ -4099,6 +4099,8 @@
             \item each $P_i$ is a $\displaystyle \rbk{\bigcup_{j = 1}^{i - 1}{P_j}}$-path
             \item $C \cup P_1 \cup \ldots \cup P_k = G$
         \end{itemize}
+
+        The \tbf{size} of an ear decomposition is the number of its paths --- in this case $k$.
     \end{frameddefn}
 
     TODO \todo{example}
@@ -4107,9 +4109,33 @@
         G is 2-connected if and only if it has an ear decomposition.
     \end{framedthm}
 
-    \begin{proof}
-        TODO \todo{da fare}
-    \end{proof}
+    \proofiff{
+        If $\abs{V(G)} = 3$, and $G$ is 2-connected, then $G = C_3$ and the theorem trivially holds, so we may assume that $\abs{G} \ge 4$.
+
+        If $G$ is 2-connected, then $\delta \ge 2$ by \cref{kconn}, i.e. $G$ has a cycle $C$. Fix $H \subseteq G$ as large as possible --- i.e. \tit{maximal by subgraph containment} --- such that $H$ has an ear decomposition.
+
+        By way of contradiction, suppose that $H \neq G$, meaning that there must be at least an edge $xy \in E(G) - E(H)$ --- note that the vertex set of $H$ might still be $V(G)$. Moreover, since $\abs{V(G)} \ge 4$ and $xy \in E(G) - E(H)$, then $\abs{V(H)} \ge 2$. Then, since $G$ is 2-connected, by \cref{menger cor} there are at least two paths $P$ and $P'$ that connect $x$ to $V(H)$ such that $V(P) \cap V(P') = \{x\}$, and two paths $Q$ and $Q'$ that connect $y$ to $V(H)$ such that $V(Q) \cap V(Q') = \{y\}$. We have two cases.
+
+        \begin{itemize}
+            \item In the first case, all the paths intersect $V(P) \cap V(Q), V(P) \cap V(Q') \neq \varnothing$ and $V(P') \cap V(Q), V(P') \cap V(Q') \neq \varnothing$. Let $a \in V(P) \cap V(Q)$ and $b \in V(P') \cap V(Q')$; then $Q \ a \ x \ y \ b \ P'$ is an $H$-path.
+            \item At least two paths do not intersect, and without loss of generality suppose that $V(P) \cap V(Q) = \varnothing$. Then $P \ x \ y \ Q$ is an $H$-path.
+        \end{itemize}
+
+        However, in both cases the $H$-path contradicts the maximality of $H$ $\lightning$.
+    }{
+        We procced by induction on the size of the ear decomposition.
+
+        For the base case, if $k = 0$ then $G = C$, which implies that $G$ is 2-connected. Now, assume inductively that if graph has an ear decomposition of size $k$ it is 2-connected, and consider a graph $G$ that has an ear decomposition of size $k + 1$.
+
+        By inductive hypothesis, we know that $H := C \cup P_1 \cup \ldots \cup P_k$ is 2-connected. Moreover, since $C, P_1, \ldots, P_{k + 1}$ is an ear decomposition, we know that $P_{k + 1}$ is an $H$-path. Fix $x \in V(G)$; we observe that
+
+        \begin{itemize}
+            \item $H$ is 2-connected, hence $H - \{x\}$ is still connected by definition
+            \item every components of $P_{k + 1} - \{x\}$ has a vertex in common with $H - \{x\}$
+        \end{itemize}
+
+        meaning that $(H - \{x\}) \cup (P_{k + 1} - \{x\}) = (H \cup P_{k + 1}) - \{x\}$ is connected. Lastly, since $C \subsetneq H$, then $\abs V(H) \ge 3 \implies \abs{V(H \cup P_{k  + 1})} \ge 3$, which concludes that $H \cup P_{k + 1} = G$ is 2-connected.
+    }
 
     \printbibliography % UNCOMMENT FOR BIBLIOGRAPHY
 
