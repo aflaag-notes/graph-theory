@@ -4,12 +4,12 @@
 \contentsline {subsubsection}{Licence:}{1}{subsubsection*.4}%
 \contentsline {chapter}{\numberline {1}Basics of Graph Theory}{2}{chapter.1}%
 \contentsline {section}{\numberline {1.1}Introduction}{3}{section.1.1}%
-\contentsline {section}{\numberline {1.2}Important structures}{6}{section.1.2}%
-\contentsline {subsection}{\numberline {1.2.1}Trees}{10}{subsection.1.2.1}%
-\contentsline {subsection}{\numberline {1.2.2}Bipartite graphs}{14}{subsection.1.2.2}%
+\contentsline {section}{\numberline {1.2}Important structures}{7}{section.1.2}%
+\contentsline {subsection}{\numberline {1.2.1}Trees}{11}{subsection.1.2.1}%
+\contentsline {subsection}{\numberline {1.2.2}Bipartite graphs}{15}{subsection.1.2.2}%
 \contentsline {subsection}{\numberline {1.2.3}Eulerian tours}{17}{subsection.1.2.3}%
 \contentsline {subsection}{\numberline {1.2.4}Hamiltonian cycles}{19}{subsection.1.2.4}%
-\contentsline {section}{\numberline {1.3}Exercises}{20}{section.1.3}%
+\contentsline {section}{\numberline {1.3}Exercises}{21}{section.1.3}%
 \contentsline {chapter}{\numberline {2}Matchings}{25}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Augmenting paths}{26}{section.2.1}%
 \contentsline {subsection}{\numberline {2.1.1}Berge's theorem}{27}{subsection.2.1.1}%
@@ -35,3 +35,4 @@
 \contentsline {section}{\numberline {4.2}Vertex bounds}{72}{section.4.2}%
 \contentsline {subsection}{\numberline {4.2.1}Ramsey numbers}{72}{subsection.4.2.1}%
 \contentsline {section}{\numberline {4.3}Exercises}{77}{section.4.3}%
+\contentsline {chapter}{\numberline {5}Graph decompositions}{80}{chapter.5}%
