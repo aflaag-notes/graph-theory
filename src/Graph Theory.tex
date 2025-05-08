@@ -3802,15 +3802,17 @@
             Let $G$ be a graph of 6 vertices; then $\abs{E(G)} + \abs{E(\overline G)} = \abs{E(K_6)} = \binom{6}{2} = 15$, which means that the largest between $G$ and $\overline G$ contains at least 8 edges --- without loss of generality, suppose that $G$ is larger. However, a graph with 6 vertices and at least 8 edges must contain a cycle, hence $G$ contains a cycle. Pick the largest cycle in $G$: if the cycle has length 5 or 6, the theorem trivially holds, so we may assume that our cycle is either a $C_3$ or a $C_4$.
 
             \begin{itemize}
-                \item Suppose that $C_3 \subsetneq G$, and fix two distinct vertices $x, y \in V(C_3)$; we have two cases
+                \item Suppose that $C_3 \subsetneq G$; we have two cases.
 
                     \begin{itemize}
-                        \item $x$ and $y$ have neighbors outside $C_3$. If there was a vertex $z \notin V(C_3)$ such that $x, y \sim z$, then $G$ contains $C_4$ contradicting the fact that $C_3$ was the largest cycle in $G$. Therefore, we may assume that there are two distinct vertices $u, v \notin V(C_3)$ such that $x \sim u$ and $y \sim v$, but $x \nsim v$ and $y \nsim u$. Moreover, $u \nsim v$ otherwise together with $C_3$ there would be $C_5$ inside $G$, again contradicting the maximality of the cycle we picked. Let $z$ be the third vertex outside $C_3$; if $x \sim z$ then $zx \ (x \ C \ y) \ yv$ is a $P_5$ in $G$, so we may assume that $x \nsim z$. Then $y \nsim u \nsim v \nsim x \nsim z$ is a $P_5$ in $\overline G$.
-                        \item TODO \todo{da finire}
+                        \item There are at least two vertices $x, y \in V(C_3)$ that have neighbors outside $C_3$. If there was a vertex $z \notin V(C_3)$ such that $x, y \sim z$, then $G$ contains $C_4$ contradicting the fact that $C_3$ was the largest cycle in $G$. Therefore, we may assume that there are two distinct vertices $u, v \notin V(C_3)$ such that $x \sim u$ and $y \sim v$, but $x \nsim v$ and $y \nsim u$. Moreover, $u \nsim v$ otherwise together with $C_3$ there would be $C_5$ inside $G$, again contradicting the maximality of the cycle we picked. Let $z$ be the third vertex outside $C_3$; if $x \sim z$ then $zx \ (x \ C \ y) \ yv$ is a $P_5$ in $G$, so we may assume that $x \nsim z$. Then $y \nsim u \nsim v \nsim x \nsim z$ is a $P_5$ in $\overline G$.
+                        \item No vertex of $C_3$ has neighbors outside $C_3$; then $\overline G$ contains $K_{3, 3}$ as subgraph, implying that $P_5 \subsetneq \overline G$.
                     \end{itemize}
                 \item Suppose that $C_4 \subsetneq G$; if there is a vertex of $V(C_4)$ that has a neighbor outside $C_4$, there is a $P_5$ in $G$, so we may assume that no vertex of $V(C)$ has neighbors outside the cycle. However, this means that $\overline G$ contains $K_{2,4}$ as subgraph, implying that $P_5 \subsetneq \overline G$.
             \end{itemize}
         }
+
+        The claim, together with the previous graph, proves that $R(P_5) = 6$.
     }
 
     \chapter{Graph decompositions}
