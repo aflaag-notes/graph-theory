@@ -855,7 +855,7 @@
         % \label{}
     \end{figure}
 
-    \begin{framedthm}{}
+    \begin{framedthm}[label={odd-len bip}]{}
         $G$ is bipartite if and only if $G$ has no odd-length cycle.
     \end{framedthm}
 
@@ -2725,7 +2725,7 @@
 
     \section{Edge bounds}
 
-    In the first section of this chapter, we will explore the bounds on the number of \tbf{edges} that force any graph to contain interesting substructures. In particular, we define $\mathrm{ex}(n, H)$ to be the maximum number of edges in an $n$-vertex graph that does not contain a given graph $H$ as subgraph.
+    In the first section of this chapter, we will explore the bounds on the number of \tbf{edges} that force any graph to contain interesting substructures. In particular, we define $\mathrm{ex}(n, H)$ to be the minimum number of edges in an $n$-vertex graph that guarantees the existence of $H$ as subgraph.
 
     \subsection{Cliques}
 
@@ -3037,7 +3037,7 @@
     As a corollary of this theorem, we have the answer to our original question.
 
     \begin{framedcor}{}
-        $\mathrm{ex}(n, K_r) = t(n, r - 1)$
+        $\mathrm{ex}(n, K_r) = t(n, r - 1) + 1$
     \end{framedcor}
 
     \begin{proof}
@@ -3667,7 +3667,7 @@
     \section{Exercises}
 
     \begin{framedprob}{}
-        Prove that $\mathrm{ex}(n, P_4) \le n$.
+        Prove that $\mathrm{ex}(n, P_4) \le n + 1$.
     \end{framedprob}
 
     \solution{
@@ -3692,15 +3692,15 @@
     }
 
     \begin{framedprob}{}
-        Show that $\mathrm{ex}(n, K_{1,3}) = n$.
+        Show that $\mathrm{ex}(n, K_{1,3}) = n + 1$.
     \end{framedprob}
 
     \solution{
-        First, we observe that any $C_n$ cycle graph on $n$ vertices has $n$ edges but does not contain $K_{1,3}$ as subgraph, therefore $\mathrm{ex}(n, K_{1,3}) \ge n$.
+        First, we observe that any $C_n$ cycle graph on $n$ vertices has $n$ edges but does not contain $K_{1,3}$ as subgraph, therefore $\mathrm{ex}(n, K_{1,3}) \ge n + 1$.
 
         Consider a graph of $n$ vertices and $n + 1$ edges --- in particular, this implies that $\delta \ge 2$. By way of contradiction suppose that $\Delta(G) \le 2$. If this is the case, we observe that $$\forall v \in V(G) \quad 2 \le \delta \le \deg(v) \le \Delta \le 2 \implies \deg(v) = 2$$ However, by the Handshaking lemma we know that $$\sum_{v \in V(G)}{\deg(v)} = 2 \abs{E(G)} = 2(n + 1)$$ which means that the number of vertices of $G$ is given by $\tfrac{2(n + 1)}{2} = n + 1$ contradicting the fact that $G$ had $n$ vertices $\lightning$.
 
-        In particular, if $\Delta(G) \ge 3$, it implies that $K_{1,3}$ must be a subgraph of $G$, concluding that $\mathrm{ex}(n, K_{1,3}) \le n$.
+        In particular, if $\Delta(G) \ge 3$, it implies that $K_{1,3}$ must be a subgraph of $G$, concluding that $\mathrm{ex}(n, K_{1,3}) \le n + 1$.
     }
 
     \begin{framedprob}{}
@@ -3708,22 +3708,114 @@
     \end{framedprob}
 
     \solution{
-        We observe that if $n < t + 1 \iff n \le t$ it is impossible to have $K_{1, t}$ as subgraph since it requires at least $t + 1$ vertices in the graph. This means that $$n \le t \implies \mathrm{ex}(n, K_{1,t}) = \binom{n}{2} \le \binom{t}{2}$$ Therefore, we may assume that $n \ge t + 1$.
+        We observe that if $n < t + 1 \iff n \le t$ it is impossible to have $K_{1, t}$ as subgraph since it requires at least $t + 1$ vertices in the graph. Therefore, we may assume that $n \ge t + 1$.
 
-        Note that to guarantee that $K_{1,t}$ is a subgraph of $G$, it suffices to guarantee that $G$ contains a vertex of degree at least $t$. Hence, the largest number of edges $G$ can have must be such that every vertex has degree $t - 1$, i.e. the sum of the degrees of $G$ is $n (t - 1)$. Hence, by the Handshaking lemma we get that $$2 \abs{E(G)} = \sum_{v \in V(G)}{\deg(v)} = n (t - 1) \iff \abs{E(G)} = \dfrac{n}{2}(t - 1)$$ We are going to prove that this is in fact the exact value of $\mathrm{ex}(n, K_{1,t})$.
+        Note that to guarantee that $K_{1,t}$ is a subgraph of $G$, it suffices to guarantee that $G$ contains a vertex of degree at least $t$. Hence, the largest number of edges $G$ can have must be such that every vertex has degree $t - 1$, i.e. the sum of the degrees of $G$ is $n (t - 1)$. Hence, by the Handshaking lemma we get that $$2 \abs{E(G)} = \sum_{v \in V(G)}{\deg(v)} = n (t - 1) \iff \abs{E(G)} = \dfrac{n}{2}(t - 1)$$ We are now going to prove that is indeed $\mathrm{ex}(n, K_{1,t}) = \tfrac{n}{2}(t - 1) + 1$.
 
         For the lower bound, consider the graph $K_{t - 1, t - 1}$. Clearly, each vertex has degree $t - 1$ meaning that it cannot contain $K_{1,t}$ as subgraph, and by the Handshaking lemma the number of edges is given by $$2 \abs{E(G)} = \sum_{v \in V(G)}{\deg(v)} = n (t - 1) \iff \abs{E(G)} = \dfrac{n}{2}(t - 1)$$
 
         \claim{
-            For $t \ge 4$ it holds that $\mathrm{ex}(n, K_{1,t}) \le \tfrac{n}{2}(t  - 1)$.
+            For $t \ge 4$ it holds that $\mathrm{ex}(n, K_{1,t}) \le \tfrac{n}{2}(t  - 1) + 1$.
         }{
             Let $G$ be a graph of $n$ vertices and $\tfrac{n}{2}(t - 1) + 1$ edges, and by way of contradiction suppose that $\Delta(G) \le t - 1$. By the Handshaking lemma, we have that $$\sum_{v \in V(G)}{\deg(v)} = 2 \abs{E(G)} = 2\sbk{\tfrac{n}{2}(t - 1) + 1} = n(t - 1) + 2$$ meaning that the number of vertices of $G$ is given by $$\dfrac{n (t - 1) + 2}{t - 1} \ge n + \dfrac{2}{t - 1} > n$$ since $t \ge 4 \implies \tfrac{2}{t - 1} \ge \tfrac{2}{3}$, contradicting the fact that $G$ had $n$ vertices $\lightning$.
         }
 
-        Together with the previous counterexample, we get that $$n \ge t + 1 \implies \mathrm{ex}(n, K_{1, t}) = \dfrac{n}{2}(t - 1)$$
+        Together with the previous counterexample, we get that $$n \ge t + 1 \implies \mathrm{ex}(n, K_{1, t}) = \dfrac{n}{2}(t - 1) + 1$$
+    }
+    
+    \begin{frameddefn}{}
+        Given a graph $H$, let $R(H)$ be the minimum number of vertices such that for every graph $G$ of $R(H)$ vertices either $H \subseteq G$ or $H \subseteq \overline G$.
+    \end{frameddefn}
+
+    \begin{framedprob}{}
+        Find the value of $R(P_4)$.
+    \end{framedprob}
+
+    \solution{
+        Trivially, the following graph shows that $R(P_4) \ge 5$ --- the anti-edges are represented with dashed lines
+
+        \begin{figure}[H]
+            \centering
+            \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.5cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
+
+                \node[circle, draw] (1) []{};
+                \node[circle, draw] (2) [right of = 1]{};
+                \node[circle, draw] (3) [below of = 1]{};
+                \node[circle, draw] (4) [right of = 3]{};
+
+                \draw[-] (1) to (2);
+                \draw[-] (1) to (3);
+                \draw[dashed] (1) to (4);
+                \draw[-] (2) to (3);
+                \draw[dashed] (2) to (4);
+                \draw[dashed] (3) to (4);
+
+                ;
+            \end{tikzpicture}
+            % \caption{For instance, in this graph there are two cut vertices, namely 1 and 4.}
+        \end{figure}
+
+        \claim{
+            $R(P_4) \le 5$.
+        }{
+            Let $G$ be a graph of 5 vertices; then $\abs{E(G)} + \abs{E(\overline G)} = \abs{E(K_5)} = \binom{5}{2} = 10$, which means that the largest between $G$ and $\overline G$ contains at least 5 edges --- without loss of generality, suppose that $G$ is larger. However, a graph with 5 vertices and at least 5 edges must contain a cycle, hence $G$ contains a cycle. Pick the largest cycle in $G$: if the cycle has length 4 or 5, the theorem trivially holds, so we may assume that $G$ contains $C_3$ --- let $x$ and $y$ be the two vertices not contained in $C_3$. Then, since $G$ must contain at least 5 edges on 5 vertices, and 3 edges form a $C_3$, there must be at least one edge connecting either $x$ or $y$ to $C_3$, meaning that $P_4$ is still contained in $G$.
+        }
+
+        The claim, together with the previous graph, proves that $R(P_4) = 5$.
+    }
+
+    \begin{framedprob}{}
+        Find the value of $R(P_5)$.
+    \end{framedprob}
+
+    \solution{
+        The following graph shows that $R(P_5) \ge 6$ --- observe that the graph consists of a $K_4$ with an isolated vertex.
+
+        \begin{figure}[H]
+            \centering
+            \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.5cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
+
+                \node[circle, draw] (1) []{};
+                \node[circle, draw] (2) [below left of = 1]{};
+                \node[circle, draw] (3) [below right of = 1]{};
+                \node[circle, draw] (4) [below of = 2, xshift = 10]{};
+                \node[circle, draw] (5) [below of = 3, xshift = -10]{};
+
+                \draw[-] (1) to (2);
+                \draw[-] (1) to (3);
+                \draw[dashed] (1) to (4);
+                \draw[-] (1) to (5);
+                \draw[-] (2) to (3);
+                \draw[dashed] (2) to (4);
+                \draw[-] (2) to (5);
+                \draw[dashed] (3) to (4);
+                \draw[-] (3) to (5);
+                \draw[dashed] (4) to (5);
+
+                ;
+            \end{tikzpicture}
+        \end{figure}
+
+        \claim{
+            $R(P_5) \le 6$.
+        }{
+            Let $G$ be a graph of 6 vertices; then $\abs{E(G)} + \abs{E(\overline G)} = \abs{E(K_6)} = \binom{6}{2} = 15$, which means that the largest between $G$ and $\overline G$ contains at least 8 edges --- without loss of generality, suppose that $G$ is larger. However, a graph with 6 vertices and at least 8 edges must contain a cycle, hence $G$ contains a cycle. Pick the largest cycle in $G$: if the cycle has length 5 or 6, the theorem trivially holds, so we may assume that our cycle is either a $C_3$ or a $C_4$.
+
+            \begin{itemize}
+                \item Suppose that $C_3 \subsetneq G$, and fix two distinct vertices $x, y \in V(C_3)$; we have two cases
+
+                    \begin{itemize}
+                        \item $x$ and $y$ have neighbors outside $C_3$. If there was a vertex $z \notin V(C_3)$ such that $x, y \sim z$, then $G$ contains $C_4$ contradicting the fact that $C_3$ was the largest cycle in $G$. Therefore, we may assume that there are two distinct vertices $u, v \notin V(C_3)$ such that $x \sim u$ and $y \sim v$, but $x \nsim v$ and $y \nsim u$. Moreover, $u \nsim v$ otherwise together with $C_3$ there would be $C_5$ inside $G$, again contradicting the maximality of the cycle we picked. Let $z$ be the third vertex outside $C_3$; if $x \sim z$ then $zx \ (x \ C \ y) \ yv$ is a $P_5$ in $G$, so we may assume that $x \nsim z$. Then $y \nsim u \nsim v \nsim x \nsim z$ is a $P_5$ in $\overline G$.
+                        \item TODO \todo{da finire}
+                    \end{itemize}
+                \item Suppose that $C_4 \subsetneq G$; if there is a vertex of $V(C_4)$ that has a neighbor outside $C_4$, there is a $P_5$ in $G$, so we may assume that no vertex of $V(C)$ has neighbors outside the cycle. However, this means that $\overline G$ contains $K_{2,4}$ as subgraph, implying that $P_5 \subsetneq \overline G$.
+            \end{itemize}
+        }
     }
 
     \chapter{Graph decompositions}
+
+    \section{Blocks}
 
     TODO \todo{introduction}
 
@@ -3762,7 +3854,9 @@
         Given a graph $G$, a \tbf{block} is a \tit{maximal} subgraph $H$ with no cut vertex, i.e. there is no $H' \subseteq G$ without cut vertices such that $H \subsetneq H'$.
     \end{frameddefn}
 
-    For instance, in the previous example we have exactly four blocks, and the set of vertices that describe them are the following: $$B_1 := \{1, 2, 3\}$$ $$B_2 := \{4, 5, 6\}$$ $$B_3 := \{1, 4\}$$ $$B_4 := \{7\}$$ We observe that any edge of a graph is itself a subgraph without cut vertices, which implies that \tit{all} the edges of a graph will belong to a block. Moreover, consider the following definition.
+    For instance, in the previous example we have exactly four blocks, and the set of vertices that describe them are the following: $$B_1 := \{1, 2, 3\}$$ $$B_2 := \{4, 5, 6\}$$ $$B_3 := \{1, 4\}$$ $$B_4 := \{7\}$$ We observe that any edge of a graph is itself a subgraph without cut vertices, which implies that \tit{all} the edges of a graph will belong to a block. Furthermore, we observe that any cut vertex of a graph must belong to at least two different blocks, by definition.
+
+    Moreover, consider the following definition.
 
     \begin{frameddefn}{Bridge}
         Given a graph $G$, an edge $e \in E(G)$ is called \tbf{bridge} if $G - \{e\}$ has more components than $G$.
@@ -3868,11 +3962,11 @@
     \end{proof}
 
     \begin{framedprop}{}
-        Given a graph $G$, and two distinct blocks $H, H'$ of $G$, it holds that $\abs{V(H) \cap V(H')} \le 1$.
+        Given a graph $G$, and two distinct blocks $H$ and $H'$ of $G$, it holds that $\abs{V(H) \cap V(H')} \le 1$.
     \end{framedprop}
     
     \begin{proof}
-        By way of contradiction, suppose that $\abs{V(H) \cap V(H')} \ge 2$. Let $z \in V(H \cup H')$; by \cref{blocks 2conn} we get that both $H - \{z\}$ and $H' - \{z\}$ are still connected. Moreover, since $\abs{V(H) \cap V(H')} \ge 2$, it holds that $\abs{V(H)}, \abs{V(H')} \ge 2$, meaning that $$(H \cup H') - \{z\} = (H - \{z\}) \cup (H' - \{z\}) \neq \varnothing$$ which implies that $$(H \cup H') - \{z\}$$ is connected by the previous lemma.
+        By way of contradiction, suppose that $\abs{V(H) \cap V(H')} \ge 2$. Let $z \in V(H \cup H')$; by \cref{blocks 2conn} we get that both $H - \{z\}$ and $H' - \{z\}$ are still connected. Moreover, since $\abs{V(H) \cap V(H')} \ge 2$, it holds that $\abs{V(H)}, \abs{V(H')} \ge 2$, meaning that $$(H \cup H') - \{z\} = (H - \{z\}) \cup (H' - \{z\}) \neq \varnothing$$ which implies that $(H \cup H') - \{z\}$ is connected by the previous lemma.
 
         Suppose that $\abs{V(H \cup H')} = 2$; then we have only two possible cases:
 
@@ -3881,9 +3975,138 @@
             \item $H \cup H'$ consists of a single edge, meaning that the edge itself is one single block, hence $H = H'$, contradicting the fact that $H \neq H'$ by assumption
         \end{itemize}
 
-        Hence, the only possibility is that $H \cup H'$ contains at least 3 vertices.
+        Hence, the only possibility is that $H \cup H'$ contains at least 3 vertices. Moreover, we observe that if $V(H) \cap V(H') \neq \varnothing$, then $H \cup H'$ is connected by \cref{blocks 2conn}.
 
-        However, if for any $z \in V(H \cup H')$ it holds that $(H \cup H') - \{z\}$ is connected, and $\abs{V(H \cup H')} \ge 3$, it implies that $H \cup H'$ is 2-connected by definition. This means that $H \cup H'$ does not contain cut vertices, contradicting the maximality of the blocks $H, H' \subsetneq H \cup H'$ $\lightning$.
+        However, we observe that if
+
+        \begin{itemize}
+            \item $H \cup H'$ is connected
+            \item for any $z \in V(H \cup H')$ it holds that $(H \cup H') - \{z\}$ is connected
+            \item $\abs{V(H \cup H')} \ge 3$
+        \end{itemize}
+
+        it implies that $H \cup H'$ is 2-connected by definition. This means that $H \cup H'$ does not contain cut vertices, contradicting the maximality of the blocks $H, H' \subsetneq H \cup H'$ $\lightning$.
+    \end{proof}
+
+    \begin{framedprop}{}
+        Given a graph $G$, and two distinct blocks $H$ and $H'$ of $G$, if $V(H) \cap V(H') \neq \varnothing$ then any vertex in $V(H) \cap V(H')$ is a cut vertex of $G$.
+    \end{framedprop}
+
+    \begin{proof}
+        Since $V(H) \cap V(H') \neq \varnothing$, we know that neither $H$ nor $H'$ are isolated vertices --- if both of them were isolated vertices, they would have empty intersection, and if one of them were an isolated vertex it would have been part of the other block, meaning that $H$ and $H'$ actually were a single block. Moreover, if at least one between $H$ and $H'$ is a bridge, the theorem trivially holds. Hence, we may assume that $\abs{V(H)}, \abs{V(H')} \ge 3$ --- and in particular, they are 2-connected by \cref{blocks 2conn}
+
+        By the previous theorem, if $V(H) \cap V(H') \neq \varnothing$ it holds that $\abs{V(H) \cap V(H')} = 1$, hence let $z$ be the vertex in the intersection of the two blocks, and by way of contradiction suppose that $z$ is not a cut vertex. Then, by definition this means that for any two fixed vertices $u \in V(H - \{z\})$ and $v \in V(H' - \{z\})$ there is a path $P$ that does not pass through $z$.
+
+        \claim{
+            $H \cup H' \cup P$ is 2-connected.
+        }{
+            By \cref{blocks 2conn}, we know that both $H - \{z\}$ and $H' - \{z\}$ are connected, and since they both have a vertex in common with $P$, we get that $$(H - \{z\}) \cup (H' - \{z\}) \cup P = (H \cup H' \cup P) - \{z\}$$ is still connected --- since $P$ is a path.
+
+            Moreover, by the same proposition we note that $H \cup H'$ is connecetd. Now, let $p_1$ and $p_2$ be the endpoints of $P$ --- without loss of generality, assume $p_1 \in V(H)$ and $p_2 \in V(H')$ --- and fix a vertex $x \in V(H \cup H' \cup P)$; we have some cases to handle
+
+            \begin{itemize}
+                \item In the first case, we have that $x \in V(H \cup H') - \{z\}$. Fix two vertices $a, b \in V(H \cup H' \cup P) - \{x\}$
+
+                    \begin{itemize}
+                        \item if $a, b \in V(P)$, they are trivially connected since $P$ is a path
+                        \item if $a, b \in V(H) - \{z, x\}$, or $a, b \in V(H') - \{z, x\}$, then $a$ and $b$ are connected by 2-connectivity of $H$ and $H'$ --- even if a path $a \to b$ passes through $x$, there must exist at least another path of the same form by \cref{intern disj menger} that does not pass through $x$
+                        \item without loss of generality, if $a \in V(H) - \{z, x\}$ and $b \in V(H') - \{z, x\}$, then by 2-connectivity of $H$ and $H'$ there are paths $a \to p_1$ and $p_2 \to b$ that do not pass through $x$, meaning that $(a \to p_1) \cup P \cup (p_2 \to b)$ is a path $a \to b$
+                        \item without loss of generality, if $a \in V(H) - \{z, x\}$ and $b \in V(P) - \{p_1, p_2\}$, again by 2-connectivity of $H$ there is at least one path $a \to p_1$ that does not pass through $x$, meaning that $(a \to p_1) \cup (p_1 \ P \ b)$ is a path $a \to b$
+                    \end{itemize}
+
+                    This proves that $(H \cup H' \cup P) - \{x\}$ is connected, for $x \in V(H \cup H') - \{z\}$.
+                \item In the second case, we have that $x \in V(P) - V(H \cup H')$. Fix two vertices $a, b \in V(H \cup H' \cup P) - \{x\}$
+
+                    \begin{itemize}
+                        \item if $a, b \in V(H \cup H') - V(P)$, then $a$ and $b$ are trivially connected by connectivity of $H \cup H'$
+                        \item without loss of generality, if $a \in V(H) - V(P)$ and $b \in V(P) - \{x\}$ then
+                            \begin{itemize}
+                                \item if by removing $x$ from $P$ we did not disconnect $a$ and $b$, there still is a path $a \to b$
+                                \item otherwise, by connectivity of $H \cup H'$ there will be a path $a \to p_2$, hence $(a \to p_2) \cup (p_2 \ P \ b)$ is a path $a \to b$
+                            \end{itemize}
+                        \item similarly, if $a, b \in V(P) - \{x\}$, then
+                            \begin{itemize}
+                                \item if by removing $x$ from $P$ we did not disconnect $a$ and $b$, there still is a path $a \to b$
+                                \item otherwise, by connectivity of $H \cup H'$ there will be a path $p_1 \to p_2$, hence $(a \ P \ p_1) \cup (p_1 \to p_2) \cup (p_2 \ P \ b)$ is a path $a \to b$
+                            \end{itemize}
+                    \end{itemize}
+
+                    This proves that $(H \cup H' \cup P) - \{x\}$ is connected, for $x \in V(P) - V(H \cup H')$.
+            \end{itemize}
+
+            Finally, this means that no matter the choice of $x$, we have that $H \cup H' \cup P - \{x\}$ is still connected, i.e. $H \cup H' \cup P$ is 2-connected by definition.
+        }
+
+        In particular, since $H \cup H' \cup P$ is 2-connected by the claim, it cannot contain any cut vertices, implying that $H \cup H' \cup P$ contradicts the maximality of the blocks $H, H' \subsetneq H \cup H' \cup P$ $\lightning$.
+    \end{proof}
+
+    \subsection{Block graph}
+    
+    \begin{frameddefn}{}
+        Given a connected graph $G$, let $B_1, \ldots, B_k$ be its blocks, and let $z_1, \ldots, z_\ell$ be the set of its cut vertices. We define $\mathcal B(G)$ as the \tbf{block graph} of $G$ through the following sets of nodes and edges:
+
+        \begin{itemize}
+            \item $V(\mathcal B(G)) = \{b_1, \ldots, b_k\} \cup \{z_1, \ldots, z_\ell\}$, where each $b_i$ is a vertex corresponding to a block $B_i$ of $G$
+            \item there is an edge $\{b_i, z_j\} \in E(\mathcal B(G))$ if and only if $z_j \in V(B_i)$
+        \end{itemize}
+    \end{frameddefn}
+
+    TODO \todo{example}
+
+    We observe that, by definition the only edges present in $\mathcal B(G)$ are between nodes representing blocks and nodes representing cut vertices of $G$. This means that $\{b_1, \ldots, b_k\}$ and $\{z_1, \ldots, z_\ell\}$ are independent sets, i.e. $\mathcal B(G)$ is bipartite.
+
+    \begin{frameddefn}{}
+        Given a connected graph $G$, then $\mathcal B(G)$ is a tree.
+    \end{frameddefn}
+
+    \begin{proof}
+        Since $G$ is connected, $\mathcal B(G)$ is trivially connected as well. By way of contradiction, suppose that it is not a tree, i.e. there is an \tit{induced} cycle $$C := b_{i_1} \ z_{j_1} \ b_{i_2} \ \ldots \ b_{i_{h - 1}} \ z_{j_h} \ b_{i_h} $$ in $\mathcal B(G)$, where $z_{j_l} \in V(B_{i_l}) \cap V(B_{{i_l} + 1})$ by definition. Moreover, since the block graph is bipartite by definition, we get that $\abs{V(C)}$ must be even by \cref{odd-len bip}. Additionally, since $C$ is induced, we have that for $i_l \notin \{j_l, j_l + 1\}$ it holds that $z_{j_l} \notin V(B_{i_l})$.
+
+        \claim{
+            $\displaystyle \bigcup_{l = 1}^h{B_{i_l}}$ has no cut vertex.
+        }{
+            Let $\displaystyle x \in V \rbk{\bigcup_{l = 1}^h{B_{i_l}}}$, and without loss of generality suppose that $x \in V(B_{i_1})$. TODO \todo{da finire}
+        }
+
+        In particular, this claim contradicts the maximality of the blocks $b_{i_1}, \ldots, b_{i_h}$ $\lightning$.
+    \end{proof}
+
+    \begin{framedprop}{}
+        Given a connected graph $G$, every leaf of $\mathcal B(G)$ represents a block of $G$.
+    \end{framedprop}
+
+    \begin{proof}
+        By way of contradiction, suppose that there is a leaf $v \in V(\mathcal B(G))$ that represents a cut vertex of $G$. Since $v$ is a leaf, it must have degree 1 in $\mathcal B(G)$, and by definition of the block graph we know that its only neighbor must be a vertex $b$ representing a block $B$ of $G$. Therefore, by definition of $\mathcal B(G)$ there we know that $v \in V(B)$, but if $v$ is a cut vertex of $G$ there must be at least another block $B'$ --- represented by a vertex $b' \in V(\mathcal B(G))$ --- in $G$ that contains $v$, meaning that $v \sim b, b'$, contradicting the fact that $v$ was a leaf of the block graph $\lightning$.
+    \end{proof}
+
+    \section{Ear decomposition}
+
+    \begin{frameddefn}{$H$-path}
+        Given a graph $G$, and a subgraph $H \subseteq G$, an \tbf{$H$-path} $P$ is a non-trivial path with both ends in $V(H)$, no internal vertex in $V(H)$, and no edge in $E(H)$.
+    \end{frameddefn}
+
+    We observe that the last condition of the definition implies that \tit{single edges} are not $H$-paths.
+
+    TODO \todo{example}
+
+    \begin{frameddefn}{Ear decomposition}
+        Given a graph $G$, an \tbf{ear decomposition} of $G$ is a sequence $C, P_1, \ldots, P_k$ such that
+
+        \begin{itemize}
+            \item $C$ is a cycle
+            \item each $P_i$ is a $\displaystyle \rbk{\bigcup_{j = 1}^{i - 1}{P_j}}$-path
+            \item $C \cup P_1 \cup \ldots \cup P_k = G$
+        \end{itemize}
+    \end{frameddefn}
+
+    TODO \todo{example}
+
+    \begin{framedthm}{}
+        G is 2-connected if and only if it has an ear decomposition.
+    \end{framedthm}
+
+    \begin{proof}
+        TODO \todo{da fare}
     \end{proof}
 
     \printbibliography % UNCOMMENT FOR BIBLIOGRAPHY
