@@ -35,7 +35,7 @@
 \contentsline {section}{\numberline {4.2}Vertex bounds}{72}{section.4.2}%
 \contentsline {subsection}{\numberline {4.2.1}Ramsey numbers}{72}{subsection.4.2.1}%
 \contentsline {section}{\numberline {4.3}Exercises}{77}{section.4.3}%
-\contentsline {chapter}{\numberline {5}Graph decompositions}{81}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Blocks}{81}{section.5.1}%
-\contentsline {subsection}{\numberline {5.1.1}Block graph}{86}{subsection.5.1.1}%
-\contentsline {section}{\numberline {5.2}Ear decomposition}{87}{section.5.2}%
+\contentsline {chapter}{\numberline {5}Graph decompositions}{83}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Blocks}{83}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Block graph}{88}{subsection.5.1.1}%
+\contentsline {section}{\numberline {5.2}Ear decomposition}{89}{section.5.2}%

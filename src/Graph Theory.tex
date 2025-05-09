@@ -3112,7 +3112,7 @@
     By Mader's theorem we that $c_k$ is \tit{upper bounded} by $c_k \le 2k - 1$, and some type of graphs are known to provide \tit{lower bounds}, such as the following type.
 
     \begin{frameddefn}{Split graph}
-        A \tbf{split graph} is a graph whose vertices can be partitiones into a \tit{clique} and an independent set. A \tbf{complete split graph} is a split graph where the independent set is fully connected to the clique.
+        A \tbf{split graph} is a graph whose vertices can be partitioned into a \tit{clique} and an independent set. A \tbf{complete split graph} is a split graph where the independent set is fully connected to the clique.
     \end{frameddefn}
 
     \begin{figure}[H]
@@ -3813,6 +3813,56 @@
         }
 
         The claim, together with the previous graph, proves that $R(P_5) = 6$.
+    }
+
+    \begin{framedprob}[label={ramsey path lower bound}]{}
+        For any $n$, find a lower bound for $R(P_n)$.
+    \end{framedprob}
+
+    \solution{
+        Trivially, the clique $K_{n - 1}$ does not contain $P_n$, because its longest path is $P_{n - 1}$.
+
+        \claim{
+            Any complete bipartite graph that has $\floor{\tfrac{n}{2}} - 1$ nodes in one of its partitions does not contain $P_n$.
+        }{
+            Any path in a complete bipartite graph must alternate between its two partitions, therefore the longest path will have length $$2 \rbk{\floor{\dfrac{n}{2}} - 1} + 1 \le n - 2 + 1 = n - 1 < n$$
+        }
+
+        Fix a number $n$, and consider the following graph $G := K_{n - 1} \cup K_{\floor{\tfrac{n}{2}} - 1}$. By the previous observation, $K_{n - 1}$ does not contain $P_n$, and clearly $K_{\floor{\tfrac{n}{2}} - 1}$ cannot contain $P_n$ either, since it contains even less vertices. Moreover, we observe that $\overline G = K_{n - 1, \floor{\tfrac{n}{2}} - 1}$ by construction of $G$, and by the claim we get that $\overline G$ does not contain $P_n$. Therefore, this graph concludes that $$R(P_n) \ge \abs{V(G)} + 1 = (n - 1) + \rbk{\floor{\dfrac{n}{2}} - 1} + 1 = n + \floor{\dfrac{n}{2}} - 1$$
+    }
+
+    \begin{framedprob}{}
+        Find the value of $R(P_6)$.
+    \end{framedprob}
+
+    \solution{
+        By \cref{ramsey path lower bound}, we know that $$R(P_6) \ge 6 + \floor{\dfrac{6}{2}} - 1 = 6 + 3 - 1 = 8$$
+
+        Let $G$ be a graph on 8 vertices, and by way of contradiction suppose that neither $G$ nor $\overline G$ contain $P_6$. Since $G$ has 8 vertices, then $\abs{E(G)} + \abs{E(\overline G)} = \abs{E(K_8)} = \binom{8}{2} = 28$, which means that the largest between $G$ and $\overline G$ contains at least 14 edges. However, a graph with 8 vertices and at least 14 edges must contain a cycle, hence the largest between $G$ and $\overline G$ contains a cycle. However, by the same argument, the smallest \tit{may also} contain a cycle, hence let $C$ be the \tit{largest} cycle in both $G$ and $\overline G$ --- without loss of generality, suppose that $C$ is in $G$. In particular, if the cycle has length 6 or more, $C$ trivially contains $P_6$ contradicting our assumption, so we may assume that our cycle is either $C_3$, $C_4$ or $C_5$.
+
+        First, suppose that $C = C_3$, and let $\{c_i, c_j, c_k\}$ be the set of its vertices.
+
+        \claim{
+            If $C = C_3$, there is no pair of distinct vertices $c_i, c_j \in V(C_3)$ such that for any $x_p, x_q \in V(G) - V(C_3)$ it holds that $c_i \sim x_p$ and $c_j \sim x_q$.
+        }{
+            Without loss of generality, suppose that $c_i \sim x_p$ and $c_j \sim x_q$ for the sake of contradiction. If $x_p = x_q$, then $x_p \sim c_i \sim c_k \sim c_j$ form $C_4$, contradicting the maximality of $C$ $\lightning$. Vice versa, if $x_p \neq x_q$, then for all $x_\ell \in V(G) - (V(C_3) \cup \{x_p, x_q\})$ it holds that $x_p, x_q \nsim x_\ell$, otherwise there would be $P_6$ in $G$, but this implies that there is $C_4$ in $\overline G$, again contradicting the maximality of $C$ $\lightning$.
+        }
+
+        Now, suppose that there is a vertex $c_i \in V(C_3)$ such that $c_i \sim x_p$ for some $x_p \in V(G) - V(C_3)$; then, by the previous claim, we know that for all $x_\ell \in V(G) - V(C_3)$ it holds that $c_j, c_k \nsim x_p$, i.e. $K_{2,5}$ is a subgraph of $\overline G[V(G) - \{c_i\}]$. This implies that for each vertex $x_\ell \neq x_p$ outside $C_3$ it holds that $c_i, x_p \sim x_\ell$, otherwise the anti-edge from $x_\ell$ to $c_i$ or $x_p$ together with $K_{2, 5}$ would form $P_6$ in $\overline G$. In particular, this implies that there are two vertices $x_{\ell_1}, x_{\ell_2} \neq x_p$ outside $C_3$ such that $c_i \sim x_{\ell_1} \sim x_p \sim x_{\ell_2}$ form $C_4$, contradicting the maximality of $G$ $\lightning$.
+
+        This implies that for all $c_i \in V(C_3)$ and $x_p \in V(G) - V(C_3)$ it holds that $c_i \nsim x_p$, meaning that $\overline G$ contains $K_{3,5}$ as subgraph, which in turn contains $P_6$. This concludes that $C \neq C_3$.
+
+        Now, suppose that $C = C_4$.
+
+        \claim{
+            If $C = C_4$, then for all $c_i \in V(C_4)$ and $x_\ell \in V(G) - V(C_4)$ it holds that $c_i \nsim x_\ell$.
+        }{
+            By way of contradiction, suppose that there is a vertex $c_i \in V(C_4)$ such that $c_i \sim x_\ell$ for some $x_\ell \in V(G) - V(C_4)$; then for all $x_t \in V(G) - (V(C_4) \cup \{x_\ell\})$ it holds that $x_\ell \nsim x_t$ otherwise there would be $P_6$ in $\overline G$. Moreover, let $c_j, c_k \in V(C_4)$ be the vertices such that $c_j, c_k \sim c_i$; then for all $x_t \in V(G) - (V(C_4) \cup \{x_\ell\})$ it holds that $c_j, c_k \nsim x_t$ otherwise there would be $P_6$ in $\overline G$. However, this implies that the other 3 vertices $x_{t_1}, x_{t_2}, x_{t_3} \in V(G) - (V(C_4) \cup \{x_\ell\})$ are such that $x_{t_1} \nsim x_\ell \nsim x_{t_2} \nsim c_k \nsim x_{t_3} \nsim c_j$ form $P_6$ in $\overline G$ $\lightning$.
+        }
+
+        In particular, the previous claim concludes that $\overline G$ contains $K_{4,4}$, which trivially contains $P_6$. Therefore, $C \neq C_3, C_4$.
+
+        Lastly, suppose that $C = C_5$. Then, if any of the vertices $c_i \in V(C_5)$ is adjacent to a vertex $x_\ell \in V(G) - V(C_5)$, then there is $P_6$ in $\overline G$, therefore for all $c_i \in V(C_5)$ and $x_\ell \in V(G) - V(C_5)$ it holds that $c_i \nsim v_\ell$. In particular, this implies that $\overline G$ contains $K_{3,5}$, which clearly contains $P_6$ $\lightning$.
     }
 
     \chapter{Graph decompositions}
