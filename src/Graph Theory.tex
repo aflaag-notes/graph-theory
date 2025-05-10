@@ -2712,9 +2712,41 @@
     \solution{
         Let $G$ be a 2-connected graph, and by way of contradiction suppose that there are two vertices $x, y \in V(G)$ that do not lie on a common cycle of $G$. By \cref{kconn}, we know that $\delta \ge 2$, hence there must be vertices $x_1, x_2$ and $y_1, y_2$ such that $x \sim x_1, x_2$ and $y \sim y_1, y_2$.
 
-        If $x$ and $y$ do not lie on a common cycle, without of loss of generality we may assume that $x_1$ and $y_1$ are connected by only one path --- there must be at least one otherwise $G$ would be disconnected. However, since $x_1 \sim x \sim x_2$ and $y_1 \sim y \sim y_2$, such path must pass through $x$, $x_2$, $y_2$ and $y$. In particular, this implies that $G[V(G) - \{x_2\}]$ is disconnected because $x_1$ and $y_1$ are not connected anymore. Therefore, we can find a set of 1 vertex that disconnects $G$, meaning that $G$ is not 2-connected $\lightning$.
+        If $x$ and $y$ do not lie on a common cycle, without of loss of generality we may assume that $x_1$ and $y_1$ are connected by only one path --- there must be at least one otherwise $G$ would be disconnected. However, since $x_1 \sim x \sim x_2$ and $y_1 \sim y \sim y_2$, such path must pass through $x$, $x_2$, $y_2$ and $y$. In particular, this implies that $G - \{x_2\}$ is disconnected because $x_1$ and $y_1$ are not connected anymore. Therefore, we can find a set of 1 vertex that disconnects $G$, meaning that $G$ is not 2-connected $\lightning$.
     }
     
+    \begin{framedprob}{}
+        Give an example of a 2-connected graph $G$ such that for any $C \subseteq G$ it holds that $G - C$ is disconnected.
+    \end{framedprob}
+    
+    \solution{
+        A minimal example is given by the following graph:
+
+        \begin{figure}[H]
+            \centering
+            \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.75cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
+
+                \node[circle, draw] (1) []{};
+                \node[circle, draw] (2) [below left of = 1]{};
+                \node[circle, draw] (3) [below right of = 1]{};
+                \node[circle, draw] (4) [below right of = 2]{};
+                \node[circle, draw] (5) [left of = 2]{};
+                \node[circle, draw] (6) [right of = 3]{};
+
+                \draw[-] (1) to (2);
+                \draw[-] (1) to (3);
+                \draw[-] (1) [bend right] to (5);
+                \draw[-] (1) [bend left] to (6);
+                \draw[-] (2) to (4);
+                \draw[-] (3) to (4);
+                \draw[-] (4) [bend left] to (5);
+                \draw[-] (4) [bend right] to (6);
+
+                ;
+            \end{tikzpicture}
+        \end{figure}
+    }
+
     \chapter{Extremal graph theory}
 
     Extremal graph theory is a field of mathematics that investigates how \tit{global properties} of a graph influence the \tbf{presence or absence} of specific substructures. Broadly speaking, it seeks to understand how large or dense a graph can be while avoiding certain configurations, or conversely, what constraints guarantee the appearance of particular patterns.
