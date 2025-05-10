@@ -2018,7 +2018,7 @@
     Note that if $X$ is an $A$-$B$ hitting set, then $A \cap B \subseteq X$, otherwise any single vertex in $A \cap B$ would represent an $A$-$B$ trivial path that does not pass through the hitting set $X$. Moreover, consider an $A$-$B$ hitting set $X$ of a graph $G$; by definition, all the $A$-$B$ paths must have at least one vertex in $X$, but since $A$-$B$ paths do not have internal vertices in $A \cup B$, there cannot be $\abs X + 1$ disjoint $A$-$B$ paths.
 
     \begin{frameddefn}{$A$-$B$ separation}
-        Given a graph $G$, and two sets $A, B \subseteq V(G)$, two sets $X, Y \subseteq V(G)$ describe a \tbf{separation $(X, Y)$} of $G$ if and only if
+        Given a graph $G$, and two sets $A, B \subseteq V(G)$, two sets $X, Y \subseteq V(G)$ describe an $A$-$B$ \tbf{separation $(X, Y)$} of $G$ if and only if
 
         \begin{itemize}
             \item $A \subseteq X$
@@ -2030,7 +2030,7 @@
         We say that a separation $(X, Y)$ has \tbf{order} $\abs{X \cap Y}$.
     \end{frameddefn}
 
-    Given a graph $G$, two sets $A, B \subseteq V(G)$, and an $A$-$B$ separation of $G$, we observe that $G[V(G)-(X \cap Y)]$ is disconnected.
+    Given a graph $G$, two sets $A, B \subseteq V(G)$, and an $A$-$B$ separation $(X, Y)$ of $G$, we observe that $G[V(G)-(X \cap Y)]$ is disconnected.
 
     \begin{framedprop}[label={menger prop}]{}
         Given a graph $G$, and two sets $A, B \subseteq V(G)$, there exists an $A$-$B$ hitting set of size $k$ in $G$ if and only if there exists an $A$-$B$ separation of order $k$.
@@ -2078,7 +2078,7 @@
         A graph $G$ is said to be \tbf{$k$-connected} if $\abs{V(G)} \ge k + 1$, and for each $X \subseteq V(G)$ such that $\abs X \le k - 1$ it holds that $G[V(G) - X]$ is connected.
     \end{frameddefn}
 
-    In other words, a graph is $k$-connected if it has at least $k + 1$ vertices, and it remains connected whenever fewer than $k$ vertices are removed.
+    In other words, a graph is $k$-connected if it has at least $k + 1$ vertices, and it remains connected whenever fewer than $k$ vertices are removed. Therefor, by definition we observe that if a graph is \tit{not} $k$-connected, it must admit a separation of order at most $k - 1$.
 
     \begin{figure}[H]
         \centering
@@ -3957,33 +3957,6 @@
                 \end{tikzpicture}
                 \caption{For instance, in this graph the vertex 2 is clearly a cut vertex, even if $\{1, 2\}$ and $\{2, 3\}$ are not bridges.}
             \end{figure}
-
-        \item if both endpoints of an edge are cut vertices, the edge \tit{may not} be a bridge
-
-            \begin{figure}[H]
-                \centering
-                \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.5cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
-
-                    \node[circle, draw] (1) []{1};
-                    \node[circle, draw] (2) [below left of = 1]{2};
-                    \node[circle, draw] (3) [below right of = 1]{3};
-                    \node[circle, draw] (4) [below of = 2]{4};
-                    \node[circle, draw] (5) [below of = 3]{5};
-                    \node[circle, draw] (6) [below of = 1, yshift=-2cm]{6};
-
-                    \draw[-] (1) to (2);
-                    \draw[-] (1) to (3);
-                    \draw[-] (2) to (3);
-                    \draw[-] (2) to (4);
-                    \draw[-] (3) to (5);
-                    \draw[-] (4) to (6);
-                    \draw[-] (5) to (6);
-
-                    ;
-                \end{tikzpicture}
-                \caption{For instance, in this graph the vertices 2 and 3 are both cut vertices, but the edge $\{2, 3\}$ is not a bridge.}
-            \end{figure}
-
     \end{itemize}
 
     \begin{framedprop}[label={blocks 2conn}]{}
@@ -4131,7 +4104,11 @@
         By way of contradiction, suppose that there is a leaf $v \in V(\mathcal B(G))$ that represents a cut vertex of $G$. Since $v$ is a leaf, it must have degree 1 in $\mathcal B(G)$, and by definition of the block graph we know that its only neighbor must be a vertex $b$ representing a block $B$ of $G$. Therefore, by definition of $\mathcal B(G)$ there we know that $v \in V(B)$, but if $v$ is a cut vertex of $G$ there must be at least another block $B'$ --- represented by a vertex $b' \in V(\mathcal B(G))$ --- in $G$ that contains $v$, meaning that $v \sim b, b'$, contradicting the fact that $v$ was a leaf of the block graph $\lightning$.
     \end{proof}
 
-    \section{Ear decomposition}
+    \section{Known decompositions}
+
+    In this brief section, we are going to present characterizations of 2-connected and 3-connected graphs, which can be \tit{decomposed} using specific types of structural decompositions.
+
+    \section{2-connectivity}
 
     \begin{frameddefn}{$H$-path}
         Given a graph $G$, and a subgraph $H \subseteq G$, an \tbf{$H$-path} $P$ is a non-trivial path with both ends in $V(H)$, no internal vertex in $V(H)$, and no edge in $E(H)$.
@@ -4154,6 +4131,8 @@
     \end{frameddefn}
 
     TODO \todo{example}
+
+    The following theorem characterizes 2-connected graphs through ear decompositions.
 
     \begin{framedthm}{}
         G is 2-connected if and only if it has an ear decomposition.
@@ -4184,8 +4163,44 @@
             \item every components of $P_{k + 1} - \{x\}$ has a vertex in common with $H - \{x\}$
         \end{itemize}
 
-        meaning that $(H - \{x\}) \cup (P_{k + 1} - \{x\}) = (H \cup P_{k + 1}) - \{x\}$ is connected. Lastly, since $C \subsetneq H$, then $\abs V(H) \ge 3 \implies \abs{V(H \cup P_{k  + 1})} \ge 3$, which concludes that $H \cup P_{k + 1} = G$ is 2-connected.
+        meaning that $(H - \{x\}) \cup (P_{k + 1} - \{x\}) = (H \cup P_{k + 1}) - \{x\}$ is connected. Lastly, since $C \subsetneq H$, then $\abs {V(H)} \ge 3 \implies \abs{V(H \cup P_{k  + 1})} \ge 3$, which concludes that $H \cup P_{k + 1} = G$ is 2-connected.
     }
+
+    \section{3-connectivity}
+
+    The other type of graphs that we are going to discuss are 3-connected graphs. First, consider the following theorem.
+
+    \begin{framedthm}{}
+        If a graph $G$ is 3-connected, and $n \ge 5$, then there exists an edge $e \in E(G)$ such that $G/e$ is still 3-connected.
+    \end{framedthm}
+
+    \begin{proof}
+        By way of contradiction, suppose that there is no edge $e \in E(G)$ such that $G/e$ is still 3-connected. However, since $n \ge 5$, and $G/e$ is not 3-connected, it must admit a separation $(A, B)$ or order at most 2 by definition.
+
+        We observe that this separation can be extended to be a separation of $G$: if $v_e$ is the vertex constructed after contracting $e$ in $G/e$, then $(A, (B - \{v_e\}) \cup \{x, y\})$ is a separation of $G$. However, we observe that if $v_e \in B - A$, such separation of $G$ has order at most 2, contradicting the 3-connectivity of $G$, meaning that $v_e \in A \cap B$. Moreover, \todo{manca un pezzo} Therefore, for any edge $e := xy \in E(G)$ we can construct a separation $(A_e, B_e)$ of $G$ of order \tit{exactly} 3, such that $x, y \in A_e \cap B_e$. Let $(A_e, B_e)$ be the separation that minimizes $\abs{B_e}$.
+
+        Let $z \in (A_e \cap B_e) - \{x, y\}$ be the third vertex of $A_e \cap B_e$; if $z$ has no neighbors in $B_e - A_e$, then by removing $e$ from $G$ we would disconnect the graph, contradicting the assumption of 3-connectivity. This means that there is a vertex $u \in B_e - A_e$ such that $z \sim u$. Let $e' := zu$, and consider the separation $(A_{e'}, B_{e'})$ of $G$ of order \tit{exactly} 3 such that $z, u \in A_{e'} \cap B_{e'}$.
+
+        TODO \todo{drawing of separations}
+
+        \claim{
+            $(A_e \cap B_e) - A_{e'} = \varnothing$.
+        }{
+            By definition of $(A_{e'}, B_{e'})$, we have that $z \in (A_e \cap B_e) \cap (A_{e'} \cap B_{e'})$. However, if both $x$ and $y$ are contained in $(A_e \cap B_e) \cap (A_{e'} \cap B_{e'})$, then $\{x, y, z, u\} \subseteq A_{e'} \cap B_{e'}$ contradicting the order of $(A_{e'}, B_{e'})$.
+
+            Then, without loss of generality supopse that $x \in A_{e'} - B_{e'}$; hence, $y \notin B_{e'} - A_{e'}$ otherwise the edge $xy$ would be an edge \tit{across} $A_{e'} - B_{e'}$ and $B_{e'} - A_{e'}$, violating the fact that $(A_{e'}, B_{e'})$ is a separation. This implies that $(A_e \cap B_e) - A_{e'} = \varnothing$.
+        }
+
+        \claim{
+            $(A_e - B_e) - A_{e'} = \varnothing$.
+        }{
+            By way of contradiction, suppose that $(A_e - B_e) - A_{e'} \neq \varnothing$, and fix a vertex $w \in (A_e - B_e) - A_{e'}$. Since $(A_e, B_e)$ is a separation, we know that $w \nsim u$. Moreover, since $(A_{e'}, B_{e'})$ is a separation, $w$ can only be adjacent to vertices in $(A_{e'} \cap B_{e'}) - B_e$. Therefore, by removing $(A_{e'} \cap B_{e'}) - B_e$ from $G$ we disconnect $w$ from $u$ necessarily --- since $(A_e \cap B_e) - A_{e'} = \varnothing$ by the previous claim. \todo{what if w sim z?} Moreover, since $(A_{e'} \cap B_{e'}) - B_e$ contains one vertex by choice on the order of $(A_{e'}, B_{e'})$, we get a contradiction on 3-connectivity of $G$ $\lightning$.
+        }
+
+        TODO \todo{da finire}
+    \end{proof}
+
+    TODO \todo{da finire}
 
     \printbibliography % UNCOMMENT FOR BIBLIOGRAPHY
 
