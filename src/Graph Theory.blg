@@ -23,45 +23,45 @@ Warning--I didn't find a database entry for "kostochaka"
 Biblatex version: 3.20
 Reallocated wiz_functions (elt_size=8) to 9000 items from 6000.
 Reallocated singl_function (elt_size=8) to 100 items from 50.
-You've used 27 entries,
+You've used 28 entries,
             6402 wiz_defined-function locations,
-            1383 strings with 12638 characters,
-and the built_in function-call counts, 158200 in all, are:
-= -- 11179
-> -- 2858
-< -- 1125
-+ -- 3668
-- -- 955
-* -- 10926
-:= -- 15579
+            1390 strings with 12723 characters,
+and the built_in function-call counts, 163888 in all, are:
+= -- 11584
+> -- 2940
+< -- 1153
++ -- 3761
+- -- 981
+* -- 11371
+:= -- 16126
 add.period$ -- 0
-call.type$ -- 27
-change.case$ -- 610
+call.type$ -- 28
+change.case$ -- 624
 chr.to.int$ -- 71
-cite$ -- 52
-duplicate$ -- 17075
-empty$ -- 14683
-format.name$ -- 1539
-if$ -- 33371
+cite$ -- 54
+duplicate$ -- 17609
+empty$ -- 15266
+format.name$ -- 1590
+if$ -- 34591
 int.to.chr$ -- 0
-int.to.str$ -- 68
+int.to.str$ -- 70
 missing$ -- 0
-newline$ -- 773
-num.names$ -- 1482
-pop$ -- 8992
+newline$ -- 797
+num.names$ -- 1527
+pop$ -- 9325
 preamble$ -- 1
-purify$ -- 691
+purify$ -- 707
 quote$ -- 0
-skip$ -- 5344
+skip$ -- 5510
 stack$ -- 0
-substring$ -- 18570
-swap$ -- 4018
-text.length$ -- 829
-text.prefix$ -- 44
+substring$ -- 19362
+swap$ -- 4154
+text.length$ -- 855
+text.prefix$ -- 46
 top$ -- 1
-type$ -- 905
+type$ -- 939
 warning$ -- 0
-while$ -- 2017
+while$ -- 2075
 width$ -- 0
-write$ -- 747
+write$ -- 770
 (There was 1 warning)

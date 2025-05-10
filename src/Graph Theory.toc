@@ -41,3 +41,4 @@
 \contentsline {section}{\numberline {5.2}Known decompositions}{88}{section.5.2}%
 \contentsline {section}{\numberline {5.3}2-connectivity}{89}{section.5.3}%
 \contentsline {section}{\numberline {5.4}3-connectivity}{90}{section.5.4}%
+\contentsline {chapter}{\numberline {6}Planar graphs}{93}{chapter.6}%

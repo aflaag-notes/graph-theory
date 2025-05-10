@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2026/dev/Arch Linux) (preloaded format=pdflatex 2025.4.8)  10 MAY 2025 09:38
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2026/dev/Arch Linux) (preloaded format=pdflatex 2025.4.8)  10 MAY 2025 15:00
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1609,7 +1609,7 @@ Package hyperref Info: Link coloring ON on input line 75.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-<../../packages/Nyx/logo.png, id=167, 803.0pt x 301.125pt>
+<../../packages/Nyx/logo.png, id=171, 803.0pt x 301.125pt>
 File: ../../packages/Nyx/logo.png Graphic file (type png)
 <use ../../packages/Nyx/logo.png>
 Package pdftex.def Info: ../../packages/Nyx/logo.png  used on input line 76.
@@ -1706,7 +1706,7 @@ File: t1qtm.fd 2009/09/25 v1.2 font definition file for T1/qtm
 LaTeX Font Warning: Font shape `T1/qtm/n/n' undefined
 (Font)              using `T1/qtm/m/n' instead on input line 95.
 
-<../assets/konigsberg.png, id=287, 303.1325pt x 238.8925pt>
+<../assets/konigsberg.png, id=293, 303.1325pt x 238.8925pt>
 File: ../assets/konigsberg.png Graphic file (type png)
 <use ../assets/konigsberg.png>
 Package pdftex.def Info: ../assets/konigsberg.png  used on input line 103.
@@ -2435,6 +2435,11 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 Package cleveref Info: loaded `english' language definitions on input line 2500.
 [52]
+Overfull \hbox (0.81607pt too wide) in paragraph at lines 2539--2539
+[]\T1/cmr/bx/n/12 Claim: $\OML/cmm/m/it/12 H \OMS/cmsy/m/n/12 ^^@ \OML/cmm/m/it/12 E\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 C\OT1/cmr/m/n/12 )$ \T1/cmr/m/n/12 has a 3-regular graph $\OML/cmm/m/it/12 H[]$ \T1/cmr/m/n/12 as topo-log-i-cal mi-nor, such that $[] \OMS/cmsy/m/n/12 ^^U
+ []
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 2539--2539
 
  []
@@ -3075,8 +3080,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 4198--4198
  []
 
 
+Underfull \hbox (badness 10000) in paragraph at lines 4206--4206
 
-Package cleveref Info: loaded `english' language definitions on input line 4205.
+ []
+
+
+
+Package cleveref Info: loaded `english' language definitions on input line 4222.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -3084,35 +3094,53 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 4205.
+Package cleveref Info: loaded `english' language definitions on input line 4222.
 [91]
-Overfull \hbox (0.75183pt too wide) in paragraph at lines 4206--4206
+
+Package cleveref Info: loaded `english' language definitions on input line 4225.
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+Package cleveref Info: loaded `english' language definitions on input line 4225.
+[92]
+Chapter 6.
+
+
+Package cleveref Info: loaded `english' language definitions on input line 4229.
+[93
+
+]
+Overfull \hbox (0.75183pt too wide) in paragraph at lines 4230--4230
 []\T1/cmr/m/n/12 Wikipedia con-trib-u-tors. \T1/cmr/m/it/12 Seven Bridges of Königs-berg\T1/cmr/m/n/12 . Jan. 2025. \T1/cmr/m/sc/12 url\T1/cmr/m/n/12 : [][]$\T1/cmtt/m/n/12 https :
  []
 
 
-Overfull \hbox (2.53377pt too wide) in paragraph at lines 4206--4206
+Overfull \hbox (2.53377pt too wide) in paragraph at lines 4230--4230
 []\T1/cmr/m/n/12 Tilbor Gal-lai and Arthur Nor-ton Mil-gram. ^^P  Ve-r-all-ge-meinerung eines graphen-
  []
 
 
 
-Package cleveref Info: loaded `english' language definitions on input line 4205.
-[92
+Package cleveref Info: loaded `english' language definitions on input line 4229.
+[94
 
 ]
-Overfull \hbox (37.7806pt too wide) in paragraph at lines 4206--4206
+Overfull \hbox (37.7806pt too wide) in paragraph at lines 4230--4230
 \T1/cmr/m/it/12 plex-ity of Com-puter Com-pu-ta-tions\T1/cmr/m/n/12 . Springer US, 1972, 85^^U103. \T1/cmr/m/sc/12 isbn\T1/cmr/m/n/12 : 9781468420012.
  []
 
 
-Overfull \hbox (15.4945pt too wide) in paragraph at lines 4206--4206
+Overfull \hbox (15.4945pt too wide) in paragraph at lines 4230--4230
 []\T1/cmr/m/n/12 Wolfgang Mader. ^^P  Ex-is-tenz n-fach zusam-men-hän-gen-der Teil-graphen in Graphen
  []
 
 
 
-Package cleveref Info: loaded `english' language definitions on input line 4207.
+Package cleveref Info: loaded `english' language definitions on input line 4231.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -3120,8 +3148,8 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 4207.
-[93] (./Graph Theory.aux
+Package cleveref Info: loaded `english' language definitions on input line 4231.
+[95] (./Graph Theory.aux
 Package cleveref Info: loaded `english' language definitions on input line 12.
 )
  ***********
@@ -3136,7 +3164,7 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `"Graph Theory".out' has not changed.
-(rerunfilecheck)             Checksum: 541789C40E492408418B449BCE6A1A97;5317.
+(rerunfilecheck)             Checksum: 74CD6C93E0DF8DB1241CE28F483FF140;5429.
 
 Package biblatex Warning: Please (re)run BibTeX on the file(s):
 (biblatex)                "Graph Theory"
@@ -3147,18 +3175,18 @@ Package logreq Info: Writing requests to '"Graph Theory".run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 77432 strings out of 475119
- 1882200 string characters out of 5765717
- 3084034 words of memory out of 5000000
- 99011 multiletter control sequences out of 15000+600000
+ 77444 strings out of 475119
+ 1882477 string characters out of 5765717
+ 3087095 words of memory out of 5000000
+ 99018 multiletter control sequences out of 15000+600000
  599985 words of font info for 150 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  119i,18n,123p,1903b,2704s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf-dist/fonts/type1/public/tex-gyre/qtmr.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfcc1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfcc1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfcc1728.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfcc2074.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfss1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfti1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb></usr/share/texmf-dist/fonts/type1/public/stmaryrd/stmary10.pfb>
-Output written on "Graph Theory.pdf" (96 pages, 942129 bytes).
+Output written on "Graph Theory.pdf" (98 pages, 946604 bytes).
 PDF statistics:
- 1349 PDF objects out of 1440 (max. 8388607)
- 1174 compressed objects within 12 object streams
- 431 named destinations out of 1000 (max. 500000)
- 349 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1370 PDF objects out of 1440 (max. 8388607)
+ 1193 compressed objects within 12 object streams
+ 436 named destinations out of 1000 (max. 500000)
+ 357 words of extra memory for PDF output out of 10000 (max. 10000000)
 

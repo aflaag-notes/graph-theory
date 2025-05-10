@@ -2511,16 +2511,16 @@
     }{
         Assume that the statement holds for $k - 1$.
     }{
-        Let $C$ be a cycle of $H$, and consider the graph $H - C$.
+        Let $C$ be a cycle of $H$, and consider the graph $H - E(C)$.
 
         \claim{
-            $H - C$ has a 3-regular graph $H'$ as topological minor, such that $\abs{V(H')} \ge \abs{V(H)}- 2\abs{V(C)}$.
+            $H - E(C)$ has a 3-regular graph $H'$ as topological minor, such that $\abs{V(H')} \ge \abs{V(H)}- 2\abs{V(C)}$.
         }{
-            Starting with $V := V(C)$, as long as $H[V(H) - V]$ contains vertices of degree at most 1, move them into $V$; let $M$ be the number of moved vertices. Then, since we are adding vertices to $V$, we have that $\abs{\mathrm{cut}(V)} \le \abs{\mathrm{cut}(C)} - M$. We observe that, by construction $\delta(H[V(H)- V) \ge 2$, and the number of vertices that have degree 2 in $H[V(H) - V]$ is at most $\abs{\mathrm{cut}(V)} \le \abs{\mathrm{cut}(C)} - M$.
+            Starting with $V := V(C)$, as long as $H - V$ contains vertices of degree at most 1, move them into $V$; let $M$ be the number of moved vertices. Then, since we are adding vertices to $V$, we have that $\abs{\mathrm{cut}(V)} \le \abs{\mathrm{cut}(C)} - M$. We observe that, by construction $\delta(H - V) \ge 2$, and the number of vertices that have degree 2 in $H - V$ is at most $\abs{\mathrm{cut}(V)} \le \abs{\mathrm{cut}(C)} - M$.
 
-            Lastly, let $H'$ be the graph obtained from $H[V(H) - V]$ by suppressing all the vertices of degree 2; then we have that $H'$ contains at least the vertices of $H$, without the vertices of $C$, the $M$ vertices that we moved during the procedure, and the vertices of degree 2 that we suppressed. In other words, we have that $$\abs{V(H')} \ge \abs{V(H)} - \abs{V(C)} - M - (\abs{\mathrm{cut}(C)}-M) \ge \abs{V(H)} - 2\abs{V(C)}$$ Note that the last inquality comes from the observation that $\abs{\mathrm{cut}(C)} \le \abs{V(C)}$, which follows by 3-regularity of $H$
+            Lastly, let $H'$ be the graph obtained from $H - V$ by suppressing all the vertices of degree 2; then we have that $H'$ contains at least the vertices of $H$, without the vertices of $C$, the $M$ vertices that we moved during the procedure, and the vertices of degree 2 that we suppressed. In other words, we have that $$\abs{V(H')} \ge \abs{V(H)} - \abs{V(C)} - M - (\abs{\mathrm{cut}(C)}-M) \ge \abs{V(H)} - 2\abs{V(C)}$$ Note that the last inquality comes from the observation that $\abs{\mathrm{cut}(C)} \le \abs{V(C)}$, which follows by 3-regularity of $H$
 
-            Finally, since $H'$ is 3-regular by construction, and $H[V(H) - V]$ is a subdivision of $H'$ that is contained in $H - C$, this concludes the claim.
+            Finally, since $H'$ is 3-regular by construction, and $H - V$ is a subdivision of $H'$ that is contained in $H - E(C)$, this concludes the claim.
         }
 
         Now, since $\abs{V(H)} \ge c'k \log(k + 1)$, and by the previous proposition we know that $$\abs{V(C)} \le 2 \log (\abs{V(H)}) + 2 \iff - 2 \abs{V(C)} \ge - 4 \log (\abs{V(H)}) - 4$$ where the added term 2 takes care of the rounding error from the ceiling operation --- we obtain the following
@@ -2535,7 +2535,7 @@
 
         which is at least $c'(k - 1) \log k$ for sufficiently big values of $c'$. In particular, since $\abs{V(H')} \ge c' (k - 1) \log k$, and we know that $H'$ is 3-regular, we can apply the inductive hypothesis on $H'$, which means that $H'$ contains $k - 1$ disjoint cycles.
 
-        Finally, if $H'$ contains $k$ disjoint cycles, and $H - C$ has $H'$ as topological minor, i.e. $H - C$ contains a subdivision $H''$ of $H'$, by definition of the subdivision operation $H''$ will contain $k -1$ disjoint cycles as well. Therefore, since $H - C$ contains $H''$, $H$ contains $k$ disjoint cycles along with the cycle $C$.
+        Finally, if $H'$ contains $k$ disjoint cycles, and $H - E(C)$ has $H'$ as topological minor, i.e. $H - E(C)$ contains a subdivision $H''$ of $H'$, by definition of the subdivision operation $H''$ will contain $k -1$ disjoint cycles as well. Therefore, since $H - E(C)$ contains $H''$, $H$ contains $k$ disjoint cycles along with the cycle $C$.
     }
 
     We are now ready to prove the theorem that we introduced at the beginning of this section.
@@ -4168,7 +4168,7 @@
 
     \section{3-connectivity}
 
-    The other type of graphs that we are going to discuss are 3-connected graphs. First, consider the following theorem.
+    The other type of graphs that we are going to discuss are 3-connected graphs. First, consider the following theorem --- proved by \textcite{tutte3conn} in 1961.
 
     \begin{framedthm}{}
         If a graph $G$ is 3-connected, and $n \ge 5$, then there exists an edge $e \in E(G)$ such that $G/e$ is still 3-connected.
@@ -4179,7 +4179,7 @@
 
         We observe that this separation can be extended to be a separation of $G$: if $v_e$ is the vertex constructed after contracting $e$ in $G/e$, then $(A, (B - \{v_e\}) \cup \{x, y\})$ is a separation of $G$. However, we observe that if $v_e \in B - A$, such separation of $G$ has order at most 2, contradicting the 3-connectivity of $G$, meaning that $v_e \in A \cap B$. Moreover, \todo{manca un pezzo} Therefore, for any edge $e := xy \in E(G)$ we can construct a separation $(A_e, B_e)$ of $G$ of order \tit{exactly} 3, such that $x, y \in A_e \cap B_e$. Let $(A_e, B_e)$ be the separation that minimizes $\abs{B_e}$.
 
-        Let $z \in (A_e \cap B_e) - \{x, y\}$ be the third vertex of $A_e \cap B_e$; if $z$ has no neighbors in $B_e - A_e$, then by removing $e$ from $G$ we would disconnect the graph, contradicting the assumption of 3-connectivity. This means that there is a vertex $u \in B_e - A_e$ such that $z \sim u$. Let $e' := zu$, and consider the separation $(A_{e'}, B_{e'})$ of $G$ of order \tit{exactly} 3 such that $z, u \in A_{e'} \cap B_{e'}$.
+        Let $z \in (A_e \cap B_e) - \{x, y\}$ be the third vertex of $A_e \cap B_e$; if $z$ has no neighbors in $B_e - A_e$, then by removing $e$ from $G$ we would disconnect the graph, contradicting the assumption of 3-connectivity. This means that there is a vertex $u \in B_e - A_e$ such that $z \sim u$. Let $e' := zu$, and consider a non-trivial separation $(A_{e'}, B_{e'})$ of $G$ of order \tit{exactly} 3 such that $z, u \in A_{e'} \cap B_{e'}$.
 
         TODO \todo{drawing of separations}
 
@@ -4188,7 +4188,7 @@
         }{
             By definition of $(A_{e'}, B_{e'})$, we have that $z \in (A_e \cap B_e) \cap (A_{e'} \cap B_{e'})$. However, if both $x$ and $y$ are contained in $(A_e \cap B_e) \cap (A_{e'} \cap B_{e'})$, then $\{x, y, z, u\} \subseteq A_{e'} \cap B_{e'}$ contradicting the order of $(A_{e'}, B_{e'})$.
 
-            Then, without loss of generality supopse that $x \in A_{e'} - B_{e'}$; hence, $y \notin B_{e'} - A_{e'}$ otherwise the edge $xy$ would be an edge \tit{across} $A_{e'} - B_{e'}$ and $B_{e'} - A_{e'}$, violating the fact that $(A_{e'}, B_{e'})$ is a separation. This implies that $(A_e \cap B_e) - A_{e'} = \varnothing$.
+            Then, without loss of generality suppose that $x \in A_{e'} - B_{e'}$; hence, $y \notin B_{e'} - A_{e'}$ otherwise the edge $xy$ would be an edge \tit{across} $A_{e'} - B_{e'}$ and $B_{e'} - A_{e'}$, violating the fact that $(A_{e'}, B_{e'})$ is a separation. This implies that $(A_e \cap B_e) - A_{e'} = \varnothing$.
         }
 
         \claim{
@@ -4197,10 +4197,34 @@
             By way of contradiction, suppose that $(A_e - B_e) - A_{e'} \neq \varnothing$, and fix a vertex $w \in (A_e - B_e) - A_{e'}$. Since $(A_e, B_e)$ is a separation, we know that $w \nsim u$. Moreover, since $(A_{e'}, B_{e'})$ is a separation, $w$ can only be adjacent to vertices in $(A_{e'} \cap B_{e'}) - B_e$. Therefore, by removing $(A_{e'} \cap B_{e'}) - B_e$ from $G$ we disconnect $w$ from $u$ necessarily --- since $(A_e \cap B_e) - A_{e'} = \varnothing$ by the previous claim. \todo{what if w sim z?} Moreover, since $(A_{e'} \cap B_{e'}) - B_e$ contains one vertex by choice on the order of $(A_{e'}, B_{e'})$, we get a contradiction on 3-connectivity of $G$ $\lightning$.
         }
 
-        TODO \todo{da finire}
+        \claim{
+            $(A_{e'} \cap B_{e'}) - B_e = \varnothing$.
+        }{
+            Consider the set $B_e - (A_e \cup A_{e'})$; since we picked $(A_{e'}, B_{e'})$ to be a non-trivial separation, we know that $B_{e'} - A_{e'} \neq \empty$. Therefore, the previous two claims imply that $B_e - (A_e \cup A_{e'}) \neq \varnothing$.
+
+            Now, by way of contradiction suppose that $(A_{e'} \cap B_{e'}) - B_e \neq \varnothing$; by choice of $(A_{e'}, B_{e'})$, we know that $A_{e'} \cap B_{e'}$ only contains 3 vertices. TODO \todo{il finale non ha senso}
+        }
+
+        Therefore, by these three claims we get that $B_{e'} \subseteq B_e$, but because $x \in (A_{e'} - B_{e'}) \cap (A_e \cap B_e)$ then $B_{e'} \subsetneq B_e$, which contradicts the choice of the separation $(A_e, B_e)$ that minimized $\abs{B_e}$ $\lightning$.
     \end{proof}
 
-    TODO \todo{da finire}
+    From this theorem, we can derive the following corollary, which gives the characterization of 3-connected graphs that we previously anticipated.
+
+    \begin{framedcor}{}
+        If a graph $G$ is 3-connected, and $n \ge 5$, there exists a sequence $G_1, \ldots, G_k$ such that
+
+        \begin{itemize}
+            \item for each $i \in [k - 1]$ it holds that $G_i = G_{i + 1}/e_{i + 1}$ for some $e_{i + 1} \in E(G_{i + 1})$
+            \item $G_0 = K_4$ and $G_k = G$
+            \item for each $i \in [k]$, $G_i$ is 3-connected
+        \end{itemize}
+    \end{framedcor}
+
+    Unformally, we could say that every 3-connected graph can be constructed by repeatedly \curlyquotes{unconstructing} edges.
+
+    \chapter{Planar graphs}
+
+    TODO \todo{da fare}
 
     \printbibliography % UNCOMMENT FOR BIBLIOGRAPHY
 

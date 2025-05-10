@@ -746,6 +746,30 @@
     \field{year}{1941}
   \endentry
 
+  \entry{tutte3conn}{article}{}{}
+    \name{author}{1}{}{%
+      {{hash=TWT}{%
+         family={Tutte},
+         familyi={T\bibinitperiod},
+         given={William\bibnamedelima Thomas},
+         giveni={W\bibinitperiod\bibinitdelim T\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{TWT1}
+    \strng{fullhash}{TWT1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{Tut61}
+    \field{sortinit}{T}
+    \field{sortinithash}{T}
+    \field{number}{441-455}
+    \field{pages}{8}
+    \field{title}{A theory of 3-connected graphs}
+    \field{volume}{23}
+    \field{journaltitle}{Indag. Math}
+    \field{year}{1961}
+  \endentry
+
   \entry{zhu}{thesis}{}{}
     \name{author}{1}{}{%
       {{hash=ZD}{%
