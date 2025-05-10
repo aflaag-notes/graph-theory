@@ -1217,7 +1217,7 @@
     \section{Augmenting paths}
 
     \begin{frameddefn}{Alternating path}
-        Given a graph $G$, and a matching $M$ in $G$, an \tbf{$M$-alternating path} is a path of $G$ that starts at a free node w.r.t. $M$, and is composed of edges that alternate between $M$ and $E(G) - M$.
+        Given a graph $G$, and a matching $M$ on $G$, an \tbf{$M$-alternating path} is a path of $G$ that starts at a free node w.r.t. $M$, and is composed of edges that alternate between $M$ and $E(G) - M$.
     \end{frameddefn}
 
     \begin{figure}[H]
@@ -1250,7 +1250,7 @@
     \end{figure}
     
     \begin{frameddefn}{Augmenting path}
-        Given a graph $G$, and a matching $M$ in $G$, an \tbf{$M$-augmenting path} is an $M$-alternating path that ends at a free vertex w.r.t. $M$.
+        Given a graph $G$, and a matching $M$ on $G$, an \tbf{$M$-augmenting path} is an $M$-alternating path that ends at a free vertex w.r.t. $M$.
     \end{frameddefn}
 
     For example, if we consider the path $$6 \ \{6, 2\} \ 2 \ \{2, 7\} \ 7 \ \{7, 3\} \ 3 \ \{3, 8\} \ 8 \ \{8, 4 \} \ 4$$ this is actually an $M$-augmenting path of the previous graph. Augmenting paths are very useful because they can be used to \tit{expand} the cardinality of an initial matching. In fact, in the previous graph we can actually define a \tit{larger} matching by \tbf{swapping} the edges of this augmenting path, as shown below
@@ -1289,7 +1289,7 @@
     This suggests that the presence of augmenting paths in a graph is a \tit{sufficient} condition for a matching \tit{not} to be maximum, but we can actually prove that it is also \tit{necessary}, as stated in the following theorem, proved by \textcite{berge} in 1957.
 
     \begin{framedthm}[label={aug paths}]{Berge's theorem}
-        Given a graph $G$, $M$ is a maximum matching of $G$ if and only if there are no $M$-augmenting paths.
+        Given a graph $G$, $M$ is a maximum matching of $G$ if and only if in $G$ there are no $M$-augmenting paths.
     \end{framedthm}
 
     \proofiff{
@@ -4177,9 +4177,13 @@
     \begin{proof}
         By way of contradiction, suppose that there is no edge $e \in E(G)$ such that $G/e$ is still 3-connected. However, since $n \ge 5$, and $G/e$ is not 3-connected, it must admit a separation $(A, B)$ or order at most 2 by definition.
 
-        We observe that this separation can be extended to be a separation of $G$: if $v_e$ is the vertex constructed after contracting $e$ in $G/e$, then $(A, (B - \{v_e\}) \cup \{x, y\})$ is a separation of $G$. However, we observe that if $v_e \in B - A$, such separation of $G$ has order at most 2, contradicting the 3-connectivity of $G$, meaning that $v_e \in A \cap B$. Moreover, \todo{manca un pezzo} Therefore, for any edge $e := xy \in E(G)$ we can construct a separation $(A_e, B_e)$ of $G$ of order \tit{exactly} 3, such that $x, y \in A_e \cap B_e$. Let $(A_e, B_e)$ be the separation that minimizes $\abs{B_e}$.
+        \claim{
+            For any edge $e := xy \in E(G)$, there is a separation $(A_e, B_e)$ of order \tit{exactly} 3 such that $x, y \in A_e \cap B_e$.
+        }{
+            Consider a separation $(A, B)$ of $G/e$ of \tit{exactly} 2, and let $v_e \in V(G/e)$ be the vertex constructed after contracting $e$. If $v_e \in B - A$, then $(A, (B - \{v_e\}) \cup \{x, y\})$ would be a separation of $G$ of order 2, contradicting the 3-connectivity of $G$. This implies that $v_e \in A \cap B$, which in turn implies that $((A - v_e) \cup \{x, y\}, (B - v_e) \cup \{x, y\})$ is a separation of order 3 of $G$. Therefore, for any edge $e := xy \in E(G)$ we can construct a separation as the statement of the claim requires.
+        }
 
-        Let $z \in (A_e \cap B_e) - \{x, y\}$ be the third vertex of $A_e \cap B_e$; if $z$ has no neighbors in $B_e - A_e$, then by removing $e$ from $G$ we would disconnect the graph, contradicting the assumption of 3-connectivity. This means that there is a vertex $u \in B_e - A_e$ such that $z \sim u$. Let $e' := zu$, and consider a non-trivial separation $(A_{e'}, B_{e'})$ of $G$ of order \tit{exactly} 3 such that $z, u \in A_{e'} \cap B_{e'}$.
+        Thus, let $(A_e, B_e)$ be the separation that minimizes $\abs{B_e}$, and let $z \in (A_e \cap B_e) - \{x, y\}$ be the third vertex of $A_e \cap B_e$; if $z$ has no neighbors in $B_e - A_e$, then by removing $e$ from $G$ we would disconnect the graph, contradicting the assumption of 3-connectivity. This means that there is a vertex $u \in B_e - A_e$ such that $z \sim u$. Hence, let $e' := zu$, and consider a non-trivial separation $(A_{e'}, B_{e'})$ of $G$ of order exactly 3 such that $z, u \in A_{e'} \cap B_{e'}$ --- which exists by the previous claim.
 
         TODO \todo{drawing of separations}
 
@@ -4194,15 +4198,19 @@
         \claim{
             $(A_e - B_e) - A_{e'} = \varnothing$.
         }{
-            By way of contradiction, suppose that $(A_e - B_e) - A_{e'} \neq \varnothing$, and fix a vertex $w \in (A_e - B_e) - A_{e'}$. Since $(A_e, B_e)$ is a separation, we know that $w \nsim u$. Moreover, since $(A_{e'}, B_{e'})$ is a separation, $w$ can only be adjacent to vertices in $(A_{e'} \cap B_{e'}) - B_e$. Therefore, by removing $(A_{e'} \cap B_{e'}) - B_e$ from $G$ we disconnect $w$ from $u$ necessarily --- since $(A_e \cap B_e) - A_{e'} = \varnothing$ by the previous claim. \todo{what if w sim z?} Moreover, since $(A_{e'} \cap B_{e'}) - B_e$ contains one vertex by choice on the order of $(A_{e'}, B_{e'})$, we get a contradiction on 3-connectivity of $G$ $\lightning$.
+            By way of contradiction, suppose that $(A_e - B_e) - A_{e'} \neq \varnothing$, and fix a vertex $w \in (A_e - B_e) - A_{e'}$. Since $(A_e, B_e)$ is a separation, we know that $w \nsim u$. Moreover, since $(A_{e'}, B_{e'})$ is a separation, $w$ can only be adjacent to vertices in $(A_{e'} \cap B_{e'}) - (B_e - A_e)$. Therefore, by removing $(A_{e'} \cap B_{e'}) - (B_e - A_e)$ from $G$ we disconnect $w$ from $u$ necessarily --- since $(A_e \cap B_e) - A_{e'} = \varnothing$ by the previous claim. Moreover, since $(A_{e'} \cap B_{e'}) - (B_e - A_e)$ contains two vertices by choice on the order of $(A_{e'}, B_{e'})$, we get a contradiction on 3-connectivity of $G$ $\lightning$.
         }
+
+        In particular, these two claims imply that $$((A_e \cap B_e) - A_{e'}) \cup ((A_e - B_e) - A_{e'}) = A_e - A_{e'} = \varnothing$$
 
         \claim{
             $(A_{e'} \cap B_{e'}) - B_e = \varnothing$.
         }{
-            Consider the set $B_e - (A_e \cup A_{e'})$; since we picked $(A_{e'}, B_{e'})$ to be a non-trivial separation, we know that $B_{e'} - A_{e'} \neq \empty$. Therefore, the previous two claims imply that $B_e - (A_e \cup A_{e'}) \neq \varnothing$.
+            Consider the set $B_e - (A_e \cup A_{e'})$; since we picked $(A_{e'}, B_{e'})$ to be a non-trivial separation, we know that $B_{e'} - A_{e'} \neq \empty$. Therefore, the previous two claims imply that $B_e - (A_e \cup A_{e'}) \neq \varnothing$. Hence, let $v$ be a vertex in such set; since $(A_e, B_e)$ is a separation, we know that $v \nsim x$ because $x \in (A_{e'} - B_{e'}) \cap (A_e \cap B_e)$.
 
-            Now, by way of contradiction suppose that $(A_{e'} \cap B_{e'}) - B_e \neq \varnothing$; by choice of $(A_{e'}, B_{e'})$, we know that $A_{e'} \cap B_{e'}$ only contains 3 vertices. TODO \todo{il finale non ha senso}
+            Now, by way of contradiction suppose that $(A_{e'} \cap B_{e'}) - B_e \neq \varnothing$, and by choice of $(A_{e'}, B_{e'})$ we know that $A_{e'} \cap B_{e'}$ only contains 3 vertices. Therefore, let $w$ be the third vertex inside $(A_{e'} \cap B_{e'}) - B_e$; since $v \nsim x$ by the previous observation, we know that $v$ can only be connected to $w$ through $z$ or $u$ --- since $A_e - A_{e'} = \varnothing$ by the previous two claims.
+
+            This implies that by removing $\{z, u\}$ from $G$ we disconnect $v$ from $w$, contradicting the 3-connectivity of $G$ $\lightning$.
         }
 
         Therefore, by these three claims we get that $B_{e'} \subseteq B_e$, but because $x \in (A_{e'} - B_{e'}) \cap (A_e \cap B_e)$ then $B_{e'} \subsetneq B_e$, which contradicts the choice of the separation $(A_e, B_e)$ that minimized $\abs{B_e}$ $\lightning$.
