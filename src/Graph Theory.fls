@@ -718,6 +718,11 @@ INPUT /usr/share/texmf-dist/fonts/tfm/public/stmaryrd/stmary10.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/public/stmaryrd/stmary7.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/public/rsfs/rsfs10.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/public/rsfs/rsfs7.tfm
+INPUT ../assets/tutte.pdf
+INPUT ../assets/tutte.pdf
+INPUT ../assets/tutte.pdf
+INPUT ../assets/tutte.pdf
+INPUT ../assets/tutte.pdf
 INPUT Graph Theory.aux
 INPUT ./Graph Theory.out
 INPUT ./Graph Theory.out

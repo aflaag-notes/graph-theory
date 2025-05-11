@@ -4140,7 +4140,7 @@
 
     In this brief section, we are going to present characterizations of 2-connected and 3-connected graphs, which can be \tit{decomposed} using specific types of structural decompositions.
 
-    \section{2-connectivity}
+    \subsection{2-connectivity}
 
     \begin{frameddefn}{$H$-path}
         Given a graph $G$, and a subgraph $H \subseteq G$, an \tbf{$H$-path} $P$ is a non-trivial path with both ends in $V(H)$, no internal vertex in $V(H)$, and no edge in $E(H)$.
@@ -4212,12 +4212,12 @@
         \claim{
             For any edge $e := xy \in E(G)$, there is a separation $(A_e, B_e)$ of order \tit{exactly} 3 such that $x, y \in A_e \cap B_e$.
         }{
-            Consider a separation $(A, B)$ of $G/e$ of \tit{exactly} 2, and let $v_e \in V(G/e)$ be the vertex constructed after contracting $e$. If $v_e \in B - A$, then $(A, (B - \{v_e\}) \cup \{x, y\})$ would be a separation of $G$ of order 2, contradicting the 3-connectivity of $G$. This implies that $v_e \in A \cap B$, which in turn implies that $((A - v_e) \cup \{x, y\}, (B - v_e) \cup \{x, y\})$ is a separation of order 3 of $G$. Therefore, for any edge $e := xy \in E(G)$ we can construct a separation as the statement of the claim requires.
+            Consider a separation $(A, B)$ of $G/e$ of \tit{exactly} 2, and let $v_e \in V(G/e)$ be the vertex constructed after contracting $e$. If $v_e \in B - A$, then $(A, (B - \{v_e\}) \cup \{x, y\})$ would be a separation of $G$ of order 2, contradicting the 3-connectivity of $G$. This implies that $v_e \in A \cap B$, which in turn implies that $((A - v_e) \cup \{x, y\}, (B - v_e) \cup \{x, y\})$ is a separation of order 3 of $G$. Therefore, for any edge $e := xy \in E(G)$ we can construct a separation as the statement of the claim requires. \todo{write this better}
         }
 
         Thus, let $(A_e, B_e)$ be the separation that minimizes $\abs{B_e}$, and let $z \in (A_e \cap B_e) - \{x, y\}$ be the third vertex of $A_e \cap B_e$; if $z$ has no neighbors in $B_e - A_e$, then by removing $e$ from $G$ we would disconnect the graph, contradicting the assumption of 3-connectivity. This means that there is a vertex $u \in B_e - A_e$ such that $z \sim u$. Hence, let $e' := zu$, and consider a non-trivial separation $(A_{e'}, B_{e'})$ of $G$ of order exactly 3 such that $z, u \in A_{e'} \cap B_{e'}$ --- which exists by the previous claim.
 
-        TODO \todo{drawing of separations}
+        \centeredimage[The two separations of $G$ and the various regions they induce.]{0.7}{../assets/tutte.pdf}
 
         \claim{
             $(A_e \cap B_e) - A_{e'} = \varnothing$.
@@ -4230,7 +4230,7 @@
         \claim{
             $(A_e - B_e) - A_{e'} = \varnothing$.
         }{
-            By way of contradiction, suppose that $(A_e - B_e) - A_{e'} \neq \varnothing$, and fix a vertex $w \in (A_e - B_e) - A_{e'}$. Since $(A_e, B_e)$ is a separation, we know that $w \nsim u$. Moreover, since $(A_{e'}, B_{e'})$ is a separation, $w$ can only be adjacent to vertices in $(A_{e'} \cap B_{e'}) - (B_e - A_e)$. Therefore, by removing $(A_{e'} \cap B_{e'}) - (B_e - A_e)$ from $G$ we disconnect $w$ from $u$ necessarily --- since $(A_e \cap B_e) - A_{e'} = \varnothing$ by the previous claim. Moreover, since $(A_{e'} \cap B_{e'}) - (B_e - A_e)$ contains two vertices by choice on the order of $(A_{e'}, B_{e'})$, we get a contradiction on 3-connectivity of $G$ $\lightning$.
+            By way of contradiction, suppose that $(A_e - B_e) - A_{e'} \neq \varnothing$, and fix a vertex $w \in (A_e - B_e) - A_{e'}$. Since $(A_e, B_e)$ is a separation, we know that $w \nsim u$. Moreover, since $(A_{e'}, B_{e'})$ is a separation, $w$ can only be adjacent to vertices in $(A_{e'} \cap B_{e'}) - (B_e - A_e)$. Therefore, by removing $(A_{e'} \cap B_{e'}) - (B_e - A_e)$ from $G$ we disconnect $w$ from $u$ necessarily --- since $(A_e \cap B_e) - A_{e'} = \varnothing$ by the previous claim. Moreover, since $(A_{e'} \cap B_{e'}) - (B_e - A_e)$ contains two vertices by choice on the order of $(A_{e'}, B_{e'})$, we get a contradiction on the 3-connectivity of $G$ $\lightning$.
         }
 
         In particular, these two claims imply that $$((A_e \cap B_e) - A_{e'}) \cup ((A_e - B_e) - A_{e'}) = A_e - A_{e'} = \varnothing$$
@@ -4238,14 +4238,14 @@
         \claim{
             $(A_{e'} \cap B_{e'}) - B_e = \varnothing$.
         }{
-            Consider the set $B_e - (A_e \cup A_{e'})$; since we picked $(A_{e'}, B_{e'})$ to be a non-trivial separation, we know that $B_{e'} - A_{e'} \neq \empty$. Therefore, the previous two claims imply that $B_e - (A_e \cup A_{e'}) \neq \varnothing$. Hence, let $v$ be a vertex in such set; since $(A_e, B_e)$ is a separation, we know that $v \nsim x$ because $x \in (A_{e'} - B_{e'}) \cap (A_e \cap B_e)$.
+            Consider the set $B_e - (A_e \cup A_{e'})$; since we picked $(A_{e'}, B_{e'})$ to be a non-trivial separation, we know that $B_{e'} - A_{e'} \neq \varnothing$. Therefore, the previous two claims imply that $B_e - (A_e \cup A_{e'}) \neq \varnothing$. Hence, let $v$ be a vertex in such set; since $(A_e, B_e)$ is a separation, we know that $v \nsim x$ because $x \in (A_{e'} - B_{e'}) \cap (A_e \cap B_e)$.
 
             Now, by way of contradiction suppose that $(A_{e'} \cap B_{e'}) - B_e \neq \varnothing$, and by choice of $(A_{e'}, B_{e'})$ we know that $A_{e'} \cap B_{e'}$ only contains 3 vertices. Therefore, let $w$ be the third vertex inside $(A_{e'} \cap B_{e'}) - B_e$; since $v \nsim x$ by the previous observation, we know that $v$ can only be connected to $w$ through $z$ or $u$ --- since $A_e - A_{e'} = \varnothing$ by the previous two claims.
 
             This implies that by removing $\{z, u\}$ from $G$ we disconnect $v$ from $w$, contradicting the 3-connectivity of $G$ $\lightning$.
         }
 
-        Therefore, by these three claims we get that $B_{e'} \subseteq B_e$, but because $x \in (A_{e'} - B_{e'}) \cap (A_e \cap B_e)$ then $B_{e'} \subsetneq B_e$, which contradicts the choice of the separation $(A_e, B_e)$ that minimized $\abs{B_e}$ $\lightning$.
+        Therefore, by these three claims we get that $B_{e'} \subseteq B_e$, but because $x \in (A_{e'} - B_{e'}) \cap (A_e \cap B_e)$ then $B_{e'} \subsetneq B_e$, which is a contradiction on the choice of the separation $(A_e, B_e)$ that minimized $\abs{B_e}$ $\lightning$.
     \end{proof}
 
     From this theorem, we can derive the following corollary, which gives the characterization of 3-connected graphs that we previously anticipated.
@@ -4255,12 +4255,12 @@
 
         \begin{itemize}
             \item for each $i \in [k - 1]$ it holds that $G_i = G_{i + 1}/e_{i + 1}$ for some $e_{i + 1} \in E(G_{i + 1})$
-            \item $G_0 = K_4$ and $G_k = G$
+            \item $G_1 = K_4$ and $G_k = G$
             \item for each $i \in [k]$, $G_i$ is 3-connected
         \end{itemize}
     \end{framedcor}
 
-    Unformally, we could say that every 3-connected graph can be constructed by repeatedly \curlyquotes{unconstructing} edges.
+    Unformally, we could say that every 3-connected graph can be constructed by repeatedly \curlyquotes{unconstructing} edges. \todo{maybe other direction of prev cor?}
 
     \chapter{Planar graphs}
 
