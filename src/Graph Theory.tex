@@ -4279,7 +4279,77 @@
 
     \chapter{Planar graphs}
 
-    TODO \todo{da fare}
+    TODO \todo{buco}
+
+    \begin{framedthm}{Jordan curve theorem}
+        For every polygon $P \subseteq \R^2$, the set of points $\R^ - P$ has exactly 2 regions, each of which has $P$ as its frontier.
+    \end{framedthm}
+
+    TODO \todo{image + reference}
+    
+    \begin{framedlem}{}
+        Let $P_1$, $P_2$ and $P_3$ be three polygonal arcs linking two points $x, y \in \R^2$ such that for each distinct $i, j \in [3]$ it holds that $\mathring{P_i} \cap \mathring{P_j} = \varnothing$. Then
+        
+        \begin{enumerate}
+            \item $\R^2 - (P_1 \cup P_2 \cup P_3)$ has 3 regions with frontiers $P_1 \cup P_2$, $P_2 \cup P_3$ and $P_3 \cup P_1$
+            \item if $P$ is a polygonal arc between a point in $\mathring{P_1}$ and $\mathring{P_3}$, and $\mathring P$ lies in the region of $\R^2 - (P_1 \cup P_3)$ that contains $\mathring{P_2}$, then $\mathring{P} \cap \mathring{P_2} \neq \varnothing$.
+        \end{enumerate}
+    \end{framedlem}
+
+    TODO \todo{image}
+
+    We observe that the intersection may contain more than one point, even an infinite amount.
+
+    \begin{framedlem}[label={region lemma}]{}
+        Let $X_1, X_2 \subseteq \R^2$ be two disjoint sets, each made up of a union of finitely many polygonal arcs and isolated points. Let $O$ be a region of $\R^2 - (X_1 \cup X_2)$; then, for any polygonal arc $P \subseteq O$ linking a point in $X_1$ and a point in $X_2$, it holds that $O - P$ is a region of $\R^2 - (X_1 \cup X_2 \cup P)$, and the number of total regions does not change.
+    \end{framedlem}
+
+    TODO \todo{image}
+
+    \begin{framedprop}{}
+        Let $G$ be a plane graph; then, given a face $f$ of $G$ and a subplane graph $H \subseteq G$, it holds that $H$ has a face $f'$ containing $f$. Moreover, if the frontier of $f$ lies in $H$, then $f = f'$.
+    \end{framedprop}
+
+    \begin{proof}
+        Let $x, y \in \R^2$ be two points of $f$; then, by definition of face there is a polygonal arc linking $x$ and $y$ that does not intersect $G$. However, since $H \subseteq G$, they cannot intersect $H$ either, which in turn implies that $x$ and $y$ lie in a common face of $H$ by definition of face. Hence, there is a face $f'$ of $H$ that contains both $x$ and $y$.
+
+        % Now, by contrapositive, suppose that $f \neq f'$; hence, by definition there are two points $x \in f \cap f'$ and $y \in f' - f$. Since $x, y \in f'$ by definition there is a polygonal arc linking $x$ and $y$ that does not intersect the frontier of $f'$. Analogously, since $x \in f$ and $y \notin f$, by definition there is a polygonal arc linking $x$ and $y$ intersecting a point --- call it $z$ --- in the frontier of $f$. Therefore, we have that $z \notin H$ but $z$ is in the frontier of $f$, implying that the latter cannot lie in $H$.
+        TODO \todo{controlla simone come l'ha scritto}
+    \end{proof}
+
+    \begin{framedthm}{}
+        A plane forest has exactly one face.
+    \end{framedthm}
+
+    \proofind{
+        We proceed by induction on the number of edges.
+    }{
+        For the base case, if a plane forest $G$ is such that $\abs{E(G)} = 0$ then the plane graph considered is a finites set $V(G)$ of isolated points; hence, $R - V(G)$ has only one region.
+    }{
+        Assume that a plane forest of $k$ edges has exactly one face.
+    }{
+        Consider a plane forest $G$ of $k + 1$ edges; then, fix an edge $e \in E(G)$, and let $G' := G - e$. Clearly, $G'$ is still a plane forest but on $k$ edges, which implies that has exactly one face by inductive hypothesis --- call this face $O$. Now, say that $e$ is a polygonal arc linking two vertices $x, y \in V(G)$; then, by definition of forest $x$ and $y$ must belong to different components of $G'$. Hence, by \cref{region lemma} we have that $G$ still has exactly one face, namely $O - \mathring e$.
+    }
+
+    \begin{framedprop}{}
+        Given a plane graph $G$, let $e \in E(G)$ be one of its edges; then, it holds that
+
+        \begin{enumerate}
+            \item given a face $f$ of $G$, either $e \subseteq \mathrm{front}(f)$ or $\mathring e \cap \mathrm{front}(f) = \varnothing$
+            \item if $e$ lies on a cycle of $G$, $e$ is in the frontier of exactly 2 faces of $G$
+            \item if $e$ does not lie on a cycle of $G$, $e$ is in the frontier of exactly 1 face
+        \end{enumerate}
+    \end{framedprop}
+
+    \begin{proof}
+        Fix an edge $e \in E(G)$, and a point $x_0 \in \mathring e$.
+
+        \claim{
+            If $e$ lies on a cycle of $G$, $x_0$ lies in the frontier of exactly 2 faces of $G$, otherwise it lies in the frontier of exactly 1 face of $G$.
+        }{
+            By definition, $G$ is the union of finitely many SLSs and points; therefore, this implies that there exists a disc $D_0$ centered at $x_0$ 
+        }
+    \end{proof}
 
     \printbibliography % UNCOMMENT FOR BIBLIOGRAPHY
 
