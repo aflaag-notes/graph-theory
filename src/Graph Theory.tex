@@ -273,6 +273,10 @@
         \item if $A$ is a set of \tit{edges} we are refering to a graph $G$ without the edges in $A$ --- note that this graph has still $V(G)$ as vertex set
     \end{itemize}
 
+    \begin{frameddefn}{Non-separating}
+        Given a connected graph $G$, a subgraph $H$ of $G$ is said to be \tbf{non-separating} if $G - H$ is still connected.
+    \end{frameddefn}
+
     \begin{frameddefn}{Graph union}
         Given two graphs $G$ and $G'$, we define the \tbf{union} $G \cup G'$ as the following graph:
 
@@ -421,7 +425,7 @@
         The \tbf{length} of a cycle is the number of edges between $x_1$ and $x_n$, namely $n$ in this case. $C_n$ is the cycle graph having $n$ vertices.
     \end{frameddefn}
 
-        \begin{figure}[H]
+    \begin{figure}[H]
         \centering
         \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.75cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
 
@@ -441,6 +445,35 @@
     \end{figure}
 
     A graph that does not admit cycle subgraphs --- or \tit{cycles}, for short --- is said to be \tbf{acyclic}.
+
+    Given a graph $G$ that has a cycle $C$, such cycle is said to be \tbf{induced} if there is no pair of vertices $x, y \in V(C)$ such that $x \nsim y$ in $C$ but $x \sim y$ in $G$. In other words, it must hold that $G[C]$ is a cycle graph.
+
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.75cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
+
+            \node[circle, draw] (1) []{1};
+            \node[circle, draw] (2) [below left of = 1]{2};
+            \node[circle, draw] (3) [below right of = 1]{6};
+            \node[circle, draw] (4) [below of = 2]{3};
+            \node[circle, draw] (5) [below of = 3]{5};
+            \node[circle, draw] (6) [below right of = 4]{4};
+
+            \draw[-] (1) to (2);
+            \draw[-] (1) to (6);
+            \draw[-] (1) to (3);
+            \draw[-] (2) to (4);
+            \draw[-] (3) to (5);
+            \draw[-] (4) to (6);
+            \draw[-] (4) to (5);
+            \draw[-] (5) to (6);
+
+            ;
+        \end{tikzpicture}
+        \caption{For instance, in this graph $G$ have that $G[\{3, 4, 5\}]$ is an induced cycle but $G[\{1, 2, 3, 4, 5, 6\}]$ is not, because $1 \sim 6$.}
+    \end{figure}
+
+    We observe that, by definition, $C_3$ is always induced.
 
     \begin{framedprop}[label={min deg 2}]{}
         Every graph with $\delta \ge 2$ has a cycle of length at least $\delta + 1$.
@@ -4183,7 +4216,7 @@
 
     The following theorem characterizes 2-connected graphs through ear decompositions.
 
-    \begin{framedthm}{}
+    \begin{framedthm}[label={2conn ear decomp}]{}
         G is 2-connected if and only if it has an ear decomposition.
     \end{framedthm}
 
@@ -4287,7 +4320,7 @@
 
     TODO \todo{image + reference}
     
-    \begin{framedlem}{}
+    \begin{framedlem}[label={3 poly arcs lemma}]{}
         Let $P_1$, $P_2$ and $P_3$ be three polygonal arcs linking two points $x, y \in \R^2$ such that for each distinct $i, j \in [3]$ it holds that $\mathring{P_i} \cap \mathring{P_j} = \varnothing$. Then
         
         \begin{enumerate}
@@ -4349,7 +4382,53 @@
         }{
             By definition, $G$ is the union of finitely many SLSs and points; therefore, this implies that there exists a disc $D_0$ centered at $x_0$ 
         }
+
+        TODO \todo{da finire}
     \end{proof}
+
+    TODO \todo{buco}
+
+    \begin{frameddefn}{Boundary}
+        Given a plane graph $G$, and a face $f$ of $G$, the \tbf{boundary} of $f$ --- denoted as $\mathrm{bound}(f)$ --- is the plane subgraph of $G$ that forms $\mathrm{front}(f)$.
+    \end{frameddefn}
+    
+    \begin{framedlem}{}
+        If $G$ is a plane graph that has two distinct faces $f_1$ and $f_2$ such that $\mathrm{bound}(f_1) = \mathrm{bound}(f_2)$, then $G$ is a cycle and $G = \mathrm{bound}(f_1) = \mathrm{bound}(f_2)$.
+    \end{framedlem}
+
+    \begin{proof}
+        TODO \todo{da fare}
+    \end{proof}
+
+    \begin{framedprop}{}
+        Every face boundary of a 2-connected plane graph is a cycle.
+    \end{framedprop}
+    
+    \proofind{
+        Consider a 2-connected plane graph $G$; we proceed by induction on $n$.
+    }{
+        If $G$ is 2-connected, then $n \ge 3$, therefore the base case is $n = 3$, for which we have that $G = K_3$ so the theorem trivially holds.
+    }{
+        Assume the statement holds for 2-connected planar graphs on at most $n - 1$ vertices.
+    }{
+        Suppose $G$ has $n$ vertices; since $G$ is 2-connected, by \cref{2conn ear decomp} $G$ admits an ear decomposition $C, P_1, \ldots, P_k$. If $k = 0$ then $G = C$ and the theorem triviallyh holds, so we may assume that $k \neq 0$; hence, consider $H = C \cup P_1 \cup \ldots \cup P_{k - 1}$. We observe that $H$ is the union of an ear decomposition, therefore by the same theorem $H$ is 2-connected. Moreover, $H$ cannot have more than $n - 1$ vertices since $P_k$ is an $H$-path, therefore we can apply the inductive hypothesis and assume that each face boundary of $H$ is a cycle.
+
+        Now consider $P_k$; since each face boundary of $H$ is a cycle we know that there must be a face $f$ of $H$ that contains $\mathring{P_k}$ bounded by a cycle $C'$. Hence, by \cref{3 poly arcs lemma} this implies that $P_k$ divides $f$ into 2 faces $f'$ and $f''$ each bounded by a cycle --- formed by $P_k$ and a subpath of $C'$.
+    }
+
+    \begin{framedprop}{}
+        Let $G$ be a 3-connected plane graph, and let $C$ be a cycle subgraph of $G$; then $C$ is the boundary of a face of $G$ is and only if $C$ is induced and non-separating.
+    \end{framedprop}
+
+    \proofiff{
+        TODO \todo{da fare}
+    }{
+        TODO \todo{da fare}
+    }
+
+    \begin{framedthm}{Euler's formular}
+        If $G$ is a connected plane graph, then 
+    \end{framedthm}
 
     \printbibliography % UNCOMMENT FOR BIBLIOGRAPHY
 
