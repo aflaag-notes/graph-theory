@@ -4421,7 +4421,7 @@
 
     TODO \todo{image}
 
-    \begin{framedprop}{}
+    \begin{framedprop}[label={faces prop}]{}
         Let $G$ be a plane graph; then, given a face $f$ of $G$ and a subplane graph $H \subseteq G$, it holds that $H$ has a face $f'$ containing $f$. Moreover, if the frontier of $f$ lies in $H$, then $f = f'$.
     \end{framedprop}
 
@@ -4479,7 +4479,7 @@
     \end{framedlem}
 
     \begin{proof}
-        TODO \todo{da fare}
+        Let $H = \mathrm{bound}(f_1) = \mathrm{bound}(f_2) \subseteq G$; in particular, since $H \subseteq G$ by both statements of \cref{faces lemma} $f_1$ and $f_2$ are also faces of $H$. In particular, this implies that $H$ has more than one face, meaning that by the contrapositive of \cref{1 face tree} $H$ is not a plane forest, i.e. $H$ contains a cycle $C$. Let $F_1$ and $F_2$ be the faces of $C$; since $\mathrm{bound}(f_1) = \mathrm{bound}(f_2)$ it must be the case that $f_1$ and $f_2$ lie in distinct faces of $C$ --- without loss of generality suppose that $f_1$ and $f_2$ lie in $F_1$ and $F_2$, respectively. Moreover, since $H$ is the boundary of both $f_1$ and $f_2$, this implies that no point of $H$ can lie inside $F_1$ or $F_2$. However, this can happen only if $H = C$, $f_1 = F_1$ and $f_2 = F_2$. Finally, by definition we have that $C \cup F_1 \cup F_2 = \R^2$, therefore all points of $G$ must lie on $G$, concluding that $G = C$.
     \end{proof}
 
     \begin{framedprop}{}
@@ -4503,9 +4503,15 @@
     \end{framedprop}
 
     \proofiff{
-        TODO \todo{da fare}
+        Assume that a cycle $C$ of a 3-connected graph $G$ is the boundary of a face $f$ of $G$.
+
+        By way of contradiction, suppose that $C$ is not induced, which implies that there are two vertices $x, y \in V(C)$ such that $x \sim y$ in $G$. We observe that $\mathring{xy}$ must lie outside $f$, since we are assuming that $C = \mathrm{bound}(f)$. Let $z_1, z_2 \in V(C)$ such that $x \to z_1 \to y \to z_2$ occur in this order while going around $C$. Let $P_1 := x \to z_1 \to y$, $P_2 := x \to z_2 \to y$; together with the edge $xy$, they form 3 pairwise disjoint polygonal arcs linking $x$ and $y$, therefore by \cref{3 poly arcs lemma} we know that they form 3 regions, and this must imply that there is no path connecting $z_1$ and $z_2$ inside $G - \{x, y\}$.
+
+        To prove that $C$ also non-separating, fix two vertices $x, y \in G - C$; since $G$ is 3-connected, by \cref{intern disj menger} there are 3 internally disjoint paths between $x$ and $y$ --- say $P_1$, $P_2$ and $P_3$. Hence, by \cref{3 poly arcs lemma} we know that they induce 3 regions. Without loss of generality, suppose that $f$ lies inside the region bounded by $P_1 \cup P_2$; then $C \cap P_3 = \varnothing$ since $f$ is completely inside the region formed by the other two paths, meaning that $x$ and $y$ are connected through $P_3$ in $G - C$. Therefore, we conclude that $G - C$ is still connected, i.e. $C$ is non-separating.
     }{
-        TODO \todo{da fare}
+        Assume that $C$ is induced and non-separating, and let $f_1$ be the outer face and $f_2$ be the inner face of $C$ --- considered as a subgraph of $G$. If both $f_1$ and $f_2$ contained a vertex of $G - C$, by removing the cycle we would disconnect such vertices (since $C$ is induced), contradicting the fact that $C$ is non-separating. This implies that at least one between $f_1$ and $f_2$ does not contain vertices of $G - C$; without loss of generality, suppose that $f_2$ does not contain vertices of $G - C$.
+
+        By way of contradiction, suppose that $C$ is not the boundary of $f_2$; this implies that there is a portion of $G - C$ that lies inside $f_2$. We observe that $f_2$ does not contain vertices of $G-C$, therefore the only way for a portion of the latter to lie in $f_2$ is through an edge of $G - E(C)$ --- linking two vertices of $C$. However, the existence of such an edge would contradict the fact that $C$ is induced $\lightning$.
     }
 
     \begin{framedthm}{Euler's formula}
