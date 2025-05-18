@@ -42,3 +42,5 @@
 \contentsline {subsection}{\numberline {5.2.1}2-connectivity}{90}{subsection.5.2.1}%
 \contentsline {section}{\numberline {5.3}3-connectivity}{91}{section.5.3}%
 \contentsline {chapter}{\numberline {6}Planar graphs}{94}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Topological properties}{97}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Planarity conditions}{100}{section.6.2}%
