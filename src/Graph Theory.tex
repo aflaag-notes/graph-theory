@@ -3250,7 +3250,7 @@
 
     The topic of finding cliques as substructures of a given graph will be discussed in greater detail in the following section.
 
-    \subsection{Cliques as minors}
+    \subsection{Cliques as minors} \label{cliques as minors}
 
     Consider a graph $G$, and an edge $xy \in E(G)$; to \tbf{contract} $xy$ means to \tit{identify} the vertices $x$ and $y$ and delete any parralel edge that formed afterwards. For instance, if $G$ contains the edge $xy$
 
@@ -4326,7 +4326,7 @@
         A \tbf{polygonal arc} is a subset of $\R^2$ formed by the union of finitely many SLSs homeomorphic to the \tit{unit interval} $[0, 1] \subset \R$.
     \end{frameddefn}
 
-    Here, the term \tbf{homeomorphic} refers to the existence of an \tit{homeomorphism} between the two sets, i.e. a continuous function between them whoch inverse is also continuous. In particulr, for the case of polygonal arcs the images of 0 and 1 under such homeomorphism are the \tbf{endpoints} of the arc.
+    Here, the term \tbf{homeomorphic} refers to the existence of an \tit{homeomorphism} between the two sets, i.e. a continuous function between them whoch inverse is also continuous. In particular, for the case of polygonal arcs the images of 0 and 1 under such homeomorphism are the \tbf{endpoints} of the arc.
     
     If the ends of a polygonal arc $P$ are $p, q \in \R^2$, we say that $P$ \tbf{links} $p$ and $q$, and $\mathring P := P - \{p, q\}$ is the \tbf{interior} of $P$.
 
@@ -4591,6 +4591,102 @@
     \end{proof}
 
     Finally, the contrapositive of this last property is enough to conclude that $K_{3,3}$ is \tit{not} planar, because $$\abs{E(K_{3,3})} = 3 \cdot 3 = 9 > 8 = 2 \cdot 6 - 4 = 2 \cdot \abs{V(K_{3, 3})} - 4$$
+
+    \begin{framedcor}{}
+        $K_5$ and $K_{3,3}$ are not planar.
+    \end{framedcor}
+
+    \subsection{Kuratowski's theorem}
+
+    Trivially, we observe that if $G$ has a subgraph $H \subseteq G$ such that $H$ is not planar, then $G$ will cannot be planar either. Moreover, now that we know that nor $K_5$ nor $K_{3,3}$, a trivial conclusion is that any subdivision of these two graphs will not be planar. Therefore, from these two observation we get the following proposition.
+
+    \begin{framedlem}[label={kurat}]{}
+        If $G$ contains $K_5$ or $K_{3,3}$ as topological minor, $G$ is not planar.
+    \end{framedlem}
+
+    In a landmark paper published in 1930, \textcite{kuratowski} proved that the converse is also true, thus providing a \tit{complete} characterization to any planar graph. But before presenting the theorem, first we need to discuss some properties of minors and topological minors.
+
+    \begin{framedprop}[label={minor alt def}]{}
+        A graph $G$ has $H$ as minor if and only if there exists a family of sets $X_v \subseteq V(G)$ for each $v \in V(H)$ such that
+
+        \begin{itemize}
+            \item $\forall u, v \in V(H) \quad u \neq v \implies X_u \cap X_v = \varnothing$
+            \item for each $u \in V(H)$ it holds that $G[X_u]$ is connected
+            \item for each $uv \in E(H)$ there is an edge $e_{uv} \in E(G)$ with one endpoint in $X_u$ and the other in $X_v$
+        \end{itemize}
+    \end{framedprop}
+
+    \proofiff{
+        If $G$ has $H$ as minor, there is a sequence of contractions and vertex or edge deletions that yields $H$ starting from $G$. Let $H'$ be the following subgraph of $G$
+
+        \begin{itemize}
+            \item $V(H')$ contains the vertices of $G$ that were not removed to obtain $H$ from $G$, together with the endpoints of the edges that were contracted to obtain $H$ from $G$
+            \item $E(G)$ contains the edges of $G$ that were contracted to obtain $H$ from $G$
+        \end{itemize}
+
+        \begin{figure}[H]
+            \centering
+            \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.5cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
+
+                \node[circle, draw, fill=BlueLagoon] (1) []{};
+                \node[circle, draw, fill=BlueLagoon] (2) [below left of = 1]{};
+                \node[circle, draw, fill=BlueLagoon] (3) [below right of = 1]{};
+                \node[circle, draw, fill=BlueLagoon] (4) [below of = 2]{};
+                \node[circle, draw, fill=BlueLagoon] (5) [below of = 3]{};
+                \node[circle, draw, fill=BlueLagoon] (6) [below of = 1]{};
+                \node[circle, draw, fill=BlueLagoon] (7) [below of = 6]{};
+
+                \draw[-] (1) to (2);
+                \draw[-] (1) [BlueLagoon] to (3);
+                \draw[-] (1) to (6);
+                \draw[-] (2) [BlueLagoon] to (4);
+                \draw[-] (2) to (6);
+                \draw[-] (3) to (5);
+                \draw[-] (3) to (6);
+                \draw[-] (4) to (6);
+                \draw[-] (4) [BlueLagoon] to (7);
+                \draw[-] (5) to (6);
+                \draw[-] (5) to (7);
+
+                ;
+            \end{tikzpicture}
+            \caption{For instance, this graph has $K_4$ as minor, and we are considering as $H'$ the subgraph colored in \tit{blue}.}
+        \end{figure}
+
+        We observe that, by construction, the number of connected components of $H'$ is precisely $\abs{V(H)}$; therefore, we can well-define $\{X_v \mid v \in V(H)\}$ where $X_v$ is a component of $H'$. Hence, given such family of subsets we observe that
+        
+        \begin{itemize}
+            \item for any pair of distinct $u$ and $v$ in $V(H)$ it holds that $X_u \cap X_v = \varnothing$ by construction of $H'$
+            \item the edges of $H$ obtained from $G$ are edges $e_{uv}$ connecting the connected components of $H'$ which correspond to $X_u$ and $X_v$, by construction of $H'$
+        \end{itemize}
+    }{
+        For each $v \in V(H)$, fix a spanning tree $T_v$ on $G[X_v]$, and for each $uv \in E(H)$ fix an edge $e_{uv} \in E(G)$; now, to obtain $H$ we can simply
+
+        \begin{itemize}
+            \item remove all the edges \tit{not} in $\displaystyle \bigcup_{v \in V(H)}{E(T_v)} \cup \bigcup_{uv \in E(H)}{e_{uv}}$ --- i.e. the edges in each $G[X_v]$ outside the spanning tree $T_v$ for each $v \in V(H)$, and the edges that connect the various sets that are not the edges $e_{uv}$ that we fixed
+            \item contract all the edges of $T_v$, for each $v \in V(H)$ --- we observe that this contraction operation will leave one single vertex by connectivity of each tree $T_v$
+        \end{itemize}
+    }
+
+    In \cref{cliques as minors} we stated that if $G$ has $H$ as topological minor, then $H$ is a minor of $G$. Moreover, we also provided an example to show that the converse does not always hold --- i.e. it is not true in general that if $G$ has $H$ as minor, then $H$ is topological minor of $G$ as well. However, by adding an additional assumption on $G$ we can get the converse implication, as stated below.
+
+    \begin{framedprop}{}
+        If $G$ contains $H$ as minor, and $\Delta(H) = 3$, then $G$ contains $H$ as topological minor.
+    \end{framedprop}
+
+    \begin{proof}
+        Suppose that $G$ contains $H$ as minor, which implies that there exists a collection $\{X_v \mid v \in V(H)\}$ that satisfied \cref{minor alt def}. Now, for each pair of distinct $u$ and $v$ of $V(H)$ fix an edge $e_{uv} \in E(G)$; since $\Delta(H) = 3$, for any set $X_z$ there can be at most 3 edges of the form $e_{zv_i} \in E(G)$ for $1 \le i \le 3$. TODO \todo{da finire}
+    \end{proof}
+
+    Finally, we are ready to discuss Kuratowski's theorem.
+
+    \begin{framedthm}{Kuratowski's theorem}
+        A graph $G$ is planar if and only if $G$ does not have $K_5$ nor $K_{3,3}$ as topological minors.
+    \end{framedthm}
+    
+    \begin{proof}
+        The observation discussed in \cref{kurat} trivially proves the direct implication of the theorem. Moreover, since TODO \todo{da finire}
+    \end{proof}
 
     \printbibliography % UNCOMMENT FOR BIBLIOGRAPHY
 

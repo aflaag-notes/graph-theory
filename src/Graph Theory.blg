@@ -1,67 +1,67 @@
-This is BibTeX, Version 0.99d (TeX Live 2022/nixos.org)
+This is BibTeX, Version 0.99d (TeX Live 2026/dev/Arch Linux)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: Graph Theory.aux
 The style file: biblatex.bst
-Reallocated glb_str_ptr (elt_size=4) to 20 items from 10.
+Reallocated glb_str_ptr (elt_size=8) to 20 items from 10.
 Reallocated global_strs (elt_size=200001) to 20 items from 10.
-Reallocated glb_str_end (elt_size=4) to 20 items from 10.
-Reallocated singl_function (elt_size=4) to 100 items from 50.
-Reallocated singl_function (elt_size=4) to 100 items from 50.
-Reallocated singl_function (elt_size=4) to 100 items from 50.
-Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
-Reallocated singl_function (elt_size=4) to 100 items from 50.
-Reallocated singl_function (elt_size=4) to 100 items from 50.
-Reallocated singl_function (elt_size=4) to 100 items from 50.
-Reallocated singl_function (elt_size=4) to 100 items from 50.
-Reallocated singl_function (elt_size=4) to 100 items from 50.
-Reallocated singl_function (elt_size=4) to 100 items from 50.
-Reallocated singl_function (elt_size=4) to 100 items from 50.
-Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated glb_str_end (elt_size=8) to 20 items from 10.
+Reallocated singl_function (elt_size=8) to 100 items from 50.
+Reallocated singl_function (elt_size=8) to 100 items from 50.
+Reallocated singl_function (elt_size=8) to 100 items from 50.
+Reallocated wiz_functions (elt_size=8) to 6000 items from 3000.
+Reallocated singl_function (elt_size=8) to 100 items from 50.
+Reallocated singl_function (elt_size=8) to 100 items from 50.
+Reallocated singl_function (elt_size=8) to 100 items from 50.
+Reallocated singl_function (elt_size=8) to 100 items from 50.
+Reallocated singl_function (elt_size=8) to 100 items from 50.
+Reallocated singl_function (elt_size=8) to 100 items from 50.
+Reallocated singl_function (elt_size=8) to 100 items from 50.
+Reallocated singl_function (elt_size=8) to 100 items from 50.
 Database file #1: Graph_Theory-blx.bib
 Database file #2: ./references.bib
 Warning--I didn't find a database entry for "kostochaka"
-Biblatex version: 3.19
-Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
-Reallocated singl_function (elt_size=4) to 100 items from 50.
-You've used 28 entries,
-            6399 wiz_defined-function locations,
-            1390 strings with 12716 characters,
-and the built_in function-call counts, 163753 in all, are:
-= -- 11584
-> -- 2940
-< -- 1153
-+ -- 3761
-- -- 981
-* -- 11344
-:= -- 16126
+Biblatex version: 3.20
+Reallocated wiz_functions (elt_size=8) to 9000 items from 6000.
+Reallocated singl_function (elt_size=8) to 100 items from 50.
+You've used 29 entries,
+            6402 wiz_defined-function locations,
+            1400 strings with 12941 characters,
+and the built_in function-call counts, 170500 in all, are:
+= -- 12088
+> -- 3074
+< -- 1232
++ -- 3903
+- -- 1011
+* -- 11736
+:= -- 16627
 add.period$ -- 0
-call.type$ -- 28
-change.case$ -- 624
+call.type$ -- 29
+change.case$ -- 690
 chr.to.int$ -- 71
-cite$ -- 54
-duplicate$ -- 17582
-empty$ -- 15239
-format.name$ -- 1590
-if$ -- 34564
+cite$ -- 56
+duplicate$ -- 18314
+empty$ -- 15864
+format.name$ -- 1642
+if$ -- 36080
 int.to.chr$ -- 0
-int.to.str$ -- 70
+int.to.str$ -- 73
 missing$ -- 0
-newline$ -- 797
-num.names$ -- 1527
-pop$ -- 9298
+newline$ -- 830
+num.names$ -- 1626
+pop$ -- 9652
 preamble$ -- 1
-purify$ -- 707
+purify$ -- 775
 quote$ -- 0
-skip$ -- 5510
+skip$ -- 5831
 stack$ -- 0
-substring$ -- 19362
-swap$ -- 4154
-text.length$ -- 855
-text.prefix$ -- 46
+substring$ -- 20097
+swap$ -- 4357
+text.length$ -- 881
+text.prefix$ -- 48
 top$ -- 1
-type$ -- 939
+type$ -- 973
 warning$ -- 0
-while$ -- 2075
+while$ -- 2136
 width$ -- 0
-write$ -- 770
+write$ -- 802
 (There was 1 warning)
