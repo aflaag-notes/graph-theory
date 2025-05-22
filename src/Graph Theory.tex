@@ -4250,7 +4250,7 @@
 
     The other type of graphs that we are going to discuss are 3-connected graphs. First, consider the following theorem --- proved by \textcite{tutte3conn} in 1961.
 
-    \begin{framedthm}{}
+    \begin{framedthm}[label={tutte decomp}]{}
         If a graph $G$ is 3-connected, and $n \ge 5$, then there exists an edge $e \in E(G)$ such that $G/e$ is still 3-connected.
     \end{framedthm}
 
@@ -4394,6 +4394,28 @@
 
     In other words, a graph is said to be \tit{planar} if it can be represented as a plane graph.
 
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.5cm,thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
+
+            \node[circle, draw] (1) []{};
+            \node[circle, draw] (2) [below of = 1]{};
+            \node[circle, draw] (3) [below left of = 2]{};
+            \node[circle, draw] (4) [below right of = 2]{};
+
+            \draw[-] (1) to (2);
+            \draw[-] (1) [bend right] to (3);
+            \draw[-] (1) [bend left] to (4);
+            \draw[-] (2) to (3);
+            \draw[-] (2) to (4);
+            \draw[-] (3) [bend right] to (4);
+
+            ;
+        \end{tikzpicture}
+        \caption{For instance, this is a \tit{plane} representation of $K_4$, which implies that $K_4$ is \tit{planar}.}
+        \label{k4 planar}
+    \end{figure}
+
     \section{Topological properties}
 
     \begin{framedthm}{Jordan curve theorem}
@@ -4482,7 +4504,7 @@
         Let $H = \mathrm{bound}(f_1) = \mathrm{bound}(f_2) \subseteq G$; in particular, since $H \subseteq G$ by both statements of \cref{faces lemma} $f_1$ and $f_2$ are also faces of $H$. In particular, this implies that $H$ has more than one face, meaning that by the contrapositive of \cref{1 face tree} $H$ is not a plane forest, i.e. $H$ contains a cycle $C$. Let $F_1$ and $F_2$ be the faces of $C$; since $\mathrm{bound}(f_1) = \mathrm{bound}(f_2)$ it must be the case that $f_1$ and $f_2$ lie in distinct faces of $C$ --- without loss of generality suppose that $f_1$ and $f_2$ lie in $F_1$ and $F_2$, respectively. Moreover, since $H$ is the boundary of both $f_1$ and $f_2$, this implies that no point of $H$ can lie inside $F_1$ or $F_2$. However, this can happen only if $H = C$, $f_1 = F_1$ and $f_2 = F_2$. Finally, by definition we have that $C \cup F_1 \cup F_2 = \R^2$, therefore all points of $G$ must lie on $G$, concluding that $G = C$.
     \end{proof}
 
-    \begin{framedprop}{}
+    \begin{framedprop}[label={2conn planar}]{}
         Every face boundary of a 2-connected plane graph is a cycle.
     \end{framedprop}
     
@@ -4628,29 +4650,29 @@
             \centering
             \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.5cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
 
-                \node[circle, draw, fill=BlueLagoon] (1) []{};
-                \node[circle, draw, fill=BlueLagoon] (2) [below left of = 1]{};
-                \node[circle, draw, fill=BlueLagoon] (3) [below right of = 1]{};
-                \node[circle, draw, fill=BlueLagoon] (4) [below of = 2]{};
-                \node[circle, draw, fill=BlueLagoon] (5) [below of = 3]{};
-                \node[circle, draw, fill=BlueLagoon] (6) [below of = 1]{};
-                \node[circle, draw, fill=BlueLagoon] (7) [below of = 6]{};
+                \node[circle, draw, fill=Carmine] (1) []{};
+                \node[circle, draw, fill=Carmine] (2) [below left of = 1]{};
+                \node[circle, draw, fill=Carmine] (3) [below right of = 1]{};
+                \node[circle, draw, fill=Carmine] (4) [below of = 2]{};
+                \node[circle, draw, fill=Carmine] (5) [below of = 3]{};
+                \node[circle, draw, fill=Carmine] (6) [below of = 1, yshift=-0.2cm]{};
+                \node[circle, draw, fill=Carmine] (7) [below of = 6]{};
 
                 \draw[-] (1) to (2);
-                \draw[-] (1) [BlueLagoon] to (3);
+                \draw[-] (1) [Carmine] to (3);
                 \draw[-] (1) to (6);
-                \draw[-] (2) [BlueLagoon] to (4);
+                \draw[-] (2) [Carmine] to (4);
                 \draw[-] (2) to (6);
                 \draw[-] (3) to (5);
                 \draw[-] (3) to (6);
                 \draw[-] (4) to (6);
-                \draw[-] (4) [BlueLagoon] to (7);
+                \draw[-] (4) [Carmine] to (7);
                 \draw[-] (5) to (6);
                 \draw[-] (5) to (7);
 
                 ;
             \end{tikzpicture}
-            \caption{For instance, this graph has $K_4$ as minor, and we are considering as $H'$ the subgraph colored in \tit{blue}.}
+            \caption{For instance, this graph has $K_4$ as minor, and we are considering as $H'$ the subgraph colored in \tit{red}.}
         \end{figure}
 
         We observe that, by construction, the number of connected components of $H'$ is precisely $\abs{V(H)}$; therefore, we can well-define $\{X_v \mid v \in V(H)\}$ where $X_v$ is a component of $H'$. Hence, given such family of subsets we observe that
@@ -4675,17 +4697,102 @@
     \end{framedprop}
 
     \begin{proof}
-        Suppose that $G$ contains $H$ as minor, which implies that there exists a collection $\{X_v \mid v \in V(H)\}$ that satisfied \cref{minor alt def}. Now, for each pair of distinct $u$ and $v$ of $V(H)$ fix an edge $e_{uv} \in E(G)$; since $\Delta(H) = 3$, for any set $X_z$ there can be at most 3 edges of the form $e_{zv_i} \in E(G)$ for $1 \le i \le 3$. TODO \todo{da finire}
+        Suppose that $G$ contains $H$ as minor, which implies that there exists a collection $\{X_v \mid v \in V(H)\}$ that satisfies \cref{minor alt def}. Now, for each pair of distinct $u$ and $v$ of $V(H)$ fix an edge $e_{uv} \in E(G)$; since $\Delta(H) = 3$, for any set $X_z$ there can be at most 3 edges of the form $e_{zv_i} \in E(G)$ for $1 \le i \le 3$. Now, if there are at most such 2 edges for all $X_z$, then $H$ is a topological minor of $G$, so we may assume there is at least one set $X_{\hat z}$ which has 3 such edges.
+ 
+        Fix a spanning tree $T_{\hat z}$ of $G[X_{\hat z}]$; since there are three edges $e_{\hat zv_1}, e_{\hat zv_2}, e_{\hat zv_3}$ and $T_{\hat z}$ is connected, there must be a vertex $r$ of degree 3 inside $T_{\hat z}$ such that there are 3 paths that start from $r$ and end in the endpoints of such edges that lie insize $X_{\hat z}$. Therefore, by fixing a spanning tree $T_u$ for each $G[X_u]$, we get that that $\displaystyle \bigcup_{u \in V(H)}{T_u} \cup \bigcup_{uv \in E(H)}{e_{uv}}$ is a subdivision of $H$ inside $G$, i.e. $H$ is a topological minor of $G$.
+    \end{proof}
+
+    We can leverage this property to prove the following characterization about the special cases of $K_5$ and $K_{3,3}$.
+
+    \begin{framedlem}{}
+        A graph $G$ has $K_5$ or $K_{3,3}$ as topological minor if and only if it has $K_5$ or $K_{3,3}$ as minor.
+    \end{framedlem}
+
+    \begin{proof}
+        Since being a topological minor implies being a minor, the direct implication of the statement is trivial. Moreover, since $\Delta(K_{3,3}) = 3$, if $G$ contains $K_{3,3}$ as minor, then it also contains $K_{3,3}$ as topological minor by the previous proposition. Therefore, to prove the statement it suffices to show that if $K_5$ is a minor of $G$, then $K_5$ or $K_{3,3}$ are topological minors of $G$.
+
+        Thus, suppose that $G$ contains $K_5$ as minor, i.e. there are sets $\{X_v \mid v \in V(K_5)\}$ that satisfy \cref{minor alt def}. TODO \todo{da finire}
     \end{proof}
 
     Finally, we are ready to discuss Kuratowski's theorem.
 
     \begin{framedthm}{Kuratowski's theorem}
-        A graph $G$ is planar if and only if $G$ does not have $K_5$ nor $K_{3,3}$ as topological minors.
+        A graph $G$ is planar if and only if $G$ does not contain $K_5$ nor $K_{3,3}$ as topological minors.
     \end{framedthm}
     
     \begin{proof}
-        The observation discussed in \cref{kurat} trivially proves the direct implication of the theorem. Moreover, since TODO \todo{da finire}
+        The observation discussed in \cref{kurat} trivially proves the direct implication of the theorem. Moreover, the previous lemma implies that the statement is equivalent of proving that $G$ is planar if and only if $G$ does not contain $K_5$ nor $K_{3,3}$ as minor. We are going to prove the converse implication of this statement only for the case in which $G$ is 3-connected --- the theorem can be extended to any graph $G$.
+
+        We proceed by induction on $n$. Since $G$ is 3-connected, the base case is for $n = 4$, which implies that $G = K_4$, which is indeed planar --- as shown in \cref{k4 planar}.
+
+        Assume that if a 3-connected graph $G$ on $n - 1$ vertices does not contain $K_5$ nor $K_{3,3}$ as minors, then $G$ is not planar. Now, consider a 3-connected graph $G$ on $n \ge 5$ vertices that does not contain $K_5$ nor $K_{3,3}$ as minors. Since $G$ is 3-connected, by \cref{tutte decomp} there exists an edge $xy \in E(G)$ such that $G/xy$ is still 3-connected; moreover, we know that $G/xy$ cannot contain $K_5$ nor $K_{3,3}$ as minors, otherwise they would be minors of $G$ as well since $G/xy$ is obtained from $G$ by contracting an edge, which would contradict the definition of $G$. Furthermore, $G/xy$ has $n - 1$ vertices, which implies that we can apply the inductive hypothesis on it, thus $G/xy$ is planar.
+
+        Let $v_{xy} \in V(G/xy)$ be the vertex obtained by contracting the edge $xy$, and consider $G/xy - \{v_{xy}\}$: since $G/xy$ is 3-connected, such graph is at least still 2-connected --- and surely still planar --- hence by \cref{2conn planar} we have that every face of such graph is bounded by a cycle. This implies that there must exists a plane graph isomorphic to $G/xy - v_{xy}$ that has a face $f$ bounded by a cycle $C$ such that $\mathcal N(v_{xy})$ lies completely on $C$. Let $\mathcal N (v_{xy}) = \{v_1, \ldots, v_k\}$; then, by definition of contraction, each $v_i \in \mathcal N(v_{xy})$ is adjecent to at least one between $x$ and $y$. Now we are going to \curlyquotes{un-contract} the edge $xy$ and consider how $G$ could be structured
+
+        \claim[Claim 1]{
+            $x$ and $y$ do not have 3 common neighbors.
+        }{
+            By way of contradiction suppose there are $v_1$, $v_2$ and $v_3$ such that $v_1, v_2, v_3 \sim x, y$; then, by contracting $C$ down to a triangle --- which can always be done since $C$ is a cycle --- we get that $G$ contains $K_5$ as minor, contradicting the definition of $G$ $\lightning$.
+        }
+
+        \claim[Claim 2]{
+            There cannot exist vertices $s$, $s'$, $t$ and $t'$ on $C$ such that $x \sim s, s'$ and $y \sim t, t'$ and $s \ t \ s' \ t'$ occur on $C$ on that cyclic order.
+        }{
+            If such vertices exist then $G$ contains $K_{3,3}$ as minor, contradicting its definition $\lightning$
+
+            \begin{figure}[H]
+                \centering
+                \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.75cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
+
+                    \node[circle, draw, fill=Carmine, text=white] (1) []{$s$};
+                    \node[circle, draw, fill=BlueLagoon, text=white] (2) [below left of = 1]{$x$};
+                    \node[circle, draw, fill=Carmine, text=white] (3) [below right of = 1]{$y$};
+                    \node[circle, draw, fill=Carmine, text=white] (4) [below of = 1, yshift=-1cm]{$s'$};
+                    \node[circle, draw, fill=BlueLagoon, text=white] (5) [left of = 2]{$t'$};
+                    \node[circle, draw, fill=BlueLagoon, text=white] (6) [right of = 3]{$t$};
+
+                    % \draw[-] (1) to (2);
+                    % \draw[-] (1) [Carmine] to (3);
+                    % \draw[-] (1) to (6);
+                    % \draw[-] (2) [Carmine] to (4);
+                    % \draw[-] (2) to (6);
+
+                    ;
+                \end{tikzpicture}
+                % \caption{TODO \todo{do edges}}
+            \end{figure}
+        }
+
+        TODO \todo{do edges of fig before}
+
+        \claim[Claim 3]{
+            $x$ and $y$ have at least two neighbors on $C$.
+        }{
+            Since $G$ is 3-connected, then $\deg(x), \deg(y) \ge 3$ by \cref{kconn}, which implies that they must have at least two neighbors on $C$ --- since all of their neighbors lie on $C$ and they are one the neighbor of the other.
+        }
+
+        % \claim[Claim 1]{
+        %     There exist $P_1$ and $P_2$ internally disjoint paths such that $P_1$ has all neighbors of $x$ on $C$ and $P_2$ has all neighbors of $y
+        % }
+
+        \claim[Claim 4]{
+            If there exist two internally disjoint paths $P_1$ and $P_2$ on $C$ such that $\mathcal N (x) - \{y\} \subseteq V(P_1)$ and $\mathcal N (y) - \{x\} \subseteq P_2$, then $G$ is planar.
+        }{
+            Trivially, such paths imply that there is always a drawing of $G$ which allows to connect $x$ to $\mathcal N (x) - \{y\}$ and $y$ to $\mathcal N (y) - \{x\}$ without drawing overlapping edges --- it may be necessary to \curlyquotes{swap} the vertices $x$ and $y$ to obtain such drawing.
+        }
+
+        \claim[Claim 5]{
+            If $x$ or $y$ have exactly 2 neighbors on $C$, then $G$ is planar.
+        }{
+            Without loss of generality, suppose that $x$ has exactly two neighbors $v_1, v_2 \in V(C)$ --- i.e. $\mathcal N (x) - \{y\} = \{v_1, v_2\} \subseteq V(C)$; we observe that $v_1$ and $v_2$ split $C$ into two internally disjoint paths $P_1$ and $P_2$ having $v_1$ and $v_2$ as endpoints such that $C = P_1 \cup P_2$.
+
+            Again, consider $G[C \cup \{x\}]$: since $x \sim v_1, v2$, such subplane graph has 3 faces --- the outer face and two inner faces; without loss of generality, suppose that $y$ lies in the face formed by $P_2$ and $v_1 \to x \to v_2$. Now, if $\mathcal N(y) - \{x\} \subseteq V(P_2)$, then by Claim 4 $G$ is planar, so we may assume that there is at least one internal vertex of $P_1$ that is a neighbor of $y$. Then, by Claim 3 we know that $y$ has at least another neighbor on $C$, and we know that such neighbor cannot be an internal vertex of $P_2$ otherwise we would contradict Claim 2. This implies that $\mathcal N (y) - \{x\} \subseteq P_1$, which means that $G$ is planar by Claim 4.
+        }
+
+        Therefore,by this claim we may assume that both $x$ and $y$ have at least 3 neighbors on $C$. Moreover, by Claim 1 $x$ and $y$ cannot share 3 neighbors, implying that there exists at least one vertex $v \in V(C)$ such that $x \nsim v$ and $y \sim v$ without loss of generality. Let $P_1$ be the shortest path of $C - \{v\}$ that contains all the neighbors of $x$ on $C$ --- and in particular, its endpoints $v_i$ and $v_j$ are both neighbors of $x$. Moreover, since $y \sim v$, if $y$ had a neighbor $z$ internal to $P_1$ then $v$, $z$, $v_i$ and $v_j$ would contradict Claim 2.
+
+        Lastly, let $P_2$ be such that $C = P_1 \cup P_2$ and $P_1$ and $P_2$ are internally disjoint; the last observation implies that $\mathcal N (y) - \{x\}$ lies completely on $P_2$
+
     \end{proof}
 
     \printbibliography % UNCOMMENT FOR BIBLIOGRAPHY
