@@ -4536,7 +4536,7 @@
         By way of contradiction, suppose that $C$ is not the boundary of $f_2$; this implies that there is a portion of $G - C$ that lies inside $f_2$. We observe that $f_2$ does not contain vertices of $G-C$, therefore the only way for a portion of the latter to lie in $f_2$ is through an edge of $G - E(C)$ --- linking two vertices of $C$. However, the existence of such an edge would contradict the fact that $C$ is induced $\lightning$.
     }
 
-    \begin{framedthm}{Euler's formula}
+    \begin{framedthm}[label={euler}]{Euler's formula}
         If $G$ is a connected plane graph on $\ell$ faces, then $$n - m + \ell = 2$$
     \end{framedthm}
 
@@ -4560,11 +4560,11 @@
         A \tbf{triangulation} is a plane graph in which every face is a triangle.
     \end{frameddefn}
 
-    We observe that even the outer face is bounded by a triangle.
+    We observe that even the outer face of a triangulation is bounded by a triangle.
 
     Unsurprisingly, every maximally plane graph \tit{must} be a triangulation, obtained by simply partition each face into a finite number of triangles.
 
-    \begin{framedprop}{}
+    \begin{framedprop}[label={triang prop}]{}
         A plane graph $G$ such that $n \ge 3$ is maximally plane if and only $G$ is a triangulation.
     \end{framedprop}
 
@@ -4786,14 +4786,35 @@
         }{
             Without loss of generality, suppose that $x$ has exactly two neighbors $v_1, v_2 \in V(C)$ --- i.e. $\mathcal N (x) - \{y\} = \{v_1, v_2\} \subseteq V(C)$; we observe that $v_1$ and $v_2$ split $C$ into two internally disjoint paths $P_1$ and $P_2$ having $v_1$ and $v_2$ as endpoints such that $C = P_1 \cup P_2$.
 
-            Again, consider $G[C \cup \{x\}]$: since $x \sim v_1, v2$, such subplane graph has 3 faces --- the outer face and two inner faces; without loss of generality, suppose that $y$ lies in the face formed by $P_2$ and $v_1 \to x \to v_2$. Now, if $\mathcal N(y) - \{x\} \subseteq V(P_2)$, then by Claim 4 $G$ is planar, so we may assume that there is at least one internal vertex of $P_1$ that is a neighbor of $y$. Then, by Claim 3 we know that $y$ has at least another neighbor on $C$, and we know that such neighbor cannot be an internal vertex of $P_2$ otherwise we would contradict Claim 2. This implies that $\mathcal N (y) - \{x\} \subseteq P_1$, which means that $G$ is planar by Claim 4.
+            Again, consider $G[C \cup \{x\}]$: since $x \sim v_1, v_2$, such subplane graph has 3 faces --- the outer face and two inner faces; without loss of generality, suppose that $y$ lies in the face formed by $P_2$ and $v_1 \to x \to v_2$. Now, if $\mathcal N(y) - \{x\} \subseteq V(P_2)$, then by Claim 4 $G$ is planar, so we may assume that there is at least one internal vertex of $P_1$ that is a neighbor of $y$. Then, by Claim 3 we know that $y$ has at least another neighbor on $C$, and we know that such neighbor cannot be an internal vertex of $P_2$ otherwise we would contradict Claim 2. This implies that $\mathcal N (y) - \{x\} \subseteq P_1$, which means that $G$ is planar by Claim 4.
         }
 
         Therefore,by this claim we may assume that both $x$ and $y$ have at least 3 neighbors on $C$. Moreover, by Claim 1 $x$ and $y$ cannot share 3 neighbors, implying that there exists at least one vertex $v \in V(C)$ such that $x \nsim v$ and $y \sim v$ without loss of generality. Let $P_1$ be the shortest path of $C - \{v\}$ that contains all the neighbors of $x$ on $C$ --- and in particular, its endpoints $v_i$ and $v_j$ are both neighbors of $x$. Moreover, since $y \sim v$, if $y$ had a neighbor $z$ internal to $P_1$ then $v$, $z$, $v_i$ and $v_j$ would contradict Claim 2.
 
         Lastly, let $P_2$ be such that $C = P_1 \cup P_2$ and $P_1$ and $P_2$ are internally disjoint; the last observation implies that $\mathcal N (y) - \{x\}$ lies completely on $P_2$, therefore $G$ is planar by Claim 4.
-
     \end{proof}
+
+    \section{Exercises}
+
+    \begin{framedprob}{}
+        Find an Euler formula for disconnected graphs.
+    \end{framedprob}
+
+    \solution{
+        We claim that if $G$ is plane on $\ell$ faces and $k$ connected components, then $$n - m + \ell = k + 1$$ We prove our claim by induction on $k$.
+
+        If $k = 1$ then $G$ is connected, and $n - m + \ell = 1 + 1 = 2$ which is true by Euler's formula.
+
+        Now, consider a graph $G$ that has at least 2 components (i.e. $k \ge 2$), and assume our equation is true for a plane graph on $k - 1$ components. Fix a components $C_i$ of $G$; then $G - C_i$ has $k - 1$ components, and it is plane since $G$ is plane, therefore by induction we have that $$\abs{V(G - C_i)} - \abs{E(G - C_i)} + \abs{F(G - C_i)} = (k - 1) + 1 = k$$ where $F(H)$ is the number of faces of the graph $H$. Then, since $C_i$ and $G - C_i$ have 1 face in common --- i.e. the outer face --- we have that
+        \begin{equation*}
+            \begin{alignedat}{2}
+                \abs{V(G)} - \abs{E(G)} + \abs{F(G)} &= && \ \abs{V(G - C_i)} + \abs{V(C_i)} - (\abs{E(G - C_i)} + \abs{E(C_i)}) + \\
+                                                     & &&  \ \abs{F(G - C_i)} - 1 + \abs{F(C_i)} \\
+                                                     &= && \ k + 2 - 1 \\
+                                                     &= && \ k + 1
+            \end{alignedat}
+        \end{equation*}
+    }
 
     \printbibliography % UNCOMMENT FOR BIBLIOGRAPHY
 
