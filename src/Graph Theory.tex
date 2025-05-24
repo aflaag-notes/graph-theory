@@ -475,6 +475,30 @@
 
     We observe that, by definition, $C_3$ is always induced.
 
+    \begin{frameddefn}{Chord}
+        Given a cycle $C$, a \tbf{chord} on $C$ is an edge between two vertices $x, y \in V(G)$ such that $xy \notin E(C)$.
+    \end{frameddefn}
+
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.75cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
+
+            \node[circle, draw] (1) []{$x_1$};
+            \node[circle, draw] (2) [right of = 1]{$x_2$};
+            \node[circle, draw] (3) [below of = 1]{$x_4$};
+            \node[circle, draw] (4) [below of = 2]{$x_3$};
+
+            \draw[-] (1) to (2);
+            \draw[-] (1) to (3);
+            \draw[-] (2) to (4);
+            \draw[-] (2) to (3);
+            \draw[-] (3) to (4);
+
+            ;
+        \end{tikzpicture}
+        \caption{For instance, the edge $\{2,3\}$ is a \tit{chord} of this cycle graph.}
+    \end{figure}
+
     \begin{framedprop}[label={min deg 2}]{}
         Every graph with $\delta \ge 2$ has a cycle of length at least $\delta + 1$.
     \end{framedprop}
@@ -1167,6 +1191,19 @@
 
     \solution{
         By way of contradiction, suppose that $V(P_1) \cap V(P_2) = \varnothing$, and fix two vertices $v_1 \in V(P_1)$ and $v_2 \in V(P_2)$. By connectivity of $G$ there must be a path $v_1 \in v_2$ inside $G$ --- call it $R$. For $i \in \{1, 2\}$ let $P_i = P_i' \cup P_i''$ such that $P_i' \cap P_i''$ is the endpoint of $R$ in $P_i$, and assume $\abs{V(P_i')} \ge \abs{V(P_i'')}$. However, since $\abs{V(P_i')} \ge \tfrac{t}{2}$ then we have that $P_1' \cup P_2' \cup R$ is a path of length at least $\tfrac{t}{2} + \tfrac{t}{2} + 1 = t + 1$, contradicting the definition of $G$.
+    }
+
+    \begin{framedprob}{}
+        Prove that if a graph $G$ is such that $\delta \ge 3$, then $G$ has a cycle with a chord.
+    \end{framedprob}
+
+    \solution{
+        Consider a maximum length path $P = x_1 \ \ldots \ x_k$ of $G$; then, since it has maximum length, each neighbor of $x_k$ must lie inside $V(P)$, and because $\delta \ge 3$ there must exist at least two vertices $x_i, x_j \in V(P)$ such that $x_i, x_j \sim x_k$ and $i, j \neq k - 1$ --- without loss of generality suppose that $i < j$. This implies that
+
+        \begin{itemize}
+            \item $C := x_k \ x_i \ \ldots \ x_j \ \ldots \ x_k$ is a cycle of $G$
+            \item $\{x_j, x_k\}$ is a chord of $C$
+        \end{itemize}
     }
 
     \chapter{Matchings}
@@ -4593,6 +4630,14 @@
         This implies that $3 \ell = 2m \iff \ell = \tfrac{2}{3}m$, and by Euler's formula we get that $$n - m + \ell = n - m + \dfrac{2}{3}m = 2 \iff n - 2 = \dfrac{1}{3}m \iff m = 3n - 6$$
     \end{proof}
 
+    \begin{framedcor}[label={5 deg planar}]{}
+        If $G$ is a plane graph such that $n \ge 3$, then $G$ contains a vertex $v$ such that $\deg(v) \le 5$.
+    \end{framedcor}
+
+    \begin{proof}
+        By way of contradiction, suppose that $\delta \ge 6$, i.e. $G$ does not contain vertices of degree at most 5. Since $G$ is a plane graph on at least 3 vertices, by the previous theorem we know that $m \le 3n - 6$, but if $\delta \ge 6$ then $2m \ge 6n$ by the Handshaking lemma, which implies that $m \ge 3n$ $\lightning$.
+    \end{proof}
+
     In particular, the contrapositive of this theorem is enough to \tbf{certify} that a given graph is \tit{not} planar. For instance, consider $K_5$; then $$\abs{E(K_5)} = \binom{5}{2} = \dfrac{5 \cdot 4}{2} = 10 > 9 = 3 \cdot 5 - 6 = 3 \abs{V(K_5)} - 6$$
 
     Is this theorem enough to prove that our original graph $K_{3,3}$ is not planar? Unfortunately, we have that $$\abs{E(K_{3, 3})} = 3 \cdot 3 = 9 \le 12 = 3 \cdot 6 - 6 = 3 \cdot \abs{V(K_{3, 3})} - 6$$ which is not enough to prove that $K_{3,3}$ is not planar. However, consider the following proposition.
@@ -4814,6 +4859,98 @@
                                                      &= && \ k + 1
             \end{alignedat}
         \end{equation*}
+    }
+
+    \chapter{Graph coloring}
+
+    TODO \todo{introduction}
+
+    \begin{frameddefn}{Proper coloring}
+        Given a graph $G$, a \tbf{proper coloring} of $G$ is a function $\func{c}{V(G)}{\N}$ that assigns a natural number to each vertex of $G$ such that for any pair $x, y \in V(G)$ if $x \nsim y$ then $c(x) \neq c(y)$.
+    \end{frameddefn}
+
+    TODO \todo{example}
+
+    We say that a graph is $k$-colorable if $k$ colors suffices to provide a proper coloring of such graph. We observe that such a function always exists, i.e. the \tbf{trivial coloring}: it suffices to color each vertex with a different color. Therefore, we are interested in finding a proper coloring of a graph that \tit{minimizes} the number of colors used.
+
+    \begin{frameddefn}{Chromatic number}
+        Given a graph $G$, the chromatic number $\chi(G)$ of $G$ is the minimum number of colors such that there exists a proper coloring of $G$ on $\chi(G)$ colors.
+    \end{frameddefn}
+
+    TODO \todo{example}
+
+    \begin{framedprop}[label={bip col}]{}
+        Given a graph $G$, then $G$ is bipartite if and only if $\chi(G) = 2$.
+    \end{framedprop}
+    
+    \begin{proof}
+        If $G$ is bipartite through $(A, B)$, then construct a coloring such that $$\forall x \in V(G) \quad c(x) = \soe{ll}{0 & x \in A \\ 1 & x \in B}$$ and since $A$ and $B$ are independent sets, this must be a proper coloring of $G$.
+
+        Viceversa, if $\chi(G) = 2$, then there is a proper coloring $c$ of $G$ that uses 2 colors --- without loss of generality suppose that $c(x)$ is either 0 or 1 for all $x \in V(G)$. Hence, by definition of proper coloring the vertices with the same color cannot be adjacent, implying that $G$ is bipartitioned through the vertices that are assigned 0 and the vertices that are assigned 1 by $c$. This implies that $G$ is bipartite.
+    \end{proof}
+
+    Given that this fairly trivial proposition provides a complete characterization on 2-colorable graph hard is colorability, in general? Well, as proved by \textcite{karp}, 3-colorability is already \NPclass-hard, in fact $k$-colorability is \NPclass-hard for any $k \ge 2$. This implies that the best we can possibly achieve are bounds on the chromatic number.
+
+    Thus, let us start with the basics: aside from the trivial coloring, what is a tighter upper bound for $\chi(G)$?
+
+    \begin{framedprop}{}
+        Given a graph $G$, it holds that $\chi(G) \le \Delta(G) + 1$.
+    \end{framedprop}
+
+    \begin{proof}
+        We proceed by induction on $n$; for the base case, if $n = 1$ then clearly $\Delta(G) = 0$ and $1 = \chi(G) \le 0 + 1$. Now, assume the claim for a graph on $n - 1$ nodes and consider a graph $G$ on $n$ nodes.
+
+        Fix a vertex $v \in V(G)$ and consider $G - \{v\}$; since we removed a vertex from $G$, the maximum degree of $G - \{v\}$ is at most the maximum degree of $G$ itself, thus $\Delta(G - \{v\}) \le \Delta(G)$. Moreover, since $G - \{v\}$ has $n - 1$ vertices, we know by induction that $\chi(G - \{v\}) \le \Delta(G - \{v\}) + 1$. This implies that $$\chi(G - \{v\}) \le \Delta(G - \{v\}) + 1 \le \Delta(G) + 1$$ which means that $G - \{v\}$ can be colored with at most $\Delta(G) + 1$ colors. Now, $v$ has at most $\Delta(G)$, therefore $\mathcal N(v)$ requires at most $\Delta(G)$ colors, which means we are left with one more color to be used for $v$ itself, thus the whole graph $G$ can be colored with at most $\Delta(G) + 1$ colors.
+    \end{proof}
+
+    Can we do better if the our graph has some specific properties? For instance, consider the case in which $G$ is a \tit{planar graph}.
+
+    \begin{framedprop}{}
+        Given a planar graph $G$, it holds that $\chi(G) \le 6$.
+    \end{framedprop}
+
+    \begin{proof}
+
+        We proceed by induction on $n$; for the base case, if $n = 1$ we know that $1 = \chi(G) \le 6$, and if $n = 2$ then
+
+        \begin{itemize}
+            \item if the graph are two isolated vertices, then $1 = \chi(G) \le 6$
+            \item if the graph is $K_2$ then $2 = \chi(G) \le 6$
+        \end{itemize}
+
+        Now, assume the claim for a graph on $n - 1$ nodes where $n - 1$ vertices, and consider a graph $G$ on $n \ge 3$ nodes.
+
+        Since $n \ge 3$, by \cref{5 deg planar} we know that $G$ contains a vertex of degree at most 5, therefore fix such a vertex $v \in V(G)$. We observe that if $G$ is planar, then clearly $G - \{v\}$ is still planar, which means that by induction $\chi(G - \{v\}) \le 6$. Lastly, since $\mathcal N(v)$ can use at most $5$ different colors, we can still use one additional color to color $v$ itself and still be able to 6-color the whole graph $G$.
+    \end{proof}
+
+    Is this the best result we can achieve through planarity? TODO \todo{da finire}
+
+    \section{Exercises}
+
+    \begin{framedprob}{}
+        A graph $G$ is said to be $k$-critical if
+        
+        \begin{itemize}
+            \item $\chi(G) = k$
+            \item $\forall v \in V(G) \quad \chi(G - \{v\}) \le k - 1$
+        \end{itemize}
+
+        Give all the 3-critical graphs.
+    \end{framedprob}
+    
+    \solution{
+        Consider a cycle graph $C_{2h + 1}$ of odd-length; we observe that 3 colors always suffice to color such a graph, since we can alternate between two different colors for $2h$ vertices until the last vertex, which will be assigned a third color. Moreover, if we remove any vertex $v$ from such cycle, we see that the graph becomes a tree, and since trees are bipartite graph by \cref{bip col} we have that $\chi(C_{2h + 1} - \{v\}) = 2 \le 3 - 1$. This proves that any odd-length cycle graph $C_{2h + 1}$ is 3-critical.
+
+        Now, consider a graph $G$ which is \tit{not} a cycle graph of odd-length; if $G$ has no cycles or only even-length cycles then $G$ is bipartite by \cref{odd-len bip}, therefore by \cref{bip col} $\chi(G) = 2$ implying that $G$ is not 3-critical. Hence, we may assume that $G$ has at least one odd-length cycle $C$, and since we are assuming that $G \neq C$, $G$ may be such that
+
+        \begin{itemize}
+            \item it contains at least one vertex outside $C$, or
+            \item it contains at least one edge outside $C$
+        \end{itemize}
+
+        In the first case, let $v$ such vertex; then $G - \{v\}$ contains $C$ as subgraph, and since it is an odd-length cycle it requires at least 3 colors to be proper colored, meaning that $\chi(G - \{v\}) \ge 3$ implying that $G$ is not 3-critical. Therefore, we may assume that $V(C) = V(G)$, but since $G \neq C$ there must be a chord on $C$ --- which also implies that $C \neq C_3$, i.e. $\abs{V(G)} \ge 5$.
+
+        Then, such chord must split $C$ into two subcycles $C'$ and $C''$ such that $G = C' \cup C''$, and one of which must have odd length --- without loss of generality suppose that $C'$ is the odd-length subcycle. This means that by choosing any vertex $v \in V(C'') - V(C')$ --- which exists because $\abs{V(G)} \ge 5$ --- we get a graph $G - \{v\}$ that still contains an odd-length cycle, meaning that $\chi(G - \{v\}) \ge 3$ implying that $G$ is not 3-critical. This proves that if $G$ is not an odd-length cycle then it is not 3-critical.
     }
 
     \printbibliography % UNCOMMENT FOR BIBLIOGRAPHY
