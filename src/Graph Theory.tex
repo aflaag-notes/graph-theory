@@ -4515,7 +4515,7 @@
     }{
         Assume the statement holds for 2-connected planar graphs on at most $n - 1$ vertices.
     }{
-        Suppose $G$ has $n$ vertices; since $G$ is 2-connected, by \cref{2conn ear decomp} $G$ admits an ear decomposition $C, P_1, \ldots, P_k$. If $k = 0$ then $G = C$ and the theorem triviallyh holds, so we may assume that $k \neq 0$; hence, consider $H = C \cup P_1 \cup \ldots \cup P_{k - 1}$. We observe that $H$ is the union of an ear decomposition, therefore by the same theorem $H$ is 2-connected. Moreover, $H$ cannot have more than $n - 1$ vertices since $P_k$ is an $H$-path, therefore we can apply the inductive hypothesis and assume that each face boundary of $H$ is a cycle.
+        Suppose $G$ has $n$ vertices; since $G$ is 2-connected, by \cref{2conn ear decomp} $G$ admits an ear decomposition $C, P_1, \ldots, P_k$. If $k = 0$ then $G = C$ and the theorem trivially holds, so we may assume that $k \neq 0$; hence, consider $H = C \cup P_1 \cup \ldots \cup P_{k - 1}$. We observe that $H$ is the union of an ear decomposition, therefore by the same theorem $H$ is 2-connected. Moreover, $H$ cannot have more than $n - 1$ vertices since $P_k$ is an $H$-path, therefore we can apply the inductive hypothesis and assume that each face boundary of $H$ is a cycle.
 
         Now consider $P_k$; since each face boundary of $H$ is a cycle we know that there must be a face $f$ of $H$ that contains $\mathring{P_k}$ bounded by a cycle $C'$. Hence, by \cref{3 poly arcs lemma} this implies that $P_k$ divides $f$ into 2 faces $f'$ and $f''$ each bounded by a cycle --- formed by $P_k$ and a subpath of $C'$.
     }
@@ -4704,7 +4704,7 @@
 
     We can leverage this property to prove the following characterization about the special cases of $K_5$ and $K_{3,3}$.
 
-    \begin{framedlem}{}
+    \begin{framedlem}[label={kuratowski lemma}]{}
         A graph $G$ has $K_5$ or $K_{3,3}$ as topological minor if and only if it has $K_5$ or $K_{3,3}$ as minor.
     \end{framedlem}
 
@@ -4716,7 +4716,7 @@
 
     Finally, we are ready to discuss Kuratowski's theorem.
 
-    \begin{framedthm}{Kuratowski's theorem}
+    \begin{framedthm}[label={kuratowski}]{Kuratowski's theorem}
         A graph $G$ is planar if and only if $G$ does not contain $K_5$ nor $K_{3,3}$ as topological minors.
     \end{framedthm}
     
