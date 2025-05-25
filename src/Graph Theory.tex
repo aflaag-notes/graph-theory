@@ -2773,15 +2773,15 @@
         The same reasoning can be applied to any pair of vertices in $X$ and $Y$, which means that all the vertices in $X$ are connected to $x$ by definition, and they are also connected to $y$ thanks to the paths passing through $Y$. This implies that $G$ contains a subgraph that is a subdivision of $K_{2, t}$, meaning that $K_{2, t}$ is a topological minor of $G$.
     }
 
-    \begin{framedprob}{}
-        Show, without using Menger's theorem, that any two vertices of a 2-connected graph lie on a common cycle.
-    \end{framedprob}
-    
-    \solution{
-        Let $G$ be a 2-connected graph, and by way of contradiction suppose that there are two vertices $x, y \in V(G)$ that do not lie on a common cycle of $G$. By \cref{kconn}, we know that $\delta \ge 2$, hence there must be vertices $x_1, x_2$ and $y_1, y_2$ such that $x \sim x_1, x_2$ and $y \sim y_1, y_2$.
-
-        If $x$ and $y$ do not lie on a common cycle, without of loss of generality we may assume that $x_1$ and $y_1$ are connected by only one path --- there must be at least one otherwise $G$ would be disconnected. However, since $x_1 \sim x \sim x_2$ and $y_1 \sim y \sim y_2$, such path must pass through $x$, $x_2$, $y_2$ and $y$. In particular, this implies that $G - \{x_2\}$ is disconnected because $x_1$ and $y_1$ are not connected anymore. Therefore, we can find a set of 1 vertex that disconnects $G$, meaning that $G$ is not 2-connected $\lightning$.
-    }
+    % \begin{framedprob}{}
+    %     Show, without using Menger's theorem, that any two vertices of a 2-connected graph lie on a common cycle.
+    % \end{framedprob}
+    % 
+    % \solution{
+    %     Let $G$ be a 2-connected graph, and by way of contradiction suppose that there are two vertices $x, y \in V(G)$ that do not lie on a common cycle of $G$. By \cref{kconn}, we know that $\delta \ge 2$, hence there must be vertices $x_1, x_2$ and $y_1, y_2$ such that $x \sim x_1, x_2$ and $y \sim y_1, y_2$.
+    %
+    %     If $x$ and $y$ do not lie on a common cycle, without of loss of generality we may assume that $x_1$ and $y_1$ are connected by only one path --- there must be at least one otherwise $G$ would be disconnected. However, since $x_1 \sim x \sim x_2$ and $y_1 \sim y \sim y_2$, such path must pass through $x$, $x_2$, $y_2$ and $y$. In particular, this implies that $G - \{x_2\}$ is disconnected because $x_1$ and $y_1$ are not connected anymore. Therefore, we can find a set of 1 vertex that disconnects $G$, meaning that $G$ is not 2-connected $\lightning$.
+    % }
     
     \begin{framedprob}{}
         Solve the following exercises on $k$-connectivity.
