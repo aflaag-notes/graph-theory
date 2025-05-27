@@ -1206,6 +1206,25 @@
         \end{itemize}
     }
 
+    \begin{framedprob}{}
+        Let $T$ be a tree, and $T_1, \ldots, T_k$ be a collection of subrees of $T$ such that for any $i, j \in [k]$ if $i \neq j$ then $V(T_i) \cap V(T_j) \neq \varnothing$. Prove that $\bigcap_{i = 1 }^k{V(T_i)} \neq \varnothing$.
+    \end{framedprob}
+
+    \solution{
+        We proceed by induction on $n$. Consider a tree $T$ such that $n = 1$: then the collection of subtrees must be such that for all $i \in [k]$ it holds that $V(T_i) = \{v\}$ where $v$ is the only node in $T$; therefore trivially $\bigcap_{i = 1}^k{V(T_i)} = \{v\} \neq \varnothing$.
+
+        Assume the statement holds for a tree of size $n - 1$, and consider a tree $T$ of size $n$, and let $T_1, \ldots, T_k$ a the collection of subtrees of $T$ such that they have pairwise non-empty intersection. Moreover, fix a leaf $\ell$, and by \cref{tree without leaf} we know that $T - \{\ell\}$ is still a tree. Therefore, if $\ell$ is not contained by any of the trees of the collection, the statement follows trivially by induction on $T - \{\ell\}$, so we may assume that $\ell$ is contained in at least one of the trees of the collection. Furthermore, we may assume that there is no tree $T_i$ of the collection such that $V(T_i) = \{\ell\}$, otherwise by the fact that it must be non-pairwise nondisjoint with all the other trees it must hold that $\forall j \in [k] \quad j \neq i \implies V(T_i) \cap V(T_j) = \{\ell\}$ which trivially implies that $\bigcap_{i = 1}^k{V(T_i)} = \{\ell\}$.
+
+        Therefore, we are assuming that there is at least a tree of the collection containing $\ell$, and each such tree must contain at least another vertex. Therefore, by connectivity of each subtree we know that there is one vertex --- say $u$ --- such that $\ell \sim u$ which in turn implies that $\forall i \in [k] \quad \ell \in V(T_i) \implies u \in V(T_i)$. Now, for each $i \in [k]$ let $T_i'$ indicate the subtree $T_i - \{\ell\}$; the previous observation implies that $\forall i, j \in [k] \quad i \neq j, \ell V(T_i) \cap V(T_j) \implies u \in V(T_i) \cap V(T_j) \implies u \in V(T_i') \cap V(T_j')$. Now, consider the collection $T_1', \ldots, T_k'$; this observation implies that for each $i, j \in [k]$, if $i \neq j$ then
+
+        \begin{itemize}
+            \item if $\ell \in V(T_i) \cap V(T_j)$ then $u \in V(T_i') \cap V(T_j') \implies V(T_i') \cap V(T_j') \neq \varnothing$
+            \item if $\ell \notin V(T_i) \cap V(T_j)$ then $\ell$ is not present in at least one between $T_i$ and $T_j$, but this must imply that there is some node such that $V(T_i') \cap V(T_j')$ since $V(T_i) \cap V(T_j) \neq \varnothing$ by assumption on $T_1, \ldots, T_k$
+        \end{itemize}
+
+        Therefore, this is a collection of non-pairwise disjoint trees over $T' = T - \{\ell\}$, which is a tree having $n - 1$ nodes. Hence, by inductive hypothesis we know that $\bigcap_{i = 1}^k{V(T_i')} \neq \varnothing$ which implies that $\bigcap_{i = 1}^k{V(T_i)}\neq \varnothing$ since we did not remove any vertex --- in fact, we just added $\ell$ back in the trees where it was present.
+    }
+
     \chapter{Matchings}
 
     \begin{frameddefn}{Matching}
