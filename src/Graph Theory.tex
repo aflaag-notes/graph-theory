@@ -4890,13 +4890,15 @@
 
     TODO \todo{example}
 
-    We say that a graph is $k$-colorable if $k$ colors suffices to provide a proper coloring of such graph. We observe that such a function always exists, i.e. the \tbf{trivial coloring}: it suffices to color each vertex with a different color. Therefore, we are interested in finding a proper coloring of a graph that \tit{minimizes} the number of colors used.
+    We say that a graph is $k$-colorable if $k$ colors suffice to provide a proper coloring of such graph. We observe that such a function always exists, i.e. the \tbf{trivial coloring}: it suffices to color each vertex with a different color. Therefore, we are interested in finding a proper coloring of a graph that \tit{minimizes} the number of colors used.
 
     \begin{frameddefn}{Chromatic number}
         Given a graph $G$, the chromatic number $\chi(G)$ of $G$ is the minimum number of colors such that there exists a proper coloring of $G$ on $\chi(G)$ colors.
     \end{frameddefn}
 
     TODO \todo{example}
+
+    This implies that if $G$ is $k$-colorable, then $\chi(G) \le k$ --- since $k$-colors suffice to properly color $G$.
 
     \begin{framedprop}[label={bip col}]{}
         Given a graph $G$, then $G$ is bipartite if and only if $\chi(G) = 2$.
@@ -4910,7 +4912,7 @@
 
     Given that this fairly trivial proposition provides a complete characterization on 2-colorable graph hard is colorability, in general? Well, as proved by \textcite{karp}, 3-colorability is already \NPclass-hard, in fact $k$-colorability is \NPclass-hard for any $k \ge 2$. This implies that the best we can possibly achieve are bounds on the chromatic number.
 
-    Thus, let us start with the basics: aside from the trivial coloring, what is a tighter upper bound for $\chi(G)$?
+    Thus, let us start with the basics: aside from the trivial coloring, which implies that $\chi(G) \le \abs{V(G)}$ always holds, is there a tighter \tit{upper bound} for $\chi(G)$?
 
     \begin{framedprop}{}
         Given a graph $G$, it holds that $\chi(G) \le \Delta(G) + 1$.
@@ -4929,7 +4931,6 @@
     \end{framedprop}
 
     \begin{proof}
-
         We proceed by induction on $n$; for the base case, if $n = 1$ we know that $1 = \chi(G) \le 6$, and if $n = 2$ then
 
         \begin{itemize}
@@ -4943,6 +4944,151 @@
     \end{proof}
 
     Is this the best result we can achieve through planarity? TODO \todo{da finire}
+
+    \begin{framedprop}{}
+        Given a planar graph $G$, it holds that $\chi(G) \le 5$.
+    \end{framedprop}
+
+    \begin{proof}
+        TODO \todo{}
+    \end{proof}
+
+    So far, we only discussed \tit{upper bounds} on the chromatic number, but what about \tit{lower bounds}? Consider the following definition.
+
+    TODO \todo{missing indset}
+
+    Moreover, consider the following number.
+
+    \begin{frameddefn}{Clique number}
+        Given a graph $G$, the \tbf{clique number} $\omega(G)$ is the size of the largest clique subgraph of $G$.
+    \end{frameddefn}
+
+    TODO \todo{example}
+
+    Since a $t$-clique always requires $t$-colors to be properly colored, the clique number \tit{lower bounds} the chromatic number of a graph, because each graph containing a $t$-clique must require at least $t$ colors to properly color its $t$-clique subgraph.
+
+    \begin{framedprop}{}
+        Given a graph $G$, it holds that $\chi(G) \ge \omega(G)$.
+    \end{framedprop}
+
+    However, $\omega(G)$ can be significantly lower than $\chi(G)$, in fact TODO \todo{find paper and add name in next thm} First, consider the following proposition.
+
+    \begin{frameddefn}{Color class}
+        Given a graph $G$, and a proper coloring $\func{c}{V(G)}{[k]}$ of $G$, for each $i \in [k]$ the \tbf{color class of $i$} is the set of vertices $$\mathcal C(i) := \{v \in V(G) \mid c(v) = i\}$$
+    \end{frameddefn}
+
+    We observe that, by definition of proper coloring, for each $i \in [k]$ it holds that $G[\mathcal C(i)]$ is an independent set.
+
+    \begin{framedprop}{}
+        Let $G$ be a graph such that $\chi(G) = k$, and let $\func{c}{V(G)}{[k]}$ be a proper coloring of $G$. Then for each $i \in [k]$ there exists $x \in \mathcal C(i)$ such that $\mathcal N (x)$ contains a vertex of every color except $i$.
+    \end{framedprop}
+
+    \begin{proof}
+        By way of contradiction, suppose that there exists $i \in [k]$ such that for each $x \in \mathcal C(i)$ it holds that $\mathcal N(x)$ is missing at least one color in $[k] - \{i\}$; then, it is possible to recolor each $x \in \mathcal C(i)$ with the missing color in $\mathcal N(x)$ different from $i$ itself, which implies that $\mathcal C(i)$ can be completely properly recolored without using $i$. Moreover, $G[\mathcal C(i)]$ is still properly colored because it is an independent set. This means that $G$ is $(k - 1)$-colorable, i.e. $\chi(G) \le k - 1$, contradicting the assumption on $\chi(G)$ $\lightning$.
+    \end{proof}
+
+    \begin{framedthm}{}
+        There exists a family of graphs $G_1, G_2, \ldots$ such that for each $G_k$ it holds that $\chi(G_k) = k$ and $\omega(G_k) = 2$.
+    \end{framedthm}
+
+    \begin{proof}
+        Let $G_1$ be a single vertex, and consider a graph of such sequence $G_k$; we construct $G_{k + 1}$ inductively as follows:
+
+        \begin{itemize}
+            \item start with $V(G_{k + 1}) = V(G_k)$ and $E(G_{k + 1}) = E(G_k)$
+            \item let $v_1, \ldots, v_n$ be the vertices of $G_k$
+            \item add vertices $v_1', \ldots, v_n', u \in V(G_{k + 1})$
+            \item for each $\{v_i, v_j\} \in E(G_k)$ add an edge $\{v_i', v_j\} \in E(G_{k + 1})$
+            \item for each $v_i' \in V(G_{k + 1})$ add an edge $\{u, v_i'\} \in E(G_{k + 1})$
+        \end{itemize}
+
+        TODO \todo{drawing}
+
+        \claim{
+            $\omega(G_{k + 1}) = 2$.
+        }{
+            By way of contradiction, suppose that $\omega(G_{k + 1}) \ge 3$, i.e. $G_{k + 1}$ contains at least a $K_3$ as subgraph. Then, by construction of $G_{k + 1}$ we observe that there is no edge of the form $\{v_i', v_j'\}$ in $E(G_{k + 1})$, which implies that the $K_3$ subgraph of $G_{k + 1}$
+
+            \begin{itemize}
+                \item cannot have $u$ as one of its three vertices
+                \item cannot contain two vertices of the form $v_i'$, $v_j'$
+            \end{itemize}
+
+            Moreover, since $\omega(G_k) = 2$ by induction, $G_k$ does not contain any $K_3$ as subgraph, therefore the $K_3$ in $G_{k + 1}$ must have one vertex of the form $v_i'$, and the the other two vertices must be some $v_j, v_k$. However, if $v_i' \sim v_j, v_k$ then, by definition of $G_{k + 1}$, this would imply that $v_i \sim v_j, v_k$ meaning that $G_k$ contained a $K_3$ subgraph $\lightning$.
+        }
+
+        \claim{
+            $\chi(G_{k + 1}) = k + 1$.
+        }{
+            By induction, we know that $\chi(G_k) = k$, and consider a proper coloring $c$ of $G_k$; since for each $i \in [n]$ it holds that $v_i \nsim v_i'$, we can color $v_i'$ with $c(v_i)$ itself, and then $u$ will require one additional color to be properly colored. This proves that $\chi(G) \le k + 1$.
+
+            Now, by way of contradiction suppose that there exists a proper coloring of $G_{k + 1}$ that requires $k$ colors. By induction, we know that $\chi(G_k) = k$, thus fix a color $\ell \in [k]$ of a proper coloring of $G_k$. By the previous proposition we know that there exists $v_i \in \mathcal C(\ell)$ such that $\mathcal N(v_i)$ contains a vertex of every color except $\ell$. This implies that in $G_{k + 1}$ we have that $\mathcal N(v_i')$ contains a vertex of every color except $\ell$, meaning that $v_i'$ \tit{must} be colored with $\ell$. However, by repeating the same argument with every color class we get that each $v_i'$ will be colored differently, meaning that $u$ cannot be colored with any of the $k$ available colors because of the edges $\{u, v_i'\}$ for each $v_i'$ --- we observe that $n \ge k$ always holds.
+        }
+    \end{proof}
+
+    TODO \todo{example of G4}
+
+    Let's look deeper into the relationship between $\chi(G)$ and $\omega(G)$: for which graphs it holds that $\chi(G) = \omega(G)$? A rather uninteresting answer to this question would be any graph $H$ on $n$ vertices, together with a $K_n$ disconnected from $H$ itself, in fact we would have that $$n = \omega(G) \le \chi(G) \le n \implies \omega(G) = \chi(G)$$ This means that asking for a graph $G$ such that its chromatic and clique number coincide does not provide interesting answers, hence we need a strictier definition.
+
+    \begin{frameddefn}{Perfect graph}
+        A graph G is said to be \tbf{perfect} if for each induced subgraph $G'$ of $G$ it holds that $\chi(G') = \omega(G')$.
+    \end{frameddefn}
+
+    TODO \todo{example}
+
+    What are example of perfect graphs? A trivial class of perfect graphs are \tbf{cliques}, since each induced subgraph of a clique is still a clique.
+
+    \begin{framedprop}{}
+        Cliques are perfect.
+    \end{framedprop}
+
+    Another example of perfect graphs is given by \tbf{bipartite graphs}.
+
+    \begin{framedprop}{}
+        Bipartite graphs are perfect.
+    \end{framedprop}
+
+    \begin{proof}
+        First, consider the following property of bipartite graphs.
+
+        \claim{
+            If $G$ is bipartite, then $\chi(G) = \omega(G)$.
+        }{
+            Since $G$ does not contain odd-length cycles by \cref{odd-len bip}, it holds that $\omega(G) = 2$, and by \cref{bip col} we know that $\chi(G) = 2$, thus $\chi(G) = 2 = \omega(G)$.
+        }
+
+        Now, since each induced subgraph of a bipartite graph is still bipartite, from this claim we have that for any induced subgraph $G'$ of a bipartite graph $G$ it holds that $\chi(G') = 2 = \omega(G')$, thus $G$ is perfect.
+    \end{proof}
+
+    Are there any other families of perfect graphs?
+
+    \begin{frameddefn}{Chordal graph}
+        A graph $G$ is said to be \tbf{chordal} if every cycle $C$ of $G$ such that $\abs{V(C)} \ge 4$ has a chord.
+    \end{frameddefn}
+
+    TODO \todo{example}
+
+    A trivial example of chordal graphs are \tbf{cliques}.
+
+    \begin{framedprop}{}
+        Chordal graphs are perfect.
+    \end{framedprop}
+
+    \begin{proof}
+        First, consider the following property of chordal graphs.
+
+        \claim{
+            Every induced subgraph of a chordal graph is chordal.
+        }{
+            Let $G$ be a chordal graph, and $G'$ be an induced subgraph of $G$; if $G'$ does not contain any cycles of length at least 4, then $G'$ is trivially chordal, so we may assume that there is at least one such cycle inside $G'$. Then, since $G$ is chordal such cycle must contain a chord in $G$, and because $G'$ is induced such chord must be contained inside $G'$ as well.
+        }
+
+        This implies that to prove the statement it suffices to show that if $G$ is a chordal graph then $\chi(G) = \omega(G)$. We are going to prove this by induction on $n$.
+
+        For the base case, we have that $n = 1$, therefore the graph is an isolated vertex which is vacuously chordal and trivially perfect. Now, assume the statement for chordal graphs having $n - 1$ vertices, and consider a chordal graph $G$ on $n$ vertices.
+
+        If $G$ is a clique, then $G$ is both chordal and perfect, so we may assume that $G$ is a graph on $n$ vertices that is not a clique, i.e. there is a pair of vertices $x, y \in V(G)$ such that $x \nsim y$. TODO \todo{da finire}
+    \end{proof}
 
     \section{Exercises}
 
@@ -4972,19 +5118,19 @@
         Then, such chord must split $C$ into two subcycles $C'$ and $C''$ such that $G = C' \cup C''$, and one of which must have odd length --- without loss of generality suppose that $C'$ is the odd-length subcycle. This means that by choosing any vertex $v \in V(C'') - V(C')$ --- which exists because $\abs{V(G)} \ge 5$ --- we get a graph $G - \{v\}$ that still contains an odd-length cycle, meaning that $\chi(G - \{v\}) \ge 3$ implying that $G$ is not 3-critical. This proves that if $G$ is not an odd-length cycle then it is not 3-critical.
     }
 
-    \begin{framedprob}{}
-        Prove that if $G$ does not contain $K_4$ as minor, then $\chi(G) \le 3$.
-    \end{framedprob}
-
-    \solution{
-        We prove the statement by \tit{minimal counterexample}. Suppose that $G$ has no $K_4$ as minor, which implies that it does not have $K_4$ as topological minor either, therefore by \cref{3-conn prop} we know that $G$ is not 3-connected. This implies that $G$ admits a separation $(X, Y)$ of order at most 2. Let $G$ be the \tit{smallest} graph --- w.r.t. the number of vertices --- that does not contain $K_4$ as minor and that requires at least 4-colors to be colored --- i.e. $\chi(G) \ge 4$.
-
-        \begin{itemize}
-            \item Suppose that $\abs{X \cap Y} = 0$; if $G$ has no $K_4$, then nor $G[X]$ neither $G[Y]$ have $K_4$ as minor, however $\abs{V(G[X])}, \abs{V(G[Y])} < \abs{V(G)}$ which implies that $G[X]$ and $G[Y]$ are 3-colorable by minimality of $G$, thus $G$ is 3-colorable by the following proper coloring $$\forall z \in V(G) \quad c(z) = \soe{ll}{c_X(z) \quad z \in X \\ c_Y(z) \quad z \in Y}$$ contradicting the fact that it required at least 4 colors to be proper colored by definition $\lightning$.
-            \item Suppose that $\abs{X \cap Y} = \{v\}$; by the same argument $G[X]$ and $G[Y]$ are 3-colorable by two proper coloring $c_X$ and $c_Y$. If $c_X(v) = c_Y(v)$ then $G$ is trivially 3-colorable, so we may assume that $c_X(v) \neq c_Y(v)$; then, it suffices to permute the colors of $c_Y$ such that $c_X(v) = c_Y(c)$ and consider the same coloring function described in the previous case, to construct a 3-coloring for $G$ $\lightning$.
-            \item TODO \todo{da finire}
-        \end{itemize}
-    }
+    % \begin{framedprob}{}
+    %     Prove that if $G$ does not contain $K_4$ as minor, then $\chi(G) \le 3$.
+    % \end{framedprob}
+    %
+    % \solution{
+    %     We prove the statement by \tit{minimal counterexample}. Suppose that $G$ has no $K_4$ as minor, which implies that it does not have $K_4$ as topological minor either, therefore by \cref{3-conn prop} we know that $G$ is not 3-connected. This implies that $G$ admits a separation $(X, Y)$ of order at most 2. Let $G$ be the \tit{smallest} graph --- w.r.t. the number of vertices --- that does not contain $K_4$ as minor and that requires at least 4-colors to be colored --- i.e. $\chi(G) \ge 4$.
+    %
+    %     \begin{itemize}
+    %         \item Suppose that $\abs{X \cap Y} = 0$; if $G$ has no $K_4$, then nor $G[X]$ neither $G[Y]$ have $K_4$ as minor, however $\abs{V(G[X])}, \abs{V(G[Y])} < \abs{V(G)}$ which implies that $G[X]$ and $G[Y]$ are 3-colorable by minimality of $G$, thus $G$ is 3-colorable by the following proper coloring $$\forall z \in V(G) \quad c(z) = \soe{ll}{c_X(z) \quad z \in X \\ c_Y(z) \quad z \in Y}$$ contradicting the fact that it required at least 4 colors to be proper colored by definition $\lightning$.
+    %         \item Suppose that $\abs{X \cap Y} = \{v\}$; by the same argument $G[X]$ and $G[Y]$ are 3-colorable by two proper coloring $c_X$ and $c_Y$. If $c_X(v) = c_Y(v)$ then $G$ is trivially 3-colorable, so we may assume that $c_X(v) \neq c_Y(v)$; then, it suffices to permute the colors of $c_Y$ such that $c_X(v) = c_Y(c)$ and consider the same coloring function described in the previous case, to construct a 3-coloring for $G$ $\lightning$.
+    %         \item TODO \todo{da finire}
+    %     \end{itemize}
+    % }
 
     \printbibliography % UNCOMMENT FOR BIBLIOGRAPHY
 
