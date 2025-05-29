@@ -4950,14 +4950,28 @@
     \end{framedprop}
 
     \begin{proof}
-        TODO \todo{}
+        We proceed by induction on $n$; since $\chi(G) \le n$, if $n \le 5$ the statement trivially holds, therefore assume the proposition for a graph on $n - 1$ vertices and consider a graph of $n \ge 6$ nodes.
+
+        By \cref{5 deg planar} we know that $G$ contains a vertex of degree at most 5; fix such vertex $u$, and inductively assume that $G - \{u\}$ is 5-colorable. If $u$ can be colored with one of the colors we already used for $G - \{u\}$ the statement is trivially true. Hence, by way of contradiction suppose that $G$ is not 5-colorable. We observe that the only way for $G$ not to be 5-colorable is that $\deg(u) = 5$ and $u$ sees every color used to 5-color $G - \{u\}$. Thus, fix a \tit{cyclical} ordering $v_1, \ldots, v_5$ on the neighbors of $u$ and suppose that each $v_i$ gets color $i$ on the 5-coloring of $G - \{u\}$ --- such a coloring can be always constructed by permuting the colors if needed.
+
+        TODO \todo{add drawing of u}
+
+        Now, let $H$ be the subgraph of $G$ induced from the set of vertices that have color 2 and 4 in $G - \{u\}$; clearly, since $\chi(H) = 2$, it must be that $G$ is bipartite by \cref{bip col}. Let $C$ be che component of $H$ that contains $v_2$ TODO \todo{da finire}
     \end{proof}
 
     So far, we only discussed \tit{upper bounds} on the chromatic number, but what about \tit{lower bounds}? Consider the following definition.
 
-    TODO \todo{missing indset}
+    \begin{frameddefn}{Independence number}
+        Given a graph $G$, the \tbf{independence number} $\alpha(G)$ is the size of the largest independent set of $G$.
+    \end{frameddefn}
 
-    Moreover, consider the following number.
+    TODO \todo{example}
+
+    The independence number provides a trivial lower bound on the chromatic number. In fact, if each independent set of a graph $G$ has size exactly $\alpha(G)$, then each coloring of $G$ will require at least $k$ colors, where $k$ is the number of independent sets of $G$, which is going to be $\ceil{\tfrac{n}{\alpha(G)}}$.
+
+    \begin{framedprop}{}
+        Given a graph, it holds that $\chi(G) \ge \ceil{\tfrac{n}{\alpha(G)}}$.
+    \end{framedprop}
 
     \begin{frameddefn}{Clique number}
         Given a graph $G$, the \tbf{clique number} $\omega(G)$ is the size of the largest clique subgraph of $G$.
@@ -4992,7 +5006,7 @@
     \end{framedthm}
 
     \begin{proof}
-        Let $G_1$ be a single vertex, and consider a graph of such sequence $G_k$; we construct $G_{k + 1}$ inductively as follows:
+        Let $G_1$ be a single vertex, and $G_2$ be a single edge, and consider a graph of such sequence $G_k$; we construct $G_{k + 1}$ inductively as follows:
 
         \begin{itemize}
             \item start with $V(G_{k + 1}) = V(G_k)$ and $E(G_{k + 1}) = E(G_k)$
@@ -5003,6 +5017,8 @@
         \end{itemize}
 
         TODO \todo{drawing}
+
+        Trivially, we see that $\chi(G_1) = 1 = \omega(G_1)$ and $\chi(G_2) = 2 = \omega(G_2)$. Now, assume the property holds for $G_k$ and consider the graph $G_{k + 1}$.
 
         \claim{
             $\omega(G_{k + 1}) = 2$.
@@ -5070,7 +5086,7 @@
 
     A trivial example of chordal graphs are \tbf{cliques}.
 
-    \begin{framedprop}{}
+    \begin{framedprop}[label={perfect chordal}]{}
         Chordal graphs are perfect.
     \end{framedprop}
 
@@ -5087,7 +5103,40 @@
 
         For the base case, we have that $n = 1$, therefore the graph is an isolated vertex which is vacuously chordal and trivially perfect. Now, assume the statement for chordal graphs having $n - 1$ vertices, and consider a chordal graph $G$ on $n$ vertices.
 
-        If $G$ is a clique, then $G$ is both chordal and perfect, so we may assume that $G$ is a graph on $n$ vertices that is not a clique, i.e. there is a pair of vertices $x, y \in V(G)$ such that $x \nsim y$. TODO \todo{da finire}
+        If $G$ is a clique, then $G$ is both chordal and perfect, so we may assume that $G$ is a graph on $n$ vertices that is not a clique, i.e. there is a pair of vertices $x, y \in V(G)$ such that $x \nsim y$. Let $(X, Y)$ be a separation of $G$ of minimal order such that $x \in X - Y$ and $y \in Y - X$ --- we observe that such a separation always exists, in fact in the \curlyquotes{worst case} we have that $X = V(G)- \{y\}$ and $Y = V(G) - \{x\}$. Moreover, let $C_x$ be the component of $G[X - Y]$ containing $x$, and similarly let $C_y$ be the component of $G[Y - X]$ containing $y$.
+
+        \claim{
+            $X \cap Y \subseteq \mathcal N(C_x)$. \todo{is this correct?}
+        }{
+            % Since $C_x$ is a component of $G[X - Y]$, every edge that has only one endpoint in $C_x$
+            TODO \todo{da finire}
+        }
+    \end{proof}
+
+    Another family of known perfect graphs is the following.
+
+    \begin{frameddefn}{Interval graph}
+        A graph $G$ is called \tbf{interval graph} if for each verterx $x \in V(G)$ there is an interval $[a_x, b_x]$ such that $$\forall u, v \in V(G) \quad u \sim v \iff [a_u, b_u] \cap [a_v, b_v] \neq \varnothing$$
+    \end{frameddefn}
+
+    TODO \todo{example}
+
+    We are going to prove that interval graphs by proving the following proposition.
+
+    \begin{framedprop}{}
+        Interval graphs are chordal.
+    \end{framedprop}
+
+    \begin{proof}
+        Let $G$ be an interval graph, and way of contradiction suppose that $G$ contains an induced cycle of length at least 4 that does not contain a chord. Let $v_1, \ldots, v_k$ be the vertices of such induced cycle and let $I_1, \ldots, I_k$ be the corresponding intervals. Fix $I_i$ to be the interval that minimizes $b_i$, and let $v_j$ and $v_k$ the be neighbors of $v_i$ on the cycle. Thus, by definition of $I_i$ it holds that $b_i \le b_j$, but since $v_i \sim v_j \iff [a_i, b_i] \cap [a_j, b_j] \neq \varnothing$ it must hold that $a_j \le b_i$; this implies that $b_i \in I_j$, and by the same argument we have that $b_i \in I_k$ must hold as well. Therefore $b_i \in I_j \cap I_k \implies I_j \cap I_k \neq \varnothing \iff v_j \sim v_k$, and since $v_j$ and $v_k$ are not adjacent on the cycle, this implies that $\{v_j, v_k\}$ is a chord of the induced cycle $\lightning$.
+    \end{proof}
+
+    \begin{framedcor}{}
+        Interval graphs are perfect.
+    \end{framedcor}
+
+    \begin{proof}
+        Follows immediately from \cref{perfect chordal} and the previous proposition.
     \end{proof}
 
     \section{Exercises}
