@@ -47,4 +47,4 @@
 \contentsline {subsection}{\numberline {6.2.1}Kuratowski's theorem}{105}{subsection.6.2.1}%
 \contentsline {section}{\numberline {6.3}Exercises}{109}{section.6.3}%
 \contentsline {chapter}{\numberline {7}Graph coloring}{111}{chapter.7}%
-\contentsline {section}{\numberline {7.1}Exercises}{119}{section.7.1}%
+\contentsline {section}{\numberline {7.1}Exercises}{120}{section.7.1}%

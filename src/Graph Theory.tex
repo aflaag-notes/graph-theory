@@ -4956,7 +4956,9 @@
 
         TODO \todo{add drawing of u}
 
-        Now, let $H$ be the subgraph of $G$ induced from the set of vertices that have color 2 and 4 in $G - \{u\}$; clearly, since $\chi(H) = 2$, it must be that $G$ is bipartite by \cref{bip col}. Let $C$ be che component of $H$ that contains $v_2$ TODO \todo{da finire}
+        Now, let $H$ be the subgraph of $G$ induced from the set of vertices that have color 2 and 4 in $G - \{u\}$; clearly, since $\chi(H) = 2$, it must be that $G$ is bipartite by \cref{bip col}. Let $C$ be che component of $H$ that contains $v_2$; we observe that inside $C$ colors 2 and 4 can be swapped and still get a valid 5-coloring of $G - \{u\}$. Therefore, if $v_4 \notin C$ then by swapping 2 and 4 inside $C$ we would get a 5-coloring of $G - \{u\}$ in which $u$ would see both $v_2$ and $v_4$ colored with 4, meaning that $u$ could be colored with 2 contradicting the fact that $G$ was not 5-colorable. This implies that $v_4 \in C$, i.e. there is a path $P$ inside $C$ that connectes $v_2$ and $v_4$.
+
+        Now, let $H'$ be the subgraph of $G$ induced from the set of vertices that have color 3 and 5 in $G - \{u\}$, and let $C'$ be the component of $H'$ that contains $v_3$. Clearly $C'$ must be disjoint from $P$, thus by choice of the \tit{cyclical} order on the vertices $v_5$ cannot be contained inside $C'$ because $G$ is planar. This implies that colors 3 and 5 can be swapped inside $C'$ such that both $v_3$ and $v_5$ get colored with 5, meaning that $u$ can be colored with color 3, again contradicting the fact that $G$ was not 5-colorable $\lightning$.
     \end{proof}
 
     So far, we only discussed \tit{upper bounds} on the chromatic number, but what about \tit{lower bounds}? Consider the following definition.
@@ -4969,7 +4971,7 @@
 
     The independence number provides a trivial lower bound on the chromatic number. In fact, if each independent set of a graph $G$ has size exactly $\alpha(G)$, then each coloring of $G$ will require at least $k$ colors, where $k$ is the number of independent sets of $G$, which is going to be $\ceil{\tfrac{n}{\alpha(G)}}$.
 
-    \begin{framedprop}{}
+    \begin{framedprop}[label={indset chi}]{}
         Given a graph, it holds that $\chi(G) \ge \ceil{\tfrac{n}{\alpha(G)}}$.
     \end{framedprop}
 
@@ -5138,6 +5140,36 @@
     \begin{proof}
         Follows immediately from \cref{perfect chordal} and the previous proposition.
     \end{proof}
+
+    So far we only provided examples of perfect graphs, but what about graphs that are \tit{not perfect}? A trivial example is given by \tbf{odd-length cycles} of length at least 5: such graphs have clique number 2 and chromatic number 3 --- by \cref{bip col} --- from which we derive the following proposition.
+
+    \begin{frameddefn}{}
+        Any graph that contains an induced odd-length cycle subgraph of length at least 5 is not perfect.
+    \end{frameddefn}
+
+    In reality, odd-length cycles are a very special type of graph. For instance, consider $\overline{C_7}$: by definition we know that $\alpha(\overline{C_7}) = 2$, therefore by \cref{indset chi} we have that $$\chi(\overline{C_7}) \ge \ceil{\dfrac{n}{\alpha(\overline{C_7})}} = \ceil{\dfrac{7}{2}} = 4$$ Moreover every clique contained inside this graph consists of non-sequential vertices on the cycle, meaning that the biggest size for a clique is 3 --- to get a $K_4$ we would need at least 8 vertices since sequential vertices on the cycle are not adjacent. This means that $\omega(\overline{C_7}) = 3$, therefore $\overline{C_7}$ is not perfect either. By generalizing this idea on any odd-cycle of length at least 5, we get the following property.
+
+    \begin{framedprop}{}
+        For any $k \ge 2$ it holds that $\chi(\overline{C_{2k + 1}}) \ge \ceil{\tfrac{2k + 1}{2}} = k + 1$ and $\omega(\overline{C_{2k + 1}}) = k$.
+    \end{framedprop}
+
+    \begin{framedcor}[label={spgt dir}]{}
+        If a graph $G$ has $\overline{C_{2k + 1}}$ as induced subgraph, for some $k \ge 2$, then $G$ is not perfect.
+    \end{framedcor}
+
+    TODO \todo{buco lore}
+
+    \begin{framedthm}{Weak perfect graph theorem}
+        A graph $G$ is perfect if and only if $\overline G$ is perfect.
+    \end{framedthm}
+
+    TODO \todo{buco lore}
+
+    \begin{framedthm}{Strong perfect graph theorem}
+        A graph $G$ is perfect if and only if $G$ has no induced $C_{2k + 1}$ or $\overline{C_{2k + 1}}$ subgraph, for any $k \ge 2$.
+    \end{framedthm}
+
+    \cref{spgt dir} is the direct implication of this theorem. We observe that this theorem is indeed stronger than the Weak perfect graph theorem: in fact, this theorem implies that if $G$ is perfect then it does not contain $C_{2k+1}$ or $\overline{C_{2k + 1}}$ as induced subgraph, which means that $\overline G$ cannot contain such induced subgraph either, therefore $\overline G$ is perfect.
 
     \section{Exercises}
 
