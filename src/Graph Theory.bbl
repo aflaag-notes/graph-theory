@@ -538,6 +538,28 @@
   Lapok, 38: 116--119, 1931}
   \endentry
 
+  \entry{kostochka}{article}{}
+    \name{author}{1}{}{%
+      {{hash=KAV}{%
+         family={Kostochka},
+         familyi={K\bibinitperiod},
+         given={A.\bibnamedelima V.},
+         giveni={A\bibinitperiod\bibinitdelim V\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{KAV1}
+    \strng{fullhash}{KAV1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{Kos82}
+    \field{sortinit}{K}
+    \field{sortinithash}{K}
+    \field{title}{The minimum Hadwiger number for graphs with a given mean
+  degree of vertices}
+    \field{journaltitle}{Metody Diskret. Analiz.}
+    \field{year}{1982}
+  \endentry
+
   \entry{kuratowski}{article}{}
     \name{author}{1}{}{%
       {{hash=KC}{%

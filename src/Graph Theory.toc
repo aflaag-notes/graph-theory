@@ -44,7 +44,7 @@
 \contentsline {chapter}{\numberline {6}Planar graphs}{95}{chapter.6}%
 \contentsline {section}{\numberline {6.1}Topological properties}{98}{section.6.1}%
 \contentsline {section}{\numberline {6.2}Planarity conditions}{102}{section.6.2}%
-\contentsline {subsection}{\numberline {6.2.1}Kuratowski's theorem}{105}{subsection.6.2.1}%
+\contentsline {subsection}{\numberline {6.2.1}Kuratowski's theorem}{104}{subsection.6.2.1}%
 \contentsline {section}{\numberline {6.3}Exercises}{109}{section.6.3}%
-\contentsline {chapter}{\numberline {7}Graph coloring}{111}{chapter.7}%
-\contentsline {section}{\numberline {7.1}Exercises}{120}{section.7.1}%
+\contentsline {chapter}{\numberline {7}Graph coloring}{110}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Exercises}{119}{section.7.1}%

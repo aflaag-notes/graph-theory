@@ -3211,10 +3211,9 @@
         To recap, we are now assuming that
 
         \begin{enumerate}
-            \item $G$ does not contain a $k$-connected graph --- otherwise the statement is trivially true
+            \item $G$ is not $k$-connected --- otherwise the statement is trivially true
             \item $\abs{E(G)} \ge (2k - 1)(n - k)$
             \item $\delta \ge 2k$
-            % \item $n \ge 2k + 1$
         \end{enumerate}
 
         and in particular, assumption (a) implies that we may assume there is an $A$-$B$ separation $(X, Y)$ of $G$ having order $\abs{X \cap Y} \le k - 1$, where $X - Y , Y - X \neq \varnothing$ --- for some subsets $A, B \subseteq V(G)$.
@@ -3547,7 +3546,7 @@
 
     The cases for $2 \le p \le 5$ were initially established by \textcite{dirac_p_2to5}, and later independently by \textcite{gyori}. \textcite{mader_p_6to7} extended the result to $p = 6$ and $p = 7$. For $p = 8$, \textcite{jorgensen} showed that the theorem holds, except for an infinite family of counterexamples. Similarly, \textcite{song} proved the result for $p = 9$, identifying two infinite families of exceptions. More recently, \textcite{zhu} demonstrated that the theorem also extends to $p = 10$, aside from a few infinite families. The proofs for $p = 9$ and $p = 10$ both involved computer assistance.
 
-    In a series of papers, \textcite{kostochaka} and \textcite{thomason} independently proved that there exists a constant $c$ such that every graph with at least $cp\sqrt{\log p} n$ edges contains a $K_p$ minor. Moreover, thomason further showed that this bound is asymptotically tight: there exist \href{https://en.wikipedia.org/wiki/Erd%C5%91s%E2%80%93R%C3%A9nyi_model}{Erdős–Rényi random graphs} with only $c'p \sqrt{\log p} n$ edges and no $K_p$ minor, for some constant $c' < c$. Notably, in these examples, the number of vertices $n$ is also a function of $p$.
+    In a series of papers, \textcite{kostochka} and \textcite{thomason} independently proved that there exists a constant $c$ such that every graph with at least $cp\sqrt{\log p} n$ edges contains a $K_p$ minor. Moreover, thomason further showed that this bound is asymptotically tight: there exist \href{https://en.wikipedia.org/wiki/Erd%C5%91s%E2%80%93R%C3%A9nyi_model}{Erdős–Rényi random graphs} with only $c'p \sqrt{\log p} n$ edges and no $K_p$ minor, for some constant $c' < c$. Notably, in these examples, the number of vertices $n$ is also a function of $p$.
 
     \begin{framedthm}{Kostochka-Thomason theorem}
         There is a constant $c > 0$ such that any graph $G$ with $\abs{E(G)} \ge cp \sqrt{\log p}n$ contains $K_p$ as minor.
@@ -4439,10 +4438,6 @@
     \begin{framedlem}{Handshaking lemma (faces)}
         Given a plane graph $G$, the sum of the number of edges seen by each face of $G$ is $2 \abs{E(G)}$.
     \end{framedlem}
-
-    \begin{proof}
-        Trivially, by adding all the edges seen by each face of $G$, each edge is counted twice, therefore the sum is equal to $2 \abs{E(G)}$.
-    \end{proof}
 
     \begin{frameddefn}{Planar graph}
         A graph $G$ is said to be \tbf{planar} if there exists a plane graph --- called \tit{drawing of $G$} --- isomorphic to $G$.
