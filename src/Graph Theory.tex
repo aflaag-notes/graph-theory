@@ -4040,8 +4040,32 @@
     }
 
     \begin{framedprob}{}
-        Show that for any choice of the coloring function $\func{c}{E(K_{17})}{\{\mbox{R, G, B}\}}$ there are three vertices
+        Consider the complete graph $K_{17}$; show that for any choice of the coloring function $\func{c}{E(K_{17})}{\{\mbox{R, G, B}\}}$ --- where R, G and B stand for \tit{red}, \tit{green} and \tit{blue} respectively --- there are three vertices $x, y, z \in V(K_{17})$ such that $c(xy) = c(yz) = c(xz)$, i.e. there is a $K_3$ subgraph having the edges colored all colored by the same color.
     \end{framedprob}
+
+    \solution{
+        Fix a vertex $u \in V(K_{17})$; since $\deg(u) = 16$, and there are three possible color for each edge, by the pigeonhole principle $u$ \curlyquotes{sees} at least $\ceil{\tfrac{16}{3}}=6$ edges having the same color. Without loss of generality, suppose that $u$ sees at least 6 red edges $ux_1, \ldots, ux_6$, and consider the vertices $x_1, \ldots, x_6$. We may assume that between any distinct pair $x_i, x_j$ of such vertices there are no red edges, otherwise $K_{17}$ trivially contains a red $K_3$ having $u$, $x_i$ and $x_j$ as vertices. Therefore, for each $i, j \in [6]$ distinct, it holds that $c(x_ix_j)$ is either green or blue.
+
+        We observe that the Ramsey function can be interpreted in terms of \tit{colors} on the edges: in fact, given a coloring function that assigns colors G and B, $R(3) = R(3, 3)$ is the minimum number of vertices which guarantees that a graph on $R(3)$ vertices contains a $K_3$ either completely colored in green or in blue. Therefore, by considering $G[\{x_1, \ldots, x_6\}]$, since this graph contains 6 vertices and no red edges, and $R(3) = 6$ by \cref{r3 = 6}, it follows that such induced subgraph must contain either a blue or a green $K_3$.
+    }
+
+    \begin{framedprob}{}
+        Let $K$ be the kite graph, i.e. the graph formed by two $K_3$'s having an edge in common. Prove that any graph with at least 4 vertices and $\tfrac{3}{2}n - 1$ edges contains $K$ as minor.
+    \end{framedprob}
+
+    \solution{
+        We proceed by induction on $n + m$. For the base case, we have that $n = 4$, therefore $\abs{E(G)} \ge \tfrac{3}{2} \cdot 4 - 1 = 5$ edges, implying that this graph is a $K_4$ without an edge, which clearly contains $K$ as subgraph. Now, assume the inductive hypothesis and consider a graph $G$ on $n \ge 5$ vertices and at least $\tfrac{3}{2}n - 1$ edges.
+
+        Fix an edge $e \in E(G)$, and consider $G - e$: if $\abs{E(G)} > \tfrac{3}{2}n - 1$ then $\abs{E(G - e)} \ge \tfrac{3}{2}n - 1$, therefore by inductive hypothesis $G - e$ would contain $K$ as minor, concluding the proof. Hence, we may assume that $\abs{E(G)} = \tfrac{3}{2}n - 1$. Moreover, if $\abs{E(G/e)} \ge \tfrac{3}{2}(n - 1) - 1$, then by inductive hypothesis $G/e$ contains $K$ as minor, and so thus $G$, concluding the proof. So we may also assume that $$\abs{E(G/e)} < \dfrac{3}{2}(n - 1) - 1 = \dfrac{3}{2}n - \dfrac{5}{2} < \dfrac{3}{2}n - 2 \iff \abs{E(G /e)} \le \dfrac{3}{2}n - 3$$ However, if $G$ has $\tfrac{3}{2}n - 1$ edges, and $G/e$ has at most $\tfrac{3}{2}n - 3$, at least 2 edges must have been removed after contracting $e$ --- and one of the two edges is $e$ itself --- this means that $e$ must be contained in a $K_3$ in $G$. Thus, by repeating the same argument on each edge, we get that every edge of $G$ is contained in at least one $K_3$.
+
+        \claim{
+            If $G$ is disconnected then $G$ contains $K$ as minor.
+        }{
+            TODO \todo{da finire}
+        }
+
+        TODO \todo{da finire}
+    }
 
     \chapter{Graph decompositions}
 
