@@ -4437,12 +4437,12 @@
 
         \begin{itemize}
             \item Give an example of a 2-connected graph $G$ such that for any $C \subseteq G$ it holds that $G - C$ is disconnected.
-            \item Prove that every 3-connected graph $G$ has a cycle $C$ such that $G - C$ is connected.
+            \item Prove that every 3-connected graph $G$ has a non-separating cycle
         \end{itemize}
     \end{framedprob}
     
     \solution{
-        For the first exercise, a minimal example is given by the following graph:
+        For the first exercise, a minimal example is given by the following graph --- we observe that this graph is $K_{2,4}$:
 
         \begin{figure}[H]
             \centering
@@ -4468,7 +4468,62 @@
             \end{tikzpicture}
         \end{figure}
 
-        TODO \todo{da finire}
+        For the second exercise, we proceed by induction on $n$. Since $G$ is 3-connected, the base case is for $n \ge 4$, which implies that $G = K_4$ and can be easily checked that any cycle of $K_4$ is non-separating; now, assume the inductive hypothesis and consider a 3-connected graph on $n \ge 5$ vertices.
+
+        By \cref{tutte decomp} we know that there exists an edge $e \in E(G)$ such that $G/e$ is 3-connected, thus let $e$ be such edge and consider $G/e$. This graph has $n - 1$ vertices, therefore by induction we know that $G/e$ has a non-separating cycle $C$. Now, consider the following cases:
+
+        \begin{itemize}
+            \item if $\abs{e \cap V(C)} = 0$, then $C$ is trivially also non-separating cycle of $G$, so we may assume otherwise
+            \item if $\abs{e \cap V(C)} = 2$, then $e$ lies on $C$ with both endpoints in $G$, meaning that $C$ is still a non-separating cycle of $G$, so again we may assume otherwise
+        \end{itemize}
+
+        This implies that the only case left to handle is if $\abs{e \cap V(C)} = 1$. Without loss of generality assume that $e = xy$, and that $x \in V(C)$ and $y \notin V(C)$. By 3-connectivity of $G$, since $C$ is a cycle then $\abs{V(C)} \ge 3$, implying that by \cref{menger cor} there are 3 internally disjoint $\{y\}$-$V(C)$ paths --- one such path may be the edge $xy$ itself, so we know there are at least other two paths $P_1$ and $P_2$, which do not intersect. Let $p_1$ and $p_2$ be the vertices of $V(C)$ in which these two paths end in $C$: we observe that $P_1$ and $P_3$ induce 3 sections of $C$, namely $p_1 \ C \ x$, then $x \ C \ p_2$ and lastly $p_2 \ C \ p_1$.
+
+        Now consider $G - C$; if it does not contain any vertices the statement trivially holds, so we may assume that $\abs{V(G - C)} \ge 1$, thus fix one vertex $v \in V(G - C)$. Then, again by \cref{menger cor} we know that there are three $\{v\}$-$V(C)$ paths. Without loss of generality, consider the section $p_1 \ C \ p_2$: by the pigeonhole principle, at least two such paths from $v$ will end in either $p_1 \ C \ p_2$ or its complement w.r.t. $C$ --- without loss of generality suppose that two paths lie inside $p_1 \ C \ p_2$. Finally, at least one between $\{xy\} \cup x \ C \ p_1 \cup P_1$ and $\{xy\} \cup x \ C \ p_2 \cup P_2$ is a non-separating cycle of $G$.
+    }
+
+    \begin{framedprob}{}
+        Prove that if $G$ is 2-connected, and $n \ge 4$, then for any edge $e \in E(G)$ either $G/e$ or $G - e$ is 2-connected.
+    \end{framedprob}
+
+    \solution{
+        By way of contradiction, suppose that there exists an edge $xy \in E(G)$ such that nor $G/xy$ neither $G - \{xy\}$ is 2-connected. This implies that both of such graph admit a separation of order 0 or 1.
+
+        \claim[Claim 1]{
+            $G/xy$ and $G - \{xy\}$ are not disconnected.
+        }{
+            If $G/xy$ is disconnected, then $G$ was disconnected as well, since contracting $xy$ cannot disconnect $G$. However, $G$ cannot be 0-connected since we are assuming it is 2-connected. Similarly, if $G - \{xy\}$ is disconnected, then at least one between $x$ and $y$ must be a cut vertex of $G$, implying that $G$ is 1-connected, again contradicting the assumption of 2-connectivity of $G$ $\lightning$.
+        }
+
+        This claim implies that if the statement is assumed false for the sake of contradiction, it must hold that both $G/xy$ and $G - \{xy\}$ are 1-connected. Let $v_{xy}$ be the vertex of $G/xy$ obtained by contracting the edge $xy$.
+
+        \claim[Claim 2]{
+            If $G/xy$ is 1-connected, then for each separation $(A, B)$ of $G/xy$ oder 1 of $G/xy$ it holds that $A \cap B = \{v_{xy}\}$.
+        }{
+            Since $G/xy$ is 1-connected, it must admit a separation of order 1; by way of contradiction, suppose there exists a separation $(A, B)$ such that $A \cap B \neq \{v_{xy}\}$, where $v_{xy}$ is the vertex obtained after contracting the edge $xy$ in $G/xy$. This implies that in $G/xy$ either $v_{xy} \in A - B$ or $v_{xy} \in B - A$ holds, and without loss of generality suppose the former holds; then $((A - \{v_{xy}\} \cup \{x, y\}), B)$ is a separation of $G$ of order 1, contradicting the fact that $G$ is 2-connected.
+        }
+
+        \claim[Claim 3]{
+            If $G/xy$ is 1-connected, then $G - \{xy\}$ is 2-connected. 
+        }{
+            Let $e := xy$, and consider a separation $(A, B)$ of order 1 of $G/e$ such that $v_e \in A \cap B$ --- which exists by Claim 2; we observe that this is a separation of order 2 in $G$, such that $A \cap B = \{x, y\}$ --- call this separation $(A_e, B_e)$.
+
+            By way of contradiction, suppose that there is no edge $e$ such that $(A_e, B_e)$ is a non-trivial separation, i.e. each possible separation of $G$ is trivial; then $G$ is a clique on at least 4 vertices, implying that $G/xy$ is still 2-connected $\lightning$. Therefore, we may assume that there exists at least one such non-trivial separation, thus we may assume that $(A_e, B_e)$ is a non-trivial separation of $G$ of order 2 such that $A_e \cap B_e = \{x, y\}$.
+
+            Now, by way of contradiction suppose that $G - e$ is not 2-connected, and by Claim 1 it must hold that $G - e$ has a separation of order exactly 1; let $(A_z, B_z)$ be a separation of order 1 of $G - e$ such that $A_z \cap B_z = \{z\}$ and $x \in A_z - B_z$ and $y \in B_z - A_z$ --- $x$ and $y$ are not adjacent in $G - e$ so such a separation always exists.
+
+            Now, we are going to overlap $(A_e, B_e)$ and $(A_z, B_z)$ inside $G - e$ as we did for \cref{tutte decomp}. In particular, without loss of generality suppose that $z \in (B_e - A_e) \cap A_z \cap B_z$, $x \in A_e \cap B_e \cap A_z$ and $y \in A_e \cap B_e \cap B_z$. We observe the following.
+
+            \begin{enumerate}
+                \item Since $A_z \cap B_z = \{z\}$, it must be that $(A_z \cap B_z) - B_e = \varnothing$.
+                \item Suppose there exists a vertex $w \in (A_e \cap B_e) - B_z$; since $x \nsim y$ in $G - e$, and $G$ is 2-connected, there must be some path connecting $w$ and $y$, however such path cannot have edges across the $(A_z, B_z)$ separation, therefore they must pass all through $x$. This implies that by removing $x$ we disconnect $w$ from $y$ in $G$ as well, meaning that $x$ is a cut vertex of $G$, contradicting its 2-connectivity. This implies that $(A_e \cap B_e) - B_z = \varnothing$
+                \item By repeating the same argument as before, we also get that $(A_e - B_e) - A_z = \varnothing$
+            \end{enumerate}
+
+            Putting everything together, we get that $A_e - B_e = \varnothing$, i.e.  $(A_e, B_e)$ is a trivial separation of $G$, contradicting the choice of the separation $\lightning$.
+        }
+
+        This claim implies that if $G/xy$ is 1-connected, then $G - \{xy\}$ is 2-connected, contradicting the fact that $G - \{xy\}$ was assumed not to be so. Moreover, by contrapositive, if $G - \{xy\}$ is not 2-connected then $G/xy$ is not 1-connected, i.e. $G/xy$ is 0-connected, contradicting Claim 1 $\lightning$.
     }
 
     \chapter{Planar graphs}
@@ -4660,7 +4715,7 @@
     \end{framedlem}
 
     \begin{proof}
-        Let $H = \mathrm{bound}(f_1) = \mathrm{bound}(f_2) \subseteq G$; in particular, since $H \subseteq G$ by both statements of \cref{faces lemma} $f_1$ and $f_2$ are also faces of $H$. In particular, this implies that $H$ has more than one face, meaning that by the contrapositive of \cref{1 face tree} $H$ is not a plane forest, i.e. $H$ contains a cycle $C$. Let $F_1$ and $F_2$ be the faces of $C$; since $\mathrm{bound}(f_1) = \mathrm{bound}(f_2)$ it must be the case that $f_1$ and $f_2$ lie in distinct faces of $C$ --- without loss of generality suppose that $f_1$ and $f_2$ lie in $F_1$ and $F_2$, respectively. Moreover, since $H$ is the boundary of both $f_1$ and $f_2$, this implies that no point of $H$ can lie inside $F_1$ or $F_2$. However, this can happen only if $H = C$, $f_1 = F_1$ and $f_2 = F_2$. Finally, by definition we have that $C \cup F_1 \cup F_2 = \R^2$, therefore all points of $G$ must lie on $G$, concluding that $G = C$.
+        Let $H = \mathrm{bound}(f_1) = \mathrm{bound}(f_2) \subseteq G$; in particular, since $H \subseteq G$ by both statements of \cref{faces prop} $f_1$ and $f_2$ are also faces of $H$. In particular, this implies that $H$ has more than one face, meaning that by the contrapositive of \cref{1 face tree} $H$ is not a plane forest, i.e. $H$ contains a cycle $C$. Let $F_1$ and $F_2$ be the faces of $C$; since $\mathrm{bound}(f_1) = \mathrm{bound}(f_2)$ it must be the case that $f_1$ and $f_2$ lie in distinct faces of $C$ --- without loss of generality suppose that $f_1$ and $f_2$ lie in $F_1$ and $F_2$, respectively. Moreover, since $H$ is the boundary of both $f_1$ and $f_2$, this implies that no point of $H$ can lie inside $F_1$ or $F_2$. However, this can happen only if $H = C$, $f_1 = F_1$ and $f_2 = F_2$. Finally, by definition we have that $C \cup F_1 \cup F_2 = \R^2$, therefore all points of $G$ must lie on $G$, concluding that $G = C$.
     \end{proof}
 
     \begin{framedprop}[label={2conn planar}]{}
@@ -5015,6 +5070,10 @@
 
     Given that this fairly trivial proposition provides a complete characterization on 2-colorable graph hard is colorability, in general? Well, as proved by \textcite{karp}, 3-colorability is already \NPclass-hard, in fact $k$-colorability is \NPclass-hard for any $k \ge 2$. This implies that the best we can possibly achieve are bounds on the chromatic number.
 
+    \section{Bounds on the chromatic number}
+
+    \subsection{Upper bounds}
+
     Thus, let us start with the basics: aside from the trivial coloring, which implies that $\chi(G) \le \abs{V(G)}$ always holds, is there a tighter \tit{upper bound} for $\chi(G)$?
 
     \begin{framedprop}{}
@@ -5046,7 +5105,7 @@
         Since $n \ge 3$, by \cref{5 deg planar} we know that $G$ contains a vertex of degree at most 5, therefore fix such a vertex $v \in V(G)$. We observe that if $G$ is planar, then clearly $G - \{v\}$ is still planar, which means that by induction $\chi(G - \{v\}) \le 6$. Lastly, since $\mathcal N(v)$ can use at most $5$ different colors, we can still use one additional color to color $v$ itself and still be able to 6-color the whole graph $G$.
     \end{proof}
 
-    Is this the best result we can achieve through planarity? TODO \todo{da finire}
+    Is this the best result we can achieve through planarity? This upper bound on planar graph can be actually improved thorugh the following proposition.
 
     \begin{framedprop}{}
         Given a planar graph $G$, it holds that $\chi(G) \le 5$.
@@ -5063,6 +5122,14 @@
 
         Now, let $H'$ be the subgraph of $G$ induced from the set of vertices that have color 3 and 5 in $G - \{u\}$, and let $C'$ be the component of $H'$ that contains $v_3$. Clearly $C'$ must be disjoint from $P$, thus by choice of the \tit{cyclical} order on the vertices $v_5$ cannot be contained inside $C'$ because $G$ is planar. This implies that colors 3 and 5 can be swapped inside $C'$ such that both $v_3$ and $v_5$ get colored with 5, meaning that $u$ can be colored with color 3, again contradicting the fact that $G$ was not 5-colorable $\lightning$.
     \end{proof}
+
+    Is \tit{this} the best we can achieve through planarity then? In 1977 \textcite{4col} published the first \tit{computer assisted proof} in mathematics, through which the notorious \tbf{Four Color Theorem} was proved.
+
+    \begin{framedthm}{Four Colors theorem}
+        Given a planar graph $G$, it holds that $\chi(G) \le 4$.
+    \end{framedthm}
+
+    \subsection{Lower bounds}
 
     So far, we only discussed \tit{upper bounds} on the chromatic number, but what about \tit{lower bounds}? Consider the following definition.
 
@@ -5149,6 +5216,8 @@
 
     TODO \todo{example of G4}
 
+    \section{Perfect graphs}
+
     Let's look deeper into the relationship between $\chi(G)$ and $\omega(G)$: for which graphs it holds that $\chi(G) = \omega(G)$? A rather uninteresting answer to this question would be any graph $H$ on $n$ vertices, together with a $K_n$ disconnected from $H$ itself, in fact we would have that $$n = \omega(G) \le \chi(G) \le n \implies \omega(G) = \chi(G)$$ This means that asking for a graph $G$ such that its chromatic and clique number coincide does not provide interesting answers, hence we need a strictier definition.
 
     \begin{frameddefn}{Perfect graph}
@@ -5157,13 +5226,13 @@
 
     TODO \todo{example}
 
-    What are example of perfect graphs? A trivial class of perfect graphs are \tbf{cliques}, since each induced subgraph of a clique is still a clique.
+    What are example of perfect graphs? A trivial class of perfect graphs are \tit{cliques}, since each induced subgraph of a clique is still a clique.
 
     \begin{framedprop}{}
         Cliques are perfect.
     \end{framedprop}
 
-    Another example of perfect graphs is given by \tbf{bipartite graphs}.
+    Another example of perfect graphs is given by \tit{bipartite graphs}.
 
     \begin{framedprop}{}
         Bipartite graphs are perfect.
@@ -5189,7 +5258,7 @@
 
     TODO \todo{example}
 
-    A trivial example of chordal graphs are \tbf{cliques}.
+    A trivial example of chordal graphs are \tit{cliques}.
 
     \begin{framedprop}[label={perfect chordal}]{}
         Chordal graphs are perfect.
@@ -5244,11 +5313,13 @@
         Follows immediately from \cref{perfect chordal} and the previous proposition.
     \end{proof}
 
+    \subsection{Perfect graph theorems}
+
     So far we only provided examples of perfect graphs, but what about graphs that are \tit{not perfect}? A trivial example is given by \tbf{odd-length cycles} of length at least 5: such graphs have clique number 2 and chromatic number 3 --- by \cref{bip col} --- from which we derive the following proposition.
 
-    \begin{frameddefn}{}
+    \begin{framedprop}{}
         Any graph that contains an induced odd-length cycle subgraph of length at least 5 is not perfect.
-    \end{frameddefn}
+    \end{framedprop}
 
     In reality, odd-length cycles are a very special type of graph. For instance, consider $\overline{C_7}$: by definition we know that $\alpha(\overline{C_7}) = 2$, therefore by \cref{indset chi} we have that $$\chi(\overline{C_7}) \ge \ceil{\dfrac{n}{\alpha(\overline{C_7})}} = \ceil{\dfrac{7}{2}} = 4$$ Moreover every clique contained inside this graph consists of non-sequential vertices on the cycle, meaning that the biggest size for a clique is 3 --- to get a $K_4$ we would need at least 8 vertices since sequential vertices on the cycle are not adjacent. This means that $\omega(\overline{C_7}) = 3$, therefore $\overline{C_7}$ is not perfect either. By generalizing this idea on any odd-cycle of length at least 5, we get the following property.
 
@@ -5262,7 +5333,7 @@
 
     TODO \todo{buco lore}
 
-    \begin{framedthm}{Weak perfect graph theorem}
+    \begin{framedthm}[label={wpgt}]{Weak perfect graph theorem}
         A graph $G$ is perfect if and only if $\overline G$ is perfect.
     \end{framedthm}
 
@@ -5272,7 +5343,7 @@
         A graph $G$ is perfect if and only if $G$ has no induced $C_{2k + 1}$ or $\overline{C_{2k + 1}}$ subgraph, for any $k \ge 2$.
     \end{framedthm}
 
-    \cref{spgt dir} is the direct implication of this theorem. We observe that this theorem is indeed stronger than the Weak perfect graph theorem: in fact, this theorem implies that if $G$ is perfect then it does not contain $C_{2k+1}$ or $\overline{C_{2k + 1}}$ as induced subgraph, which means that $\overline G$ cannot contain such induced subgraph either, therefore $\overline G$ is perfect.
+    \cref{spgt dir} is the direct implication of this theorem. We observe that this theorem is indeed stronger than the Weak perfect graph theorem: in fact, this theorem implies that if $G$ is perfect then it does not contain $C_{2k+1}$ or $\overline{C_{2k + 1}}$ as induced subgraph, which means that $\overline G$ cannot contain such induced subgraph either, therefore $\overline G$ is perfect. Hence, by duality, we get that the Weak perfect graph theorem can be derived from the Strong perfect graph theorem.
 
     \section{Exercises}
 
@@ -5302,19 +5373,43 @@
         Then, such chord must split $C$ into two subcycles $C'$ and $C''$ such that $G = C' \cup C''$, and one of which must have odd length --- without loss of generality suppose that $C'$ is the odd-length subcycle. This means that by choosing any vertex $v \in V(C'') - V(C')$ --- which exists because $\abs{V(G)} \ge 5$ --- we get a graph $G - \{v\}$ that still contains an odd-length cycle, meaning that $\chi(G - \{v\}) \ge 3$ implying that $G$ is not 3-critical. This proves that if $G$ is not an odd-length cycle then it is not 3-critical.
     }
 
-    % \begin{framedprob}{}
-    %     Prove that if $G$ does not contain $K_4$ as minor, then $\chi(G) \le 3$.
-    % \end{framedprob}
-    %
-    % \solution{
-    %     We prove the statement by \tit{minimal counterexample}. Suppose that $G$ has no $K_4$ as minor, which implies that it does not have $K_4$ as topological minor either, therefore by \cref{3-conn prop} we know that $G$ is not 3-connected. This implies that $G$ admits a separation $(X, Y)$ of order at most 2. Let $G$ be the \tit{smallest} graph --- w.r.t. the number of vertices --- that does not contain $K_4$ as minor and that requires at least 4-colors to be colored --- i.e. $\chi(G) \ge 4$.
-    %
-    %     \begin{itemize}
-    %         \item Suppose that $\abs{X \cap Y} = 0$; if $G$ has no $K_4$, then nor $G[X]$ neither $G[Y]$ have $K_4$ as minor, however $\abs{V(G[X])}, \abs{V(G[Y])} < \abs{V(G)}$ which implies that $G[X]$ and $G[Y]$ are 3-colorable by minimality of $G$, thus $G$ is 3-colorable by the following proper coloring $$\forall z \in V(G) \quad c(z) = \soe{ll}{c_X(z) \quad z \in X \\ c_Y(z) \quad z \in Y}$$ contradicting the fact that it required at least 4 colors to be proper colored by definition $\lightning$.
-    %         \item Suppose that $\abs{X \cap Y} = \{v\}$; by the same argument $G[X]$ and $G[Y]$ are 3-colorable by two proper coloring $c_X$ and $c_Y$. If $c_X(v) = c_Y(v)$ then $G$ is trivially 3-colorable, so we may assume that $c_X(v) \neq c_Y(v)$; then, it suffices to permute the colors of $c_Y$ such that $c_X(v) = c_Y(c)$ and consider the same coloring function described in the previous case, to construct a 3-coloring for $G$ $\lightning$.
-    %         \item TODO \todo{da finire}
-    %     \end{itemize}
-    % }
+    \begin{framedprob}{}
+        Prove that if $G$ does not contain $K_4$ as minor, then $\chi(G) \le 3$.
+    \end{framedprob}
+
+    \solution{
+        We prove the statement by \tit{minimal counterexample}. Suppose that $G$ has no $K_4$ as minor, which implies that it does not have $K_4$ as topological minor either, therefore by \cref{3-conn prop} we know that $G$ is not 3-connected. This implies that $G$ admits a separation $(X, Y)$ of order at most 2. Let $G$ be the \tit{smallest} graph --- w.r.t. the number of vertices --- that does not contain $K_4$ as minor and that requires at least 4 colors to be colored --- i.e. $\chi(G) \ge 4$.
+
+        \claim[Claim 1]{
+            $\abs{X \cap Y} \neq 0$.
+        }{
+            Suppose that $\abs{X \cap Y} = 0$; if $G$ has no $K_4$, then nor $G[X]$ neither $G[Y]$ have $K_4$ as minor, however $\abs{V(G[X])}, \abs{V(G[Y])} < \abs{V(G)}$ which implies that $G[X]$ and $G[Y]$ are 3-colorable by minimality of $G$, thus $G$ is 3-colorable by the following proper coloring $$\forall z \in V(G) \quad c(z) = \soe{ll}{c_X(z) \quad z \in X \\ c_Y(z) \quad z \in Y}$$ contradicting the fact that $\chi(G) \ge 4$ by definition $\lightning$.
+        }
+        
+        \claim[Claim 2]{
+            $\abs{X \cap Y} \neq 1$.
+        }{
+            Suppose that $X \cap Y = \{v\}$; by the same argument $G[X]$ and $G[Y]$ are 3-colorable by two proper coloring $c_X$ and $c_Y$. If $c_X(v) = c_Y(v)$ then $G$ is trivially 3-colorable, so we may assume that $c_X(v) \neq c_Y(v)$; then, it suffices to permute the colors of $c_Y$ such that $c_X(v) = c_Y(c)$ and consider the same coloring function described in the previous case, to construct a 3-coloring for $G$ $\lightning$.
+        }
+
+        \claim[Claim 3]{
+            $\abs{X \cap Y} \neq 2$.
+        }{
+            Suppose that $X \cap Y = \{x, y\}$ and the proper colorings $c_X$ and $c_Y$ of $G[X]$ and $G[Y]$; if $x \sim y$, then both $c_X$ and $c_Y$ will assign different colors to $x$ and $y$, meaning that it is always possible to permute the colors of $c_Y$ such that $c_X(x) = c_Y(x)$ and $c_X(y) = c_Y(y)$, thus defining a proper 3-coloring of $G$ and contradicting its definition. This implies that $x \nsim y$.
+
+            Similarly, if $x \nsim y$, but $G[X]$ and $G[Y]$ are such that there exists 3-colorings of them for which either $\soe{l}{c_X(x) = c_X(y) \\ c_Y(x) = c_Y(y)}$ or $\soe{l}{c_X(x) \neq c_X(y) \\ c_Y(x) \neq c_Y(y)}$, then it is always possible to consider such colorings and permute the colors to construct a 3-coloring of $G$. This implies that the only possibility is that --- without loss of generality --- every possible coloring of $G[X]$ forces $x$ and $y$ to have the same color, and every possible coloring of $G[Y]$ forces $x$ and $y$ to have different colors.
+
+            Now, consider $G[X]$, and by way of contradiction suppose that there is no $x \to y$ path inside $G[X]$; then, $x$ and $y$ must live in different components of $G[X]$, which means that it is always possible to permute the colors in the component containing say $y$ such that $c_X(x) \neq c_X(y)$ for any proper 3-coloring $c_X$ of $G[X]$, contradicting the fact that every coloring of $G[X]$ must force $x$ and $y$ to have the same color. This implies that $G[X]$ has an $x \to y$ path.
+
+            By repeating the same argument, we get that $G[Y]$ also contains an $x \to y$ path, therefore by contracting this path to a single edge say inside $G[Y]$ we obtain a new graph $H$; thus \todo{da finire}
+
+            % \begin{itemize}
+            %     \item if $H$ has no $K_4$ as minor, then since $\abs{V(H)} < \abs{V(G)}$ then $H$ is 3-colorable
+            % \end{itemize}
+        }
+
+        Together, Claim 1, 2 and 3 contradict the fact that $G$ was not 3-connected $\lightning$.
+    }
 
     \printbibliography % UNCOMMENT FOR BIBLIOGRAPHY
 

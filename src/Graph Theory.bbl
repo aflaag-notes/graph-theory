@@ -17,6 +17,46 @@
 \endgroup
 
 \datalist[entry]{anyt/global//global/global/global}
+  \entry{4col}{article}{}{}
+    \name{author}{2}{}{%
+      {{hash=AK}{%
+         family={Appel},
+         familyi={A\bibinitperiod},
+         given={K.},
+         giveni={K\bibinitperiod},
+      }}%
+      {{hash=HW}{%
+         family={Haken},
+         familyi={H\bibinitperiod},
+         given={W.},
+         giveni={W\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Duke University Press}%
+    }
+    \strng{namehash}{AKHW1}
+    \strng{fullhash}{AKHW1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{AH77}
+    \field{sortinit}{A}
+    \field{sortinithash}{A}
+    \verb{doi}
+    \verb 10.1215/ijm/1256049011
+    \endverb
+    \field{issn}{0019-2082}
+    \field{number}{3}
+    \field{title}{Every planar map is four colorable. Part I: Discharging}
+    \verb{url}
+    \verb http://dx.doi.org/10.1215/ijm/1256049011
+    \endverb
+    \field{volume}{21}
+    \field{journaltitle}{Illinois Journal of Mathematics}
+    \field{month}{09}
+    \field{year}{1977}
+  \endentry
+
   \entry{angeltveit}{misc}{}{}
     \name{author}{2}{}{%
       {{hash=AV}{%

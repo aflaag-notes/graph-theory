@@ -35,17 +35,22 @@
 \contentsline {section}{\numberline {4.2}Vertex bounds}{75}{section.4.2}%
 \contentsline {subsection}{\numberline {4.2.1}Ramsey numbers}{75}{subsection.4.2.1}%
 \contentsline {section}{\numberline {4.3}Exercises}{80}{section.4.3}%
-\contentsline {chapter}{\numberline {5}Graph decompositions}{86}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Blocks}{86}{section.5.1}%
-\contentsline {subsection}{\numberline {5.1.1}Block graph}{90}{subsection.5.1.1}%
-\contentsline {section}{\numberline {5.2}Known decompositions}{91}{section.5.2}%
-\contentsline {subsection}{\numberline {5.2.1}2-connectivity}{92}{subsection.5.2.1}%
-\contentsline {section}{\numberline {5.3}3-connectivity}{93}{section.5.3}%
-\contentsline {section}{\numberline {5.4}Exercises}{95}{section.5.4}%
-\contentsline {chapter}{\numberline {6}Planar graphs}{97}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Topological properties}{100}{section.6.1}%
-\contentsline {section}{\numberline {6.2}Planarity conditions}{104}{section.6.2}%
-\contentsline {subsection}{\numberline {6.2.1}Kuratowski's theorem}{106}{subsection.6.2.1}%
-\contentsline {section}{\numberline {6.3}Exercises}{111}{section.6.3}%
-\contentsline {chapter}{\numberline {7}Graph coloring}{112}{chapter.7}%
-\contentsline {section}{\numberline {7.1}Exercises}{121}{section.7.1}%
+\contentsline {chapter}{\numberline {5}Graph decompositions}{87}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Blocks}{87}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Block graph}{91}{subsection.5.1.1}%
+\contentsline {section}{\numberline {5.2}Known decompositions}{92}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}2-connectivity}{93}{subsection.5.2.1}%
+\contentsline {section}{\numberline {5.3}3-connectivity}{94}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Exercises}{96}{section.5.4}%
+\contentsline {chapter}{\numberline {6}Planar graphs}{100}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Topological properties}{103}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Planarity conditions}{107}{section.6.2}%
+\contentsline {subsection}{\numberline {6.2.1}Kuratowski's theorem}{109}{subsection.6.2.1}%
+\contentsline {section}{\numberline {6.3}Exercises}{114}{section.6.3}%
+\contentsline {chapter}{\numberline {7}Graph coloring}{115}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Bounds on the chromatic number}{116}{section.7.1}%
+\contentsline {subsection}{\numberline {7.1.1}Upper bounds}{116}{subsection.7.1.1}%
+\contentsline {subsection}{\numberline {7.1.2}Lower bounds}{118}{subsection.7.1.2}%
+\contentsline {section}{\numberline {7.2}Perfect graphs}{120}{section.7.2}%
+\contentsline {subsection}{\numberline {7.2.1}Perfect graph theorems}{123}{subsection.7.2.1}%
+\contentsline {section}{\numberline {7.3}Exercises}{124}{section.7.3}%
