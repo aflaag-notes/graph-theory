@@ -1,5 +1,5 @@
 % $ biblatex auxiliary file $
-% $ biblatex bbl format version 3.2 $
+% $ biblatex bbl format version 3.3 $
 % Do not modify the above lines!
 %
 % This is an auxiliary file used by the 'biblatex' package.
@@ -16,8 +16,8 @@
   {}
 \endgroup
 
-\datalist[entry]{anyt/global//global/global}
-  \entry{angeltveit}{misc}{}
+\datalist[entry]{anyt/global//global/global/global}
+  \entry{angeltveit}{misc}{}{}
     \name{author}{2}{}{%
       {{hash=AV}{%
          family={Angeltveit},
@@ -35,8 +35,7 @@
     \list{publisher}{1}{%
       {arXiv}%
     }
-    \keyw{Combinatorics (math.CO), FOS: Mathematics, FOS: Mathematics, 05D10
-  (Primary)}
+    \keyw{Combinatorics (math.CO), FOS: Mathematics, FOS: Mathematics, 05D10 (Primary)}
     \strng{namehash}{AVMBD1}
     \strng{fullhash}{AVMBD1}
     \field{labelnamesource}{author}
@@ -54,7 +53,7 @@
     \field{year}{2024}
   \endentry
 
-  \entry{berge}{article}{}
+  \entry{berge}{article}{}{}
     \name{author}{1}{}{%
       {{hash=BC}{%
          family={Berge},
@@ -89,7 +88,7 @@
     \field{year}{1957}
   \endentry
 
-  \entry{bohme}{article}{}
+  \entry{bohme}{article}{}{}
     \name{author}{4}{}{%
       {{hash=BT}{%
          family={Böhme},
@@ -133,7 +132,7 @@
     \field{year}{2009}
   \endentry
 
-  \entry{bollobas}{article}{}
+  \entry{bollobas}{article}{}{}
     \name{author}{2}{}{%
       {{hash=BB}{%
          family={Bollob{\'a}s},
@@ -165,7 +164,7 @@
     \field{year}{1996}
   \endentry
 
-  \entry{bridges}{misc}{}
+  \entry{bridges}{misc}{}{}
     \name{author}{1}{}{%
       {{hash=cW}{%
          family={contributors},
@@ -189,7 +188,65 @@
     \field{year}{2025}
   \endentry
 
-  \entry{dirac_p_2to5}{article}{}
+  \entry{dilworth}{article}{}{}
+    \name{author}{1}{}{%
+      {{hash=DRP}{%
+         family={Dilworth},
+         familyi={D\bibinitperiod},
+         given={R.\bibnamedelima P.},
+         giveni={R\bibinitperiod\bibinitdelim P\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{DRP1}
+    \strng{fullhash}{DRP1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{Dil50}
+    \field{sortinit}{D}
+    \field{sortinithash}{D}
+    \field{title}{A Decomposition Theorem for Partially Ordered Sets}
+    \verb{url}
+    \verb http://www.jstor.org/stable/1969503
+    \endverb
+    \field{journaltitle}{Annals of Mathematics}
+    \field{year}{1950}
+  \endentry
+
+  \entry{diracham}{article}{}{}
+    \name{author}{1}{}{%
+      {{hash=DGA}{%
+         family={Dirac},
+         familyi={D\bibinitperiod},
+         given={G.\bibnamedelima A.},
+         giveni={G\bibinitperiod\bibinitdelim A\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Wiley}%
+    }
+    \strng{namehash}{DGA1}
+    \strng{fullhash}{DGA1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{Dir52}
+    \field{sortinit}{D}
+    \field{sortinithash}{D}
+    \verb{doi}
+    \verb 10.1112/plms/s3-2.1.69
+    \endverb
+    \field{issn}{0024-6115}
+    \field{number}{1}
+    \field{pages}{69–81}
+    \field{title}{Some Theorems on Abstract Graphs}
+    \verb{url}
+    \verb http://dx.doi.org/10.1112/plms/s3-2.1.69
+    \endverb
+    \field{volume}{s3-2}
+    \field{journaltitle}{Proceedings of the London Mathematical Society}
+    \field{year}{1952}
+  \endentry
+
+  \entry{dirac_p_2to5}{article}{}{}
     \name{author}{1}{}{%
       {{hash=DG}{%
          family={Dirac},
@@ -213,7 +270,7 @@
     \field{year}{1964}
   \endentry
 
-  \entry{erdos}{article}{}
+  \entry{erdos}{article}{}{}
     \name{author}{2}{}{%
       {{hash=Ep}{%
          family={Erdös},
@@ -245,7 +302,7 @@
     \field{year}{1965}
   \endentry
 
-  \entry{konigsberg}{article}{}
+  \entry{konigsberg}{article}{}{}
     \name{author}{1}{}{%
       {{hash=EL}{%
          family={Euler},
@@ -267,7 +324,7 @@
     \field{year}{1741}
   \endentry
 
-  \entry{exoo}{article}{}
+  \entry{exoo}{article}{}{}
     \name{author}{1}{}{%
       {{hash=EG}{%
          family={Exoo},
@@ -302,7 +359,7 @@
     \field{year}{1989}
   \endentry
 
-  \entry{gallai}{article}{}
+  \entry{gallai}{article}{}{}
     \name{author}{2}{}{%
       {{hash=GT}{%
          family={Gallai},
@@ -325,14 +382,13 @@
     \field{sortinit}{G}
     \field{sortinithash}{G}
     \field{pages}{181\bibrangedash 186}
-    \field{title}{Verallgemeinerung eines graphentheoretischen Satzes von
-  R{\'e}dei}
+    \field{title}{Verallgemeinerung eines graphentheoretischen Satzes von R{\'e}dei}
     \field{volume}{21}
     \field{journaltitle}{Acta Sc. Math}
     \field{year}{1960}
   \endentry
 
-  \entry{gale}{article}{}
+  \entry{gale}{article}{}{}
     \name{author}{2}{}{%
       {{hash=GD}{%
          family={Gale},
@@ -365,7 +421,7 @@
     \field{year}{1962}
   \endentry
 
-  \entry{gyori}{article}{}
+  \entry{gyori}{article}{}{}
     \name{author}{1}{}{%
       {{hash=GE}{%
          family={Gyori},
@@ -389,7 +445,7 @@
     \field{year}{1982}
   \endentry
 
-  \entry{hall}{article}{}
+  \entry{hall}{article}{}{}
     \name{author}{1}{}{%
       {{hash=HP}{%
          family={Hall},
@@ -424,7 +480,7 @@
     \field{year}{1935}
   \endentry
 
-  \entry{jorgensen}{article}{}
+  \entry{jorgensen}{article}{}{}
     \name{author}{1}{}{%
       {{hash=JLK}{%
          family={Jorgensen},
@@ -448,7 +504,7 @@
     \field{year}{1994}
   \endentry
 
-  \entry{kalbfleisch}{article}{}
+  \entry{kalbfleisch}{article}{}{}
     \name{author}{1}{}{%
       {{hash=KJG}{%
          family={Kalbfleisch},
@@ -483,7 +539,7 @@
     \field{year}{1965}
   \endentry
 
-  \entry{karp}{inbook}{}
+  \entry{karp}{inbook}{}{}
     \name{author}{1}{}{%
       {{hash=KRM}{%
          family={Karp},
@@ -515,7 +571,7 @@
     \field{year}{1972}
   \endentry
 
-  \entry{konig}{misc}{}
+  \entry{konig}{misc}{}{}
     \name{author}{1}{}{%
       {{hash=KD}{%
          family={Konig},
@@ -534,11 +590,10 @@
     \field{labelalpha}{Kon}
     \field{sortinit}{K}
     \field{sortinithash}{K}
-    \field{title}{Gr{\'a}fok {\'e}s m{\'a}trixok. Matematikai {\'e}s Fizikai
-  Lapok, 38: 116--119, 1931}
+    \field{title}{Gr{\'a}fok {\'e}s m{\'a}trixok. Matematikai {\'e}s Fizikai Lapok, 38: 116--119, 1931}
   \endentry
 
-  \entry{kostochka}{article}{}
+  \entry{kostochka}{article}{}{}
     \name{author}{1}{}{%
       {{hash=KAV}{%
          family={Kostochka},
@@ -554,13 +609,12 @@
     \field{labelalpha}{Kos82}
     \field{sortinit}{K}
     \field{sortinithash}{K}
-    \field{title}{The minimum Hadwiger number for graphs with a given mean
-  degree of vertices}
+    \field{title}{The minimum Hadwiger number for graphs with a given mean degree of vertices}
     \field{journaltitle}{Metody Diskret. Analiz.}
     \field{year}{1982}
   \endentry
 
-  \entry{kuratowski}{article}{}
+  \entry{kuratowski}{article}{}{}
     \name{author}{1}{}{%
       {{hash=KC}{%
          family={Kuratowski},
@@ -593,7 +647,7 @@
     \field{year}{1930}
   \endentry
 
-  \entry{tutte}{book}{}
+  \entry{tutte}{book}{}{}
     \name{author}{2}{}{%
       {{hash=LL}{%
          family={Lov{\'a}sz},
@@ -625,7 +679,7 @@
     \field{year}{2009}
   \endentry
 
-  \entry{mader_p_6to7}{article}{}
+  \entry{mader_p_6to7}{article}{}{}
     \name{author}{1}{}{%
       {{hash=MW}{%
          family={Mader},
@@ -649,7 +703,7 @@
     \field{year}{1968}
   \endentry
 
-  \entry{mader}{inproceedings}{}
+  \entry{mader}{inproceedings}{}{}
     \name{author}{1}{}{%
       {{hash=MW}{%
          family={Mader},
@@ -668,16 +722,14 @@
     \field{labelalpha}{Mad72}
     \field{sortinit}{M}
     \field{sortinithash}{M}
-    \field{booktitle}{Abhandlungen aus dem mathematischen Seminar der
-  Universit{\"a}t Hamburg}
+    \field{booktitle}{Abhandlungen aus dem mathematischen Seminar der Universit{\"a}t Hamburg}
     \field{pages}{86\bibrangedash 97}
-    \field{title}{Existenz n-fach zusammenh{\"a}ngender Teilgraphen in Graphen
-  gen{\"u}gend grosser Kantendichte}
+    \field{title}{Existenz n-fach zusammenh{\"a}ngender Teilgraphen in Graphen gen{\"u}gend grosser Kantendichte}
     \field{volume}{37}
     \field{year}{1972}
   \endentry
 
-  \entry{menger}{article}{}
+  \entry{menger}{article}{}{}
     \name{author}{1}{}{%
       {{hash=MK}{%
          family={Menger},
@@ -704,7 +756,7 @@
     \field{year}{1927}
   \endentry
 
-  \entry{ramsey}{incollection}{}
+  \entry{ramsey}{incollection}{}{}
     \name{author}{1}{}{%
       {{hash=RFP}{%
          family={Ramsey},
@@ -729,7 +781,7 @@
     \field{year}{1987}
   \endentry
 
-  \entry{song}{article}{}
+  \entry{song}{article}{}{}
     \name{author}{2}{}{%
       {{hash=SZX}{%
          family={Song},
@@ -759,7 +811,7 @@
     \field{year}{2006}
   \endentry
 
-  \entry{thomason}{article}{}
+  \entry{thomason}{article}{}{}
     \name{author}{1}{}{%
       {{hash=TA}{%
          family={Thomason},
@@ -783,7 +835,7 @@
     \field{year}{2001}
   \endentry
 
-  \entry{turan}{article}{}
+  \entry{turan}{article}{}{}
     \name{author}{1}{}{%
       {{hash=TP}{%
          family={Tur{\'a}n},
@@ -806,7 +858,7 @@
     \field{year}{1941}
   \endentry
 
-  \entry{tutte3conn}{article}{}
+  \entry{tutte3conn}{article}{}{}
     \name{author}{1}{}{%
       {{hash=TWT}{%
          family={Tutte},
@@ -830,7 +882,7 @@
     \field{year}{1961}
   \endentry
 
-  \entry{zhu}{thesis}{}
+  \entry{zhu}{thesis}{}{}
     \name{author}{1}{}{%
       {{hash=ZD}{%
          family={Zhu},

@@ -1013,9 +1013,9 @@
 
     Hamiltonian paths and cycles are named after \href{https://en.wikipedia.org/wiki/William_Rowan_Hamilton}{W. R. Hamilton}. Note that the notation $P_n$ (or $C_n$) implies that the length of the path (or cycle) is $n$, hence this definition matches our requirements.
 
-    As for the case of Eulerian tours, when some conditions are met, Hamiltonian cycles are guaranteed to exist, as discussed in the following theorem.
+    As for the case of Eulerian tours, when some conditions are met, Hamiltonian cycles are guaranteed to exist, as discussed in the following theorem proved by \textcite{diracham}.
 
-    \begin{framedthm}{Hamiltonian cycles}
+    \begin{framedthm}{Dirac's theorem}
         A graph $G$ such that $\delta \ge \tfrac{n}{2}$ contains a Hamiltonian cycle.
     \end{framedthm}
 
@@ -1025,7 +1025,7 @@
         \claim{
             $G$ is connected.
         }{
-            By way of contradiction, suppose that $G$ is not connected; therefore $G$ has at least two connected components. Let $H$ be the smallest connected component of $G$; then, clearly $\abs{V(H)} \le \tfrac{n}{2}$. However, note that $\abs{\mathcal N (x)} \ge \delta \ge \tfrac{n}{2}$ and since $\{x\} \cup \mathcal N (x) \subseteq V(H)$, we get that $V(H)$ must have at least $\tfrac{n}{2} + 1$ nodes $\lightning$.
+            By way of contradiction, suppose that $G$ is not connected; therefore $G$ has at least two connected components. Let $H$ be the smallest connected component of $G$; then, clearly $\abs{V(H)} \le \tfrac{n}{2}$. However, note that for any $x \in V(H)$ it holds that $\abs{\mathcal N (x)} \ge \delta \ge \tfrac{n}{2}$ and since $\{x\} \cup \mathcal N (x) \subseteq V(H)$, we get that $V(H)$ must have at least $\tfrac{n}{2} + 1$ nodes $\lightning$.
         }
 
         Let $P$ be the longest path of $G$, and let $x_0, \ldots, x_k$ be its vertices.
@@ -2102,7 +2102,17 @@
         % \label{first graph}
     \end{figure}
 
-    Note that if $X$ is an $A$-$B$ hitting set, then $A \cap B \subseteq X$, otherwise any single vertex in $A \cap B$ would represent an $A$-$B$ trivial path that does not pass through the hitting set $X$. Moreover, consider an $A$-$B$ hitting set $X$ of a graph $G$; by definition, all the $A$-$B$ paths must have at least one vertex in $X$, but since $A$-$B$ paths do not have internal vertices in $A \cup B$, there cannot be $\abs X + 1$ disjoint $A$-$B$ paths.
+    Note that if $X$ is an $A$-$B$ hitting set, then $A \cap B \subseteq X$, otherwise any single vertex in $A \cap B$ would represent an $A$-$B$ trivial path that does not pass through the hitting set $X$. Moreover, consider an $A$-$B$ hitting set $X$ of a graph $G$; 
+
+    \begin{framedprop}[label={menger prop prop}]{}
+        Given a graph $G$, and two sets $A, B \subseteq V(G)$, it there exists an $A$-$B$ hitting set $X$ of size $k$ then there are at most $k$ vertex-disjoint $A$-$B$ paths.
+    \end{framedprop}
+
+    \begin{proof}
+        Trivially, by definition all the $A$-$B$ paths must have at least one vertex in $X$, therefore there cannot be more than $k$ vertex-disjoint $A$-$B$ paths.
+    \end{proof}
+
+    This proposition clearly implies that the maximum number of disjoint $A$-$B$ paths is upper bounded by the cardinality of the minimum $A$-$B$ hitting set. However, hitting sets are not easy to work with, and more convenient way to reason about $A$-$B$ paths are \tbf{graph separations}.
 
     \begin{frameddefn}{$A$-$B$ separation}
         Given a graph $G$, and two sets $A, B \subseteq V(G)$, two sets $X, Y \subseteq V(G)$ describe an $A$-$B$ \tbf{separation $(X, Y)$} of $G$ if and only if
@@ -2117,7 +2127,7 @@
         We say that a separation $(X, Y)$ has \tbf{order} $\abs{X \cap Y}$.
     \end{frameddefn}
 
-    Given a graph $G$, two sets $A, B \subseteq V(G)$, and an $A$-$B$ separation $(X, Y)$ of $G$, we observe that $G[V(G)-(X \cap Y)]$ is disconnected.
+    From the very definition, we see that any $A$-$B$ path must pass through $X \cap Y$, since there are no edges \curlyquotes{across} $X$ and $Y$. Moreover, given a graph $G$, two sets $A, B \subseteq V(G)$, and an $A$-$B$ separation $(X, Y)$ of $G$, we observe that $G - (X \cap Y)$ is disconnected. Furthermore, consider the following property.
 
     \begin{framedprop}[label={menger prop}]{}
         Given a graph $G$, and two sets $A, B \subseteq V(G)$, there exists an $A$-$B$ hitting set of size $k$ in $G$ if and only if there exists an $A$-$B$ separation of order $k$.
@@ -2126,7 +2136,7 @@
     \begin{proof}
         The converse implication is trivially true, because if $(X, Y)$ is an $A$-$B$ separation of $G$, then $X \cap Y$ itself is an $A$-$B$ hitting set of $G$ by definition; therefore, we just need to prove the direct implication.
         
-        Let $Z$ be an $A$-$B$ hitting set of $G$ such that $\abs Z = k$, and consider the connected components $C_1, \ldots, C_\ell$ of $G[V(G) - Z]$. Note that there cannot be any component $C_i$ that has a vertex $a \in V(G) \cap (A - Z)$ and a vertex $b \in V(C) \cap (B - Z)$, because otherwise by connectivity of $C_i$ there would be a path $a \to b$ --- which is an $A$-$B$ path --- that avoids the hitting set $Z$. Hence, we can define the two following sets $$X := Z \cup \bigcup_{\substack{C \ \mathrm{component} \\ \mathrm{of} \ G[V(G) - Z] \\ \ \mathrm{such \ that} \ A \cap C \neq \varnothing}}{V(C)}$$ $$Y := Z \cup \bigcup_{\substack{C \ \mathrm{component} \\ \mathrm{of} \ G[V(G) - Z] \\ \mathrm{such \ that} \ A \cap C = \varnothing}}{V(C)}$$ We observe that, by definition
+        Let $Z$ be an $A$-$B$ hitting set of $G$ such that $\abs Z = k$, and consider the connected components $C_1, \ldots, C_\ell$ of $G - Z$. Note that there cannot be any component $C_i$ that has a vertex $a \in V(G) \cap (A - Z)$ and a vertex $b \in V(C) \cap (B - Z)$, because otherwise by connectivity of $C_i$ there would be a path $a \to b$ --- which is an $A$-$B$ path --- that avoids the hitting set $Z$. Hence, we can define the two following sets $$X := Z \cup \bigcup_{\substack{C \ \mathrm{component} \\ \mathrm{of} \ G - Z \\ \ \mathrm{such \ that} \ A \cap C \neq \varnothing}}{V(C)}$$ $$Y := Z \cup \bigcup_{\substack{C \ \mathrm{component} \\ \mathrm{of} \ G - Z \\ \mathrm{such \ that} \ A \cap C = \varnothing}}{V(C)}$$ We observe that, by definition
 
         \begin{itemize}
             \item $A \subseteq X$
@@ -2137,27 +2147,48 @@
         and for the previous observation there cannot be edges with one end in $X - Y$ and the other in $Y - X$. Hence, we conclude that $(X, Y)$ is a separation of $G$, and $X \cap Y = Z \implies \abs{X \cap Y} = \abs Z = k$.
     \end{proof}
 
-    The following theorem establishes a deep connection between \tit{connectivity} and \tit{separation} in graphs, and was proved by \textcite{menger} in 1927.
+    This property directly implies that hitting sets and graphs separations can be treated equivalently. Hence, because of the previous proposition we derive the following observation.
 
-    \begin{framedthm}[label={menger}]{Menger's theorem}
-        Given a graph $G$, and two sets $A, B \subseteq V(G)$, the number of disjoint $A$-$B$ paths is equal to the minimum order of an $A$-$B$ separation of $G$.
+    \begin{frameddefn}[label={menger prop 3}]{}
+        Given a graph $G$, two sets $A, B \subseteq V(G)$, and an $A$-$B$ separation $(X, Y)$ of minimum order, there are at most $\abs{X \cap Y}$ vertex-disjoint $A$-$B$ paths.
+    \end{frameddefn}
+
+    \begin{proof}
+        By \cref{menger prop prop} the maximum number of disjoint $A$-$B$ is upper bounded by the minimum size of an $A$-$B$ hitting set $H$, and by \cref{menger prop} there is an $A$-$B$ separation having $H$'s size as order.
+    \end{proof}
+
+    In 1927 \textcite{menger} proved that the lower bound also holds. To prove his result, we are going to prove a stronger version of his theorem
+
+    \begin{framedthm}[label={menger}]{Menger's theorem (stronger version)}
+        Given a graph $G$, and two sets $A, B \subseteq V(G)$, either there are at least $k$ vertex-disjoint $A$-$B$ paths or there is an $A$-$B$ separation of order less than $k$.
     \end{framedthm}
 
-    \proofind{
-        Consider an $A$-$B$ separation $(X, Y)$ of minimum order of $G$, i.e. a separation that minimizes $\abs{X \cap Y}$; observe that each $A$-$B$ path must traverse at least one vertex of $X \cap Y$, therefore the number of disjoint $A$-$B$ paths that can exist is at most $\abs{X \cap Y}$. This proves the direct implication of the theorem.
-
-        To prove the converse implication, we would need to prove that the minimum order of an $A$-$B$ separation of $G$ is no more than the number of disjoint $A$-$B$ paths. Instead, we will prove that, for a fixed value $k$, in $G$ there are $k$ disjoint $A$-$B$ paths, or there is an $A$-$B$ separation of order at most $k - 1$, which is logically equivalent. In particular, we will proceed by induction on $m$, i.e. the number of edges of $G$.
+    \proofstrind{
+        % Consider an $A$-$B$ separation $(X, Y)$ of minimum order of $G$, i.e. a separation that minimizes $\abs{X \cap Y}$; observe that each $A$-$B$ path must traverse at least one vertex of $X \cap Y$, therefore the number of disjoint $A$-$B$ paths that can exist is at most $\abs{X \cap Y}$. This proves the direct implication of the theorem.
+        %
+        % To prove the converse implication, we would need to prove that the minimum order of an $A$-$B$ separation of $G$ is no more than the number of disjoint $A$-$B$ paths. Instead, we will prove that, for a fixed value $k$, in $G$ there are $k$ disjoint $A$-$B$ paths, or there is an $A$-$B$ separation of order at most $k - 1$, which is logically equivalent. In particular, we will proceed by induction on $m$, i.e. the number of edges of $G$.
+        We proceed by storng induction on $m$.
     }{
         If $m = 0$, the only possible $A$-$B$ paths in $G$ are trivial paths, i.e. isolated vertices in $A \cap B$. Hence, if $\abs{A \cap B} \ge k$ the base case holds; instead, if $\abs{A \cap B} \le k - 1$, we observe that $A \cap B$ itself is an $A$-$B$ hitting set of $G$ of size at most $k - 1$, which means that there exists an $A$-$B$ separation of order at most $k - 1$ by \cref{menger prop}.
     }{
-        Assume that the statement holds on a graph that has $m - 1$ edges.
+        Assume that the statement holds on a graph that has at most $m - 1$ edges.
     }{
         We will prove that the statement holds for a graph $G$ that has $m$ edges as well. In particular, fix an edge $xy \in E(G)$, and note that the graph $G - \{xy\}$ has $m - 1$ edges, meaning that the inductive hypothesis holds for $G - \{xy\}$. However, if $G - \{xy\}$ has $k$ disjoint $A$-$B$ paths, then $G$ also has $k$ disjoint $A$-$B$ paths, therefore we may assume that the inductive hypothesis holds for $G - \{xy\}$ precisely because the latter has an $A$-$B$ separation of order at most $k - 1$.
 
-        Hence, let $(X, Y)$ be an $A$-$B$ separation of $G - \{xy\}$ of order at most $k - 1$; we observe that if $x, y \in X$, or $x, y \in Y$, then $(X, Y)$ is also a separation for $G$, which would conclude the proof. Thus, suppose that $x \in X - Y$ and $y \in Y - X$; then $(X, Y \cup \{x\})$ is an $A$-$B$ separation of $G$ that either has still order at most $k - 1$, or it becomes a separation of order $k$ with $k - 1$ $A$-$B$ paths. Since the first case concludes the proof, we may assume the second one to hold.
+        Hence, let $(X, Y)$ be an $A$-$B$ separation of $G - \{xy\}$ of order at most $k - 1$; we observe that if $x, y \in X$, or $x, y \in Y$, then $(X, Y)$ is also a separation of order at most $k - 1$ for $G$, which would conclude the proof, so we may assume otherwise. Thus, suppose that $x \in X - Y$ and $y \in Y - X$; then $(X, Y \cup \{x\})$ is an $A$-$B$ separation of $G$ that either has still order at most $k - 1$, or it becomes a separation of order exactly $k$. Since the first case concludes the proof, we may assume the second one to hold.
 
-        Consider the induced subgraphs $G[X]$ and $G[Y]$ \todo{da finire}
+        Consider the induced subgraphs $G[X]$ and $G[Y]$, and apply the inductive hypothesis on the sets $A, (X \cap Y) \cup \{x\} \subseteq X$ and $B, (X \cap Y) \cup \{y\}$ respectively. If both $G[X]$ and $G[Y]$ have $k$ disjoint such paths, then in $G$ there are $k$ disjoint $A$-$B$ paths, so without loss of generality we may assume that $G[X]$ does not have $k$ such paths. Therefore, for the inductive hypothesis to hold this implies that $G[X]$ must have a $(X', Y')$ separation of order at most $k - 1$; this implies that $A \subseteq X'$ and $(X \cap Y) \cup \{x\} \subseteq Y'$. Therefore, $X'$ and $Y \cup Y'$ is a separation of $G$ of order less than $k$. 
     }
+
+    \begin{framedcor}{Menger's theorem (original version)}
+        Given a graph $G$, and two sets $A, B \subseteq V(G)$, the maximum number of disjoint $A$-$B$ paths is equal to the minimum order of an $A$-$B$ separation of $G$.
+    \end{framedcor}
+
+    \begin{proof}
+        Let $M$ be the maximum numebr of vertex-disjoint $A$-$B$ paths, and let $m$ be the minum order of an $A$-$B$ separation. Since each separation upper bounds the number of $A$-$B$ paths by \cref{menger prop 3}, we know that $M \le m$. Now, by way of contradiction suppose that $M < m$; then, since there are less than $m$ $A$-$B$ paths there must exist a separation of order less than $m$, contradicting the minimality of $m$. This proves that $M \ge m$.
+    \end{proof}
+
+    We will use \tit{extensively} Menger's theorem and its implications in the following chapters.
 
     \section{$k$-connectivity}
 
@@ -2275,7 +2306,7 @@
     \end{framedthm}
     
     \begin{proof}
-        By way of contradiction, let $C$ be the cycle that contains as many vertices $x_i$ as possible; if $x_1, \ldots, x_k \in V(C)$, the theorem is trivially verified, hence we may assume that at least one vertex $x_i$ is not in $V(C)$, and without loss of generality assume that $x_k \notin V(C)$. By \cref{kconn} we know that $\delta \ge k$, and by \cref{min deg 2} we know that $\abs{V(C)} \ge k + 1$. Hence, by the previous corollary we know that exist $k$ $\{x_k\}$-$V(C)$ paths that only intersect in $x_k$.
+        By \cref{kconn} we know that $\delta \ge k$, thus by \cref{min deg 2} we know that there exists a cycle in $G$ such that contains at least $k + 1$ vertices. Let $C$ be the cycle of $G$ of length at least $k + 1$ that contains as many vertices $x_i$ as possible; if $x_1, \ldots, x_k \in V(C)$, the theorem is trivially verified, hence we may assume that at least one vertex $x_i$ is not in $V(C)$, and without loss of generality assume that $x_k \notin V(C)$.
 
         Now, since there are at most $k - 1$ vertices $x_i$ in $V(C)$, and there are $k$ $\{x_k\}$-$V(C)$ paths, by the pigeonhole principle there must be a subpath $Q$ of $C$ of the form $x_i \to x_j$ --- for $i, j \in [k - 1]$ distinct --- that has no internal vertex in $\{x_1, \ldots, x_{k - 1}\}$, and such that there are two paths $P_1$ and $P_2$ that $x_k$ as one endpoint and the other lies in $Q$.
 
@@ -2320,7 +2351,7 @@
     Consider the following combinatorial structure.
 
     \begin{frameddefn}{Feedback vertex set}
-        Given a graph $G$, a subset $X \subseteq V(G)$ is said to be a \tbf{feedback vertex set} (FVS) if $G[V(G) - X]$ is acyclic; equivalently, $X$ is an FVS if it intersects all cycles of $G$.
+        Given a graph $G$, a subset $X \subseteq V(G)$ is said to be a \tbf{feedback vertex set} (FVS) if $G - X$ is acyclic; equivalently, $X$ is an FVS if it intersects all cycles of $G$.
     \end{frameddefn}
 
     \begin{figure}[H]
@@ -2733,7 +2764,7 @@
 
     We observe that any digraph contains a trivial path cover, i.e. the one formed by the sef of every trivial path of the graph. In fact, we are interested in finding the path cover having \tit{minimum cardinality}. \textcite{gallai} proved that path covers are strictly related to independent sets, through the following theorem.
 
-    \begin{framedthm}{Gallai-Milgram theorem}
+    \begin{framedthm}[label={gallai}]{Gallai-Milgram theorem}
         Given a digraph $G$, there are a path cover $\mathcal P$ of $G$ and an independent set $X \subseteq V(G)$ such that $$\forall P \in \mathcal P \quad \abs{X \cap V(P)} = 1$$
     \end{framedthm}
 
@@ -2759,19 +2790,64 @@
         TODO \todo{da fare}
     \end{proof}
 
+    \begin{framedcor}{}
+        Given a digraph $G$, the minimum cardinality of a path cover for $G$ is at most the maximum cardinality of an independent set for $G$.
+    \end{framedcor}
+
+    \begin{proof}
+        By way of contradiction, suppose that the minimum cardinality of a path cover $\mathcal P$ for $G$ is strictly greater than the maximum cardinality of an independent set $X$ for $G$. Then, by the previous proposition there must be an independent set $X'$ such that $\forall P \in \mathcal P \quad \abs{X' \cap V(P)} = 1$. However, since every path in $\mathcal P$ is disjoint by definition we get that $X'$ must have at leat $\abs{\mathcal P}$ vertices, implying that $\abs X < \abs{\mathcal P} \le \abs{X'}$, thus contradicting the choice of $X$.
+    \end{proof}
+
+    In particular, this corollary provides a lower bound for the \tbf{maximum independent set} problem, which is notoriously \NPclass-Hard.
+
+    Moreover, since a graph contains a Hamiltonian cycle if and only if there is a path cover of size 1, therefore the former problem can be reduced to the latter, implying that the minimum path cover problem is also \NPclass-Hard.
+
+    Nonetheless, the Gallai-Milgram theorem still has applications in various branched of mathematics. For instance, it can be used to prove a result first derived by \textcite{dilworth} in 1950 involving \tbf{posets}.
+
+    \begin{frameddefn}{Poset}
+        Given a set $S$ and a relation $\prec$, the algebraic structure $(S, \prec)$ is called \tbf{partially ordered set} (or \tit{poset}, for short) if $\prec$ is a binary relation that is \tit{reflexive}, \tit{antisymmetric} and \tit{transitive}.
+    \end{frameddefn}
+
+    For instance, the structure $(\R, \le)$ is clearly a partially ordered set, where the properties derive directly from the \curlyquotes{$\le$} relation.
+
+    \begin{frameddefn}{Chain}
+        Given a poset $(S, \prec)$, a \tbf{chain} is a sequence of pairwise comparatble elements of $S$ w.r.t. $\prec$. In other words, $C \in S$ is an anti-chain if it holds that $$\forall s, s' \in C \quad s \prec s' \land s' \prec s$$
+    \end{frameddefn}
+
+    \begin{frameddefn}{Anti-chain}
+        Given a poset $(S, \prec)$, an \tbf{anti-chain} is a set of pairwise uncomparable elements of $S$ w.r.t. $\prec$. In other words, $A \in S$ is an anti-chain if it holds that $$\forall s, s' \in A \quad s \nprec s' \land s' \nprec s$$
+    \end{frameddefn}
+
+    TODO \todo{drawing}
+    
+    \begin{framedthm}{Dilworth's theorem}
+        Given a poset $(S, \prec)$, the minimum number of chains covering $S$ is equal to the maximum cardinality of an anti-chain.
+    \end{framedthm}
+
+    \begin{proof}
+        Let $c(S)$ be the minimum number of chains that cover $S$, and let $a(S)$ be the maximum cardinality of an anti-chain in $S$. We construct a graph $G_S$ such that
+
+        \begin{itemize}
+            \item $V(G_S) = S$
+            \item $E(G_S) = \{(x, y) \mid x, y \in V(G_S) : x \prec y\}$
+        \end{itemize}
+
+        Then, by construction each chain in $S$ corresponds to a path in $G_S$, and similarly each anti-chain in $S$ corresponds to a set of disconnected nodes, i.e. an independent set in $G_S$. Therefore, by \cref{gallai} we get that $$c(S) = \abs{ \mathcal P^*} \le \abs{X^*} \le a(S)$$ where $\mathcal P^*$ is a minimum path cover and $X^*$ is a maximum independent set of $G_S$. TODO \todo{last part?}
+    \end{proof}
+
     \section{Exercises}
     
-    \begin{framedprob}{}
-        Given a $k$-connected graph $G$ such that $\abs{V(G)} \ge 2k$, show that $G$ contains a cycle of length at least $2k$.
-    \end{framedprob}
-
-    \solution{
-        Since $\abs{V(G)} \ge 2k$, we can split $G$ into two sets $A$ and $B$ such that $\abs{A}, \abs{B} \ge k$ and $A \cap B = \varnothing$. Fix a vertex $a \in A$; since $G$ is $k$-connected and $\abs A \ge k$, by \cref{menger cor} there exists at least one $\{a\}$-$B$ path, and let $b \in B$ be the other endpoint of this path. By the same argument, since $\abs B \ge k$ there exists at least one $\{b\}-A$ path different from $a \to b$, and let $a' \in A$ be the other endpoint of this path.
-
-        We can repeat the same argument --- starting from $a'$ --- going \curlyquotes{back and forth} from $A$ to $B$, and since $\abs A , \abs B \ge k$ this process can be repeated at least $2k - 1$ times. Hence, at the end of this procedure we found a path $P$ such that $\abs{E(P)} \ge 2k - 1$ that starts in $a$ and ends in some vertex $x \in B$.
-
-        Lastly, consider the vertices $a$ and $x$; clearly $a \neq x$, and since $G$ is $k$-connected by \cref{intern disj menger} there exists at least one $\{x\}$-$\{a\}$ path $P_{x,a}$, meaning that $P \cup P_{x,a}$ forms a cycle in $G$ that must have length at least $2k - 1 + 1 = 2k$.
-   }
+   %  \begin{framedprob}{}
+   %      Given a $k$-connected graph $G$ such that $\abs{V(G)} \ge 2k$, show that $G$ contains a cycle of length at least $2k$.
+   %  \end{framedprob}
+   %
+   %  \solution{
+   %      Since $\abs{V(G)} \ge 2k$, we can split $G$ into two sets $A$ and $B$ such that $\abs{A}, \abs{B} \ge k$ and $A \cap B = \varnothing$. Fix a vertex $a \in A$; since $G$ is $k$-connected and $\abs A \ge k$, by \cref{menger cor} there exists at least one $\{a\}$-$B$ path, and let $b \in B$ be the other endpoint of this path. By the same argument, since $\abs B \ge k$ there exists at least one $\{b\}-A$ path different from $a \to b$, and let $a' \in A$ be the other endpoint of this path.
+   %
+   %      We can repeat the same argument --- starting from $a'$ --- going \curlyquotes{back and forth} from $A$ to $B$, and since $\abs A , \abs B \ge k$ this process can be repeated at least $2k - 1$ times. Hence, at the end of this procedure we found a path $P$ such that $\abs{E(P)} \ge 2k - 1$ that starts in $a$ and ends in some vertex $x \in B$.
+   %
+   %      Lastly, consider the vertices $a$ and $x$; clearly $a \neq x$, and since $G$ is $k$-connected by \cref{intern disj menger} there exists at least one $\{x\}$-$\{a\}$ path $P_{x,a}$, meaning that $P \cup P_{x,a}$ forms a cycle in $G$ that must have length at least $2k - 1 + 1 = 2k$.
+   % }
 
     \begin{framedprob}{}
         Prove that any $t$-connected subgraph $G$ with $n \ge t + 2$ contains $K_{2, t}$ as a topological minor.
@@ -2800,47 +2876,8 @@
     %     Let $G$ be a 2-connected graph, and by way of contradiction suppose that there are two vertices $x, y \in V(G)$ that do not lie on a common cycle of $G$. By \cref{kconn}, we know that $\delta \ge 2$, hence there must be vertices $x_1, x_2$ and $y_1, y_2$ such that $x \sim x_1, x_2$ and $y \sim y_1, y_2$.
     %
     %     If $x$ and $y$ do not lie on a common cycle, without of loss of generality we may assume that $x_1$ and $y_1$ are connected by only one path --- there must be at least one otherwise $G$ would be disconnected. However, since $x_1 \sim x \sim x_2$ and $y_1 \sim y \sim y_2$, such path must pass through $x$, $x_2$, $y_2$ and $y$. In particular, this implies that $G - \{x_2\}$ is disconnected because $x_1$ and $y_1$ are not connected anymore. Therefore, we can find a set of 1 vertex that disconnects $G$, meaning that $G$ is not 2-connected $\lightning$.
-    % }
-    
-    \begin{framedprob}{}
-        Solve the following exercises on $k$-connectivity.
-
-        \begin{itemize}
-            \item Give an example of a 2-connected graph $G$ such that for any $C \subseteq G$ it holds that $G - C$ is disconnected.
-            \item Prove that every 3-connected graph $G$ has a cycle $C$ such that $G - C$ is connected.
-        \end{itemize}
-    \end{framedprob}
-    
-    \solution{
-        For the first exercise, a minimal example is given by the following graph:
-
-        \begin{figure}[H]
-            \centering
-            \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.75cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
-
-                \node[circle, draw] (1) []{};
-                \node[circle, draw] (2) [below left of = 1]{};
-                \node[circle, draw] (3) [below right of = 1]{};
-                \node[circle, draw] (4) [below right of = 2]{};
-                \node[circle, draw] (5) [left of = 2]{};
-                \node[circle, draw] (6) [right of = 3]{};
-
-                \draw[-] (1) to (2);
-                \draw[-] (1) to (3);
-                \draw[-] (1) [bend right] to (5);
-                \draw[-] (1) [bend left] to (6);
-                \draw[-] (2) to (4);
-                \draw[-] (3) to (4);
-                \draw[-] (4) [bend left] to (5);
-                \draw[-] (4) [bend right] to (6);
-
-                ;
-            \end{tikzpicture}
-        \end{figure}
-
-        TODO \todo{da finire}
-    }
-
+    % }    
+ 
     \begin{framedprob}{}
         Prove that every 3-connected graph has a cycle of even length.
     \end{framedprob}
@@ -3126,17 +3163,17 @@
     }{
         We are going to prove the statement for $n \ge r$. Note that $G$ is EM$K_r$, therefore by adding an edge between two non-adjacent vertices we obtain $K_r$ as subgraph of $G$; this must imply that $K_{r - 1}$ must be a subgraph of $G$. Hence, let $Y := \{y_1, \ldots, y_{r - 1}\}$ be the vertices such that $G[Y] = K_{r - 1}$.
 
-        Now, since $G$ is EM$K_r$, then $G[V(G) - Y]$ does not contain $K_r$, therefore it must be that $\abs{E(G[V(G) - Y])}$ is at most the number of edges of a graph $H$ that is EM$K_r$ of $n - (r - 1)$ vertices. However, by strong inductive hypothesis we know that $H = T(n - (r - 1), r - 1)$, therefore $$\abs{E(G[V(G) - Y])} \le \abs{E(H)} = t(n - (r - 1), r - 1)$$
+        Now, since $G$ is EM$K_r$, then $G - Y$ does not contain $K_r$, therefore it must be that $\abs{E(G - Y)}$ is at most the number of edges of a graph $H$ that is EM$K_r$ of $n - (r - 1)$ vertices. However, by strong inductive hypothesis we know that $H = T(n - (r - 1), r - 1)$, therefore $$\abs{E(G - Y)} \le \abs{E(H)} = t(n - (r - 1), r - 1)$$
 
         \claim{
             If $n \ge r$, then $t(n, r) = t(n - r, r) + (n - r)(r - 1) + \binom{r}{2}$.
         }{
-            Let $X_1, \ldots, X_r$ be a partition of $T(n, r)$. Since $n \ge r$, we know that the independent sets are not empty, thus fix $x_i \in X_i$ for each $X_i$ of the partition, and let $Z := \{x_1, \ldots, x_r\}$. Now, we observe the following.
+            Let $X_1, \ldots, X_r$ be a partition of $G' = T(n, r)$. Since $n \ge r$, we know that the independent sets are not empty by the pigeonhole principle, thus fix $x_i \in X_i$ for each $X_i$ of the partition, and let $Z := \{x_1, \ldots, x_r\}$. Now, we observe the following.
 
             \begin{itemize}
-                \item $G[Z] = K_r$, hence there are $\binom{r}{2}$ edges in $G[Z]$.
-                \item $G[V(G) - Z] = T(n -r, r)$ since we only removed one vertex per independent set, thus there are $t(n - r, r)$ edges in $G[V(G) - Z]$.
-                \item Fix an independent set $X_i$, and consider a vertex $y \in X_i$; this vertex has $r -1 $ neighbors in $Z$, i.e. $\abs{N(y) \cap Z} = r - 1$, because $T(n, r)$ is a complete $r$-partite graph, and the $r$-th node of $Z$ is in $X_i$ itself. Therefore, because there are $n- r$ vertices outside $G$, there are $(r - 1)(n- r)$ edges between $G[Z]$ and $G[V(G) - Z]$.
+                \item $G'[Z] = K_r$, hence there are $\binom{r}{2}$ edges in $G'[Z]$.
+                \item $G' - Z = T(n -r, r)$ since we only removed one vertex per independent set, thus there are $t(n - r, r)$ edges in $G' - Z$.
+                \item Fix an independent set $X_i$, and consider a vertex $y \in X_i$; this vertex has $r -1 $ neighbors in $Z$, i.e. $\abs{N(y) \cap Z} = r - 1$, because $T(n, r)$ is a complete $r$-partite graph, and the $r$-th node of $Z$ is in $X_i$ itself. Therefore, because there are $n- r$ vertices in $G' - Z$, there are $(r - 1)(n- r)$ edges between $G'[Z]$ and $G' - Z$.
             \end{itemize}
 
             The claim follows from the above statements.
@@ -3146,11 +3183,11 @@
 
         \begin{itemize}
             \item $G[Y] = K_{r - 1}$, hence there are $\binom{r - 1}{2}$ edges in $G[Y]$.
-            \item $\abs{E(G[V(G) - Y])} \le t(n - (r - 1), r - 1)$ for the previous observation.
-            \item Any vertex $z \notin Y$ must have at most $r - 2$ neighbors in $Y$ --- if $z$ had $r - 1$ neighbors, $G[Y \cup \{z\}]$ would be a $K_r$, contradicting the definition of $G$. Hence, there are $(r - 2)(n - (r - 1))$ edges between $G[Y]$ and $G[V(G) - Y]$.
+            \item $\abs{E(G - Y)} \le t(n - (r - 1), r - 1)$ for the previous observation.
+            \item Any vertex $z \notin Y$ must have at most $r - 2$ neighbors in $Y$ --- if $z$ had $r - 1$ neighbors, $G[Y \cup \{z\}]$ would be a $K_r$, contradicting the definition of $G$. Hence, there are at most $(r - 2)(n - (r - 1))$ edges between $G[Y]$ and $G - Y$.
         \end{itemize}
 
-        Therefore, we get that $$\abs{E(G)} \le \binom{ r- 1}{2} + (r - 2)(n - (r - 1)) + t(n - (r - 1), r - 1) = t(n , r - 1)$$ where the last inequality follows from the previous claim. Moreover, for \cref{turan bound} this upper bound is tight. However, if this bound is tight, it must be that the vertices $z \notin Y$ have \tit{exactly} $r - 2$ neighbors in $Y$; hence, for each $i \in [r - 1]$ let $X_i := \{z \in V(G) - Y \mid z \nsim y_i\} \cup \{y_i\}$. In particular, since $z$ has exactly $r - 2$ neighbors in $Y$, it is adjacent to every vertex in $Y$ except for $y_i$, meaning that for any vertex $z \in V(G)$ it holds that $z$ is in \tit{exactly} one set between $X_1, \ldots, X_{r - 1}$. Therefore, these sets describe a \tit{partition} of $G$.
+        Therefore, we get that $$\abs{E(G)} \le \binom{r- 1}{2} + (r - 2)(n - (r - 1)) + t(n - (r - 1), r - 1) = t(n , r - 1)$$ where the last inequality follows from the previous claim. Moreover, for \cref{turan bound} this upper bound is tight. However, if this bound is tight, it must be that the vertices $z \notin Y$ have \tit{exactly} $r - 2$ neighbors in $Y$; hence, for each $i \in [r - 1]$ let $X_i := \{z \in V(G) - Y \mid z \nsim y_i\} \cup \{y_i\}$. In particular, since $z$ has exactly $r - 2$ neighbors in $Y$, it is adjacent to every vertex in $Y$ except for $y_i$, meaning that for any vertex $z \in V(G)$ it holds that $z$ is in \tit{exactly} one set between $X_1, \ldots, X_{r - 1}$. Therefore, these sets describe a \tit{partition} of $G$.
 
         \claim{
             For all $i \in [r - 1]$, it holds that $X_i$ is an independent set.
@@ -3197,7 +3234,7 @@
     }{
         We are going to prove the statement for a graph $G$ of $n$ vertices such that $n > 2k$, i.e. $n \ge 2k + 1$.
 
-        Suppose that $\delta < 2k$, i.e. $\delta \le 2k - 1$, implying that there exists a vertex $v$ such that $\deg(v) \le 2k - 1$, and consider $G[V(G) - \{v\}]$. Since this subgraph has $n - 1$ vertices, and we are assuming that $\abs{E(G)} \ge (2k - 1)(n - k)$ then we have that
+        Suppose that $\delta < 2k$, i.e. $\delta \le 2k - 1$, implying that there exists a vertex $v$ such that $\deg(v) \le 2k - 1$, and consider $G - \{v\}$. Since this subgraph has $n - 1$ vertices, and we are assuming that $\abs{E(G)} \ge (2k - 1)(n - k)$ then we have that
         \begin{equation*}
             \begin{split}
                 \abs{E(G[V(G) - \{v\}])} &\ge \abs{E(G)} - (2k - 1) \\
@@ -3206,7 +3243,7 @@
                                          &\ge (2k - 1) ((n - 1) - k)
             \end{split}
         \end{equation*}
-        Moreover, since $n \ge 2k + 1 \iff n - 1 \ge 2k$ and $G[V(G) - \{v\}]$ has $n - 1$ vertices, the latter has at least $2k$ vertices, hence we can apply the inductive hypothesis on it and obtaining a $k$-connected subgraph to prove the statement trivially. Therefore, we may assume that $\delta \ge 2k$.
+        Moreover, since $n \ge 2k + 1 \iff n - 1 \ge 2k$ and $G - \{v\}$ has $n - 1$ vertices, the latter has at least $2k$ vertices, hence we can apply the inductive hypothesis on it and obtaining a $k$-connected subgraph to prove the statement trivially. Therefore, we may assume that $\delta \ge 2k$.
 
         To recap, we are now assuming that
 
@@ -3242,7 +3279,7 @@
         Now consider assumption (c): if $\delta \ge 2k$ then for each vertex $v \in V(G)$ its degree must be at least $2k$, and in particular this is true for any $v \in X - Y$. However, $(X, Y)$ is a separation of $G$, meaning that there are not edges in $\mathrm{cut}(X, Y)$; therefore, all the neighbors of $v$ must lie inside $X$, meaning that $\abs X \ge \abs{\mathcal N(v) \cup \{v\}} \ge 2k + 1 > 2k$. This last condition implies that the vertex bound of the inductive hypothesis is satisfied, so by applying the latter on one between $G[X]$ or $G[Y]$ the theorem holds.
     }
 
-    It is not known if the edge bound provided by Mader's theorem is optimal, i.e. we do not know if there are graph with fewer than $(2k - 1)(n - k)$ edges that do not contain $k$-connected subgraphs. In fact, this is an open question in the field of extremal graph theory: given $k \in \N$, what is the smallest value $c_k$ such that all graphs with $n$ vertices and $\abs{E(G)} \ge c_kn + f(k)$ --- for some function $f(k)$ --- contain a $k$-connected subgraph?
+    It is not known if the edge bound provided by Mader's theorem is optimal, i.e. we do not know if there are graphs with fewer than $(2k - 1)(n - k)$ edges that do not contain $k$-connected subgraphs. In fact, this is an open question in the field of extremal graph theory: given $k \in \N$, what is the smallest value $c_k$ such that all graphs with $n$ vertices and $\abs{E(G)} \ge c_kn + f(k)$ --- for some function $f(k)$ --- contain a $k$-connected subgraph?
 
     By Mader's theorem we that $c_k$ is \tit{upper bounded} by $c_k \le 2k - 1$, and some type of graphs are known to provide \tit{lower bounds}, such as the following type.
 
@@ -3641,12 +3678,12 @@
     \end{framedthm}
     
     \begin{proof}
-        By way of contradiction, suppose that there is a graph $G$ with 6 vertices that does not contain $K_3$ as subgraph, nor any independent sets of size 3.
+        By way of contradiction, suppose that there is a graph $G$ with 6 vertices that does not contain $K_3$ as subgraph, nor any independent set of size 3.
 
         \claim{
             $\Delta(G) \le 2$.
         }{
-            By way of contradiction, suppose that there is a vertex $v$ of degree 3; however, if there was an edge with two endpoints in $\mathcal N(v)$ then there would be $K_3$ as subgraph of $G$. Therefore, the three vertices in $\mathcal N(v)$ cannot have edges between them, implying that $\mathcal N(v)$ forms an independent set of size 3 $\lightning$.
+            By way of contradiction, suppose that there is a vertex $v$ of degree 3; however, if there was an edge with two endpoints in $\mathcal N(v)$ then there would be $K_3$ as subgraph of $G$. Therefore, any three vertices in $\mathcal N(v)$ cannot have edges between them, implying that $\mathcal N(v)$ forms an independent set of size 3 $\lightning$.
         }
 
         Fix a vertex $v$ with at least 3 non-neighbors --- its existence is guaranteed by the previous claim, since $n = 6$ --- and let the latter be $x$, $y$ and $z$. If two of the 3 non-neighbors of $v$ are not adjacent, say $x$ and $y$, then $\{v, x, y\}$ is an independent set of size 3. This implies that all of the non-neighbors of $v$ must be pairwise adjacent, meaning that $x$, $y$ and $z$ form a $K_3$ in $G$ $\lightning$.
@@ -3719,6 +3756,8 @@
         By way of contradiction, let $G$ be a graph having 9 vertices that has no $K_4$ as subgraph nor any independent set of size 3.
 
         By the same reasoning applied for the proof of \cref{r3 = 6}, we know that $\Delta(G) \le 5$, and that no vertex of $G$ can have more than 3 non-neighbors. Moreover, since $n = 9$, this implies that the degree of every vertex of $G$ is \tit{exactly} 5, i.e. $G$ is 5-regular. However, we observe that $\sum_{x \in V(G)}{\deg(x)} = 5 \cdot 9 = 45$, which is impossible because 45 is odd and the sum of the degrees of $G$ must be even by the Handshaking lemma $\lightning$.
+
+        Alternatively, this result can be proven as follows. Since $R(4, 3) = R(3, 4)$, by way of contradiction suppose there exists a graph $G$ on 9 verices that has no $K_3$ as subgraph nor any independent set of size 3, and fix a vertex $v \in V(G)$. Now consider $G - \{v\}$: by the pigeonhole principle, since each edge can be either present or absent, there are at least $\ceil{\tfrac{9}{2}}=4$ neighbors or non-neighbors of $v$ --- without loss of generality suppose that $\abs{\mathcal N(v)} \ge 4$. Since $G$ has no $K_3$ as subgraph, any pair of vertices inside $\mathcal N(v)$ must be the endpoints of an anti-edge, otherwise such two vertices would form $K_3$ together with $v$ itself. This implies that $\overline G$ contains and independent set of size 4, contradicting the definition of $G$.
     \end{proof}
 
     Thanks to the generalized version of the Ramsey number, we can prove the value of $R(4)$ as follows.
@@ -3749,7 +3788,7 @@
     \begin{proof}
         We already know the values for $R(1)$ and $R(2)$, therefore they exist. Hence, fix $t \ge 2$ and let $G$ be a graph with $2^{2t - 3}$ vertices.
         
-        \textbf{Claim}: There are a sequence of sets $X_1, \ldots, X_{2t -3}$ and a sequence vertices$x_1, \ldots , x_{2t - 3}$ such that for each $i \in [2t - 2]$ it holds that
+        \textbf{Claim}: There are a sequence of sets $X_1, \ldots, X_{2t -3}$ and a of sequence vertices $x_1, \ldots , x_{2t - 3}$ such that for each $i \in [2t - 2]$ it holds that
 
         \begin{enumerate}
             \item $x_i \in X_i$ and $\abs{X_i} \ge 2^{2t - 2 - i}$
@@ -3999,6 +4038,10 @@
 
         Lastly, suppose that $C = C_5$. Then, if any of the vertices $c_i \in V(C_5)$ is adjacent to a vertex $x_\ell \in V(G) - V(C_5)$, then there is $P_6$ in $\overline G$, therefore for all $c_i \in V(C_5)$ and $x_\ell \in V(G) - V(C_5)$ it holds that $c_i \nsim v_\ell$. In particular, this implies that $\overline G$ contains $K_{3,5}$, which clearly contains $P_6$ $\lightning$.
     }
+
+    \begin{framedprob}{}
+        Show that for any choice of the coloring function $\func{c}{E(K_{17})}{\{\mbox{R, G, B}\}}$ there are three vertices
+    \end{framedprob}
 
     \chapter{Graph decompositions}
 
@@ -4362,6 +4405,47 @@
             \item for each $i \in [k]$, $G_i$ is 3-connected
         \end{itemize}
     \end{framedcor}
+
+    \section{Exercises}
+
+    \begin{framedprob}{}
+        Solve the following exercises on $k$-connectivity.
+
+        \begin{itemize}
+            \item Give an example of a 2-connected graph $G$ such that for any $C \subseteq G$ it holds that $G - C$ is disconnected.
+            \item Prove that every 3-connected graph $G$ has a cycle $C$ such that $G - C$ is connected.
+        \end{itemize}
+    \end{framedprob}
+    
+    \solution{
+        For the first exercise, a minimal example is given by the following graph:
+
+        \begin{figure}[H]
+            \centering
+            \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.75cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
+
+                \node[circle, draw] (1) []{};
+                \node[circle, draw] (2) [below left of = 1]{};
+                \node[circle, draw] (3) [below right of = 1]{};
+                \node[circle, draw] (4) [below right of = 2]{};
+                \node[circle, draw] (5) [left of = 2]{};
+                \node[circle, draw] (6) [right of = 3]{};
+
+                \draw[-] (1) to (2);
+                \draw[-] (1) to (3);
+                \draw[-] (1) [bend right] to (5);
+                \draw[-] (1) [bend left] to (6);
+                \draw[-] (2) to (4);
+                \draw[-] (3) to (4);
+                \draw[-] (4) [bend left] to (5);
+                \draw[-] (4) [bend right] to (6);
+
+                ;
+            \end{tikzpicture}
+        \end{figure}
+
+        TODO \todo{da finire}
+    }
 
     \chapter{Planar graphs}
 
