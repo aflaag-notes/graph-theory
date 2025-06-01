@@ -1215,7 +1215,7 @@
 
         Assume the statement holds for a tree of size $n - 1$, and consider a tree $T$ of size $n$, and let $T_1, \ldots, T_k$ a the collection of subtrees of $T$ such that they have pairwise non-empty intersection. Moreover, fix a leaf $\ell$, and by \cref{tree without leaf} we know that $T - \{\ell\}$ is still a tree. Therefore, if $\ell$ is not contained by any of the trees of the collection, the statement follows trivially by induction on $T - \{\ell\}$, so we may assume that $\ell$ is contained in at least one of the trees of the collection. Furthermore, we may assume that there is no tree $T_i$ of the collection such that $V(T_i) = \{\ell\}$, otherwise by the fact that it must be non-pairwise nondisjoint with all the other trees it must hold that $\forall j \in [k] \quad j \neq i \implies V(T_i) \cap V(T_j) = \{\ell\}$ which trivially implies that $\bigcap_{i = 1}^k{V(T_i)} = \{\ell\}$.
 
-        Therefore, we are assuming that there is at least a tree of the collection containing $\ell$, and each such tree must contain at least another vertex. Therefore, by connectivity of each subtree we know that there is one vertex --- say $u$ --- such that $\ell \sim u$ which in turn implies that $\forall i \in [k] \quad \ell \in V(T_i) \implies u \in V(T_i)$. Now, for each $i \in [k]$ let $T_i'$ indicate the subtree $T_i - \{\ell\}$; the previous observation implies that $\forall i, j \in [k] \quad i \neq j, \ell V(T_i) \cap V(T_j) \implies u \in V(T_i) \cap V(T_j) \implies u \in V(T_i') \cap V(T_j')$. Now, consider the collection $T_1', \ldots, T_k'$; this observation implies that for each $i, j \in [k]$, if $i \neq j$ then
+        Therefore, we are assuming that there is at least a tree of the collection containing $\ell$, and each such tree must contain at least another vertex. Thus, by connectivity of each subtree we know that there is one vertex --- say $u$ --- such that $\ell \sim u$ which in turn implies that $\forall i \in [k] \quad \ell \in V(T_i) \implies u \in V(T_i)$. Now, for each $i \in [k]$ let $T_i'$ indicate the subtree $T_i - \{\ell\}$; the previous observation implies that $\forall i, j \in [k] \quad i \neq j \land \ell \in V(T_i) \cap V(T_j) \implies u \in V(T_i) \cap V(T_j) \implies u \in V(T_i') \cap V(T_j')$. Now, consider the collection $T_1', \ldots, T_k'$; this observation implies that for each $i, j \in [k]$, if $i \neq j$ then
 
         \begin{itemize}
             \item if $\ell \in V(T_i) \cap V(T_j)$ then $u \in V(T_i') \cap V(T_j') \implies V(T_i') \cap V(T_j') \neq \varnothing$
@@ -1793,7 +1793,7 @@
 
     This graph is connected, and has 10 vertices, but it does not admit perfect matchings, meaning that the converse does not hold. Can we find a condition that guarantees that a given graph always admits a perfect matching?
 
-    Given a graph $G$, let $\mathcal O (G)$ be the number of components with an odd number of vertices. The next theorem, proved by \textcite{tutte} in 1947 shows that the following property $$\forall S \subseteq V(G) \quad \mathcal O(G[V(G) - S]) \le \abs S$$ which we will refer to as \tbf{Tutte condition} --- is a \tit{necessary} and \tit{sufficient} condition to guarantee that a graph admits a perfect matching. In fact, in the example of $C_5$ we observe that the set that violates the Tutte condition is $S = \varnothing$, and in the second example is $S = \{x\}$.
+    Given a graph $G$, let $\mathcal O (G)$ be the number of components with an odd number of vertices. The next theorem, proved by Tutte \cite{tutte} in 1947 shows that the following property $$\forall S \subseteq V(G) \quad \mathcal O(G[V(G) - S]) \le \abs S$$ which we will refer to as \tbf{Tutte condition} --- is a \tit{necessary} and \tit{sufficient} condition to guarantee that a graph admits a perfect matching. In fact, in the example of $C_5$ we observe that the set that violates the Tutte condition is $S = \varnothing$, and in the second example is $S = \{x\}$.
 
     \begin{framedlem}{}
         Given a graph $G$, and a supergraph $G'$ of $G$, if $G$ satisfies the Tutte condition, then $G'$ satisfies the Tutte condition as well.
@@ -1916,7 +1916,7 @@
         % \label{}
     \end{figure}
 
-    If the family of preference functions $\{w_v\}_{v \in V}$ is such that $$w_a(b) > w_b(b') \land w_b(a) > w_b(a')$$ which implies that \underline{both} $a$ and $b$ would prefer to \tit{switch} their current matched vertex --- then $M$ is \tit{not} stable. Note that the empty matching is \tit{not} stable, by definition.
+    If the family of preference functions $\{w_v\}_{v \in V}$ is such that $$w_a(b) > w_a(b') \land w_b(a) > w_b(a')$$ which implies that \underline{both} $a$ and $b$ would prefer to \tit{switch} their current matched vertex --- then $M$ is \tit{not} stable. Note that the empty matching is \tit{not} stable, by definition.
 
     The following theorem, proved by \textcite{gale} in 1962, proves that a stable matching can be always constructed in a bipartite graph, regardless of the preference functions.
 
@@ -2832,22 +2832,18 @@
             \item $E(G_S) = \{(x, y) \mid x, y \in V(G_S) : x \prec y\}$
         \end{itemize}
 
-        Then, by construction each chain in $S$ corresponds to a path in $G_S$, and similarly each anti-chain in $S$ corresponds to a set of disconnected nodes, i.e. an independent set in $G_S$. Therefore, by \cref{gallai} we get that $$c(S) = \abs{ \mathcal P^*} \le \abs{X^*} \le a(S)$$ where $\mathcal P^*$ is a minimum path cover and $X^*$ is a maximum independent set of $G_S$. TODO \todo{last part?}
+        Then, by construction each chain in $S$ corresponds to a path in $G_S$, and similarly each anti-chain in $S$ corresponds to a set of disconnected nodes, i.e. an independent set in $G_S$. Therefore, by \cref{gallai} we get that $$c(S) = \abs{ \mathcal P^*} \le \abs{X^*} \le a(S)$$ where $\mathcal P^*$ is a minimum path cover and $X^*$ is a maximum independent set of $G_S$. Finally, for each path cover there must be at least one path for each node of any independent set of $G_S$, concluding that $c(S) \ge a(S)$ also holds --- we observe that this does not hold in general, but in posets $\prec$ is transitive.
     \end{proof}
 
     \section{Exercises}
     
-   %  \begin{framedprob}{}
-   %      Given a $k$-connected graph $G$ such that $\abs{V(G)} \ge 2k$, show that $G$ contains a cycle of length at least $2k$.
-   %  \end{framedprob}
-   %
-   %  \solution{
-   %      Since $\abs{V(G)} \ge 2k$, we can split $G$ into two sets $A$ and $B$ such that $\abs{A}, \abs{B} \ge k$ and $A \cap B = \varnothing$. Fix a vertex $a \in A$; since $G$ is $k$-connected and $\abs A \ge k$, by \cref{menger cor} there exists at least one $\{a\}$-$B$ path, and let $b \in B$ be the other endpoint of this path. By the same argument, since $\abs B \ge k$ there exists at least one $\{b\}-A$ path different from $a \to b$, and let $a' \in A$ be the other endpoint of this path.
-   %
-   %      We can repeat the same argument --- starting from $a'$ --- going \curlyquotes{back and forth} from $A$ to $B$, and since $\abs A , \abs B \ge k$ this process can be repeated at least $2k - 1$ times. Hence, at the end of this procedure we found a path $P$ such that $\abs{E(P)} \ge 2k - 1$ that starts in $a$ and ends in some vertex $x \in B$.
-   %
-   %      Lastly, consider the vertices $a$ and $x$; clearly $a \neq x$, and since $G$ is $k$-connected by \cref{intern disj menger} there exists at least one $\{x\}$-$\{a\}$ path $P_{x,a}$, meaning that $P \cup P_{x,a}$ forms a cycle in $G$ that must have length at least $2k - 1 + 1 = 2k$.
-   % }
+    \begin{framedprob}{}
+        Given a $k$-connected graph $G$ with $k \ge 2$ such that $\abs{V(G)} \ge 2k$, show that $G$ contains a cycle of length at least $2k$.
+    \end{framedprob}
+
+    \solution{
+        By \cref{kconn} we know that $\delta \ge k \ge 2$, therefore $G$ contains at least one cycle. Let $C$ be the longest cycle of $G$, and by way of contradiction suppose that $\abs{V(C)} \le 2k - 1$. However, since $\abs{V(G)} \ge 2k$ at least one vertex $v \in V(G) - V(C)$ must exist. By \cref{min deg 2} we know that $G$ has a cycle of length at least $\delta + 1 \ge k + 1$, therefore $C$ must also have length at least $k + 1$, otherwise it would not be the longest cycle. Hence, by \cref{menger cor} there are $k$ internally disjoint $\{v\}$-$V(C)$ paths that only intersect in $v$. However, since $C$ only has at most $2k - 1$ vertices, and there are $k$ such paths, at least two paths $P$ and $P'$ must have adjacent endpoints in $C$ by the pigeonhole principle. This implies that $C$ can be extended through $P$ and $P'$ such that it also includes the vertex $v$ and still contains all the vertices that it originally contained, in order to construct a cycle longer than $C$, contradicting its definition $\lightning$.
+    }
 
     \begin{framedprob}{}
         Prove that any $t$-connected subgraph $G$ with $n \ge t + 2$ contains $K_{2, t}$ as a topological minor.
@@ -3757,7 +3753,17 @@
 
         By the same reasoning applied for the proof of \cref{r3 = 6}, we know that $\Delta(G) \le 5$, and that no vertex of $G$ can have more than 3 non-neighbors. Moreover, since $n = 9$, this implies that the degree of every vertex of $G$ is \tit{exactly} 5, i.e. $G$ is 5-regular. However, we observe that $\sum_{x \in V(G)}{\deg(x)} = 5 \cdot 9 = 45$, which is impossible because 45 is odd and the sum of the degrees of $G$ must be even by the Handshaking lemma $\lightning$.
 
-        Alternatively, this result can be proven as follows. Since $R(4, 3) = R(3, 4)$, by way of contradiction suppose there exists a graph $G$ on 9 verices that has no $K_3$ as subgraph nor any independent set of size 3, and fix a vertex $v \in V(G)$. Now consider $G - \{v\}$: by the pigeonhole principle, since each edge can be either present or absent, there are at least $\ceil{\tfrac{9}{2}}=4$ neighbors or non-neighbors of $v$ --- without loss of generality suppose that $\abs{\mathcal N(v)} \ge 4$. Since $G$ has no $K_3$ as subgraph, any pair of vertices inside $\mathcal N(v)$ must be the endpoints of an anti-edge, otherwise such two vertices would form $K_3$ together with $v$ itself. This implies that $\overline G$ contains and independent set of size 4, contradicting the definition of $G$.
+        Alternatively, this result can be proven as follows. Since $R(4, 3) = R(3, 4)$, by way of contradiction suppose there exists a graph $G$ on 9 verices that has no $K_3$ as subgraph nor any independent set of size 3, and fix a vertex $v \in V(G)$. Now consider $G - \{v\}$: by the pigeonhole principle, since each edge can be either present or absent, there are at least $\ceil{\tfrac{9}{2}}=4$ neighbors or non-neighbors of $v$ --- without loss of generality suppose that $\abs{\mathcal N(v)} \ge 4$. Since $G$ has no $K_3$ as subgraph, any pair of vertices inside $\mathcal N(v)$ must be the endpoints of an anti-edge, otherwise such two vertices would form $K_3$ together with $v$ itself. This implies that $\overline G$ contains and independent set of size 4, contradicting the definition of $G$ $\lightning$.
+    \end{proof}
+
+    This idea can be actually generalized as follows.
+
+    \begin{framedprop}{}
+        For any $t \in \N$ it holds that $R(t) \le 2 R(t - 1, t)$.
+    \end{framedprop}
+
+    \begin{proof}
+        By way of contradiction, suppose that there exists a graph on $2 R(t - 1, t)$ vertices without $K_t$ as subgraph in $G$ and $\overline G$. Fix a vertex $v$; then, by the pigeonhole principle $v$ must have at least $R(t - 1, t)$ neighbors or non-neighbors --- assume that $\abs{\mathcal N(v)} \ge R(t - 1, t)$ without loss of generality. Then, by definition of $R(t - 1, t)$ this implies that $G[\mathcal N (v)]$ contains $K_{t - 1}$ as subgraph, or $K_t$ in its complement. However, its complement cannot contain $K_t$ otherwise $G$ would contain a $K_t$, contradicting its definition, hence the only possibility is that $K_{t - 1} \subseteq G[\mathcal N(v)]$. However, this implies that $G[\mathcal N (v) \cup \{v\}]$ then contains a $K_t$, again contradicting the definition of $G$ $\lightning$.
     \end{proof}
 
     Thanks to the generalized version of the Ramsey number, we can prove the value of $R(4)$ as follows.
@@ -3767,14 +3773,7 @@
     \end{framedcor}
 
     \begin{proof}
-        By way of contradiction, let $G$ be a graph having 9 vertices that has no $K_4$ as subgraph nor any independent set of size 4, and fix a vertex $v \in V(G)$. Since $n = 18$, we observe that $v$ has either at least 9 neighbors or at least 9 non-neighbors. Thus
-
-        \begin{itemize}
-            \item if $\abs{\mathcal N(v)} \ge 9$, then $\mathcal N (v)$ contains $K_3$ as subgraph or an independent set of size 4 by the previous lemma
-            \item if $\abs{V(G) - (\mathcal N (v) \cup \{v\})} \ge 9$, then $V(G) - (\mathcal N (v) \cup \{v\})$ contains $K_4$ as subgraph or an independent set of size 4, again by the previous lemma
-        \end{itemize}
-
-        meaning that $G$ has $K_4$ as subgraph or an independent set of size 4, contradicting the definition of $G$ $\lightning$.
+        Since we already discussed that $R(4) \ge 18$, the result follows immediately from the previous proposition because $R(4) \le 2 \cdot R(3, 4) \le 9 = 18$ --- and $R(3, 4) \le 9$ by the previous lemma.
     \end{proof}
 
     What about other values of $t$? Using a similar idea of this result, it can be proven that $R(5, 4) \le 25$, which immediately provides an upper bound for $R(5) \le 50$. However, we still don't know the exact value of $R(5)$: in 1989 \textcite{exoo} proved that $R(5) \ge 43$, and in 2024 \textcite{angeltveit} proved that $R(5) \le 46$.
@@ -4067,6 +4066,72 @@
         TODO \todo{da finire}
     }
 
+    \begin{framedprob}{}
+        A set $\mathcal I$ of graphs is said to be \tit{minor closed} if for any $G \in \mathcal I$ it holds that if $H$ is a minor of $G$, then $H \in \mathcal I$. Prove that the set $\mathcal F$ of the forests is minor closed.
+    \end{framedprob}
+
+    \solution{
+        Let $F \in \mathcal F$ be a forest, and consider a minor $H$ of $F$; by way of contradiction, suppose that $H \notin \mathcal F$, i.e. $H$ is not a forest. Then $H$ contains a cycle in one of its components, but since $H$ can be obtained from $F$ thorugh minor operations, this would imply that $F$ also contains a cycle, contradicting the fact that $F$ was a forest.
+    }
+
+    \begin{framedprob}{}
+        Given a set $\mathcal I$ of graphs, we say that $H_1, \ldots, H_k$ are \tit{forbidden minors} for $\mathcal I$ when $G \in \mathcal I$ if and only if $G$ does not have any $H_i$ as minor. Find the forbidden minors for the set $\mathcal F$ f forests.
+    \end{framedprob}
+
+    \solution{
+        Let $F \in \mathcal F$ be a forest; we observe that $F$ is a forest if and only if $F$ has no cycles, which happens if and only if $F$ has no $C_3$ as minor. This implies that $C_3$ is the only forbidden minor for $\mathcal F$.
+    }
+
+    \begin{framedprob}{}
+        A graph is said to be \tit{complete multipartite} if there exist a partition $X_1, \ldots, X_k$ of $V(G)$ such that
+
+        \begin{itemize}
+            \item for each $i \in [k]$ it holds that $X_i$ is an independent set
+            \item for any $i, j \in [k]$ if $i \neq j$ then all the vertices of $X_i$ are adjacent to all the vertices of $X_j$
+        \end{itemize}
+
+        Consider the following subgraph $H$ --- the \tit{dashed} lines are anti-edges of $H$
+
+        \begin{figure}[H]
+            \centering
+            \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.5cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
+
+                \node[circle, draw] (1) []{};
+                \node[circle, draw] (2) [below left of = 1]{};
+                \node[circle, draw] (3) [below right of = 1]{};
+
+                \draw[dashed] (1) to (2);
+                \draw[dashed] (1) to (3);
+                \draw[-] (2) to (3);
+
+                ;
+            \end{tikzpicture}
+            % \caption{For instance, in this graph there are two cut vertices, namely 1 and 4.}
+        \end{figure}
+
+        Prove that if a graph $G$ on $n \ge 3$ vertices has no $H$ subgraph, then $G$ is complete multipartite.
+    \end{framedprob}
+
+    \solution{
+        We proceed by induction on $n$. For the base case, if $n = 3$ and $G$ has no $H$ subgraph, then $G$ can be one of the following:
+
+        \begin{itemize}
+            \item if $G$ has 0 edges, then we can consider the partition $X_1 = V(G)$ and $G$ is complete multipartite
+            \item if $G$ has 2 edges, then the endpoints of the anti-edge of $G$ form a partition $X_1$ and the remaining vertex forms $X_2$, meaning that $G$ is complete multipartite
+            \item if $G$ has 3 edges, then each vertex forms a partition on its own, thus $G$ is again complete multipartite
+        \end{itemize}
+
+        Now, assume that the statement holds on a graph on $n - 1$ vertices, and consider a graph on $n \ge 4$ vertices that does not contain $H$ as subgraph. Fix a vertex $x$ in $G$, and consider $G - \{x\}$: since $G$ does not contain $H$ as subgraph, then $G - \{x\}$ cannot contain $H$ as subgraph either, and because $G - \{x\}$ has $n - 1$ vertices we can apply the inductive hypothesis. Hence $G - \{x\}$ is complete multipartite on a collection of independent sets $X_1, \ldots, X_k$.
+
+        \claim{
+            If there is a vertex $v$ such that $x \sim v$, and $v \in X_i$ for some $i \in [k]$ then $X_i \subseteq \mathcal N (x)$ --- i.e. $x$ is adjacent to all the vertices of the partition of $v$.
+        }{
+            Suppose that such $v$ exists; then, since $G$ does not contain $H$ as subgrap, than $X_i$ is an independent set, it must be that $X_i \subseteq \mathcal N(x)$ --- otherwise any anti edge $xv_j$ for some $v_j \in X$ would form an $H$ subgraph because $v \sim x$ and $v_j \nsim v$.
+        }
+
+        Hence, if $x$ is adjacent to at least one vertex for every set $X_i$, then $x$ is adjacent to \tit{all} the vertices of all the partitions, thus $X_1, \ldots, X_k, \{v\}$ is a partition of $V(G)$ such that $G$ is complete multipartite. So, we may assume that there exists at least one partition $X_i$ such that $\forall v_j \in X_i$ it holds that $v_j \nsim x$. Then, $X_i \cup \{x\}$ is a partition of $V(G)$ such that $G$ again complete multipartite.
+    }
+
     \chapter{Graph decompositions}
 
     \section{Blocks}
@@ -4170,7 +4235,7 @@
 
         Consider a block $B$ consisting of 1 edge $uv$: if this edge were not a bridge, then removing it would not create more components than before, meaning that there must be at least another path beteween $u$ and $v$ in the graph that does not cross the edge $uv$. However, this implies that $uv$ is contained in a cycle, meaning that $B$ could have been extended with the cycle, contradicting the maximality of $B$ --- we observe that a cycle cannot contain cut vertices.
 
-        Finally, consier a block $B$ with more than two vertices: if $B$ were not 2-connected, then by removing one vertex $v \in B$ we would get that $B - \{v\}$ is disconnected, meaning that $v$ was a cut vertex in the first place, contradicting the definition of $B$.
+        Finally, consier a block $B$ with more than two vertices: if $B$ were not 2-connected, then by removing one vertex $v \in B$ we would get that $B - \{v\}$ is disconnected, meaning that $v$ was a cut vertex in the first place, contradicting the definition of $B$ $\lightning$.
     \end{proof}
 
     \begin{framedlem}{}
@@ -4599,7 +4664,7 @@
     We observe that there is exactly 1 unbounded face, which is called \tbf{outer face}, while all the other faces are called \tbf{inner faces}.
 
     \begin{framedlem}{Handshaking lemma (faces)}
-        Given a plane graph $G$, the sum of the number of edges seen by each face of $G$ is $2 \abs{E(G)}$.
+        Given a plane graph $G$, the sum of the number of edges seen by each face of $G$ is at most $2 \abs{E(G)}$.
     \end{framedlem}
 
     \begin{frameddefn}{Planar graph}
@@ -4949,7 +5014,7 @@
 
         Assume that if a 3-connected graph $G$ on $n - 1$ vertices does not contain $K_5$ nor $K_{3,3}$ as minors, then $G$ is not planar. Now, consider a 3-connected graph $G$ on $n \ge 5$ vertices that does not contain $K_5$ nor $K_{3,3}$ as minors. Since $G$ is 3-connected, by \cref{tutte decomp} there exists an edge $xy \in E(G)$ such that $G/xy$ is still 3-connected; moreover, we know that $G/xy$ cannot contain $K_5$ nor $K_{3,3}$ as minors, otherwise they would be minors of $G$ as well since $G/xy$ is obtained from $G$ by contracting an edge, which would contradict the definition of $G$. Furthermore, $G/xy$ has $n - 1$ vertices, which implies that we can apply the inductive hypothesis on it, thus $G/xy$ is planar.
 
-        Let $v_{xy} \in V(G/xy)$ be the vertex obtained by contracting the edge $xy$, and consider $G/xy - \{v_{xy}\}$: since $G/xy$ is 3-connected, such graph is at least still 2-connected --- and surely still planar --- hence by \cref{2conn planar} we have that every face of such graph is bounded by a cycle. This implies that there must exists a plane graph isomorphic to $G/xy - v_{xy}$ that has a face $f$ bounded by a cycle $C$ such that $\mathcal N(v_{xy})$ lies completely on $C$. Let $\mathcal N (v_{xy}) = \{v_1, \ldots, v_k\}$; then, by definition of contraction, each $v_i \in \mathcal N(v_{xy})$ is adjecent to at least one between $x$ and $y$. Now we are going to \curlyquotes{un-contract} the edge $xy$ and consider how $G$ could be structured
+        Let $v_{xy} \in V(G/xy)$ be the vertex obtained by contracting the edge $xy$, and consider $G/xy - \{v_{xy}\}$: since $G/xy$ is 3-connected, such graph is at least still 2-connected --- and surely still planar --- hence by \cref{2conn planar} we have that every face of such graph is bounded by a cycle. This implies that there must exists a plane graph isomorphic to $G/xy - v_{xy}$ that has a face $f$ bounded by a cycle $C$ such that $\mathcal N(v_{xy})$ lies completely on $C$. Let $\mathcal N (v_{xy}) = \{v_1, \ldots, v_k\}$; then, by definition of contraction, each $v_i \in \mathcal N(v_{xy})$ is adjecent to at least one between $x$ and $y$. Now we are going to \curlyquotes{un-contract} the edge $xy$ and consider how $G$ could be structured.
 
         \claim[Claim 1]{
             $x$ and $y$ do not have 3 common neighbors.
@@ -5399,13 +5464,16 @@
 
             Similarly, if $x \nsim y$, but $G[X]$ and $G[Y]$ are such that there exists 3-colorings of them for which either $\soe{l}{c_X(x) = c_X(y) \\ c_Y(x) = c_Y(y)}$ or $\soe{l}{c_X(x) \neq c_X(y) \\ c_Y(x) \neq c_Y(y)}$, then it is always possible to consider such colorings and permute the colors to construct a 3-coloring of $G$. This implies that the only possibility is that --- without loss of generality --- every possible coloring of $G[X]$ forces $x$ and $y$ to have the same color, and every possible coloring of $G[Y]$ forces $x$ and $y$ to have different colors.
 
-            Now, consider $G[X]$, and by way of contradiction suppose that there is no $x \to y$ path inside $G[X]$; then, $x$ and $y$ must live in different components of $G[X]$, which means that it is always possible to permute the colors in the component containing say $y$ such that $c_X(x) \neq c_X(y)$ for any proper 3-coloring $c_X$ of $G[X]$, contradicting the fact that every coloring of $G[X]$ must force $x$ and $y$ to have the same color. This implies that $G[X]$ has an $x \to y$ path.
+            Now, consider $G[Y]$, and by way of contradiction suppose that there is no $x \to y$ path inside $G[Y]$; then, $x$ and $y$ must live in different components of $G[Y]$, which means that it is always possible to permute the colors in the component containing say $y$ such that $c_Y(x) = c_Y(y)$ for any proper 3-coloring $c_Y$ of $G[Y]$, contradicting the fact that every coloring of $G[Y]$ must force $x$ and $y$ to have the different colors. This implies that $G[Y]$ has an $x \to y$ path --- call this path $P$.
 
-            By repeating the same argument, we get that $G[Y]$ also contains an $x \to y$ path, therefore by contracting this path to a single edge say inside $G[Y]$ we obtain a new graph $H$; thus \todo{da finire}
+            Let $H$ be a graph obtained by contracting $P$ down to a single edge, together with $G[X]$ --- in other words, $H = G[X] \cup \{xy\}$. This graph is clearly a minor of $G$, therefore it cannot contain $K_4$ as minor, however
 
-            % \begin{itemize}
-            %     \item if $H$ has no $K_4$ as minor, then since $\abs{V(H)} < \abs{V(G)}$ then $H$ is 3-colorable
-            % \end{itemize}
+            \begin{itemize}
+                \item any coloring $c_X$ of $G[X]$ forces $x$ and $y$ to have the same color on any proper 3-coloring of $G[X]$
+                \item the edge $xy$ forces $x$ and $y$ to have different colors
+            \end{itemize}
+
+            which means that 3 colors cannot suffice to properly color $H$. This means that $H$ is a graph that contains less vertices than $G$, that has no $K_4$ as minor, but that requires at least 4 vertices to be properly colored, contradicting the minimality of $G$.
         }
 
         Together, Claim 1, 2 and 3 contradict the fact that $G$ was not 3-connected $\lightning$.
