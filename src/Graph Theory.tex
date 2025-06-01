@@ -2811,11 +2811,11 @@
     For instance, the structure $(\R, \le)$ is clearly a partially ordered set, where the properties derive directly from the \curlyquotes{$\le$} relation.
 
     \begin{frameddefn}{Chain}
-        Given a poset $(S, \prec)$, a \tbf{chain} is a sequence of pairwise comparatble elements of $S$ w.r.t. $\prec$. In other words, $C \in S$ is an anti-chain if it holds that $$\forall s, s' \in C \quad s \prec s' \land s' \prec s$$
+        Given a poset $(S, \prec)$, a \tbf{chain} is a sequence of pairwise comparatble elements of $S$ w.r.t. $\prec$. In other words, $C \subseteq S$ is an anti-chain if it holds that $$\forall s, s' \in C \quad s \prec s' \land s' \prec s$$
     \end{frameddefn}
 
     \begin{frameddefn}{Anti-chain}
-        Given a poset $(S, \prec)$, an \tbf{anti-chain} is a set of pairwise uncomparable elements of $S$ w.r.t. $\prec$. In other words, $A \in S$ is an anti-chain if it holds that $$\forall s, s' \in A \quad s \nprec s' \land s' \nprec s$$
+        Given a poset $(S, \prec)$, an \tbf{anti-chain} is a set of pairwise uncomparable elements of $S$ w.r.t. $\prec$. In other words, $A \subseteq S$ is an anti-chain if it holds that $$\forall s, s' \in A \quad s \nprec s' \land s' \nprec s$$
     \end{frameddefn}
 
     TODO \todo{drawing}
@@ -2882,6 +2882,14 @@
         Consider a 3-connected graph $G$, and by way of contradiction suppose that $G$ has no even length cycles. Fix two adjacent vertices $u, v \in V(G)$; by \cref{intern disj menger} we know that there are at least 3 $\{u\}$-$\{v\}$ paths in $G$, and since the edge $\{u, v\}$ is already a path, we may assume there are at least two other internally disjoint paths $P_1$ and $P_2$ that have $u$ and $v$ as endpoints.
 
         However, observe that $P_1 \cup \{u, v\}$ and $P_2 \cup \{u, v\}$ are cycles, therefore they must have odd length for the sake of contradiction --- say that $2k + 1$ and $2h + 1$ are the length of the first and the second cycle, respectively. Then, consider $P_1 \cup P_2$: since $P_1$ and $P_2$ are internally disjoint, this is another cycle of $G$, that has length $$(2k + 1) - 1 + (2h + 1) - 1 = 2k + 2h - 2$$ which is even, contradicting the fact that $G$ only had odd-length cycles $\lightning$.
+    }
+
+    \begin{framedprob}{}
+        Prove that if a graph $G$ has three edges $e, f, g \in E(G)$ such that $e$ and $f$ are contained in a common cycle, and $f$ and $g$ are also contained in a common cycle, then $e$ and $g$ are contained in a common cycle as well.
+    \end{framedprob}
+    
+    \solution{
+        Let $C_1$ and $C_2$ be cycles of $G$ such that $e, f \in E(C_1)$ and $f, g \in E(C_2)$ respectively, and by way of contradiction suppose that there is no common cycle of $e$ and $g$. In particular, this implies that there is not pair of vertex-disjoint paths from the endpoints of $e$ to the endpoints of $g$, hence by \cref{menger} $G$ must admit an $e$-$g$ separation of order at most 1 --- call this separation $(X, Y)$ and without loss of generality suppose that $e \subseteq X$ and $g \subseteq Y$. Hence, since $\abs{X \cap Y} \le 1$, it must be that either $e, f \subseteq X$ or $f, g \subseteq Y$. Then, in the former case there cannot be any common cycle for $f$ and $g$, and in the latter there cannot be any common cycle for $e$ and $f$ $\lightning$.
     }
 
     \chapter{Extremal graph theory}
@@ -4332,8 +4340,6 @@
         In particular, since $H \cup H' \cup P$ is 2-connected by the claim, it cannot contain any cut vertices, implying that $H \cup H' \cup P$ contradicts the maximality of the blocks $H, H' \subsetneq H \cup H' \cup P$ $\lightning$.
     \end{proof}
 
-    \subsection{Block graph}
-    
     \begin{frameddefn}{}
         Given a connected graph $G$, let $B_1, \ldots, B_k$ be its blocks, and let $z_1, \ldots, z_\ell$ be the set of its cut vertices. We define $\mathcal B(G)$ as the \tbf{block graph} of $G$ through the following sets of nodes and edges:
 
@@ -4374,8 +4380,6 @@
     \section{Known decompositions}
 
     In this brief section, we are going to present characterizations of 2-connected and 3-connected graphs, which can be \tit{decomposed} using specific types of structural decompositions.
-
-    \subsection{2-connectivity}
 
     \begin{frameddefn}{$H$-path}
         Given a graph $G$, and a subgraph $H \subseteq G$, an \tbf{$H$-path} $P$ is a non-trivial path with both ends in $V(H)$, no internal vertex in $V(H)$, and no edge in $E(H)$.
@@ -4432,8 +4436,6 @@
 
         meaning that $(H - \{x\}) \cup (P_{k + 1} - \{x\}) = (H \cup P_{k + 1}) - \{x\}$ is connected. Lastly, since $C \subsetneq H$, then $\abs {V(H)} \ge 3 \implies \abs{V(H \cup P_{k  + 1})} \ge 3$, which concludes that $H \cup P_{k + 1} = G$ is 2-connected.
     }
-
-    \section{3-connectivity}
 
     The other type of graphs that we are going to discuss are 3-connected graphs. First, consider the following theorem --- proved by \textcite{tutte3conn} in 1961.
 

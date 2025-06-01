@@ -37,11 +37,8 @@
 \contentsline {section}{\numberline {4.3}Exercises}{81}{section.4.3}%
 \contentsline {chapter}{\numberline {5}Graph decompositions}{90}{chapter.5}%
 \contentsline {section}{\numberline {5.1}Blocks}{90}{section.5.1}%
-\contentsline {subsection}{\numberline {5.1.1}Block graph}{94}{subsection.5.1.1}%
 \contentsline {section}{\numberline {5.2}Known decompositions}{95}{section.5.2}%
-\contentsline {subsection}{\numberline {5.2.1}2-connectivity}{96}{subsection.5.2.1}%
-\contentsline {section}{\numberline {5.3}3-connectivity}{97}{section.5.3}%
-\contentsline {section}{\numberline {5.4}Exercises}{99}{section.5.4}%
+\contentsline {section}{\numberline {5.3}Exercises}{99}{section.5.3}%
 \contentsline {chapter}{\numberline {6}Planar graphs}{103}{chapter.6}%
 \contentsline {section}{\numberline {6.1}Topological properties}{106}{section.6.1}%
 \contentsline {section}{\numberline {6.2}Planarity conditions}{110}{section.6.2}%
