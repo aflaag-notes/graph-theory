@@ -3795,7 +3795,7 @@
     \begin{proof}
         We already know the values for $R(1)$ and $R(2)$, therefore they exist. Hence, fix $t \ge 2$ and let $G$ be a graph with $2^{2t - 3}$ vertices.
         
-        \textbf{Claim}: There are a sequence of sets $X_1, \ldots, X_{2t -3}$ and a sequence of vertices $x_1, \ldots , x_{2t - 3}$ such that for each $i \in [2t - 2]$ it holds that
+        \textbf{Claim}: There are a sequence of sets $X_1, \ldots, X_{2t - 2}$ and a sequence of vertices $x_1, \ldots , x_{2t - 2}$ such that for each $i \in [2t - 2]$ it holds that
 
         \begin{enumerate}
             \item $x_i \in X_i$ and $\abs{X_i} \ge 2^{2t - 2 - i}$
@@ -3841,7 +3841,7 @@
 
         In particular, this claim implies that if a vertex $x_i$ is adjacent (or non-adjacent) to a vertex $x_j$ that comes \curlyquotes{after} $x_i$, then $x_i$ is actually adjacent (or non-adjacent) to \tit{all} the vertices $x_{j'}$ that come \curlyquotes{after} $x_i$.
 
-        Now, consider the set $\mathcal U := \mathcal N(x_{2t - 2}) \cup \{x_1, \ldots, x_{2t - 3}\}$. If $\abs{\mathcal U} \ge t - 1$, by the second claim $\mathcal U \cup \{x_{2t - 2}\}$ contains a $t$-clique; otherwise, if $\abs{\mathcal U} \le t - 2$, again by the second claim $V(G) - (\mathcal N(x_{2t - 2}) \cup \{x_{2t - 2}\})$ contains an independent set of size $2t - 2 - \abs{\mathcal U} \ge 2t - 2 - (t - 2) = t$.
+        Now, consider the set $\mathcal U := \mathcal N(x_{2t - 2}) \cap \{x_1, \ldots, x_{2t - 3}\}$. If $\abs{\mathcal U} \ge t - 1$, by the second claim $\mathcal U \cup \{x_{2t - 2}\}$ contains a $t$-clique; otherwise, if $\abs{\mathcal U} \le t - 2$, again by the second claim $\{x_1, \ldots, x_{2t - 3}\} - \mathcal U$ contains an independent set of size $2t - 2 - \abs{\mathcal U} \ge 2t - 2 - (t - 2) = t$.
     \end{proof}
 
     \section{Exercises}
@@ -5399,29 +5399,21 @@
 
     TODO \todo{buco lore}
 
-    Consider a graph $G$, and a vertex $v \in V(G)$; to \tbf{expand} $v$ means to add another vertex $v'$ to $V(G)$ and
-    
-    \begin{itemize}
-        \item add an edge $\{v, v'\}$ to $E(G)$
-        \item add edges $\{v', x\}$ to $E(G)$ for each $x \in \mathcal N (v)$
-    \end{itemize}
+    Consider a graph $G$, and a vertex $v \in V(G)$; to \tbf{expand} $v$ means to add another vertex $v'$ to $V(G)$ and add edges $\{v', x\}$ to $E(G)$ for each $x \in \mathcal N (v) \cup \{v\}$.
 
-    TODO \todo{example}
+    TODO \todo{example + intro?}
 
     \begin{framedlem}{}
-        % Given a perfect graph $S$, if a graph $G'$ is obtained by repeatedly expanding vertices starting from $S$, then $G'$ is perfect.
-        TODO
+        Given a perfect graph $G$, and a vertex $v \in V(G)$, it holds that $G'$ obtained by expanding $v$ is perfect.
     \end{framedlem}
 
-    \proofind{
-        We proceed by induction on $n$.
+    \proofstrind{
+        We proceed by strong induction on $n$.
     }{
-        % For the base case, we have that $\abs{V(S)} = \abs{V(G')}$, therefore we applied 0 vertex expansions to obtain $G'$, thus the latter is trivially perfect by perfection of $G$
+        For the base case, consider a graph on having 1 vertex, and expand such vertex: the resulting graph is clearly $K_2$, which is trivially perfect since its a clique.
     }{
-        % Assume that the statement holds for a graph $G'$ on $n - 1$ vertices.
+        Assume that the statement holds for any graph $G'$ on at most $n - 1$ vertices.
     }{
-        % Consider a graph $G$ on $n - 1$ vertices obtained by repeatedly expanding vertices starting from $S$, inductively assume that $G$ is perfect, and expand one of its vertices to obtain $G'$ on $n$ vertices. Now, fix an induced subgraph $H$ of $G$; then
-
         Consider a perfect graph $G$ on $n - 1$ vertices, and expand one of its vertices $v \in V(G)$ into $v'$ to obtain $G'$ on $n$ vertices. Now, fix an induced subgraph $H$ of $G$; then
         
         \begin{itemize}
@@ -5429,7 +5421,19 @@
             \item if $v' \in V(H)$ and $v \notin V(H)$ then $H$ is isomorphic to an induced subgraph of $G$, hence $\chi(G) = \omega(H)$ by perfection of $G$
         \end{itemize}
 
-        so we may assume that $v, v' \in V(H)$. Moreover, if $\abs{V(H)} < \abs{V(G')}$ then $H - \{v'\}$ is a \tit{proper} induced subgraph of $G$, which implies that $\abs{V(H - \{v'\})} < \abs{V(H)}$. Furthermore, since $H$ can be equivalently constructed by expanding $v'$ into $v$ from $H - \{v'\}$, it means that we can apply the inductive hypothesis on $H$ and therefore $H$ is perfect, and in particular $\chi(H) = \omega(H)$. Therefore, we may assume that $\abs{V(H)} = \abs{V(G')}$, i.e. $H = G'$.
+        so we may assume that $v, v' \in V(H)$. Moreover, if $\abs{V(H)} < \abs{V(G')}$ then $H - \{v'\}$ is a \tit{proper} induced subgraph of $G$, which implies that $\abs{V(H - \{v'\})} < \abs{V(H)}$. Furthermore, since $H$ can be equivalently constructed by expanding $v'$ into $v$ from $H - \{v'\}$, it means that we can apply the inductive hypothesis on $H - \{v'\}$ and therefore $H$ is perfect, and in particular $\chi(H) = \omega(H)$. Therefore, we may assume that $\abs{V(H)} = \abs{V(G')}$, i.e. $H = G'$, and we need to prove that $\chi(G') = \chi(H) = \omega(H) = \omega(G')$.
+
+        In general, we observe that $\omega(G') \le \omega(G) + 1$ since $G$ and $G'$ differ by one vertex, and $\omega(G') = \omega(G) + 1$ when there is a maximum-size clique of $G'$ containing $v'$ --- which implies that it also must contain $v$ since $v'$ is an extension of $v$ and it is fully connected to $\mathcal N(v) \cup \{v\}$. However, since $G$ can be colored with $\omega(G)$ colors by perfection, if the equality holds we can use one more color for $v'$ itself in order to properly color $G'$, and this coloring uses $\chi(G) + 1 = \omega(G) + 1$ colors hence $$\chi(G') = \chi(G) + 1 = \omega(G) + 1 = \omega(G')$$
+
+        Therefore, we may assume that $\omega(G') < \omega(G) + 1 \implies \omega(G') = \omega(G)$ --- since $\omega(G') \ge \omega(G)$ must hold --- which implies that $v$ is not contained in any maximum-size clique of $G$. Let $c$ be a proper $\omega(G)$-coloring of $G$ --- which exists by perfection of $G$ --- and consider the set $X := \{x \in V(G) \mid c(v) = c(x)\}$ (and in particular $v \in X$).
+
+        \claim{
+            $\omega(G - (X - \{v\})) = \omega(G) - 1$.
+        }{
+            Fix an $\omega(G)$-clique $K$ --- a maximum-size clique of $G$; since $K$ is a clique, each vertex of $K$ must be assigned a different color from $c$ and since it has maximum size it must use all the colors available, therefore $\abs{K \cap X} = 1$. However, since we are assuming that $v$ is not contained in any $\omega(G)$-clique, and in particular $v \notin V(K)$, it must hold that $\abs{K \cap X} = 1 \implies \abs{K \cap (X - \{v\})} = 1$. This implies that $X - \{v\}$ intersects all the $\omega(G)$-cliques of $G$, therefore in $G - (X - \{v\})$ we removed \tit{exactly} one vertex per maximum-size clique, which implies that $$\omega(G - (X - \{v\})) = \omega(G) - 1$$
+        }
+
+        Since $G - (X - \{v\})$ is an induced subgraph of $G$, and $G$ is perfect, then $G - (X - \{v\})$ is perfect, therefore it can be $(\omega(G) - 1)$-colored by the claim. Finally, observe that $\mathcal N(v) \cap X = \varnothing \implies \mathcal N(v') \cap X = \varnothing$, which implies that $(X - \{v\}) \cup \{v'\}$ can be colored with one additional color --- surely different from $v$ since $v \sim v'$ --- in order to properly $\omega(G')$-color $G'$ entirely.
     }
 
     TODO \todo{lore fulkerson}
@@ -5438,7 +5442,11 @@
         A graph $G$ is perfect if and only if $\overline G$ is perfect.
     \end{framedthm}
 
-    TODO \todo{buco lore}
+    \begin{proof}
+        TODO \todo{da fare}
+    \end{proof}
+
+    TODO \todo{interlude?}
 
     \begin{framedthm}{Strong perfect graph theorem}
         A graph $G$ is perfect if and only if $G$ has no induced $C_{2k + 1}$ or $\overline{C_{2k + 1}}$ subgraph, for any $k \ge 2$.
