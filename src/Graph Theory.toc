@@ -50,4 +50,4 @@
 \contentsline {subsection}{\numberline {7.1.2}Lower bounds}{121}{subsection.7.1.2}%
 \contentsline {section}{\numberline {7.2}Perfect graphs}{123}{section.7.2}%
 \contentsline {subsection}{\numberline {7.2.1}Perfect graph theorems}{126}{subsection.7.2.1}%
-\contentsline {section}{\numberline {7.3}Exercises}{127}{section.7.3}%
+\contentsline {section}{\numberline {7.3}Exercises}{128}{section.7.3}%

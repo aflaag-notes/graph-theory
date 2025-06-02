@@ -1088,7 +1088,7 @@
     }
 
     \begin{framedprob}{}
-        Let $G$ be a graph containing a cycle $C$, and assume that $G$ contains a path of length at least $k$ between two vertiecs of $C$. Show that $G$ contains a cycle of length at least $\sqrt k$. Can this bound be improved?
+        Let $G$ be a graph containing a cycle $C$, and assume that $G$ contains a path of length at least $k$ between two vertices of $C$. Show that $G$ contains a cycle of length at least $\sqrt k$. Can this bound be improved?
     \end{framedprob}
 
     \solution{
@@ -2196,7 +2196,7 @@
         A graph $G$ is said to be \tbf{$k$-connected} if $\abs{V(G)} \ge k + 1$, and for each $X \subseteq V(G)$ such that $\abs X \le k - 1$ it holds that $G[V(G) - X]$ is connected.
     \end{frameddefn}
 
-    In other words, a graph is $k$-connected if it has at least $k + 1$ vertices, and it remains connected whenever fewer than $k$ vertices are removed. Therefor, by definition we observe that if a graph is \tit{not} $k$-connected, it must admit a separation of order at most $k - 1$.
+    In other words, a graph is $k$-connected if it has at least $k + 1$ vertices, and it remains connected whenever fewer than $k$ vertices are removed. Therefore, by definition we observe that if a graph is \tit{not} $k$-connected, it must admit a separation of order at most $k - 1$.
 
     \begin{figure}[H]
         \centering
@@ -3781,7 +3781,7 @@
     \end{framedcor}
 
     \begin{proof}
-        Since we already discussed that $R(4) \ge 18$, the result follows immediately from the previous proposition because $R(4) \le 2 \cdot R(3, 4) \le 9 = 18$ --- and $R(3, 4) \le 9$ by the previous lemma.
+        Since we already discussed that $R(4) \ge 18$, the result follows immediately from the previous proposition because $R(4) \le 2 \cdot R(3, 4) \le 2 \cdot 9 = 18$ --- and $R(3, 4) \le 9$ by the previous lemma.
     \end{proof}
 
     What about other values of $t$? Using a similar idea of this result, it can be proven that $R(5, 4) \le 25$, which immediately provides an upper bound for $R(5) \le 50$. However, we still don't know the exact value of $R(5)$: in 1989 \textcite{exoo} proved that $R(5) \ge 43$, and in 2024 \textcite{angeltveit} proved that $R(5) \le 46$.
@@ -3795,7 +3795,7 @@
     \begin{proof}
         We already know the values for $R(1)$ and $R(2)$, therefore they exist. Hence, fix $t \ge 2$ and let $G$ be a graph with $2^{2t - 3}$ vertices.
         
-        \textbf{Claim}: There are a sequence of sets $X_1, \ldots, X_{2t -3}$ and a of sequence vertices $x_1, \ldots , x_{2t - 3}$ such that for each $i \in [2t - 2]$ it holds that
+        \textbf{Claim}: There are a sequence of sets $X_1, \ldots, X_{2t -3}$ and a sequence of vertices $x_1, \ldots , x_{2t - 3}$ such that for each $i \in [2t - 2]$ it holds that
 
         \begin{enumerate}
             \item $x_i \in X_i$ and $\abs{X_i} \ge 2^{2t - 2 - i}$
@@ -3804,13 +3804,13 @@
         \end{enumerate}
 
         \begin{proof}[Proof of the Claim]
-            We are going to construct the sequences inductively. First, let $X_1 := V(G)$, and fix $x_1 \in X_1$ arbitrarily. Now, let $X_2$ to be the larger between $\mathcal N(x_1)$ and $V(G) - (\mathcal N(x_1) \cup \{x_1\})$; then, fix $x_2 \in X_2$ arbitrarily. We observe that the first last two properties are satisfied by construction. For the first property, we observe that $$\mathcal N (x_1) \cup (V(G) - (\mathcal N(x_1) \cup \{x_1\})) = X_1 - \{x_1\} = V(G) - \{x_1\}$$ meaning that the cardinality of their union is $\abs{V(G) - \{x_1\}} = 2^{2t - 3} - 1$, therefore
+            We are going to construct the sequences inductively. First, let $X_1 := V(G)$, and fix $x_1 \in X_1$ arbitrarily. Now, let $X_2$ to be the larger between $\mathcal N(x_1)$ and $V(G) - (\mathcal N(x_1) \cup \{x_1\})$; then, fix $x_2 \in X_2$ arbitrarily. We observe that the last two properties are satisfied by construction. For the first property, we observe that $$\mathcal N (x_1) \cap (V(G) - (\mathcal N(x_1) \cup \{x_1\})) = X_1 - \{x_1\} = V(G) - \{x_1\}$$ meaning that the cardinality of their union is $\abs{V(G) - \{x_1\}} = 2^{2t - 3} - 1$, therefore
             \begin{equation*}
                 \begin{split}
                     \abs{X_2} &= \max(\abs{\mathcal N(x_1)}, \abs{V(G) - (\mathcal N(x_1) \cup \{x_1\}})) \\
-                              &\ge \dfrac{\abs{\mathcal N (x_1) \cup (V(G) - (\mathcal N(x_1) \cup \{x_1\}))}}{2} \\
-                              &= \dfrac{2^{2t - 3} - 1}{2} \\
-                              &\ge 2^{2t - 4} \\
+                              &\ge \ceil{\dfrac{\abs{\mathcal N (x_1) \cup (V(G) - (\mathcal N(x_1) \cup \{x_1\}))}}{2}} \\
+                              &= \ceil{\dfrac{2^{2t - 3} - 1}{2}} \\
+                              &= 2^{2t - 4} \\
                               &= 2^{2t - 2 - 2} \quad \quad (i = 2)
                 \end{split}
             \end{equation*}
@@ -3818,13 +3818,12 @@
             In general, suppose that we have defined $X_i$ and $x_i$ for some $i < 2t - 2$; then, let $X_{i + 1}$ be the larger between $\mathcal N(x_i) \cap X_i$ and $X_i - (\mathcal N(x_i) \cup \{x_i\})$. Again, we observe that the last two properties of the claim are satisfied by construction of $X_{i + 1}$. For the first property, we observe that $$(\mathcal N(x_1) \cup X_i) \cup (X_i - (\mathcal N(x_i) \cup \{x_i\})) = X_i - \{x_i\}$$ meaning that the cardinality of their union is $\abs{X_i - \{x_i\}} \ge 2^{2t - 2 - i} - 1$ by induction, therefore
             \begin{equation*}
                 \begin{split}
-                    \abs{X_{i + 1}} &= \max(\abs{\mathcal N(x_1) \cup X_i}, \abs{X_i - (\mathcal N(x_i) \cup \{x_i\}})) \\
-                                    &\ge \dfrac{\abs{(\mathcal N(x_1) \cup X_i) \cup (X_i - (\mathcal N(x_i) \cup \{x_i\}))}}{2} \\
-                                    &\ge \dfrac{2^{2t - 2 - i} - 1}{2} \\
-                                    &\ge 2^{2t - 2 - (i + 1)}
+                    \abs{X_{i + 1}} &= \max(\abs{\mathcal N(x_1) \cap X_i}, \abs{X_i - (\mathcal N(x_i) \cup \{x_i\}})) \\
+                                    &\ge \ceil{\dfrac{\abs{(\mathcal N(x_1) \cup X_i) \cup (X_i - (\mathcal N(x_i) \cup \{x_i\}))}}{2}} \\
+                                    &\ge \ceil{\dfrac{2^{2t - 2 - i} - 1}{2}} \\
+                                    &= 2^{2t - 2 - (i + 1)} 
                 \end{split}
             \end{equation*}
-            TODO \todo{ricontrolla i conti che non funzionano}
         \end{proof}
 
         Now, consider the sequence of sets and the sequence of vertices that we constructed.
@@ -3842,7 +3841,7 @@
 
         In particular, this claim implies that if a vertex $x_i$ is adjacent (or non-adjacent) to a vertex $x_j$ that comes \curlyquotes{after} $x_i$, then $x_i$ is actually adjacent (or non-adjacent) to \tit{all} the vertices $x_{j'}$ that come \curlyquotes{after} $x_i$.
 
-        Now, consider the set $\mathcal U := \mathcal N(x_{2t - 2}) \cup \{x_1, \ldots, x_{2t - 2}\}$. If $\abs{\mathcal U} \ge t - 1$, by the second claim $\mathcal U \cup \{x_{2t - 2}\}$ contains a $t$-clique; otherwise, if $\abs{\mathcal U} \le t - 2$, again by the second claim $V(G) - (\mathcal N(x_{2t - 2}) \cup \{x_{2t - 2}\})$ contains an independent set of size $2t - 2 - \abs{\mathcal U} \ge 2t - 2 - (t - 2) = t$.
+        Now, consider the set $\mathcal U := \mathcal N(x_{2t - 2}) \cup \{x_1, \ldots, x_{2t - 3}\}$. If $\abs{\mathcal U} \ge t - 1$, by the second claim $\mathcal U \cup \{x_{2t - 2}\}$ contains a $t$-clique; otherwise, if $\abs{\mathcal U} \le t - 2$, again by the second claim $V(G) - (\mathcal N(x_{2t - 2}) \cup \{x_{2t - 2}\})$ contains an independent set of size $2t - 2 - \abs{\mathcal U} \ge 2t - 2 - (t - 2) = t$.
     \end{proof}
 
     \section{Exercises}
@@ -5399,6 +5398,41 @@
     \end{framedcor}
 
     TODO \todo{buco lore}
+
+    Consider a graph $G$, and a vertex $v \in V(G)$; to \tbf{expand} $v$ means to add another vertex $v'$ to $V(G)$ and
+    
+    \begin{itemize}
+        \item add an edge $\{v, v'\}$ to $E(G)$
+        \item add edges $\{v', x\}$ to $E(G)$ for each $x \in \mathcal N (v)$
+    \end{itemize}
+
+    TODO \todo{example}
+
+    \begin{framedlem}{}
+        % Given a perfect graph $S$, if a graph $G'$ is obtained by repeatedly expanding vertices starting from $S$, then $G'$ is perfect.
+        TODO
+    \end{framedlem}
+
+    \proofind{
+        We proceed by induction on $n$.
+    }{
+        % For the base case, we have that $\abs{V(S)} = \abs{V(G')}$, therefore we applied 0 vertex expansions to obtain $G'$, thus the latter is trivially perfect by perfection of $G$
+    }{
+        % Assume that the statement holds for a graph $G'$ on $n - 1$ vertices.
+    }{
+        % Consider a graph $G$ on $n - 1$ vertices obtained by repeatedly expanding vertices starting from $S$, inductively assume that $G$ is perfect, and expand one of its vertices to obtain $G'$ on $n$ vertices. Now, fix an induced subgraph $H$ of $G$; then
+
+        Consider a perfect graph $G$ on $n - 1$ vertices, and expand one of its vertices $v \in V(G)$ into $v'$ to obtain $G'$ on $n$ vertices. Now, fix an induced subgraph $H$ of $G$; then
+        
+        \begin{itemize}
+            \item if $v' \notin V(H)$ then $H \subseteq G$ therefore $\chi(H) = \omega(H)$ by perfection of $G$
+            \item if $v' \in V(H)$ and $v \notin V(H)$ then $H$ is isomorphic to an induced subgraph of $G$, hence $\chi(G) = \omega(H)$ by perfection of $G$
+        \end{itemize}
+
+        so we may assume that $v, v' \in V(H)$. Moreover, if $\abs{V(H)} < \abs{V(G')}$ then $H - \{v'\}$ is a \tit{proper} induced subgraph of $G$, which implies that $\abs{V(H - \{v'\})} < \abs{V(H)}$. Furthermore, since $H$ can be equivalently constructed by expanding $v'$ into $v$ from $H - \{v'\}$, it means that we can apply the inductive hypothesis on $H$ and therefore $H$ is perfect, and in particular $\chi(H) = \omega(H)$. Therefore, we may assume that $\abs{V(H)} = \abs{V(G')}$, i.e. $H = G'$.
+    }
+
+    TODO \todo{lore fulkerson}
 
     \begin{framedthm}[label={wpgt}]{Weak perfect graph theorem}
         A graph $G$ is perfect if and only if $\overline G$ is perfect.
