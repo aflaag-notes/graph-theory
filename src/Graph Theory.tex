@@ -5523,6 +5523,34 @@
         Together, Claim 1, 2 and 3 contradict the fact that $G$ was not 3-connected $\lightning$.
     }
 
+    \begin{framedprob}{}
+        Consider a graph $G$, and a minimum vertex cover $V^*$ of $G$. Prove that $$\chi(G) \le \abs{V^*} + 1$$
+    \end{framedprob}
+
+    \solution{
+        Consider the following coloring $c$ of $G$: assign a different color to each vertex of $V^*$, and assign an additional color to all the vertices inside $V(G) - V^*$.
+
+        \claim{
+            $c$ is a proper coloring of $G$.
+        }{
+            Suppose that $c$ is not proper, i.e. there exists two \tit{adjacent} vertices $x, y \in V(G)$ such that $c(x) = c(y)$. By definition of $c$ clearly $x$ and $y$ cannot be both inside $V^*$ otherwise they would have been assigned different color; moreover, it cannot happen that one of them is inside $V^*$ and the other is not either, because the vertices in $V(G) - V^*$ are assigned a color different from all the colors used for $V^*$. Hence, it must be that $x, y \in V(G) - V^*$, but since $x \sim y$ this implies that the edge $xy$ is not covered by $V^*$ $\lightning$.
+        }
+
+        The claim concludes that $\abs{V^*} + 1$ colors clearly suffice to properly color $G$.
+    }
+
+    % \begin{framedprob}{}
+    %     Can you improve the exponential upper bound on the Ramsey number $R(t)$ for perfect graphs?
+    % \end{framedprob}
+    %
+    % \solution{
+    %     We claim that if $G$ is perfect, $2t - 1$ nodes suffice to guarantee that $G$ contains a $K_t$, 
+    %
+    %     By way of contradiction, suppose that there exists a perfect graph $G$ on $2t - 1$ vertices such that it does not contain $K_t$ as subgraph; in particular, this implies that $\omega(G) \le t - 1$. Now, loot at $\overline G$: an $\omega(G)$-clique in $G$ forms an independent set of size $\omega(G)$ inside $\overline G$, hence a proper coloring of $\overline G$ could assign the same color to each vertex inside such independent set. However, there are still at least $2t - 1 - (t - 1) = 2t - 1 - t + 1 = t$ colors to be colored inside $\overline G$.
+    %
+    %     By \cref{wpgt}, we know that $\overline G$ is perfect, therefore 
+    % }
+
     \printbibliography % UNCOMMENT FOR BIBLIOGRAPHY
 
 \end{document}
