@@ -1392,7 +1392,7 @@
         By the observation (1), we have that each component of the subgraph can be either
 
         \begin{itemize}
-            \item a isolated vertex
+            \item an isolated vertex
             \item a cycle
             \item a path
         \end{itemize}
@@ -1973,7 +1973,7 @@
         Let $M_k$ be an unstable matching such that every vertex is happy; therefore, by the previous claim we know that there exists a vertex $a \in A$ such that $a$ is free and and acceptable to some $b \in B$. We will construct a matching $M_{k + 1}$ as follows: $$b^* \in \argmax_{\substack{b \in \mathcal N (a) : \\ a \ \mathrm{acceptable \ to} \ b}}{w_a(b)} \implies M_{k + 1} := (M_k \cup \{ab^*\}) - \{a'b^* \in M_k \mid a' \in A\}$$ meaning that $M_{k + 1}$ is obtained from $M_k$ by adding the edge $ab^*$, where $b^*$ maximizes $w_a(b^*)$, and removing the edge $a'b^*$ from $M_k$, if present --- the last set is either $\{a'b^*\}$ or $\varnothing$.
 
         \claim{
-            $M_{k + 1}$ is better than $M_k$, and if $M_k$ is ensures that every vertex is happy, $M_{k +1}$ does as well.
+            $M_{k + 1}$ is better than $M_k$, and if $M_k$ ensures that every vertex is happy, $M_{k +1}$ does as well.
         }{
             First, we prove that $M_{k +1}$ is better than $M_k$. The first condition that $M_{k +1}$ has to satisfy in order to be better than $M_k$ is true simply because we removed the edge $a'b^*$ if it was present in $M_k$, and the rest of the matching has not been altered. Moreover, if $b^*$ was free then the second condition is vacuously true, otherwise if the edge $a'b^*$ was present in $M_k$, in $M_{k +1}$ there we added the edge $ab^*$ and we know that $w_{b^*}(a) > w_{b^*}(a')$ because $a$ is acceptable to $b^*$ by definition.
 
@@ -2636,7 +2636,7 @@
         }{
             Starting with $V := V(C)$, as long as $H - V$ contains vertices of degree at most 1, move them into $V$; let $M$ be the number of moved vertices. Then, since we are adding vertices to $V$, we have that $\abs{\mathrm{cut}(V)} \le \abs{\mathrm{cut}(C)} - M$. We observe that, by construction $\delta(H - V) \ge 2$, and the number of vertices that have degree 2 in $H - V$ is at most $\abs{\mathrm{cut}(V)} \le \abs{\mathrm{cut}(C)} - M$.
 
-            Lastly, let $H'$ be the graph obtained from $H - V$ by suppressing all the vertices of degree 2; then we have that $H'$ contains at least the vertices of $H$, without the vertices of $C$, the $M$ vertices that we moved during the procedure, and the vertices of degree 2 that we suppressed. In other words, we have that $$\abs{V(H')} \ge \abs{V(H)} - \abs{V(C)} - M - (\abs{\mathrm{cut}(C)}-M) \ge \abs{V(H)} - 2\abs{V(C)}$$ Note that the last inquality comes from the observation that $\abs{\mathrm{cut}(C)} \le \abs{V(C)}$, which follows by 3-regularity of $H$
+            Lastly, let $H'$ be the graph obtained from $H - V$ by suppressing all the vertices of degree 2; then we have that $H'$ contains at least the vertices of $H$, without the vertices of $C$, the $M$ vertices that we moved during the procedure, and the vertices of degree 2 that we suppressed. In other words, we have that $$\abs{V(H')} \ge \abs{V(H)} - \abs{V(C)} - M - (\abs{\mathrm{cut}(C)}-M) \ge \abs{V(H)} - 2\abs{V(C)}$$ Note that the last inquality comes from the observation that $\abs{\mathrm{cut}(C)} \le \abs{V(C)}$, which follows by 3-regularity of $H$.
 
             Finally, since $H'$ is 3-regular by construction, and $H - V$ is a subdivision of $H'$ that is contained in $H - E(C)$, this concludes the claim.
         }
@@ -4082,7 +4082,7 @@
     }
 
     \begin{framedprob}{}
-        Given a set $\mathcal I$ of graphs, we say that $H_1, \ldots, H_k$ are \tit{forbidden minors} for $\mathcal I$ when $G \in \mathcal I$ if and only if $G$ does not have any $H_i$ as minor. Find the forbidden minors for the set $\mathcal F$ f forests.
+        Given a set $\mathcal I$ of graphs, we say that $H_1, \ldots, H_k$ are \tit{forbidden minors} for $\mathcal I$ when $G \in \mathcal I$ if and only if $G$ does not have any $H_i$ as minor. Find the forbidden minors for the set $\mathcal F$ of forests.
     \end{framedprob}
 
     \solution{
@@ -4090,7 +4090,7 @@
     }
 
     \begin{framedprob}{}
-        A graph is said to be \tit{complete multipartite} if there exist a partition $X_1, \ldots, X_k$ of $V(G)$ such that
+        A graph is said to be \tit{complete multipartite} if there exists a partition $X_1, \ldots, X_k$ of $V(G)$ such that
 
         \begin{itemize}
             \item for each $i \in [k]$ it holds that $X_i$ is an independent set
