@@ -140,7 +140,7 @@
         A \tbf{graph} is a pair $G = (V, E)$, where $V$ is the --- finite --- set of \tbf{vertices} of the graph, and $E$ is the set of \tbf{edges}.
     \end{frameddefn}
 
-    For now, will assume to be working with \tbf{simple} and \tbf{undirected} graphs, i.e. graphs in which the set of edges is defined as follows $$E \subseteq [V]^2 = \{\{x, y\} \mid x, y \in V \land x \neq v\}$$ where the notation $\{x, y\}$ will be used to indicate an edge between two nodes $x, y \in V$, and will be replaced with $xy = yx$ directly --- the \tit{set} notation for edges is used to highlight that edges have no direction.
+    For now, we will assume to be working with \tbf{simple} and \tbf{undirected} graphs, i.e. graphs in which the set of edges is defined as follows $$E \subseteq \binom{V}{2} = \{\{x, y\} \mid x, y \in V \land x \neq v\}$$ where the notation $\{x, y\}$ will be used to indicate an edge between two nodes $x, y \in V$, and will be replaced with $xy = yx$ directly --- the \tit{set} notation for edges is used to highlight that edges have no direction.
 
     We will indicate with $n$ and $m$ the cardinality of $\abs V$ and $\abs E$, respectively. Moreover, we will indicate with $V(G)$ and $E(G)$ the set of the vertices and edges of $G$ respectively when there is ambiguity.
 
@@ -326,10 +326,12 @@
 
     \section{Important structures}
 
+    In this section, we are going to explore some of the most important graphs that we will encounter throughout all later chapters.
+
     \begin{frameddefn}{Path}
         A \tbf{path} is a \tit{graph} with vertex set $x_0, \ldots, x_n$ and edge set $e_1, \ldots, e_n$ such that $e_i = x_{i - 1}x_i$.
 
-        The \tbf{length} of a path is the number of edges between $x_0$ and $x_n$, i.e. $\abs{\{e_1, \ldots, e_n\}}$, namely $n$ in this case. A path of length 1 is called \tit{trivial} path. $P_n$ is the path graph having $n$ vertices.
+        The \tbf{length} of a path is the number of edges between $x_0$ and $x_n$, i.e. $\abs{\{e_1, \ldots, e_n\}}$, namely $n$ in this case. A path of length 0 is called \tit{trivial} path. $P_n$ is the path graph having $n$ vertices.
     \end{frameddefn}
 
     \begin{figure}[H]
@@ -366,7 +368,7 @@
         The \tbf{length} of a walk is the number of edges between $x_0$ and $x_k$, i.e. $\abs{\{e_1, \ldots , e_k \}}$, namely $k$ in this case. If $x_0 = x_k$ we say that the walk is \tbf{closed}.
     \end{frameddefn}
 
-    If there is a path -- or a walk --- between two vertices $x, y \in V$, we say that the path --- or the walk --- \tbf{links} $x$ and $y$, and we write this as $x \to y$. Any vertex that is different from $x$ and $y$ is called \tit{internal node}. For instance, given the previous graph labeled as follows
+    If there is a path -- or a walk --- between two vertices $x, y \in V$, we say that the path --- or the walk --- \tbf{links} $x$ and $y$, and we write this as $x \to y$. Any vertex of the path that is different from $x$ and $y$ is called \tit{internal node}. For instance, given the previous graph labeled as follows
 
     \begin{figure}[H]
         \centering
@@ -403,7 +405,7 @@
 
     For instance, the previous example of \tit{walk} is not a valid \tit{path}, because the vertex 1 is repeated.
 
-    \begin{framedthm}[label={paths and walks}]{Paths and walks}
+    \begin{framedthm}[label={paths and walks}]{}
         Given a graph $G = (V, E)$ and two vertices $x, y \in V$, in $G$ there is a path $x \to y$ if and only if there is a walk $x \to y$.
     \end{framedthm}
 
@@ -470,7 +472,7 @@
 
             ;
         \end{tikzpicture}
-        \caption{For instance, in this graph $G$ have that $G[\{3, 4, 5\}]$ is an induced cycle but $G[\{1, 2, 3, 4, 5, 6\}]$ is not, because $1 \sim 6$.}
+        \caption{For instance, in this graph $G$ we have that $G[\{3, 4, 5\}]$ is an induced cycle but $G[\{1, 2, 3, 4, 5, 6\}]$ is not, because $3 \sim 5$.}
     \end{figure}
 
     We observe that, by definition, $C_3$ is always induced.
@@ -496,7 +498,7 @@
 
             ;
         \end{tikzpicture}
-        \caption{For instance, the edge $\{2,3\}$ is a \tit{chord} of this cycle graph.}
+        \caption{For instance, the edge $\{x_2,x_4\}$ is a \tit{chord} of this cycle graph.}
     \end{figure}
 
     \begin{framedprop}[label={min deg 2}]{}
@@ -579,7 +581,7 @@
         \caption{A tree with tree leaves, rooted in $r$.}
     \end{figure}
 
-    A \tbf{forest} is an disconnected graph in which each component is a \tit{tree}, as in the following example
+    A \tbf{forest} is an disconnected graph in which each component is a \tit{tree}, as in the following example.
 
     \begin{figure}[H]
         \centering
@@ -645,7 +647,7 @@
         \begin{itemize}
             \item $1 \implies 2$. By contrapositive, assume that in $T$ there exist two vertices $x, y \in V$ for which there are two distinct paths $P$ and $Q$ of the form $x \to y$. If $P$ and $Q$ are edge-disjoint, then $P \cup Q$ is a cycle, which implies that $T$ is not a tree by definition.
 
-                Otherwise, assume that $P$ and $Q$ are not edge-disjoint. If we start say in $x$, and we follow $Q$ edge by edge since $P$ and $Q$ are distinct, at some point we will encounter an edge $\{u, v\}$ such that $u \in P \cap Q$ and $v \in Q - P$ --- possibly, $u = x$ itself. Moreover, since both paths lead to $y$, if we keep following $Q$ we will encounter a vertex $z \in P \cap Q$ --- possibly, $z = y$ itself --- from which the two paths will coincide. Let $Q'$ be the subpath of $P$ starting with $u$ and ending in $z$; then, $Q' \cup (Q - P)$ is a cycle in $T$, which implies that $T$ is not a tree by definition.
+                Otherwise, assume that $P$ and $Q$ are not edge-disjoint. If we start say in $x$, and we follow $Q$ edge by edge, since $P$ and $Q$ are distinct at some point we will encounter an edge $\{u, v\}$ such that $u \in P \cap Q$ and $v \in Q - P$ --- possibly, $u = x$ itself. Moreover, since both paths lead to $y$, if we keep following $Q$ we will encounter a vertex $z \in P \cap Q$ --- possibly, $z = y$ itself --- from which the two paths will coincide. Let $Q'$ be the subpath of $P$ starting with $u$ and ending in $z$; then, $Q' \cup (Q - P)$ is a cycle in $T$, which implies that $T$ is not a tree by definition.
 
                 \begin{figure}[H]
                     \centering
@@ -687,7 +689,7 @@
     \end{framedlem}
     
     \begin{proof}
-        By way of contradiction, assume $T$ is a tree with at least 2 vertices that does not contain any leaves; then $\delta \ge 2$ in $T$, which implies that $T$ contains a cycle of length at least $\delta + 1$ by \cref{min deg 2}.
+        By way of contradiction, assume $T$ is a tree with at least 2 vertices that does not contain any leaves; then $\delta \ge 2$ in $T$, which implies that $T$ contains a cycle of length at least $\delta + 1$ by \cref{min deg 2}, contradicting the fact that $T$ was a tree $\lightning$.
     \end{proof}
 
     \begin{framedlem}[label={tree without leaf}]{}
@@ -695,7 +697,7 @@
     \end{framedlem}
 
     \begin{proof}
-        Since $T$ is acyclic by definition, $T - \{v\}$ is still acyclic, we just need to prove that $T - \{v\}$ is still connected. By way of contradiction, assume that in $T - \{v\}$ there exist two vertices $x$ and $y$ such that there is no path between them. However, since $T$ is connected, there is a path $P$ of the form $x \to y$ in $T$.
+        Since $T$ is acyclic by definition, $T - \{v\}$ is still acyclic, so we just need to prove that $T - \{v\}$ is still connected. By way of contradiction, assume that in $T - \{v\}$ there exist two vertices $x$ and $y$ such that there is no path between them. However, since $T$ is connected, there is a path $P$ of the form $x \to y$ in $T$.
 
         Note that, if by removing $v$ from $T$ we disconnect $x$ and $y$, it must be that $v$ lies in $P$. Moreover, since $v$ is in $T$ but not in $T - \{v\}$, while both $x$ and $y$ are also in $T - \{v\}$, it must be that $v$ is an \tit{internal} node of $P$, i.e. $v \neq x, y$, which implies that $\deg(v) \ge 2$ by definition of path, contradicting the hypothesis for which $v$ was a leaf $\lightning$.
     \end{proof}
@@ -768,7 +770,7 @@
     \subsection{Bipartite graphs}
 
     \begin{frameddefn}{Bipartite graph}
-        A graph $G = (V, E)$ is said to be \tbf{bipartite} if there exists a set $X \subseteq V$ such that every edge of $G$ has exactly one endpoint in $X$ and one in $V - X$. If such a set $X$ exists, we say that $(X, V - X)$ is a \tbf{bipartition} of $G$. If $G$ has the maximum number of edges that preserve the bipartition, we say that is \tbf{complete bipartite}.
+        A graph $G = (V, E)$ is said to be \tbf{bipartite} if there exists a \tit{proper subset} $X \subseteq V$ such that every edge of $G$ has exactly one endpoint in $X$ and one in $V - X$. If such a set $X$ exists, we say that $(X, V - X)$ is a \tbf{bipartition} of $G$. If $G$ has the maximum number of edges that preserve the bipartition, we say that it is \tbf{complete bipartite}.
     \end{frameddefn}
 
     \begin{figure}[H]
@@ -801,7 +803,7 @@
 
     The graph $K_{a, b}$ is the \tit{complete bipartite} graph bipartitioned through $(A, B)$ such that $\abs A = a$ and $\abs B = b$.
 
-    There are various types of graphs that can be bipartitioned. For example, any \tbf{tree} $T$ can be bipartitioned through a bipartition $(X, V(T) - X)$ by considering the following set of vertices $$X := \{v \in V(T) \mid \dist(r, v) \ \mathrm{even}\}$$ where $r$ is $T$'s root.
+    There are various types of graphs that can be bipartitioned. For example, any \tbf{tree} $T$ can be bipartitioned through a bipartition $(X, V(T) - X)$ by considering the following set of vertices $$X := \{v \in V(T) \mid \dist(r, v) \ \mathrm{is \ even}\}$$ where $r$ is $T$'s root.
 
     \begin{figure}[H]
         \centering
@@ -912,6 +914,8 @@
         % \label{}
     \end{figure}
 
+    The following theorem provides a \tit{complete characterization} of bipartite graphs, and it will be used extensively throughout the rest of the notes.
+
     \begin{framedthm}[label={odd-len bip}]{}
         $G$ is bipartite if and only if $G$ has no odd-length cycle.
     \end{framedthm}
@@ -919,9 +923,9 @@
     \proofiff{
         We will prove the contrapositive, i.e. if $G$ has an odd-length cycle, then $G$ cannot be bipartitioned. Consider a graph $G$ with an odd-length cycle $C_{2k + 1}$ of vertices $x_1, \ldots, x_{2k + 1}$; by way of contradiction, assume that $G$ is bipartite through a bipartition $(X, V(G) - X)$ for some $X \subseteq V(G)$. Without loss of generality assume that $x_1 \in X$; then, since $X$ defines a bipartition of $G$ it must be that $x_2 \notin X$, and $x_3 \in X$ and so on and so forth. In particular, for any odd value of $i$ we will have that $x_i \in X$, but this implies that both $x_1$ and $x_{2k + 1}$ must be inside $X$, which means that the edge $x_1x_{2k + 1}$ violates the bipartition induced by $X$ $\lightning$.
     }{
-        Again, we will prove the contrapositive, i.e. if $G$ is not bipartite it must contain an odd-length cycle. By the previous observation, $G$ is not bipartite if and only if at least one connected component of $G$ is not bipartite, and let this component be $\overline G$. Note that, since $\overline G$ is connected, it must contain a spannning tree $T$ by \cref{spanning tree existence}. Moreover, as previously described, we can always define a bipartition on a tree, namely $(X, V(T) - X)$ where $$\textstyle X := \{v \in V(T) \mid \dist_T(r, v) \ \mathrm{even}\}$$ for some root node $r \in V(T)$.
+        Again, we will prove the contrapositive, i.e. if $G$ is not bipartite it must contain an odd-length cycle. By the previous observation, $G$ is not bipartite if and only if at least one connected component of $G$ is not bipartite, and let this component be $G'$. Note that, since $G'$ is connected, it must contain a spannning tree $T$ by \cref{spanning tree existence}. Moreover, as previously described, we can always define a bipartition on a tree, namely $(X, V(T) - X)$ where $$\textstyle X := \{v \in V(T) \mid \dist_T(r, v) \ \mathrm{even}\}$$ for some root node $r \in V(T)$.
 
-        Now, since $T$ is a spanning tree of $\overline G$, which is now bipartite by hypothesis, there must be an edge $xy \in V(\overline G)$ such that either $x, y \in X$ or $x, y \in V(T) - X$, i.e. the edge $xy$ must have both endpoints in the same set of $T$'s bipartition. Let $z$ be the LCA between $x$ and $y$ in $T$, and $P_x$ and $P_y$ be the paths of the form $x \to r$ and $y \to r$, respectively. Note that, since $xy$ has both endpoints in the same set, it must be that the lengths of $P_x$ and $P_y$ have the same parity by definition of $X$. Lastly, by statement 2 of \cref{tree alt} we have that $r \ P_x \ z = r \ P_y \ z$, which implies that the lengths of $z \ P_x \ x$ and $z \ P_y \ y$ must have the same parity. This concludes that $$z \ P_x \ x \cup z \ P_y \ y \cup xy$$ is an odd-length cycle of $G$.
+        Now, since $T$ is a spanning tree of $G'$, which is now bipartite by hypothesis, there must be an edge $xy \in V(G')$ such that either $x, y \in X$ or $x, y \in V(T) - X$, i.e. the edge $xy$ must have both endpoints in the same set of $T$'s bipartition. Let $z$ be the LCA between $x$ and $y$ in $T$, and $P_x$ and $P_y$ be the paths of the form $x \to r$ and $y \to r$, respectively. Note that, since $xy$ has both endpoints in the same set, it must be that the lengths of $P_x$ and $P_y$ have the same parity by definition of $X$. Lastly, by statement 2 of \cref{tree alt} we have that $r \ P_x \ z = r \ P_y \ z$, which implies that the lengths of $z \ P_x \ x$ and $z \ P_y \ y$ must have the same parity. This concludes that $$z \ P_x \ x \cup z \ P_y \ y \cup xy$$ is an odd-length cycle of $G$.
     }
 
     \subsection{Eulerian tours}
@@ -981,9 +985,9 @@
         % \label{konigsberg}
     \end{figure}
 
-    does not admit any Eulerian tour. But, given a graph, how can we determine with certainty whether it contains an Eulerian tour? The following theorem, proved by Euler himself in his original paper \cite{konigsberg}, answers this question. Note that this theorem holds both for graphs and multigraph.
+    does not admit any Eulerian tour. But, given a graph, how can we determine with certainty whether it contains an Eulerian tour? The following theorem, proved by Euler himself in his original paper \cite{konigsberg}, answers this question. Note that this theorem holds both for graphs and multigraphs.
 
-    \begin{framedthm}{Eulerian tours}
+    \begin{framedthm}{Euler's theorem}
         A graph $G$ admits an Eulerian tour if and only $G$ is connected and every vertex of $G$ has even degree.
     \end{framedthm}
     
@@ -1005,7 +1009,7 @@
 
     \subsection{Hamiltonian cycles}
     
-    Eulerian tours are closed walks that traverse every edge of the graph exactly once. But what if we are interested in traversing each \tit{vertex} exactly once instead?
+    Eulerian tours are closed walks that traverse every edge of the graph exactly once, but what if we are interested in traversing each \tit{vertex} exactly once instead?
 
     \begin{frameddefn}{Hamiltonian paths and cycles}
         A \tbf{Hamiltonian path} over a graph $G$ is a subgraph $P_n$ of $G$. A \tbf{Hamiltonian cycle} over a graph $G$ is a subgraph $C_n$ of $G$.
@@ -1227,6 +1231,8 @@
 
     \chapter{Matchings}
 
+    In graph theory, a \tbf{matching} is a set of edges chosen such that no two edges share a common vertex. In other words, a matching is a subgraph where each node has either zero or one edge incident to it. Matchings are fundamental in various applications, including flow networks, scheduling and planning, chemical bond modeling, graph coloring, the stable marriage problem, and even neural networks in artificial intelligence.
+
     \begin{frameddefn}{Matching}
         Given a graph $G = (V, E)$, a \tbf{matching} of $G$ is a set of edges $M \subseteq E$ such that $$\forall e, e' \in M \quad e \cap e' = \varnothing$$
     \end{frameddefn}
@@ -1297,11 +1303,11 @@
         \end{tikzpicture}
     \end{figure}
 
-    is still a valid matching for the graph, but has a larger cardinality than the previous set.
-
-    Given a matching $M$ in a graph $G$, what conditions must be met to increase its cardinality? Trivially, if there exists an edge $e$ disjoint from $M$, clearly $M \cup \{e\}$ is a larger matching than $M$ --- implying that $M$ was not \tit{maximal} in $G$. However, this is not the only situation in which the cardinality of $M$ can be extended. In fact, consider the following definitions.
+    is still a valid matching for the graph, but has a larger cardinality.
 
     \section{Augmenting paths}
+
+    Given a matching $M$ in a graph $G$, what conditions must be met to increase its cardinality? Trivially, if there exists an edge $e$ disjoint from $M$, clearly $M \cup \{e\}$ is a larger matching than $M$ --- implying that $M$ was not \tit{maximal} in $G$. However, this is not the only situation in which the cardinality of $M$ can be extended. 
 
     \begin{frameddefn}{Alternating path}
         Given a graph $G$, and a matching $M$ on $G$, an \tbf{$M$-alternating path} is a path of $G$ that starts at a free node w.r.t. $M$, and is composed of edges that alternate between $M$ and $E(G) - M$.
@@ -1373,7 +1379,7 @@
 
     \subsection{Berge's theorem}
 
-    This suggests that the presence of augmenting paths in a graph is a \tit{sufficient} condition for a matching \tit{not} to be maximum, but we can actually prove that it is also \tit{necessary}, as stated in the following theorem, proved by \textcite{berge} in 1957.
+    This suggests that the absence of augmenting paths in a graph is a \tit{necessary} condition for a matching \tit{not} to be maximum, but we can actually prove that it is also \tit{sufficient}, as stated in the following theorem, proved by \textcite{berge} in 1957.
 
     \begin{framedthm}[label={aug paths}]{Berge's theorem}
         Given a graph $G$, $M$ is a maximum matching of $G$ if and only if in $G$ there are no $M$-augmenting paths.
@@ -1400,9 +1406,9 @@
         and by observation (2), we have that all the cycle components must have \tit{even} length, which implies that they have the same number of edges of $M$ and $M^*$. On the other hand, path components may have either even or odd length; in particular, even-length paths must have the same number of edges of $M$ and $M^*$ --- as for cycle components --- while odd-length paths have a different number of edges of $M$ and $M^*$. However, since $\abs M < \abs{M^*}$, there must be at least one path component of this subgraph such that its edges of $M$ are less than the edges of $M^*$, and this is clearly an $M$-augmenting path.
     }
 
-    Given a graph $G$, and a matching $M$ of $G$, what is the maximum possible value for $\abs M$? To answer this question, we need to introduce the following combinatorial structure.
-
     \subsection{Kőnig's theorem}
+
+    Given a graph $G$, and a matching $M$ of $G$, what is the maximum possible value for $\abs M$? To answer this question, we need to introduce the following combinatorial structure.
 
     \begin{frameddefn}{Vertex cover}
         Given a graph $G$, a \tbf{vertex cover} for $G$ is a set of vertices $C \subseteq V(G)$ such that every edge in $G$ is incident to at least one vertex in $C$. Using symbols $$\forall (u, v) \in E(G) \quad u \in C \lor v \in C$$
@@ -1432,11 +1438,11 @@
         \caption{An example of a vertex cover.}
     \end{figure}
     
-    As shown in figure, a vertex cover is simply a set of vertices that must \tit{cover} all the edges of the graph. For vertex covers, we are interested in the \tit{minimum} possible cardinality --- the concepts of \tit{minimal} and \tit{minimum} are defined analogously.
+    As shown in figure, a vertex cover is simply a set of vertices that must \tit{cover} all the edges of the graph. For vertex covers, we are interested in the \tit{minimum} possible cardinality --- the concepts of \tit{minimal} and \tit{minimum} are defined analogously as for \tit{maximal} and \tit{maximum}.
 
-    As introduced before, through vertex covers we can bound the size of any matching of a graph.
+    For our purposes, we are interested in vertex covers because through such combinatorial structures we can bound the size of any matching of a graph.
 
-    \begin{framedthm}{Matchings bound vertex covers}
+    \begin{framedthm}{}
         Given a graph $G$, a matching $M$, and a vertex cover $S$ of $G$, it holds that $\abs M \le \abs S$.
     \end{framedthm}
 
@@ -1524,7 +1530,7 @@
 
     \subsection{Finding maximum matchings}
 
-    Consider a matching $M$ of a graph $G$, and an $M$-augmenting path $P$; the idea of \tit{swapping} the edges of $P$ between $M$ and $E(G) - M$ is very useful when $G$ is \tbf{bipartite}. In fact, we can actually describe a procedure which is able to return a \tit{maximum matching} of a bipartite graph, by swapping the edges of the augmenting paths present in $G$. However, for this algorithm to work, we first need a procedure capable of finding augmenting paths in bipartite graphs, which is defined down below:
+    Consider a matching $M$ of a graph $G$, and an $M$-augmenting path $P$; the idea of \tit{swapping} the edges of $P$ between $M$ and $E(G) - M$ is very useful when $G$ is \tbf{bipartite}. In fact, we can actually describe a procedure which is able to return a \tit{maximum matching} of a bipartite graph, by swapping the edges of the augmenting paths present in $G$. However, for this algorithm to work, we first need a procedure capable of \tit{finding} augmenting paths in bipartite graphs, which is defined down below.
 
     \begin{enumerate}
         \item Assume that the considered graph $G$ is bipartite through $(A, B)$, and consider a matching $M$ of $G$
@@ -1586,7 +1592,7 @@
         Given a bipartite graph $G$, bipartitioned into $(A, B)$, and a matching $M$ of $G$, if there exists an $M$-augmenting path in $G$ that starts in a vertex $a \in A$ free w.r.t. $M$, then there exists an $M$-augmenting path in the tree $T$ of the \tit{modified} BFS.
     \end{framedprop}
 
-    \begin{proof}
+    \begin{proof}[Proof sketch.]
         Let $P$ be an $M$-augmenting path that starts in $a$ and minimizes the edges in $E(P) - E(T)$ and, by way of contradiction, assume that $E(P) - E(T) \neq \varnothing$, i.e. $P$ is not completely contained in $T$. Therefore, let $xy$ be the first edge in $E(P) - E(T)$ encountered while traversing $P$, starting at $a$, and without loss of generality assume that $x \in V(P)$.
 
         \claim{
@@ -1683,7 +1689,7 @@
         \caption{An example of a perfect matching.}
     \end{figure}
 
-    Perfect matchings are an interesting topic of study when related to \tit{bipartite graphs}. We observe that if a bipartite graph $G$, bipartitioned into $(A, B)$, admits a perfect matching $M$, it must be that $\abs A = \abs B$. This is because every matched edge must connect one vertex from $A$ to one vertex from $B$, and by definition $M$ matched \tit{each} vertex exactly once. However, the converse is not true.
+    Perfect matchings are an interesting topic of study when related to \tit{bipartite graphs}. We observe that if a bipartite graph $G$, bipartitioned into $(A, B)$, admits a perfect matching $M$, it must be that $\abs A = \abs B$. This is because every matched edge must connect one vertex from $A$ to one vertex from $B$, and by definition $M$ matches \tit{each} vertex exactly once. However, the converse is not true.
 
     \begin{figure}[H]
         \centering
@@ -1715,7 +1721,7 @@
         Given a bipartite graph $G$, bipartitioned through $(A, B)$ such that $\abs A \le \abs B$, we say that a matching $M$ is an \tbf{$A$-perfect matching} if it covers all the vertices in $A$.
     \end{frameddefn}
 
-    Note that we can always assume that $\abs A \le \abs B$, without loss of generality. The following theorem, known as the \href{https://en.wikipedia.org/wiki/Hall%27s_marriage_theorem}{Hall's marriage theorem} --- proved by \textcite{hall} in 1935 --- shows the conditions that guarantee that an $A$-perfect matching exists.
+    We will always assume that $\abs A \le \abs B$, without loss of generality. The following theorem, known as the \href{https://en.wikipedia.org/wiki/Hall%27s_marriage_theorem}{Hall's marriage theorem} --- proved by \textcite{hall} in 1935 --- shows the conditions that guarantee that an $A$-perfect matching exists.
 
         \begin{framedthm}[label={hall}]{Hall's marriage theorem}
         Given a bipartite graph $G$, bipartitioned into $(A, B)$, then $G$ admits an $A$-perfect matching if and only if $$\forall S \subseteq A \quad \abs S \le \abs{\mathcal N (S)}$$
@@ -1729,7 +1735,7 @@
 
     \subsection{Tutte's theorem}
 
-    In the general case, what obstructs the existence of a perfect matching in a graph? Consider a graph $G$; clearly, if $n$ is odd, the graph does not admit perfect matchings, since each edge matches exactly two nodes, meaning that there will always be a free vertex in the graph.
+    What about the general case? Consider any graph $G$ on $n$ vertices: clearly, if $n$ is odd, the graph does not admit perfect matchings, since each edge matches exactly two nodes, meaning that there will always be a free vertex in the graph.
 
     \begin{figure}[H]
         \centering
