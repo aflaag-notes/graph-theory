@@ -228,6 +228,30 @@
     \field{year}{2025}
   \endentry
 
+  \entry{descartes}{article}{}{}
+    \name{author}{1}{}{%
+      {{hash=DB}{%
+         family={Descartes},
+         familyi={D\bibinitperiod},
+         given={Blanche},
+         giveni={B\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{DB1}
+    \strng{fullhash}{DB1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{Des47}
+    \field{sortinit}{D}
+    \field{sortinithash}{D}
+    \field{number}{21}
+    \field{pages}{24\bibrangedash 25}
+    \field{title}{A three colour problem}
+    \field{volume}{9}
+    \field{journaltitle}{Eureka}
+    \field{year}{1947}
+  \endentry
+
   \entry{dilworth}{article}{}{}
     \name{author}{1}{}{%
       {{hash=DRP}{%

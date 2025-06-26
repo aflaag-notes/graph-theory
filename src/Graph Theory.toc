@@ -35,19 +35,19 @@
 \contentsline {section}{\numberline {4.2}Vertex bounds}{78}{section.4.2}%
 \contentsline {subsection}{\numberline {4.2.1}Ramsey numbers}{78}{subsection.4.2.1}%
 \contentsline {section}{\numberline {4.3}Exercises}{83}{section.4.3}%
-\contentsline {chapter}{\numberline {5}Graph decompositions}{92}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Blocks}{92}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Known decompositions}{97}{section.5.2}%
-\contentsline {section}{\numberline {5.3}Exercises}{101}{section.5.3}%
-\contentsline {chapter}{\numberline {6}Planar graphs}{105}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Topological properties}{108}{section.6.1}%
-\contentsline {section}{\numberline {6.2}Planarity conditions}{112}{section.6.2}%
-\contentsline {subsection}{\numberline {6.2.1}Kuratowski's theorem}{114}{subsection.6.2.1}%
-\contentsline {section}{\numberline {6.3}Exercises}{119}{section.6.3}%
-\contentsline {chapter}{\numberline {7}Graph coloring}{120}{chapter.7}%
-\contentsline {section}{\numberline {7.1}Bounds on the chromatic number}{121}{section.7.1}%
-\contentsline {subsection}{\numberline {7.1.1}Upper bounds}{121}{subsection.7.1.1}%
-\contentsline {subsection}{\numberline {7.1.2}Lower bounds}{123}{subsection.7.1.2}%
+\contentsline {chapter}{\numberline {5}Graph decompositions}{91}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Blocks}{91}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Known decompositions}{96}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Exercises}{100}{section.5.3}%
+\contentsline {chapter}{\numberline {6}Planar graphs}{104}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Topological properties}{107}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Planarity conditions}{111}{section.6.2}%
+\contentsline {subsection}{\numberline {6.2.1}Kuratowski's theorem}{113}{subsection.6.2.1}%
+\contentsline {section}{\numberline {6.3}Exercises}{118}{section.6.3}%
+\contentsline {chapter}{\numberline {7}Graph coloring}{119}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Bounds on the chromatic number}{120}{section.7.1}%
+\contentsline {subsection}{\numberline {7.1.1}Upper bounds}{120}{subsection.7.1.1}%
+\contentsline {subsection}{\numberline {7.1.2}Lower bounds}{122}{subsection.7.1.2}%
 \contentsline {section}{\numberline {7.2}Perfect graphs}{125}{section.7.2}%
-\contentsline {subsection}{\numberline {7.2.1}Perfect graph theorems}{128}{subsection.7.2.1}%
-\contentsline {section}{\numberline {7.3}Exercises}{131}{section.7.3}%
+\contentsline {subsection}{\numberline {7.2.1}Perfect graph theorems}{127}{subsection.7.2.1}%
+\contentsline {section}{\numberline {7.3}Exercises}{130}{section.7.3}%

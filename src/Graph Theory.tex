@@ -2047,8 +2047,8 @@
 
     \chapter{Graph packing}
 
-    TODO \todo{introduction}
-    
+    \tbf{Connectivity} is one of the most important aspects in graph theory, capturing the \tit{robustness of the networks}. In this chapter, we delve into one of the foundational results in this area, namely \tbf{Menger's theorem}, which provides a deep and elegant characterization of \tit{vertex and edge connectivity} in graphs.
+
     \begin{frameddefn}{$A$-$B$ paths}
         Given a graph $G$, and two sets $A, B \subseteq V(G)$, an \tbf{$A$-$B$ path} is a path that has one end in $A$, one end in $B$, and no internal vertices in $A \cup B$.
     \end{frameddefn}
@@ -2108,7 +2108,7 @@
         % \label{first graph}
     \end{figure}
 
-    Note that if $X$ is an $A$-$B$ hitting set, then $A \cap B \subseteq X$, otherwise any single vertex in $A \cap B$ would represent an $A$-$B$ trivial path that does not pass through the hitting set $X$. Moreover, consider an $A$-$B$ hitting set $X$ of a graph $G$; 
+    Note that if $X$ is an $A$-$B$ hitting set, then $A \cap B \subseteq X$, otherwise any single vertex in $A \cap B$ would represent an $A$-$B$ trivial path that does not pass through the hitting set $X$.
 
     \begin{framedprop}[label={menger prop prop}]{}
         Given a graph $G$, and two sets $A, B \subseteq V(G)$, it there exists an $A$-$B$ hitting set $X$ of size $k$ then there are at most $k$ vertex-disjoint $A$-$B$ paths.
@@ -2118,7 +2118,7 @@
         Trivially, by definition all the $A$-$B$ paths must have at least one vertex in $X$, therefore there cannot be more than $k$ vertex-disjoint $A$-$B$ paths.
     \end{proof}
 
-    This proposition clearly implies that the maximum number of disjoint $A$-$B$ paths is upper bounded by the cardinality of the minimum $A$-$B$ hitting set. However, hitting sets are not easy to work with, and more convenient way to reason about $A$-$B$ paths are \tbf{graph separations}.
+    This proposition clearly implies that the maximum number of disjoint $A$-$B$ paths is upper bounded by the cardinality of the minimum $A$-$B$ hitting set. However, hitting sets are not easy to work with, and a more convenient way to reason about $A$-$B$ paths are \tbf{graph separations}.
 
     \begin{frameddefn}{$A$-$B$ separation}
         Given a graph $G$, and two sets $A, B \subseteq V(G)$, two sets $X, Y \subseteq V(G)$ describe an $A$-$B$ \tbf{separation $(X, Y)$} of $G$ if and only if
@@ -2133,7 +2133,11 @@
         We say that a separation $(X, Y)$ has \tbf{order} $\abs{X \cap Y}$.
     \end{frameddefn}
 
-    From the very definition, we see that any $A$-$B$ path must pass through $X \cap Y$, since there are no edges \curlyquotes{across} $X$ and $Y$. Moreover, given a graph $G$, two sets $A, B \subseteq V(G)$, and an $A$-$B$ separation $(X, Y)$ of $G$, we observe that $G - (X \cap Y)$ is disconnected. Furthermore, consider the following property.
+    TODO \todo{example}
+
+    From the very definition, we see that any $A$-$B$ path must pass through $X \cap Y$, since there are no edges \curlyquotes{across} $X$ and $Y$. Moreover, given a graph $G$, two sets $A, B \subseteq V(G)$, and an $A$-$B$ separation $(X, Y)$ of $G$, we observe that $G - (X \cap Y)$ is disconnected.
+
+    Now, consider the following property.
 
     \begin{framedprop}[label={menger prop}]{}
         Given a graph $G$, and two sets $A, B \subseteq V(G)$, there exists an $A$-$B$ hitting set of size $k$ in $G$ if and only if there exists an $A$-$B$ separation of order $k$.
@@ -2153,17 +2157,17 @@
         and for the previous observation there cannot be edges with one end in $X - Y$ and the other in $Y - X$. Hence, we conclude that $(X, Y)$ is a separation of $G$, and $X \cap Y = Z \implies \abs{X \cap Y} = \abs Z = k$.
     \end{proof}
 
-    This property directly implies that hitting sets and graphs separations can be treated equivalently. Hence, because of the previous proposition we derive the following observation.
+    This property directly implies that hitting sets and graphs separations can be treated \tit{equivalently}. Hence, because of the previous proposition we derive the following observation.
 
-    \begin{frameddefn}[label={menger prop 3}]{}
+    \begin{framedprop}[label={menger prop 3}]{}
         Given a graph $G$, two sets $A, B \subseteq V(G)$, and an $A$-$B$ separation $(X, Y)$ of minimum order, there are at most $\abs{X \cap Y}$ vertex-disjoint $A$-$B$ paths.
-    \end{frameddefn}
+    \end{framedprop}
 
     \begin{proof}
         By \cref{menger prop prop} the maximum number of disjoint $A$-$B$ is upper bounded by the minimum size of an $A$-$B$ hitting set $H$, and by \cref{menger prop} there is an $A$-$B$ separation having $H$'s size as order.
     \end{proof}
 
-    In 1927 \textcite{menger} proved that the lower bound also holds. To prove his result, we are going to prove a stronger version of his theorem
+    Finally, in 1927 \textcite{menger} proved that the lower bound also holds. To prove his result, we are going to prove a stronger version of his theorem.
 
     \begin{framedthm}[label={menger}]{Menger's theorem (stronger version)}
         Given a graph $G$, and two sets $A, B \subseteq V(G)$, either there are at least $k$ vertex-disjoint $A$-$B$ paths or there is an $A$-$B$ separation of order less than $k$.
@@ -2194,7 +2198,7 @@
         Let $M$ be the maximum numebr of vertex-disjoint $A$-$B$ paths, and let $m$ be the minum order of an $A$-$B$ separation. Since each separation upper bounds the number of $A$-$B$ paths by \cref{menger prop 3}, we know that $M \le m$. Now, by way of contradiction suppose that $M < m$; then, since there are less than $m$ $A$-$B$ paths there must exist a separation of order less than $m$, contradicting the minimality of $m$. This proves that $M \ge m$.
     \end{proof}
 
-    We will use \tit{extensively} Menger's theorem and its implications in the following chapters.
+    We will use Menger's theorem and its implications \tit{extensively} in the following chapters.
 
     \section{$k$-connectivity}
 
@@ -2395,11 +2399,11 @@
         \caption{For instance, the \tit{red} set of vertices is an FVS of this graph.}
     \end{figure}
 
-    In many applications, it is important to find a \tbf{minimum} FVS; however, this problem is known to be \NPclass-complete --- as proved by \textcite{karp} in 1972. Therefore, we often focus on estimating the size of this set by computing lower and upper bounds. In particular, in this section we will present a result proved by \textcite{erdos} in 1965. But before introducing their result about FVSs, we must discuss some combinatorial structures first.
+    In many applications, it is important to find a \tit{minimum} FVS; however, this problem is known to be \NPclass-complete --- as proved by \textcite{karp} in 1972. Therefore, we often focus on estimating the size of this set by computing lower and upper bounds. In particular, in this section we will present a result proved by \textcite{erdos} in 1965. But before introducing their result about FVSs, we must discuss some combinatorial structures first.
 
     \subsection{Topological minors}
 
-    Consider a graph $G$, and an edge $xy \in E(G)$; to \tbf{subdivide} $xy$ means to \tit{remove} the edge $xy$ from $E(G)$ and \tit{replacing} it with a 2-edge path $x \ z \ y$ for some new vertex $z$. For instance, if $G$ contains the edge $xy$
+    Consider a graph $G$, and an edge $xy \in E(G)$; to \tbf{subdivide} $xy$ means to \tit{remove} the edge $xy$ from $E(G)$ and \tit{replacing} it with a 2-edge path $x \ z \ y$ with some new vertex $z$. For instance, if $G$ contains the edge $xy$
 
     \begin{figure}[H]
         \centering
@@ -2560,7 +2564,7 @@
         and lastly, since $V(T) = V(G) = n$, the height of $T$ is $\ceil{\log n} - 1$, which means that such a cycle must have length $$\ceil{\log n} - 1 + \ceil{\log n} - 1 + 1 = 2 \ceil{\log n} - 1$$
     \end{proof}
 
-    Along with the \tit{subdivision} operation that we introduced previously, it naturally follows to defined the \tit{inverse} operation of the subdivision, i.e. the \tbf{suppression}. Given a graph $G$, and two edges $xz, zy \in E(G)$ such that $\deg(z) = 2$, to \tit{suppress} $z$ means to \tit{remove} the vertex $z$ from $V(G)$ along with the edges $xz$ and $zy$, and \tit{replacing} them with an edge $xy$ in $E(G)$. For instance, if $G$ contains the edges $xz$ and $zy$
+    Along with the \tit{subdivision} operation that we introduced previously, it naturally follows to define the \tit{inverse} operation of the subdivision, i.e. the \tbf{suppression}. Given a graph $G$, and two edges $xz, zy \in E(G)$ such that $\deg(z) = 2$, to \tit{suppress} $z$ means to \tit{remove} the vertex $z$ from $V(G)$ along with the edges $xz$ and $zy$, and \tit{replacing} them with an edge $xy$ in $E(G)$. For instance, if $G$ contains the edges $xz$ and $zy$
 
     \begin{figure}[H]
         \centering
@@ -2707,7 +2711,7 @@
 
     \section{Directed graphs}
 
-    Up until this point, we only discussed \tit{undirected graphs}. In this section we are going briefly presents some results regarding \tbf{directed graphs} (or \tit{digraphs}, for short), in which the edges have an \tbf{orientation} --- implying that the edge $(x, y)$ is different from the edge $(y, x)$.
+    Up until this point, we only discussed \tit{undirected graphs}. In this section we are going to present briefly some results regarding \tbf{directed graphs} (or \tit{digraphs}, for short), which are graph in which the edges have an \tbf{orientation} --- implying that the edge $(x, y)$ is different from the edge $(y, x)$.
 
     \begin{figure}[H]
         \centering
@@ -2808,7 +2812,7 @@
 
     Moreover, since a graph contains a Hamiltonian cycle if and only if there is a path cover of size 1, therefore the former problem can be reduced to the latter, implying that the minimum path cover problem is also \NPclass-Hard.
 
-    Nonetheless, the Gallai-Milgram theorem still has applications in various branched of mathematics. For instance, it can be used to prove a result first derived by \textcite{dilworth} in 1950 involving \tbf{posets}.
+    Nonetheless, the Gallai-Milgram theorem still has applications in various branches of mathematics. For instance, it can be used to prove a result first derived by \textcite{dilworth} in 1950 involving \tbf{posets}.
 
     \begin{frameddefn}{Poset}
         Given a set $S$ and a relation $\prec$, the algebraic structure $(S, \prec)$ is called \tbf{partially ordered set} (or \tit{poset}, for short) if $\prec$ is a binary relation that is \tit{reflexive}, \tit{antisymmetric} and \tit{transitive}.
@@ -2902,7 +2906,7 @@
 
     Extremal graph theory is a field of mathematics that investigates how \tit{global properties} of a graph influence the \tbf{presence or absence} of specific substructures. Broadly speaking, it seeks to understand how large or dense a graph can be while avoiding certain configurations, or conversely, what constraints guarantee the appearance of particular patterns.
 
-    The central theme of the discipline lies in \tit{exploring thresholds}: determining the minimal or maximal values of graph parameters --- such as the number of edges, degrees, or vertices --- beyond which a given substructure must necessarily exist. These substructures can range from simple motifs like \tit{paths} and \tit{cycles} to more complex or irregular patterns.
+    The central theme of the discipline lies in \tit{exploring thresholds}: determining the minimal or maximal values of graph parameters --- such as the number of edges, degrees, or vertices --- beyond which a given substructure must necessarily exist.
 
     This area plays a crucial role in understanding the fundamental behavior of graphs under constraints, offering insights that are both theoretically significant and applicable in various areas such as network design, data analysis, and algorithm optimization.
 
@@ -2914,7 +2918,7 @@
 
     We will start our discussion of extremal graph theory with the question of \tbf{determining the existence} of cliques within a given graph. In general, finding the largest clique in a graph is an \NPclass-Hard problem. This leads to a natural question: under what conditions can we guarantee the existence of a $K_n$ subgraph?
 
-    \href{https://en.wikipedia.org/wiki/P%C3%A1l_Tur%C3%A1n}{Pál Turán} addressed this by providing an exact upper bound on the number of edges a graph can have without containing a clique of a given size. But before discussing his results, let us first introduce some important definitions.
+    \href{https://en.wikipedia.org/wiki/P%C3%A1l_Tur%C3%A1n}{Pál Turán} addressed this by providing an exact upper bound on the number of edges a graph can have without containing a clique of a given size. But before discussing his result, let us first introduce some important definitions.
 
     \begin{frameddefn}{Edge maximum graph without $K_r$ subgraphs}
         A graph $G$ is said to be \tbf{edge maximum without $K_r$ subgraph} --- denoted as EM$K_r$, for short --- if for any $G'$ such that $\abs{V(G')} = \abs{V(G)}$ and $\abs{E(G')} > \abs{E(G)}$, $G'$ has $K_r$ as subgraph.
@@ -2938,7 +2942,7 @@
 
             ;
         \end{tikzpicture}
-        \caption{For instance, in this graph clearly there are no cliques as subgraph, and if we add one edge we construct $K_3$ as subgraph.}
+        \caption{For instance, in this graph clearly there are no cliques as subgraph, but if we add one edge we construct $K_3$, meaning that this graph is EM$K_3$.}
     \end{figure}
 
     \begin{frameddefn}{Independent set}
@@ -2975,9 +2979,9 @@
     Now, consider the following type of graphs.
 
     \begin{frameddefn}{$r$-partite graph}
-        A graph is sait to be \tbf{$r$-partite} if it can be partitioned into $X_1, \ldots, X_r$ sets of vertices such that $X_1, \ldots, X_r$ are independent sets.
+        A graph is said to be \tbf{$r$-partite} if it can be partitioned into $X_1, \ldots, X_r$ sets of vertices such that $X_1, \ldots, X_r$ are independent sets.
 
-        Moreover, the graph is said to be \tbf{complete $r$-partite} if forall $i, j \in [r]$ such that $i \neq j$, if $x \in X_i$ and $y \in X_j$ then $x \sim y$.
+        Moreover, the graph is said to be \tbf{complete $r$-partite} if for all $i, j \in [r]$ such that $i \neq j$, it holds that if $x \in X_i$ and $y \in X_j$ then $x \sim y$.
     \end{frameddefn}
 
     \begin{figure}[H]
@@ -3229,7 +3233,7 @@
 
     \subsection{$k$-connected subgraphs}
 
-    After examining extremal edge conditions that guarantee the presence of a clique as subgraph, we now turn our attention to extremal conditions that ensure the existence of a $k$-connected subgraph. These types of conditions are particularly significant --- unsurprisingly so, given that we have already seen how $k$-connectivity plays a key role in the emergence of structural properties within graphs. In particular, the following theorem --- proved by \textcite{mader} in 1972 --- provides some conditions that guarantee the existence of a $k$-connected subgraph in a given graph.
+    After examining extremal edge conditions that guarantee the presence of a clique as subgraph, we now turn our attention to extremal conditions that ensure the existence of \tbf{$k$-connected subgraphs}. These types of conditions are particularly significant --- unsurprisingly so, given that we have already seen how $k$-connectivity plays a key role in the emergence of structural properties within graphs. In particular, the following theorem --- proved by \textcite{mader} in 1972 --- provides some conditions that guarantee the existence of a $k$-connected subgraph in a given graph.
 
     \begin{framedthm}{Mader's theorem}
         If $G$ is such that $\abs{V(G)} \ge 2k$ and $\abs{E(G)} \ge (2k - 1)(n - k)$, then $G$ contains a $k$-connected subgraph.
@@ -3291,7 +3295,7 @@
 
     It is not known if the edge bound provided by Mader's theorem is optimal, i.e. we do not know if there are graphs with fewer than $(2k - 1)(n - k)$ edges that do not contain $k$-connected subgraphs. In fact, this is an open question in the field of extremal graph theory: given $k \in \N$, what is the smallest value $c_k$ such that all graphs with $n$ vertices and $\abs{E(G)} \ge c_kn + f(k)$ --- for some function $f(k)$ --- contain a $k$-connected subgraph?
 
-    By Mader's theorem we that $c_k$ is \tit{upper bounded} by $c_k \le 2k - 1$, and some type of graphs are known to provide \tit{lower bounds}, such as the following type.
+    By Mader's theorem, we know that $c_k$ is \tit{upper bounded} by $c_k \le 2k - 1$, and some type of graphs are known to provide \tit{lower bounds}, such as the following type.
 
     \begin{frameddefn}{Split graph}
         A \tbf{split graph} is a graph whose vertices can be partitioned into a \tit{clique} and an independent set. A \tbf{complete split graph} is a split graph where the independent set is fully connected to the clique.
@@ -3336,7 +3340,7 @@
         \caption{The complit split graph constructed from $K_4$ and an independent set of 3 vertices.}
     \end{figure}
 
-    In fact, any complete split graph constructed from a $(k - 1)$-clique and an independent set of $n - (k - 1)$ vertices has the following number of edges $$\abs{E(G)} = \binom{k - 1}{2} +  (k - 1)(n - (k - 1))$$ and such split graphs are clearly not $k$-connected --- removing $K_{k - 1}$ disconnect the graph by definition. Therefore, this implies that $c_k \ge k - 1$.
+    In fact, any complete split graph constructed from a $(k - 1)$-clique and an independent set of $n - (k - 1)$ vertices has the following number of edges $$\abs{E(G)} = \binom{k - 1}{2} +  (k - 1)(n - (k - 1))$$ and such split graphs are clearly not $k$-connected --- removing $K_{k - 1}$ disconnects the graph by definition. Therefore, this implies that $c_k \ge k - 1$.
 
     Lastly, as a corollary of Mader's theorem and \cref{3-conn prop}, we get the following proposition.
 
@@ -3460,7 +3464,9 @@
         \end{tikzpicture}
     \end{figure}
 
-    Consider a graph $G$ that has $H$ as topological minor, meaning that it contains a graph $H'$ that is a subdivision of $H$; if we remove from $G$ all the edges and vertices that are \tit{not} part of $H'$, we are left with a subdivision of $H$, and through the \tit{edge contraction} operation we can actually reverse the \tit{edge subdivision} in order to obtain $H$ from $H'$. In fact, for any 2-edge path $x \ y \ z$, we can contract $x \ y$ obtaining an edge $y \ z$, and no parallel edge can form because we previously removed all the other edges that are not in $H'$, i.e. edges that were not constructed through subdivision. This means that if $G$ contains $H$ as topological minor, then $G$ contains $H$ as minor as well. However, the opposite is not true in general: for instance, consider the following graph $G$
+    Consider a graph $G$ that has $H$ as topological minor, meaning that it contains a graph $H'$ that is a subdivision of $H$; if we remove from $G$ all the edges and vertices that are \tit{not} part of $H'$, we are left with a subdivision of $H$, and through the \tit{edge contraction} operation we can actually reverse the \tit{edge subdivision} in order to obtain $H$ from $H'$. In fact, for any 2-edge path $x \ y \ z$, we can contract $x \ y$ obtaining an edge $y \ z$, and no parallel edge can form because we previously removed all the other edges that are not in $H'$, i.e. edges that were not constructed through subdivision. This means that if $G$ contains $H$ as topological minor, then $G$ contains $H$ as minor as well.
+
+    However, the opposite is not true in general: for instance, consider the following graph $G$
 
     \begin{figure}[H]
         \centering
@@ -3792,7 +3798,7 @@
 
     What about other values of $t$? Using a similar idea of this result, it can be proven that $R(5, 4) \le 25$, which immediately provides an upper bound for $R(5) \le 50$. However, we still don't know the exact value of $R(5)$: in 1989 \textcite{exoo} proved that $R(5) \ge 43$, and in 2024 \textcite{angeltveit} proved that $R(5) \le 46$.
 
-    What about the general case? At the beginning of this section, we mentioned that Ramsey proved the existence of $R(t)$ for any $t \ge 1$. The following is the theorem through which proved this result, which also provides an upper bound for any $R(t)$.
+    What about the general case? At the beginning of this section, we mentioned that Ramsey proved the existence of $R(t)$ for any $t \ge 1$. The following is the theorem through which he proved this result, which also provides an upper bound for any $R(t)$.
 
     \begin{framedthm}{Ramsey's theorem}
         For any $t \ge 1$, $R(t)$ exists. Moreover, if $t \neq 1$ then $R(t) \le 2^{2t - 3}$.
@@ -4061,23 +4067,23 @@
         We observe that the Ramsey function can be interpreted in terms of \tit{colors} on the edges: in fact, given a coloring function that assigns colors G and B, $R(3) = R(3, 3)$ is the minimum number of vertices which guarantees that a graph on $R(3)$ vertices contains a $K_3$ either completely colored in green or in blue. Therefore, by considering $G[\{x_1, \ldots, x_6\}]$, since this graph contains 6 vertices and no red edges, and $R(3) = 6$ by \cref{r3 = 6}, it follows that such induced subgraph must contain either a blue or a green $K_3$.
     }
 
-    \begin{framedprob}{}
-        Let $K$ be the kite graph, i.e. the graph formed by two $K_3$'s having an edge in common. Prove that any graph with at least 4 vertices and $\tfrac{3}{2}n - 1$ edges contains $K$ as minor.
-    \end{framedprob}
-
-    \solution{
-        We proceed by induction on $n + m$. For the base case, we have that $n = 4$, therefore $\abs{E(G)} \ge \tfrac{3}{2} \cdot 4 - 1 = 5$ edges, implying that this graph is a $K_4$ without an edge, which clearly contains $K$ as subgraph. Now, assume the inductive hypothesis and consider a graph $G$ on $n \ge 5$ vertices and at least $\tfrac{3}{2}n - 1$ edges.
-
-        Fix an edge $e \in E(G)$, and consider $G - e$: if $\abs{E(G)} > \tfrac{3}{2}n - 1$ then $\abs{E(G - e)} \ge \tfrac{3}{2}n - 1$, therefore by inductive hypothesis $G - e$ would contain $K$ as minor, concluding the proof. Hence, we may assume that $\abs{E(G)} = \tfrac{3}{2}n - 1$. Moreover, if $\abs{E(G/e)} \ge \tfrac{3}{2}(n - 1) - 1$, then by inductive hypothesis $G/e$ contains $K$ as minor, and so thus $G$, concluding the proof. So we may also assume that $$\abs{E(G/e)} < \dfrac{3}{2}(n - 1) - 1 = \dfrac{3}{2}n - \dfrac{5}{2} < \dfrac{3}{2}n - 2 \iff \abs{E(G /e)} \le \dfrac{3}{2}n - 3$$ However, if $G$ has $\tfrac{3}{2}n - 1$ edges, and $G/e$ has at most $\tfrac{3}{2}n - 3$, at least 2 edges must have been removed after contracting $e$ --- and one of the two edges is $e$ itself --- this means that $e$ must be contained in a $K_3$ in $G$. Thus, by repeating the same argument on each edge, we get that every edge of $G$ is contained in at least one $K_3$.
-
-        \claim{
-            If $G$ is disconnected then $G$ contains $K$ as minor.
-        }{
-            TODO \todo{da finire}
-        }
-
-        TODO \todo{da finire}
-    }
+    % \begin{framedprob}{}
+    %     Let $K$ be the kite graph, i.e. the graph formed by two $K_3$'s having an edge in common. Prove that any graph with at least 4 vertices and $\tfrac{3}{2}n - 1$ edges contains $K$ as minor.
+    % \end{framedprob}
+    %
+    % \solution{
+    %     We proceed by induction on $n + m$. For the base case, we have that $n = 4$, therefore $\abs{E(G)} \ge \tfrac{3}{2} \cdot 4 - 1 = 5$ edges, implying that this graph is a $K_4$ without an edge, which clearly contains $K$ as subgraph. Now, assume the inductive hypothesis and consider a graph $G$ on $n \ge 5$ vertices and at least $\tfrac{3}{2}n - 1$ edges.
+    %
+    %     Fix an edge $e \in E(G)$, and consider $G - e$: if $\abs{E(G)} > \tfrac{3}{2}n - 1$ then $\abs{E(G - e)} \ge \tfrac{3}{2}n - 1$, therefore by inductive hypothesis $G - e$ would contain $K$ as minor, concluding the proof. Hence, we may assume that $\abs{E(G)} = \tfrac{3}{2}n - 1$. Moreover, if $\abs{E(G/e)} \ge \tfrac{3}{2}(n - 1) - 1$, then by inductive hypothesis $G/e$ contains $K$ as minor, and so thus $G$, concluding the proof. So we may also assume that $$\abs{E(G/e)} < \dfrac{3}{2}(n - 1) - 1 = \dfrac{3}{2}n - \dfrac{5}{2} < \dfrac{3}{2}n - 2 \iff \abs{E(G /e)} \le \dfrac{3}{2}n - 3$$ However, if $G$ has $\tfrac{3}{2}n - 1$ edges, and $G/e$ has at most $\tfrac{3}{2}n - 3$, at least 2 edges must have been removed after contracting $e$ --- and one of the two edges is $e$ itself --- this means that $e$ must be contained in a $K_3$ in $G$. Thus, by repeating the same argument on each edge, we get that every edge of $G$ is contained in at least one $K_3$.
+    %
+    %     \claim{
+    %         If $G$ is disconnected then $G$ contains $K$ as minor.
+    %     }{
+    %         TODO \todo{da finire}
+    %     }
+    %
+    %     TODO \todo{da finire}
+    % }
 
     \begin{framedprob}{}
         A set $\mathcal I$ of graphs is said to be \tit{minor closed} if for any $G \in \mathcal I$ it holds that if $H$ is a minor of $G$, then $H \in \mathcal I$. Prove that the set $\mathcal F$ of the forests is minor closed.
@@ -4147,12 +4153,14 @@
 
     \chapter{Graph decompositions}
 
+    \tbf{Graph decompositions} are a way to \tit{break down} a graph into simpler more structures in order to better understand its properties, make algorithms more efficient, or solve complex problems.
+
     \section{Blocks}
 
-    TODO \todo{introduction}
+    We start our discussionon decompositions by introducing the \tbf{block decomposition}, which is used to find the \curlyquotes{weak spots} of a graph. 
 
     \begin{frameddefn}{Cut vertex}
-        Given a graph $G$, a \tbf{cut vertex} of $G$ is a vertex $v \in V(G)$ such that $G[V(G) - \{v\}]$ has more connected components than $G$.
+        Given a graph $G$, a \tbf{cut vertex} of $G$ is a vertex $v \in V(G)$ such that $G - \{v\}$ has more connected components than $G$.
     \end{frameddefn}
 
     \begin{figure}[H]
@@ -4191,7 +4199,7 @@
     Moreover, consider the following definition.
 
     \begin{frameddefn}{Bridge}
-        Given a graph $G$, an edge $e \in E(G)$ is called \tbf{bridge} if $G - \{e\}$ has more components than $G$.
+        Given a graph $G$, an edge $e \in E(G)$ is called \tbf{bridge} if $G - \{e\}$ has more connected components than $G$.
     \end{frameddefn}
 
     For instance, in the previous example the edge $\{1,4\}$ is clearly a bridge.
@@ -4267,7 +4275,7 @@
     \end{proof}
 
     \begin{framedprop}{}
-        Given a graph $G$, and two distinct blocks $H$ and $H'$ of $G$, it holds that $\abs{V(H) \cap V(H')} \le 1$.
+        Given a graph $G$, and two distinct blocks $H$ and $H'$ of $G$, then $\abs{V(H) \cap V(H')} \le 1$.
     \end{framedprop}
     
     \begin{proof}
@@ -4276,7 +4284,7 @@
         Suppose that $\abs{V(H \cup H')} = 2$; then we have only two possible cases:
 
         \begin{itemize}
-            \item $H \cup H'$ consists of two isolated vertices, contradicting the fact that $\abs{V(H) \cap V(H')} \ge 2$
+            \item $H \cup H'$ consists of 2 isolated vertices, contradicting the fact that $\abs{V(H) \cap V(H')} \ge 2$
             \item $H \cup H'$ consists of a single edge, meaning that the edge itself is one single block, hence $H = H'$, contradicting the fact that $H \neq H'$ by assumption
         \end{itemize}
 
@@ -4384,7 +4392,7 @@
 
     \section{Known decompositions}
 
-    In this brief section, we are going to present characterizations of 2-connected and 3-connected graphs, which can be \tit{decomposed} using specific types of structural decompositions.
+    In this brief section, we are going to present characterizations of 2-connected and 3-connected graphs. In fact, these type of graphs can be \tit{decomposed} using specific types of structural decompositions.
 
     \begin{frameddefn}{$H$-path}
         Given a graph $G$, and a subgraph $H \subseteq G$, an \tbf{$H$-path} $P$ is a non-trivial path with both ends in $V(H)$, no internal vertex in $V(H)$, and no edge in $E(H)$.
@@ -5140,7 +5148,7 @@
         Viceversa, if $\chi(G) = 2$, then there is a proper coloring $c$ of $G$ that uses 2 colors --- without loss of generality suppose that $c(x)$ is either 0 or 1 for all $x \in V(G)$. Hence, by definition of proper coloring the vertices with the same color cannot be adjacent, implying that $G$ is bipartitioned through the vertices that are assigned 0 and the vertices that are assigned 1 by $c$. This implies that $G$ is bipartite.
     \end{proof}
 
-    Given that this fairly trivial proposition provides a complete characterization on 2-colorable graph hard is colorability, in general? Well, as proved by \textcite{karp}, 3-colorability is already \NPclass-hard, in fact $k$-colorability is \NPclass-hard for any $k \ge 2$. This implies that the best we can possibly achieve are bounds on the chromatic number.
+    Given that this fairly trivial proposition provides a complete characterization on 2-colorable graphs, how hard is colorability in general? Well, as proved by \textcite{karp}, 3-colorability is already \NPclass-hard, in fact $k$-colorability is \NPclass-hard for any $k \ge 2$. This implies that the best we can possibly achieve are bounds on the chromatic number.
 
     \section{Bounds on the chromatic number}
 
@@ -5177,7 +5185,7 @@
         Since $n \ge 3$, by \cref{5 deg planar} we know that $G$ contains a vertex of degree at most 5, therefore fix such a vertex $v \in V(G)$. We observe that if $G$ is planar, then clearly $G - \{v\}$ is still planar, which means that by induction $\chi(G - \{v\}) \le 6$. Lastly, since $\mathcal N(v)$ can use at most $5$ different colors, we can still use one additional color to color $v$ itself and still be able to 6-color the whole graph $G$.
     \end{proof}
 
-    Is this the best result we can achieve through planarity? This upper bound on planar graph can be actually improved thorugh the following proposition.
+    Is this the best result we can achieve through planarity? This upper bound on planar graphs can be actually improved thorugh the following proposition.
 
     \begin{framedprop}{}
         Given a planar graph $G$, it holds that $\chi(G) \le 5$.
@@ -5203,7 +5211,7 @@
 
     \subsection{Lower bounds}
 
-    So far, we only discussed \tit{upper bounds} on the chromatic number, but what about \tit{lower bounds}? Consider the following definition.
+    So far, we only discussed \tit{upper bounds} on the chromatic number, but what about \tit{lower bounds}? Consider the following definitions.
 
     \begin{frameddefn}{Independence number}
         Given a graph $G$, the \tbf{independence number} $\alpha(G)$ is the size of the largest independent set of $G$.
@@ -5229,7 +5237,7 @@
         Given a graph $G$, it holds that $\chi(G) \ge \omega(G)$.
     \end{framedprop}
 
-    However, $\omega(G)$ can be significantly lower than $\chi(G)$, in fact TODO \todo{find paper and add name in next thm} First, consider the following proposition.
+    However, $\omega(G)$ can be significantly lower than $\chi(G)$, in fact the next theorem that we are going to present proves that thera exists a family of graphs $G_k$ for any $k \ge 1$ that are $k$-colorable but such that $\omega(G_k) = 2$. I nparticular, the theorem was first proven by Tutte (under the pseudonym of B. Descartes) \cite{descartes}, followed by easier constructions achieved by other researchers. The construction that we'll present is due to Erdős.
 
     \begin{frameddefn}{Color class}
         Given a graph $G$, and a proper coloring $\func{c}{V(G)}{[k]}$ of $G$, for each $i \in [k]$ the \tbf{color class of $i$} is the set of vertices $$\mathcal C(i) := \{v \in V(G) \mid c(v) = i\}$$
@@ -5290,15 +5298,13 @@
 
     \section{Perfect graphs}
 
-    Let's look deeper into the relationship between $\chi(G)$ and $\omega(G)$: for which graphs it holds that $\chi(G) = \omega(G)$? A rather uninteresting answer to this question would be any graph $H$ on $n$ vertices, together with a $K_n$ disconnected from $H$ itself, in fact we would have that $$n = \omega(G) \le \chi(G) \le n \implies \omega(G) = \chi(G)$$ This means that asking for a graph $G$ such that its chromatic and clique number coincide does not provide interesting answers, hence we need a strictier definition.
+    Let's look deeper into the relationship between $\chi(G)$ and $\omega(G)$: for which graphs it holds that $\chi(G) = \omega(G)$? A rather uninteresting answer to this question would be any graph $H$ on $n$ vertices, together with a $K_n$ disconnected from $H$ itself. In fact, with this construction we would have that $$n = \omega(G) \le \chi(G) \le n \implies \omega(G) = \chi(G)$$ This means that asking for a graph $G$ such that its chromatic and clique number coincide does not provide interesting answers, hence we need a \tit{strictier} definition.
 
     \begin{frameddefn}{Perfect graph}
         A graph G is said to be \tbf{perfect} if for each induced subgraph $G'$ of $G$ it holds that $\chi(G') = \omega(G')$.
     \end{frameddefn}
 
-    TODO \todo{example}
-
-    What are example of perfect graphs? A trivial class of perfect graphs are \tit{cliques}, since each induced subgraph of a clique is still a clique.
+    What are examples of perfect graphs? A trivial class of perfect graphs are \tit{cliques}, since each induced subgraph of a clique is still a clique.
 
     \begin{framedprop}{}
         Cliques are perfect.
@@ -5367,7 +5373,7 @@
 
     TODO \todo{example}
 
-    We are going to prove that interval graphs by proving the following proposition.
+    We are going to prove that interval graphs are perfect by proving the following proposition.
 
     \begin{framedprop}{}
         Interval graphs are chordal.

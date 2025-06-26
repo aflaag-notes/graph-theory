@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2026/dev/Arch Linux) (preloaded format=pdflatex 2025.4.8)  23 JUN 2025 21:46
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2026/dev/Arch Linux) (preloaded format=pdflatex 2025.4.8)  26 JUN 2025 11:47
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -2338,16 +2338,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 Package cleveref Info: loaded `english' language definitions on input line 2048.
 [46]
 Chapter 3.
-
-Overfull \hbox (13.97714pt too wide) in paragraph at lines 2050--2050
-[][][]\T1/cmr/m/n/6 introduction[]  
- []
-
-
-Overfull \hbox (13.97714pt too wide) in paragraph at lines 2050--2050
-[][][]\T1/cmr/m/n/6 introduction[]  
- []
-
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 
@@ -2356,6 +2346,16 @@ Package cleveref Info: loaded `english' language definitions on input line 2110.
 [47
 
 ]
+Overfull \hbox (0.50821pt too wide) in paragraph at lines 2136--2136
+[][][]\T1/cmr/m/n/6 example[]  
+ []
+
+
+Overfull \hbox (0.50821pt too wide) in paragraph at lines 2136--2136
+[][][]\T1/cmr/m/n/6 example[]  
+ []
+
+
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -2364,7 +2364,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 2141.
+Package cleveref Info: loaded `english' language definitions on input line 2145.
 [48]
 
 
@@ -2374,7 +2374,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 2167.
+Package cleveref Info: loaded `english' language definitions on input line 2171.
 [49]
 
 
@@ -2384,25 +2384,25 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 2195.
+Package cleveref Info: loaded `english' language definitions on input line 2199.
 [50]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 2199.
+(hyperref)                removing `math shift' on input line 2203.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 2199.
+(hyperref)                removing `math shift' on input line 2203.
 
 Missing character: There is no ; in font nullfont!
 
-Overfull \hbox (6.5267pt too wide) in paragraph at lines 2236--2237
+Overfull \hbox (6.5267pt too wide) in paragraph at lines 2240--2241
 []\T1/cmr/m/n/12 Clearly, any con-nected graph is 1-connected; more-over, any $\OML/cmm/m/it/12 K[]$ \T1/cmr/m/n/12 clique is $\OML/cmm/m/it/12 t$\T1/cmr/m/n/12 -connected. 
  []
 
 
 
-Package cleveref Info: loaded `english' language definitions on input line 2249.
+Package cleveref Info: loaded `english' language definitions on input line 2253.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -2410,12 +2410,12 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 2249.
+Package cleveref Info: loaded `english' language definitions on input line 2253.
 [51]
 Missing character: There is no ; in font nullfont!
 
 
-Package cleveref Info: loaded `english' language definitions on input line 2300.
+Package cleveref Info: loaded `english' language definitions on input line 2304.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -2423,12 +2423,12 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 2300.
+Package cleveref Info: loaded `english' language definitions on input line 2304.
 [52]
 Missing character: There is no ; in font nullfont!
 
 
-Package cleveref Info: loaded `english' language definitions on input line 2345.
+Package cleveref Info: loaded `english' language definitions on input line 2349.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -2436,12 +2436,12 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 2345.
+Package cleveref Info: loaded `english' language definitions on input line 2349.
 [53]
 Missing character: There is no ; in font nullfont!
 
 
-Package cleveref Info: loaded `english' language definitions on input line 2399.
+Package cleveref Info: loaded `english' language definitions on input line 2403.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -2449,7 +2449,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 2399.
+Package cleveref Info: loaded `english' language definitions on input line 2403.
 [54]
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
@@ -2458,7 +2458,7 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 
 
-Package cleveref Info: loaded `english' language definitions on input line 2533.
+Package cleveref Info: loaded `english' language definitions on input line 2537.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -2466,10 +2466,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 2533.
+Package cleveref Info: loaded `english' language definitions on input line 2537.
 [55]
 
-Package cleveref Info: loaded `english' language definitions on input line 2560.
+Package cleveref Info: loaded `english' language definitions on input line 2564.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -2477,14 +2477,14 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 2560.
+Package cleveref Info: loaded `english' language definitions on input line 2564.
 [56]
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 
 
-Package cleveref Info: loaded `english' language definitions on input line 2630.
+Package cleveref Info: loaded `english' language definitions on input line 2634.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -2492,20 +2492,20 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 2630.
+Package cleveref Info: loaded `english' language definitions on input line 2634.
 [57]
-Overfull \hbox (0.81607pt too wide) in paragraph at lines 2663--2663
+Overfull \hbox (0.81607pt too wide) in paragraph at lines 2667--2667
 []\T1/cmr/bx/n/12 Claim: $\OML/cmm/m/it/12 H \OMS/cmsy/m/n/12 ^^@ \OML/cmm/m/it/12 E\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 C\OT1/cmr/m/n/12 )$ \T1/cmr/m/n/12 has a 3-regular graph $\OML/cmm/m/it/12 H[]$ \T1/cmr/m/n/12 as topo-log-i-cal mi-nor, such that $[] \OMS/cmsy/m/n/12 ^^U
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2663--2663
+Underfull \hbox (badness 10000) in paragraph at lines 2667--2667
 
  []
 
 
 
-Package cleveref Info: loaded `english' language definitions on input line 2663.
+Package cleveref Info: loaded `english' language definitions on input line 2667.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -2513,24 +2513,24 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 2663.
+Package cleveref Info: loaded `english' language definitions on input line 2667.
 [58]
-Overfull \hbox (11.1278pt too wide) in paragraph at lines 2679--2679
+Overfull \hbox (11.1278pt too wide) in paragraph at lines 2683--2683
 [][][]\T1/cmr/m/n/6 discrepanze 
  []
 
 
-Overfull \hbox (11.1278pt too wide) in paragraph at lines 2679--2679
+Overfull \hbox (11.1278pt too wide) in paragraph at lines 2683--2683
 [][][]\T1/cmr/m/n/6 discrepanze 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2685--2685
+Underfull \hbox (badness 10000) in paragraph at lines 2689--2689
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2703--2703
+Underfull \hbox (badness 10000) in paragraph at lines 2707--2707
 
  []
 
@@ -2539,7 +2539,7 @@ LaTeX Warning: Marginpar on page 59 moved.
 
 
 
-Package cleveref Info: loaded `english' language definitions on input line 2711.
+Package cleveref Info: loaded `english' language definitions on input line 2715.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -2547,13 +2547,13 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 2711.
+Package cleveref Info: loaded `english' language definitions on input line 2715.
 [59]
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 
 
-Package cleveref Info: loaded `english' language definitions on input line 2778.
+Package cleveref Info: loaded `english' language definitions on input line 2782.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -2561,10 +2561,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 2778.
+Package cleveref Info: loaded `english' language definitions on input line 2782.
 [60]
 
-Package cleveref Info: loaded `english' language definitions on input line 2811.
+Package cleveref Info: loaded `english' language definitions on input line 2815.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -2572,10 +2572,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 2811.
+Package cleveref Info: loaded `english' language definitions on input line 2815.
 [61]
 
-Package cleveref Info: loaded `english' language definitions on input line 2842.
+Package cleveref Info: loaded `english' language definitions on input line 2846.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -2583,10 +2583,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 2842.
+Package cleveref Info: loaded `english' language definitions on input line 2846.
 [62]
 
-Package cleveref Info: loaded `english' language definitions on input line 2886.
+Package cleveref Info: loaded `english' language definitions on input line 2890.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -2594,10 +2594,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 2886.
+Package cleveref Info: loaded `english' language definitions on input line 2890.
 [63]
 
-Package cleveref Info: loaded `english' language definitions on input line 2901.
+Package cleveref Info: loaded `english' language definitions on input line 2905.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -2605,12 +2605,12 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 2901.
+Package cleveref Info: loaded `english' language definitions on input line 2905.
 [64]
 Chapter 4.
 
 
-Package cleveref Info: loaded `english' language definitions on input line 2921.
+Package cleveref Info: loaded `english' language definitions on input line 2926.
 [65
 
 ]
@@ -2618,7 +2618,7 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 
 
-Package cleveref Info: loaded `english' language definitions on input line 3034.
+Package cleveref Info: loaded `english' language definitions on input line 3038.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -2626,15 +2626,15 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 3034.
+Package cleveref Info: loaded `english' language definitions on input line 3038.
 [66]
-Overfull \hbox (7.05016pt too wide) in paragraph at lines 3035--3036
+Overfull \hbox (7.05016pt too wide) in paragraph at lines 3039--3040
 []\T1/cmr/m/n/12 The fol-low-ing propo-si-tion shows that such graphs can-not con-tain cliques as sub-graphs. 
  []
 
 
 
-Package cleveref Info: loaded `english' language definitions on input line 3150.
+Package cleveref Info: loaded `english' language definitions on input line 3154.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -2642,15 +2642,15 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 3150.
+Package cleveref Info: loaded `english' language definitions on input line 3154.
 [67]
-Underfull \hbox (badness 10000) in paragraph at lines 3218--3218
+Underfull \hbox (badness 10000) in paragraph at lines 3222--3222
 
  []
 
 
 
-Package cleveref Info: loaded `english' language definitions on input line 3218.
+Package cleveref Info: loaded `english' language definitions on input line 3222.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -2658,20 +2658,20 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 3218.
+Package cleveref Info: loaded `english' language definitions on input line 3222.
 [68]
-Underfull \hbox (badness 10000) in paragraph at lines 3218--3218
+Underfull \hbox (badness 10000) in paragraph at lines 3222--3222
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 3218--3218
+Underfull \hbox (badness 10000) in paragraph at lines 3222--3222
 
  []
 
 
 
-Package cleveref Info: loaded `english' language definitions on input line 3218.
+Package cleveref Info: loaded `english' language definitions on input line 3222.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -2679,22 +2679,22 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 3218.
+Package cleveref Info: loaded `english' language definitions on input line 3222.
 [69]
 LaTeX Font Info:    Font shape `U/lasy/b/n' in size <7> not available
-(Font)              Font shape `U/lasy/m/n' tried instead on input line 3230.
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 3234.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 3230.
+(hyperref)                removing `math shift' on input line 3234.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 3230.
+(hyperref)                removing `math shift' on input line 3234.
 
 
 
-Package cleveref Info: loaded `english' language definitions on input line 3290.
+Package cleveref Info: loaded `english' language definitions on input line 3294.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -2702,15 +2702,15 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 3290.
+Package cleveref Info: loaded `english' language definitions on input line 3294.
 [70]
-Underfull \hbox (badness 10000) in paragraph at lines 3290--3290
+Underfull \hbox (badness 10000) in paragraph at lines 3294--3294
 
  []
 
 
 
-Package cleveref Info: loaded `english' language definitions on input line 3290.
+Package cleveref Info: loaded `english' language definitions on input line 3294.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -2718,12 +2718,12 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 3290.
+Package cleveref Info: loaded `english' language definitions on input line 3294.
 [71]
 Missing character: There is no ; in font nullfont!
 
 
-Package cleveref Info: loaded `english' language definitions on input line 3342.
+Package cleveref Info: loaded `english' language definitions on input line 3346.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -2731,14 +2731,14 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 3342.
+Package cleveref Info: loaded `english' language definitions on input line 3346.
 [72]
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 
 
-Package cleveref Info: loaded `english' language definitions on input line 3434.
+Package cleveref Info: loaded `english' language definitions on input line 3438.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -2746,13 +2746,13 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 3434.
+Package cleveref Info: loaded `english' language definitions on input line 3438.
 [73]
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 
 
-Package cleveref Info: loaded `english' language definitions on input line 3497.
+Package cleveref Info: loaded `english' language definitions on input line 3503.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -2760,12 +2760,12 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 3497.
+Package cleveref Info: loaded `english' language definitions on input line 3503.
 [74]
 Missing character: There is no ; in font nullfont!
 
 
-Package cleveref Info: loaded `english' language definitions on input line 3535.
+Package cleveref Info: loaded `english' language definitions on input line 3541.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -2773,20 +2773,20 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 3535.
+Package cleveref Info: loaded `english' language definitions on input line 3541.
 [75]
-Underfull \hbox (badness 10000) in paragraph at lines 3542--3542
+Underfull \hbox (badness 10000) in paragraph at lines 3548--3548
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 3589--3589
+Underfull \hbox (badness 10000) in paragraph at lines 3595--3595
 
  []
 
 
 
-Package cleveref Info: loaded `english' language definitions on input line 3589.
+Package cleveref Info: loaded `english' language definitions on input line 3595.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -2794,12 +2794,12 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 3589.
+Package cleveref Info: loaded `english' language definitions on input line 3595.
 [76]
 Missing character: There is no ; in font nullfont!
 
 
-Package cleveref Info: loaded `english' language definitions on input line 3601.
+Package cleveref Info: loaded `english' language definitions on input line 3607.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -2807,14 +2807,14 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 3601.
+Package cleveref Info: loaded `english' language definitions on input line 3607.
 [77]
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 
 
-Package cleveref Info: loaded `english' language definitions on input line 3683.
+Package cleveref Info: loaded `english' language definitions on input line 3689.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -2822,16 +2822,16 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 3683.
+Package cleveref Info: loaded `english' language definitions on input line 3689.
 [78]
-Underfull \hbox (badness 10000) in paragraph at lines 3697--3697
+Underfull \hbox (badness 10000) in paragraph at lines 3703--3703
 
  []
 
 Missing character: There is no ; in font nullfont!
 
 
-Package cleveref Info: loaded `english' language definitions on input line 3731.
+Package cleveref Info: loaded `english' language definitions on input line 3737.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -2839,12 +2839,12 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 3731.
+Package cleveref Info: loaded `english' language definitions on input line 3737.
 [79]
 Missing character: There is no ; in font nullfont!
 
 
-Package cleveref Info: loaded `english' language definitions on input line 3771.
+Package cleveref Info: loaded `english' language definitions on input line 3777.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -2852,10 +2852,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 3771.
+Package cleveref Info: loaded `english' language definitions on input line 3777.
 [80]
 
-Package cleveref Info: loaded `english' language definitions on input line 3805.
+Package cleveref Info: loaded `english' language definitions on input line 3811.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -2863,10 +2863,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 3805.
+Package cleveref Info: loaded `english' language definitions on input line 3811.
 [81]
 
-Package cleveref Info: loaded `english' language definitions on input line 3846.
+Package cleveref Info: loaded `english' language definitions on input line 3852.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -2874,10 +2874,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 3846.
+Package cleveref Info: loaded `english' language definitions on input line 3852.
 [82]
 
-Package cleveref Info: loaded `english' language definitions on input line 3878.
+Package cleveref Info: loaded `english' language definitions on input line 3884.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -2885,15 +2885,15 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 3878.
+Package cleveref Info: loaded `english' language definitions on input line 3884.
 [83]
-Underfull \hbox (badness 10000) in paragraph at lines 3910--3910
+Underfull \hbox (badness 10000) in paragraph at lines 3916--3916
 
  []
 
 
 
-Package cleveref Info: loaded `english' language definitions on input line 3910.
+Package cleveref Info: loaded `english' language definitions on input line 3916.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -2901,17 +2901,17 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 3910.
+Package cleveref Info: loaded `english' language definitions on input line 3916.
 [84]
 Missing character: There is no ; in font nullfont!
 
-Underfull \hbox (badness 10000) in paragraph at lines 3951--3951
+Underfull \hbox (badness 10000) in paragraph at lines 3957--3957
 
  []
 
 
 
-Package cleveref Info: loaded `english' language definitions on input line 3951.
+Package cleveref Info: loaded `english' language definitions on input line 3957.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -2919,17 +2919,17 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 3951.
+Package cleveref Info: loaded `english' language definitions on input line 3957.
 [85]
 Missing character: There is no ; in font nullfont!
 
-Underfull \hbox (badness 10000) in paragraph at lines 4002--4002
+Underfull \hbox (badness 10000) in paragraph at lines 4008--4008
 
  []
 
 
 
-Package cleveref Info: loaded `english' language definitions on input line 4002.
+Package cleveref Info: loaded `english' language definitions on input line 4008.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -2937,15 +2937,15 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 4002.
+Package cleveref Info: loaded `english' language definitions on input line 4008.
 [86]
-Underfull \hbox (badness 10000) in paragraph at lines 4018--4018
+Underfull \hbox (badness 10000) in paragraph at lines 4024--4024
 
  []
 
 
 
-Package cleveref Info: loaded `english' language definitions on input line 4052.
+Package cleveref Info: loaded `english' language definitions on input line 4058.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -2953,20 +2953,20 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 4052.
+Package cleveref Info: loaded `english' language definitions on input line 4058.
 [87]
-Underfull \hbox (badness 10000) in paragraph at lines 4052--4052
+Underfull \hbox (badness 10000) in paragraph at lines 4058--4058
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 4052--4052
+Underfull \hbox (badness 10000) in paragraph at lines 4058--4058
 
  []
 
 
 
-Package cleveref Info: loaded `english' language definitions on input line 4057.
+Package cleveref Info: loaded `english' language definitions on input line 4063.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -2974,15 +2974,12 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 4057.
+Package cleveref Info: loaded `english' language definitions on input line 4063.
 [88]
-Underfull \hbox (badness 10000) in paragraph at lines 4080--4080
-
- []
+Missing character: There is no ; in font nullfont!
 
 
-
-Package cleveref Info: loaded `english' language definitions on input line 4080.
+Package cleveref Info: loaded `english' language definitions on input line 4133.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -2990,12 +2987,15 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 4080.
+Package cleveref Info: loaded `english' language definitions on input line 4133.
 [89]
-Missing character: There is no ; in font nullfont!
+Underfull \hbox (badness 10000) in paragraph at lines 4152--4152
+
+ []
 
 
-Package cleveref Info: loaded `english' language definitions on input line 4146.
+
+Package cleveref Info: loaded `english' language definitions on input line 4154.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -3003,52 +3003,26 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 4146.
+Package cleveref Info: loaded `english' language definitions on input line 4154.
 [90]
-Underfull \hbox (badness 10000) in paragraph at lines 4146--4146
-
- []
-
-
-
-Package cleveref Info: loaded `english' language definitions on input line 4148.
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-Package cleveref Info: loaded `english' language definitions on input line 4148.
-[91]
 Chapter 5.
-
-Overfull \hbox (13.97714pt too wide) in paragraph at lines 4152--4152
-[][][]\T1/cmr/m/n/6 introduction[]  
- []
-
-
-Overfull \hbox (13.97714pt too wide) in paragraph at lines 4152--4152
-[][][]\T1/cmr/m/n/6 introduction[]  
- []
-
 Missing character: There is no ; in font nullfont!
 
-Overfull \hbox (1.30724pt too wide) in paragraph at lines 4183--4184
+Overfull \hbox (1.30724pt too wide) in paragraph at lines 4191--4192
 []\T1/cmr/m/n/12 Trivially, by def-i-ni-tion we ob-serve that no 2-connected graph can con-tain cut ver-tices. 
  []
 
 
 
-Package cleveref Info: loaded `english' language definitions on input line 4189.
-[92
+Package cleveref Info: loaded `english' language definitions on input line 4197.
+[91
 
 ]
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 
 
-Package cleveref Info: loaded `english' language definitions on input line 4250.
+Package cleveref Info: loaded `english' language definitions on input line 4257.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -3056,15 +3030,26 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 4250.
+Package cleveref Info: loaded `english' language definitions on input line 4257.
+[92]
+
+Package cleveref Info: loaded `english' language definitions on input line 4296.
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+Package cleveref Info: loaded `english' language definitions on input line 4296.
 [93]
-Overfull \hbox (1.86963pt too wide) in paragraph at lines 4270--4271
-\T1/cmr/m/n/12 Given a graph $\OML/cmm/m/it/12 G$\T1/cmr/m/n/12 , and two dis-tinct blocks $\OML/cmm/m/it/12 H$ \T1/cmr/m/n/12 and $\OML/cmm/m/it/12 H[]$ \T1/cmr/m/n/12 of $\OML/cmm/m/it/12 G$\T1/cmr/m/n/12 , it holds that $[] \OMS/cmsy/m/n/12 ^^T
+Underfull \hbox (badness 10000) in paragraph at lines 4351--4351
+
  []
 
 
 
-Package cleveref Info: loaded `english' language definitions on input line 4288.
+Package cleveref Info: loaded `english' language definitions on input line 4351.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -3072,15 +3057,20 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 4288.
+Package cleveref Info: loaded `english' language definitions on input line 4351.
 [94]
-Underfull \hbox (badness 10000) in paragraph at lines 4343--4343
+Overfull \hbox (0.50821pt too wide) in paragraph at lines 4365--4365
+[][][]\T1/cmr/m/n/6 example[]  
+ []
 
+
+Overfull \hbox (0.50821pt too wide) in paragraph at lines 4365--4365
+[][][]\T1/cmr/m/n/6 example[]  
  []
 
 
 
-Package cleveref Info: loaded `english' language definitions on input line 4343.
+Package cleveref Info: loaded `english' language definitions on input line 4366.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -3088,20 +3078,15 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 4343.
+Package cleveref Info: loaded `english' language definitions on input line 4366.
 [95]
-Overfull \hbox (0.50821pt too wide) in paragraph at lines 4357--4357
-[][][]\T1/cmr/m/n/6 example[]  
- []
+Underfull \hbox (badness 10000) in paragraph at lines 4380--4380
 
-
-Overfull \hbox (0.50821pt too wide) in paragraph at lines 4357--4357
-[][][]\T1/cmr/m/n/6 example[]  
  []
 
 
 
-Package cleveref Info: loaded `english' language definitions on input line 4360.
+Package cleveref Info: loaded `english' language definitions on input line 4400.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -3109,51 +3094,35 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 4360.
+Package cleveref Info: loaded `english' language definitions on input line 4400.
 [96]
-Underfull \hbox (badness 10000) in paragraph at lines 4372--4372
-
- []
-
-
-
-Package cleveref Info: loaded `english' language definitions on input line 4392.
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-Package cleveref Info: loaded `english' language definitions on input line 4392.
-[97]
-Overfull \hbox (0.50821pt too wide) in paragraph at lines 4395--4395
+Overfull \hbox (0.50821pt too wide) in paragraph at lines 4403--4403
 [][][]\T1/cmr/m/n/6 example[]  
  []
 
 
-Overfull \hbox (0.50821pt too wide) in paragraph at lines 4395--4395
+Overfull \hbox (0.50821pt too wide) in paragraph at lines 4403--4403
 [][][]\T1/cmr/m/n/6 example[]  
  []
 
 
-Overfull \hbox (0.50821pt too wide) in paragraph at lines 4409--4409
+Overfull \hbox (0.50821pt too wide) in paragraph at lines 4417--4417
 [][][]\T1/cmr/m/n/6 example[]  
  []
 
 
-Overfull \hbox (0.50821pt too wide) in paragraph at lines 4409--4409
+Overfull \hbox (0.50821pt too wide) in paragraph at lines 4417--4417
 [][][]\T1/cmr/m/n/6 example[]  
  []
 
 
-Overfull \hbox (1.17674pt too wide) in paragraph at lines 4411--4412
+Overfull \hbox (1.17674pt too wide) in paragraph at lines 4419--4420
 []\T1/cmr/m/n/12 The fol-low-ing the-o-rem char-ac-ter-izes 2-connected graphs through ear de-com-po-si-tions. 
  []
 
 
 
-Package cleveref Info: loaded `english' language definitions on input line 4443.
+Package cleveref Info: loaded `english' language definitions on input line 4451.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -3161,15 +3130,15 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 4443.
-[98]
-Underfull \hbox (badness 10000) in paragraph at lines 4458--4458
+Package cleveref Info: loaded `english' language definitions on input line 4451.
+[97]
+Underfull \hbox (badness 10000) in paragraph at lines 4466--4466
 
  []
 
 
 
-Package cleveref Info: loaded `english' language definitions on input line 4461.
+Package cleveref Info: loaded `english' language definitions on input line 4469.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -3177,31 +3146,31 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 4461.
-[99]
-<../assets/tutte.pdf, id=1215, 590.205pt x 270.0489pt>
+Package cleveref Info: loaded `english' language definitions on input line 4469.
+[98]
+<../assets/tutte.pdf, id=1207, 590.205pt x 270.0489pt>
 File: ../assets/tutte.pdf Graphic file (type pdf)
 <use ../assets/tutte.pdf>
-Package pdftex.def Info: ../assets/tutte.pdf  used on input line 4462.
+Package pdftex.def Info: ../assets/tutte.pdf  used on input line 4470.
 (pdftex.def)             Requested size: 413.14067pt x 189.03294pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 4470--4470
+Underfull \hbox (badness 10000) in paragraph at lines 4478--4478
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 4476--4476
+Underfull \hbox (badness 10000) in paragraph at lines 4484--4484
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 4488--4488
+Underfull \hbox (badness 10000) in paragraph at lines 4496--4496
 
  []
 
 
 
-Package cleveref Info: loaded `english' language definitions on input line 4488.
+Package cleveref Info: loaded `english' language definitions on input line 4496.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -3209,12 +3178,12 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 4488.
-[100 <../assets/tutte.pdf>]
+Package cleveref Info: loaded `english' language definitions on input line 4496.
+[99 <../assets/tutte.pdf>]
 Missing character: There is no ; in font nullfont!
 
 
-Package cleveref Info: loaded `english' language definitions on input line 4555.
+Package cleveref Info: loaded `english' language definitions on input line 4563.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -3222,15 +3191,36 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 4555.
+Package cleveref Info: loaded `english' language definitions on input line 4563.
+[100]
+Underfull \hbox (badness 10000) in paragraph at lines 4607--4607
+
+ []
+
+
+
+Package cleveref Info: loaded `english' language definitions on input line 4607.
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+Package cleveref Info: loaded `english' language definitions on input line 4607.
 [101]
-Underfull \hbox (badness 10000) in paragraph at lines 4599--4599
+Underfull \hbox (badness 10000) in paragraph at lines 4607--4607
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 4607--4607
 
  []
 
 
 
-Package cleveref Info: loaded `english' language definitions on input line 4599.
+Package cleveref Info: loaded `english' language definitions on input line 4607.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -3238,20 +3228,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 4599.
+Package cleveref Info: loaded `english' language definitions on input line 4607.
 [102]
-Underfull \hbox (badness 10000) in paragraph at lines 4599--4599
 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 4599--4599
-
- []
-
-
-
-Package cleveref Info: loaded `english' language definitions on input line 4599.
+Package cleveref Info: loaded `english' language definitions on input line 4609.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -3259,24 +3239,13 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 4599.
+Package cleveref Info: loaded `english' language definitions on input line 4609.
 [103]
-
-Package cleveref Info: loaded `english' language definitions on input line 4601.
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-Package cleveref Info: loaded `english' language definitions on input line 4601.
-[104]
 Chapter 6.
 
 
-Package cleveref Info: loaded `english' language definitions on input line 4626.
-[105
+Package cleveref Info: loaded `english' language definitions on input line 4634.
+[104
 
 ]
 
@@ -3287,8 +3256,8 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 4662.
-[106]
+Package cleveref Info: loaded `english' language definitions on input line 4670.
+[105]
 Missing character: There is no ; in font nullfont!
 
 
@@ -3299,20 +3268,36 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 4710.
+Package cleveref Info: loaded `english' language definitions on input line 4718.
+[106]
+Overfull \hbox (2.39665pt too wide) in paragraph at lines 4748--4748
+[][][]\T1/cmr/m/n/6 controlla 
+ []
+
+
+Overfull \hbox (2.39665pt too wide) in paragraph at lines 4748--4748
+[][][]\T1/cmr/m/n/6 controlla 
+ []
+
+
+
+Package cleveref Info: loaded `english' language definitions on input line 4754.
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+Package cleveref Info: loaded `english' language definitions on input line 4754.
 [107]
-Overfull \hbox (2.39665pt too wide) in paragraph at lines 4740--4740
-[][][]\T1/cmr/m/n/6 controlla 
- []
+Underfull \hbox (badness 10000) in paragraph at lines 4782--4782
 
-
-Overfull \hbox (2.39665pt too wide) in paragraph at lines 4740--4740
-[][][]\T1/cmr/m/n/6 controlla 
  []
 
 
 
-Package cleveref Info: loaded `english' language definitions on input line 4746.
+Package cleveref Info: loaded `english' language definitions on input line 4796.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -3320,15 +3305,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 4746.
+Package cleveref Info: loaded `english' language definitions on input line 4796.
 [108]
-Underfull \hbox (badness 10000) in paragraph at lines 4774--4774
 
- []
-
-
-
-Package cleveref Info: loaded `english' language definitions on input line 4788.
+Package cleveref Info: loaded `english' language definitions on input line 4831.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -3336,10 +3316,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 4788.
+Package cleveref Info: loaded `english' language definitions on input line 4831.
 [109]
 
-Package cleveref Info: loaded `english' language definitions on input line 4823.
+Package cleveref Info: loaded `english' language definitions on input line 4845.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -3347,10 +3327,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 4823.
+Package cleveref Info: loaded `english' language definitions on input line 4845.
 [110]
 
-Package cleveref Info: loaded `english' language definitions on input line 4837.
+Package cleveref Info: loaded `english' language definitions on input line 4871.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -3358,10 +3338,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 4837.
+Package cleveref Info: loaded `english' language definitions on input line 4871.
 [111]
 
-Package cleveref Info: loaded `english' language definitions on input line 4863.
+Package cleveref Info: loaded `english' language definitions on input line 4900.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -3369,10 +3349,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 4863.
+Package cleveref Info: loaded `english' language definitions on input line 4900.
 [112]
 
-Package cleveref Info: loaded `english' language definitions on input line 4892.
+Package cleveref Info: loaded `english' language definitions on input line 4932.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -3380,10 +3360,12 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 4892.
+Package cleveref Info: loaded `english' language definitions on input line 4932.
 [113]
+Missing character: There is no ; in font nullfont!
 
-Package cleveref Info: loaded `english' language definitions on input line 4924.
+
+Package cleveref Info: loaded `english' language definitions on input line 4993.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -3391,12 +3373,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 4924.
+Package cleveref Info: loaded `english' language definitions on input line 4993.
 [114]
-Missing character: There is no ; in font nullfont!
 
-
-Package cleveref Info: loaded `english' language definitions on input line 4985.
+Package cleveref Info: loaded `english' language definitions on input line 5015.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -3404,48 +3384,32 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 4985.
+Package cleveref Info: loaded `english' language definitions on input line 5015.
 [115]
-
-Package cleveref Info: loaded `english' language definitions on input line 5007.
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-Package cleveref Info: loaded `english' language definitions on input line 5007.
-[116]
-Underfull \hbox (badness 10000) in paragraph at lines 5030--5030
+Underfull \hbox (badness 10000) in paragraph at lines 5038--5038
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 5058--5058
-
- []
-
-
-
-Package cleveref Info: loaded `english' language definitions on input line 5058.
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-Package cleveref Info: loaded `english' language definitions on input line 5058.
-[117]
-Missing character: There is no ; in font nullfont!
 
 Underfull \hbox (badness 10000) in paragraph at lines 5066--5066
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 5076--5076
+
+Package cleveref Info: loaded `english' language definitions on input line 5066.
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+Package cleveref Info: loaded `english' language definitions on input line 5066.
+[116]
+Missing character: There is no ; in font nullfont!
+
+Underfull \hbox (badness 10000) in paragraph at lines 5074--5074
 
  []
 
@@ -3455,8 +3419,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 5084--5084
  []
 
 
+Underfull \hbox (badness 10000) in paragraph at lines 5092--5092
 
-Package cleveref Info: loaded `english' language definitions on input line 5088.
+ []
+
+
+
+Package cleveref Info: loaded `english' language definitions on input line 5096.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -3464,38 +3433,28 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 5088.
+Package cleveref Info: loaded `english' language definitions on input line 5096.
+[117]
+
+Package cleveref Info: loaded `english' language definitions on input line 5121.
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+Package cleveref Info: loaded `english' language definitions on input line 5121.
 [118]
-
-Package cleveref Info: loaded `english' language definitions on input line 5113.
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-Package cleveref Info: loaded `english' language definitions on input line 5113.
-[119]
 Chapter 7.
 
-Overfull \hbox (13.97714pt too wide) in paragraph at lines 5115--5115
+Overfull \hbox (13.97714pt too wide) in paragraph at lines 5123--5123
 [][][]\T1/cmr/m/n/6 introduction[]  
  []
 
 
-Overfull \hbox (13.97714pt too wide) in paragraph at lines 5115--5115
+Overfull \hbox (13.97714pt too wide) in paragraph at lines 5123--5123
 [][][]\T1/cmr/m/n/6 introduction[]  
- []
-
-
-Overfull \hbox (0.50821pt too wide) in paragraph at lines 5121--5121
-[][][]\T1/cmr/m/n/6 example[]  
- []
-
-
-Overfull \hbox (0.50821pt too wide) in paragraph at lines 5121--5121
-[][][]\T1/cmr/m/n/6 example[]  
  []
 
 
@@ -3509,18 +3468,28 @@ Overfull \hbox (0.50821pt too wide) in paragraph at lines 5129--5129
  []
 
 
+Overfull \hbox (0.50821pt too wide) in paragraph at lines 5137--5137
+[][][]\T1/cmr/m/n/6 example[]  
+ []
 
-Package cleveref Info: loaded `english' language definitions on input line 5138.
-[120
+
+Overfull \hbox (0.50821pt too wide) in paragraph at lines 5137--5137
+[][][]\T1/cmr/m/n/6 example[]  
+ []
+
+
+
+Package cleveref Info: loaded `english' language definitions on input line 5146.
+[119
 
 ]
-Overfull \hbox (3.49648pt too wide) in paragraph at lines 5143--5144
+Overfull \hbox (3.49648pt too wide) in paragraph at lines 5151--5152
 []\T1/cmr/m/n/12 Given that this fairly triv-ial propo-si-tion pro-vides a com-plete char-ac-ter-i-za-tion on 2-colorable
  []
 
 
 
-Package cleveref Info: loaded `english' language definitions on input line 5166.
+Package cleveref Info: loaded `english' language definitions on input line 5174.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -3528,10 +3497,41 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 5166.
+Package cleveref Info: loaded `english' language definitions on input line 5174.
+[120]
+
+Package cleveref Info: loaded `english' language definitions on input line 5203.
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+Package cleveref Info: loaded `english' language definitions on input line 5203.
 [121]
+Overfull \hbox (0.50821pt too wide) in paragraph at lines 5220--5220
+[][][]\T1/cmr/m/n/6 example[]  
+ []
 
-Package cleveref Info: loaded `english' language definitions on input line 5195.
+
+Overfull \hbox (0.50821pt too wide) in paragraph at lines 5220--5220
+[][][]\T1/cmr/m/n/6 example[]  
+ []
+
+
+Overfull \hbox (0.50821pt too wide) in paragraph at lines 5232--5232
+[][][]\T1/cmr/m/n/6 example[]  
+ []
+
+
+Overfull \hbox (0.50821pt too wide) in paragraph at lines 5232--5232
+[][][]\T1/cmr/m/n/6 example[]  
+ []
+
+
+
+Package cleveref Info: loaded `english' language definitions on input line 5235.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -3539,30 +3539,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 5195.
+Package cleveref Info: loaded `english' language definitions on input line 5235.
 [122]
-Overfull \hbox (0.50821pt too wide) in paragraph at lines 5212--5212
-[][][]\T1/cmr/m/n/6 example[]  
- []
 
-
-Overfull \hbox (0.50821pt too wide) in paragraph at lines 5212--5212
-[][][]\T1/cmr/m/n/6 example[]  
- []
-
-
-Overfull \hbox (0.50821pt too wide) in paragraph at lines 5224--5224
-[][][]\T1/cmr/m/n/6 example[]  
- []
-
-
-Overfull \hbox (0.50821pt too wide) in paragraph at lines 5224--5224
-[][][]\T1/cmr/m/n/6 example[]  
- []
-
-
-
-Package cleveref Info: loaded `english' language definitions on input line 5227.
+Package cleveref Info: loaded `english' language definitions on input line 5266.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -3570,41 +3550,30 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 5227.
+Package cleveref Info: loaded `english' language definitions on input line 5266.
 [123]
-
-Package cleveref Info: loaded `english' language definitions on input line 5260.
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-Package cleveref Info: loaded `english' language definitions on input line 5260.
-[124]
-Underfull \hbox (badness 10000) in paragraph at lines 5278--5278
-
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 5286--5286
 
  []
 
 
-Overfull \hbox (0.50821pt too wide) in paragraph at lines 5289--5289
+Underfull \hbox (badness 10000) in paragraph at lines 5294--5294
+
+ []
+
+
+Overfull \hbox (0.50821pt too wide) in paragraph at lines 5297--5297
 [][][]\T1/cmr/m/n/6 example 
  []
 
 
-Overfull \hbox (0.50821pt too wide) in paragraph at lines 5289--5289
+Overfull \hbox (0.50821pt too wide) in paragraph at lines 5297--5297
 [][][]\T1/cmr/m/n/6 example 
  []
 
 
 
-Package cleveref Info: loaded `english' language definitions on input line 5293.
+Package cleveref Info: loaded `english' language definitions on input line 5301.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -3612,35 +3581,46 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 5293.
+Package cleveref Info: loaded `english' language definitions on input line 5301.
+[124]
+Underfull \hbox (badness 10000) in paragraph at lines 5326--5326
+
+ []
+
+
+
+Package cleveref Info: loaded `english' language definitions on input line 5336.
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+Package cleveref Info: loaded `english' language definitions on input line 5336.
 [125]
-Overfull \hbox (0.50821pt too wide) in paragraph at lines 5299--5299
+Overfull \hbox (0.50821pt too wide) in paragraph at lines 5337--5337
 [][][]\T1/cmr/m/n/6 example[]  
  []
 
 
-Overfull \hbox (0.50821pt too wide) in paragraph at lines 5299--5299
+Overfull \hbox (0.50821pt too wide) in paragraph at lines 5337--5337
 [][][]\T1/cmr/m/n/6 example[]  
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 5320--5320
+Underfull \hbox (badness 10000) in paragraph at lines 5352--5352
 
  []
 
 
-Overfull \hbox (0.50821pt too wide) in paragraph at lines 5331--5331
-[][][]\T1/cmr/m/n/6 example[]  
- []
+Underfull \hbox (badness 10000) in paragraph at lines 5365--5365
 
-
-Overfull \hbox (0.50821pt too wide) in paragraph at lines 5331--5331
-[][][]\T1/cmr/m/n/6 example[]  
  []
 
 
 
-Package cleveref Info: loaded `english' language definitions on input line 5338.
+Package cleveref Info: loaded `english' language definitions on input line 5373.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -3648,30 +3628,20 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 5338.
+Package cleveref Info: loaded `english' language definitions on input line 5373.
 [126]
-Underfull \hbox (badness 10000) in paragraph at lines 5346--5346
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 5359--5359
-
- []
-
-
-Overfull \hbox (0.50821pt too wide) in paragraph at lines 5368--5368
+Overfull \hbox (0.50821pt too wide) in paragraph at lines 5374--5374
 [][][]\T1/cmr/m/n/6 example[]  
  []
 
 
-Overfull \hbox (0.50821pt too wide) in paragraph at lines 5368--5368
+Overfull \hbox (0.50821pt too wide) in paragraph at lines 5374--5374
 [][][]\T1/cmr/m/n/6 example[]  
  []
 
 
 
-Package cleveref Info: loaded `english' language definitions on input line 5375.
+Package cleveref Info: loaded `english' language definitions on input line 5402.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -3679,10 +3649,20 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 5375.
+Package cleveref Info: loaded `english' language definitions on input line 5402.
 [127]
+Overfull \hbox (0.50821pt too wide) in paragraph at lines 5416--5416
+[][][]\T1/cmr/m/n/6 example 
+ []
 
-Package cleveref Info: loaded `english' language definitions on input line 5401.
+
+Overfull \hbox (0.50821pt too wide) in paragraph at lines 5416--5416
+[][][]\T1/cmr/m/n/6 example 
+ []
+
+
+
+Package cleveref Info: loaded `english' language definitions on input line 5449.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -3690,20 +3670,25 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 5401.
+Package cleveref Info: loaded `english' language definitions on input line 5449.
 [128]
-Overfull \hbox (0.50821pt too wide) in paragraph at lines 5410--5410
-[][][]\T1/cmr/m/n/6 example 
+Underfull \hbox (badness 10000) in paragraph at lines 5449--5449
+
  []
 
 
-Overfull \hbox (0.50821pt too wide) in paragraph at lines 5410--5410
-[][][]\T1/cmr/m/n/6 example 
+Overfull \hbox (6.2568pt too wide) in paragraph at lines 5461--5461
+[][][]\T1/cmr/m/n/6 interlude?[]  
+ []
+
+
+Overfull \hbox (6.2568pt too wide) in paragraph at lines 5461--5461
+[][][]\T1/cmr/m/n/6 interlude?[]  
  []
 
 
 
-Package cleveref Info: loaded `english' language definitions on input line 5443.
+Package cleveref Info: loaded `english' language definitions on input line 5462.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -3711,25 +3696,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 5443.
+Package cleveref Info: loaded `english' language definitions on input line 5462.
 [129]
-Underfull \hbox (badness 10000) in paragraph at lines 5443--5443
 
- []
-
-
-Overfull \hbox (6.2568pt too wide) in paragraph at lines 5455--5455
-[][][]\T1/cmr/m/n/6 interlude?[]  
- []
-
-
-Overfull \hbox (6.2568pt too wide) in paragraph at lines 5455--5455
-[][][]\T1/cmr/m/n/6 interlude?[]  
- []
-
-
-
-Package cleveref Info: loaded `english' language definitions on input line 5462.
+Package cleveref Info: loaded `english' language definitions on input line 5495.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -3737,10 +3707,25 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 5462.
+Package cleveref Info: loaded `english' language definitions on input line 5495.
 [130]
+Underfull \hbox (badness 10000) in paragraph at lines 5536--5536
 
-Package cleveref Info: loaded `english' language definitions on input line 5494.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 5536--5536
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 5536--5536
+
+ []
+
+
+
+Package cleveref Info: loaded `english' language definitions on input line 5536.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -3748,25 +3733,15 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 5494.
+Package cleveref Info: loaded `english' language definitions on input line 5536.
 [131]
-Underfull \hbox (badness 10000) in paragraph at lines 5530--5530
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 5530--5530
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 5530--5530
+Underfull \hbox (badness 10000) in paragraph at lines 5552--5552
 
  []
 
 
 
-Package cleveref Info: loaded `english' language definitions on input line 5530.
+Package cleveref Info: loaded `english' language definitions on input line 5566.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -3774,51 +3749,35 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 5530.
+Package cleveref Info: loaded `english' language definitions on input line 5566.
 [132]
-Underfull \hbox (badness 10000) in paragraph at lines 5546--5546
-
- []
-
-
-
-Package cleveref Info: loaded `english' language definitions on input line 5560.
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-Package cleveref Info: loaded `english' language definitions on input line 5560.
-[133]
-Overfull \hbox (0.75183pt too wide) in paragraph at lines 5561--5561
+Overfull \hbox (0.75183pt too wide) in paragraph at lines 5567--5567
 []\T1/cmr/m/n/12 Wikipedia con-trib-u-tors. \T1/cmr/m/it/12 Seven Bridges of Königs-berg\T1/cmr/m/n/12 . Jan. 2025. \T1/cmr/m/sc/12 url\T1/cmr/m/n/12 : [][]$\T1/cmtt/m/n/12 https :
  []
 
 
-Overfull \hbox (2.53377pt too wide) in paragraph at lines 5561--5561
+
+Package cleveref Info: loaded `english' language definitions on input line 5566.
+[133
+
+]
+Overfull \hbox (2.53377pt too wide) in paragraph at lines 5567--5567
 []\T1/cmr/m/n/12 Tilbor Gal-lai and Arthur Nor-ton Mil-gram. ^^P  Ve-r-all-ge-meinerung eines graphen-
  []
 
 
-
-Package cleveref Info: loaded `english' language definitions on input line 5560.
-[134
-
-]
-Overfull \hbox (37.7806pt too wide) in paragraph at lines 5561--5561
+Overfull \hbox (37.7806pt too wide) in paragraph at lines 5567--5567
 \T1/cmr/m/it/12 plex-ity of Com-puter Com-pu-ta-tions\T1/cmr/m/n/12 . Springer US, 1972, 85^^U103. \T1/cmr/m/sc/12 isbn\T1/cmr/m/n/12 : 9781468420012.
  []
 
 
-Overfull \hbox (15.4945pt too wide) in paragraph at lines 5561--5561
+Overfull \hbox (15.4945pt too wide) in paragraph at lines 5567--5567
 []\T1/cmr/m/n/12 Wolfgang Mader. ^^P  Ex-is-tenz n-fach zusam-men-hän-gen-der Teil-graphen in Graphen
  []
 
 
 
-Package cleveref Info: loaded `english' language definitions on input line 5560.
+Package cleveref Info: loaded `english' language definitions on input line 5566.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -3826,10 +3785,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 5560.
-[135]
+Package cleveref Info: loaded `english' language definitions on input line 5566.
+[134]
 
-Package cleveref Info: loaded `english' language definitions on input line 5562.
+Package cleveref Info: loaded `english' language definitions on input line 5568.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -3837,8 +3796,8 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 5562.
-[136] (./Graph Theory.aux
+Package cleveref Info: loaded `english' language definitions on input line 5568.
+[135] (./Graph Theory.aux
 Package cleveref Info: loaded `english' language definitions on input line 12.
 )
  ***********
@@ -3856,18 +3815,18 @@ Package logreq Info: Writing requests to '"Graph Theory".run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 78110 strings out of 475119
- 1895302 string characters out of 5765717
- 3109232 words of memory out of 5000000
- 99485 multiletter control sequences out of 15000+600000
+ 78066 strings out of 475119
+ 1894399 string characters out of 5765717
+ 3105574 words of memory out of 5000000
+ 99447 multiletter control sequences out of 15000+600000
  599985 words of font info for 150 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  119i,19n,123p,1903b,2704s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf-dist/fonts/type1/public/tex-gyre/qtmr.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfcc1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfcc1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfcc1728.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfcc2074.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfss1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfti1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb></usr/share/texmf-dist/fonts/type1/public/stmaryrd/stmary10.pfb>
-Output written on "Graph Theory.pdf" (139 pages, 1170505 bytes).
+Output written on "Graph Theory.pdf" (138 pages, 1167533 bytes).
 PDF statistics:
- 1878 PDF objects out of 2073 (max. 8388607)
- 1654 compressed objects within 17 object streams
- 635 named destinations out of 1000 (max. 500000)
+ 1868 PDF objects out of 2073 (max. 8388607)
+ 1645 compressed objects within 17 object streams
+ 629 named destinations out of 1000 (max. 500000)
  434 words of extra memory for PDF output out of 10000 (max. 10000000)
 
